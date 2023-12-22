@@ -26,15 +26,34 @@ int main(int argc, char* argv[]){
     // while(!ve->Ready()){}
 
     VimEmulator* ve = new VimEmulator("alacritty", "--title");
+    app->SetVimEmulator(ve);
+    // This needs to be fixed, possibly fork and wait
     std::this_thread::sleep_for(std::chrono::seconds(3));
     ve->RegisterWindow();
-    // This needs to be fixed, possibly fork and wait
     app->AddSurface(ve->GetFrameAsSurface());
+    int fd[2];
 
-//    XMapWindow(display, window);
-//    XFlush(display);
+    if (pipe(fd) == -1){
+        std::cout << "Error generating pipe" << std::endl;
+        return -1;
+    }
 
+    // Replace this with an interface or something similar, this shouldn't be done in
+    // main before PR is complete
+    //pid_t pid = fork();
+    //if (pid == 0){ 
+    //    close(fd[0]);
+
+    //   while (true) {
+    //        std::this_thread::sleep_for(std::chrono::nanoseconds(100));
+    //        SDL_Surface* surface = ve->GetFrameAsSurface();
+    //        write(fd[1], surface, sizeof(*surface));
+    //    }
+
+    //    close(fd[1]);
+    //    return -1;
+    //}
+    //close(fd[1]);
+    //app->SetReadSurface(fd[0]);
     app->Run();
-
-
 }

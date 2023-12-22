@@ -33,12 +33,9 @@ VimEmulator::~VimEmulator(){}
 
 void VimEmulator::RegisterWindow(){
     m_window = this->findWindowByName(m_rootWindow);
-}
-
-XImage* VimEmulator::GetFrame(){
     XWindowAttributes attributes;
     XGetWindowAttributes(m_display, *m_window, &attributes);
-    return XGetImage(m_display,
+    m_xImage = XGetImage(m_display,
             *m_window,
             0,
             0,
@@ -46,7 +43,23 @@ XImage* VimEmulator::GetFrame(){
             attributes.height,
             AllPlanes,
             ZPixmap);
+}
 
+XImage* VimEmulator::GetFrame(){
+    XWindowAttributes attributes;
+    XGetWindowAttributes(m_display, *m_window, &attributes);
+    XGetSubImage(m_display,
+            *m_window,
+            0,
+            0,
+            attributes.width,
+            attributes.height,
+            AllPlanes,
+            ZPixmap,
+            m_xImage,
+            0,
+            0);
+    return m_xImage;
 }
 
 SDL_Surface* VimEmulator::GetFrameAsSurface(){
@@ -74,7 +87,6 @@ Window* VimEmulator::findWindowByName(Window window){
     unsigned int numChildren;
     char* windowName;
 
-    std::cout << m_windowName.c_str();
     if (XQueryTree(m_display, window, &window, &parent, &children, &numChildren)){
         for (unsigned int i = 0; i < numChildren; i++) {
             XFetchName(m_display, children[i], &windowName);

@@ -18,6 +18,7 @@ class VimEmulator{
         Window m_rootWindow;
         Window* m_window;
         std::string m_windowName;
+        XImage* m_xImage;
 
         Window* findWindowByName(Window window);
 };

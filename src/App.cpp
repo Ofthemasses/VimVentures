@@ -1,7 +1,7 @@
 #include "App.hpp"
 
 #include "constants.hpp"
-
+#include <unistd.h>
 #include <iostream>
 
 App::App(Uint32 ssFlags, int x, int y, int w, int h){
@@ -27,6 +27,8 @@ SDL_Renderer* App::GetRenderer(){
 }
 
 void App::Run(){
+    m_surface = m_ve->GetFrameAsSurface();
+    m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
     if(m_running){
         std::cout << "App is already running" << std::endl;
     }
@@ -50,10 +52,15 @@ void App::Run(){
         background.h = 720;
         SDL_RenderDrawRect(m_renderer, &background);
 
-        SDL_Texture* texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
-        SDL_RenderCopy(m_renderer, texture, NULL, NULL);
+        //std::cout << "Before Read" << std::endl;
+        //read(m_readSurface, &m_surface, sizeof(*m_surface));
+        //std::cout << "After Read" << std::endl;
+        m_surface = m_ve->GetFrameAsSurface();
+        m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
+        SDL_FreeSurface(m_surface);
+        SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
         SDL_RenderPresent(m_renderer);
-        SDL_DestroyTexture(texture);
+        SDL_DestroyTexture(m_texture);
     }
 }
 
@@ -63,4 +70,12 @@ void App::Stop(){
 
 void App::AddSurface(SDL_Surface *surface){
     m_surface = surface;
+}
+
+void App::SetReadSurface(int readSurface){
+   m_readSurface = readSurface;
+} 
+
+void App::SetVimEmulator(VimEmulator* ve){
+    m_ve = ve;
 }
