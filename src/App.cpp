@@ -49,10 +49,18 @@ void App::Run(){
         background.w = 1280;
         background.h = 720;
         SDL_RenderDrawRect(m_renderer, &background);
+
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
+        SDL_RenderCopy(m_renderer, texture, NULL, NULL);
         SDL_RenderPresent(m_renderer);
+        SDL_DestroyTexture(texture);
     }
 }
 
 void App::Stop(){
     m_running = false;
+}
+
+void App::AddSurface(SDL_Surface *surface){
+    m_surface = surface;
 }

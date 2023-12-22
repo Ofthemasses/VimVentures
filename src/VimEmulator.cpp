@@ -1,40 +1,89 @@
 #include "VimEmulator.hpp"
 #include <iostream>
+#include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
+#include <X11/Xlib.h>
+#include <constants.hpp>
 #include <unistd.h>
+#include <thread>
+#include <chrono>
 
-VimEmulator::VimEmulator(const winsize &ws): m_winsize(ws){
-    pid_t pid = forkpty(&m_amaster, 0, 0, &m_winsize);
-    if (pid < 0){
-        std::cout << "Error Creating Terminal" << std::endl;
-        exit(EXIT_FAILURE);
-    } else if (pid == 0){
-        execlp("vim", "vim", NULL);
-        // If execlp fails fail
-        std::cout << "vim failed to execute" << std::endl;
+VimEmulator::VimEmulator(std::string terminal, std::string nArg){
+    m_display = XOpenDisplay(NULL);
+    m_screen = DefaultScreen(m_display);
+    m_rootWindow = RootWindow(m_display, m_screen);
+    m_windowName = std::string(APP_TITLE) + "Emulator";
+    m_window = nullptr;
+
+    // Run the terminal instance
+    pid_t pid = fork();
+    if(pid == 0){
+        setenv("DISPLAY", XDisplayString(m_display), 1);
+        execlp(terminal.c_str(),
+                terminal.c_str(),
+                nArg.c_str(), 
+                m_windowName.c_str(),
+                NULL);
         exit(EXIT_FAILURE);
     }
 }
 
 VimEmulator::~VimEmulator(){}
 
-void VimEmulator::Run(){}
-
-void VimEmulator::Print(){
-    std::cout << m_outputBuffer << std::endl;
+void VimEmulator::RegisterWindow(){
+    m_window = this->findWindowByName(m_rootWindow);
 }
 
-ssize_t VimEmulator::Read(){
-    ssize_t bytesRead = read(m_amaster, m_outputBuffer, sizeof(m_outputBuffer) -1);
-    if (bytesRead < 0) {
-        std::cout << "Error Reading Terminal" << std::endl;
+XImage* VimEmulator::GetFrame(){
+    XWindowAttributes attributes;
+    XGetWindowAttributes(m_display, *m_window, &attributes);
+    return XGetImage(m_display,
+            *m_window,
+            0,
+            0,
+            attributes.width,
+            attributes.height,
+            AllPlanes,
+            ZPixmap);
+
+}
+
+SDL_Surface* VimEmulator::GetFrameAsSurface(){
+    XImage* image = this->GetFrame();
+    SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
+            (void*) image->data,
+            image->width,
+            image->height,
+            image->depth,
+            image->bytes_per_line,
+            (Uint32) 0XFF0000,
+            (Uint32) 0X00FF00,
+            (Uint32) 0X0000FF,
+            0);
+    if (surface == NULL){
+        std::cout << SDL_GetError() << std::endl;
         exit(EXIT_FAILURE);
     }
-    m_outputBuffer[bytesRead] = '\0';
-    close(m_amaster);
-    return bytesRead;
+    return surface;
 }
 
-bool VimEmulator::Ready(){
-    ssize_t bytesRead = read(m_amaster, m_outputBuffer, sizeof(m_outputBuffer) -1);
-    return bytesRead > 20; // This is a guess 
+Window* VimEmulator::findWindowByName(Window window){
+    Window parent;
+    Window* children;
+    unsigned int numChildren;
+    char* windowName;
+
+    std::cout << m_windowName.c_str();
+    if (XQueryTree(m_display, window, &window, &parent, &children, &numChildren)){
+        for (unsigned int i = 0; i < numChildren; i++) {
+            XFetchName(m_display, children[i], &windowName);
+            if (windowName && strcmp(windowName, m_windowName.c_str()) == 0){
+                return &children[i];
+            }
+            Window* result = findWindowByName(children[i]);
+            if (result) return result;
+        }
+    }
+    return nullptr;
 }

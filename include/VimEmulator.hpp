@@ -1,21 +1,25 @@
 #ifndef VIMEMULATOR_HPP
 #define VIMEMULATOR_HPP
 
-#include <pty.h>
-#include <sys/types.h>
+#include <string>
+#include <X11/Xlib.h>
+#include <SDL2/SDL.h>
 
 class VimEmulator{
     public:
-        VimEmulator(const winsize &ws);
+        VimEmulator(std::string terminal, std::string nArg);
         ~VimEmulator();
-        void Run();
-        void Print();
-        ssize_t Read();
-        bool Ready();
+        void RegisterWindow();
+        XImage* GetFrame();
+        SDL_Surface* GetFrameAsSurface();
     private:
-        char m_outputBuffer[4096];
-        int m_amaster;
-        winsize m_winsize;
+        Display* m_display;
+        int m_screen;
+        Window m_rootWindow;
+        Window* m_window;
+        std::string m_windowName;
+
+        Window* findWindowByName(Window window);
 };
 
 #endif
