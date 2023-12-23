@@ -41,18 +41,19 @@ void App::Run(){
             if(event.type == SDL_QUIT){
                 this->Stop();
             } else if (event.type == SDL_KEYDOWN){
+                m_ve->SetSDLMod((SDL_Keymod)event.key.keysym.mod);
                 m_ve->SendSDLKey(event.key.keysym.sym);
             }
         }
         // TODO move rendering, this is test code
         SDL_SetRenderDrawColor(m_renderer, 131, 50, 168, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(m_renderer);
-        SDL_Rect background;
-        background.x = 0;
-        background.y = 0;
-        background.w = 1280;
-        background.h = 720;
-        SDL_RenderDrawRect(m_renderer, &background);
+        //SDL_Rect background;
+        //background.x = 0;
+        //background.y = 0;
+        //background.w = 1280;
+        //background.h = 720;
+        //SDL_RenderDrawRect(m_renderer, &background);
 
         //std::cout << "Before Read" << std::endl;
         //read(m_readSurface, &m_surface, sizeof(*m_surface));

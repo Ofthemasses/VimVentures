@@ -129,9 +129,6 @@ SDLToX11Keymap::SDLToX11Keymap(){
     m_keyMap[SDLK_RALT] = XK_Alt_R;
     m_keyMap[SDLK_RGUI] = XK_Super_R;
     // SDLK_MODE -> SDLK_SLEEP
-    
-
-
 }
 
 KeySym SDLToX11Keymap::convert(SDL_Keycode sdlKey) const{

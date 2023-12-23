@@ -15,6 +15,7 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg){
     m_rootWindow = RootWindow(m_display, m_screen);
     m_windowName = std::string(APP_TITLE) + "Emulator";
     m_window = nullptr;
+    m_modmask = new unsigned int;
 
     // Run the terminal instance
     pid_t pid = fork();
@@ -103,13 +104,18 @@ Window* VimEmulator::findWindowByName(Window window){
 void VimEmulator::SendSDLKey(SDL_Keycode key){
     KeySym xkey = SDLX11KeymapRef.convert(key);
 
-    XKeyEvent event = {0};
+    XKeyPressedEvent event = {0};
     event.type = KeyPress;
     event.display = m_display;
     event.window = *m_window;
     event.root = m_rootWindow;
     event.keycode = XKeysymToKeycode(m_display, xkey);
     event.state = 0;
+    event.state = *m_modmask;
 
     XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent*)&event);
+}
+
+void VimEmulator::SetSDLMod(SDL_Keymod mod){
+    *m_modmask = mod;
 }
