@@ -40,6 +40,8 @@ void App::Run(){
         while(SDL_PollEvent(&event)){
             if(event.type == SDL_QUIT){
                 this->Stop();
+            } else if (event.type == SDL_KEYDOWN){
+                m_ve->SendSDLKey(event.key.keysym.sym);
             }
         }
         // TODO move rendering, this is test code

@@ -12,6 +12,7 @@ class VimEmulator{
         void RegisterWindow();
         XImage* GetFrame();
         SDL_Surface* GetFrameAsSurface();
+        void SendSDLKey(SDL_Keycode key);
     private:
         Display* m_display;
         int m_screen;

@@ -99,3 +99,17 @@ Window* VimEmulator::findWindowByName(Window window){
     }
     return nullptr;
 }
+
+void VimEmulator::SendSDLKey(SDL_Keycode key){
+    KeySym xkey = SDLX11KeymapRef.convert(key);
+
+    XKeyEvent event = {0};
+    event.type = KeyPress;
+    event.display = m_display;
+    event.window = *m_window;
+    event.root = m_rootWindow;
+    event.keycode = XKeysymToKeycode(m_display, xkey);
+    event.state = 0;
+
+    XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent*)&event);
+}
