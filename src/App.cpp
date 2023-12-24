@@ -27,8 +27,7 @@ SDL_Renderer* App::GetRenderer(){
 }
 
 void App::Run(){
-    m_surface = m_ve->GetFrameAsSurface();
-    m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
+    m_ve->QueueFrame();
     if(m_running){
         std::cout << "App is already running" << std::endl;
     }
@@ -43,8 +42,12 @@ void App::Run(){
             } else if (event.type == SDL_KEYDOWN){
                 m_ve->SetSDLMod((SDL_Keymod)event.key.keysym.mod);
                 m_ve->SendSDLKey(event.key.keysym.sym);
+                if (event.key.keysym.sym == SDLK_SPACE){
+                    std::cout << "FPS: " << this->GetFPS() << std::endl;
+                }
             }
         }
+        m_startTick = SDL_GetTicks();
         // TODO move rendering, this is test code
         SDL_SetRenderDrawColor(m_renderer, 131, 50, 168, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(m_renderer);
@@ -58,16 +61,21 @@ void App::Run(){
         //std::cout << "Before Read" << std::endl;
         //read(m_readSurface, &m_surface, sizeof(*m_surface));
         //std::cout << "After Read" << std::endl;
-        m_surface = m_ve->GetFrameAsSurface();
-        m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
-        SDL_FreeSurface(m_surface);
+        if (m_ve->FrameReady()){
+            SDL_DestroyTexture(m_texture);
+            m_surface = m_ve->GetFrameAsSurface();
+            m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
+            SDL_FreeSurface(m_surface);
+            m_ve->QueueFrame();
+        }
         SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
         SDL_RenderPresent(m_renderer);
-        SDL_DestroyTexture(m_texture);
+        m_endTick = SDL_GetTicks();
     }
 }
 
 void App::Stop(){
+    delete(m_ve);
     m_running = false;
 }
 
@@ -81,4 +89,8 @@ void App::SetReadSurface(int readSurface){
 
 void App::SetVimEmulator(VimEmulator* ve){
     m_ve = ve;
+}
+
+double App::GetFPS(){
+    return 1000.0 / (m_endTick - m_startTick);
 }

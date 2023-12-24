@@ -4,12 +4,16 @@
 #include <string>
 #include <X11/Xlib.h>
 #include <SDL2/SDL.h>
+#include <mutex>
 
 class VimEmulator{
     public:
         VimEmulator(std::string terminal, std::string nArg);
         ~VimEmulator();
         void RegisterWindow();
+
+        void QueueFrame();
+        bool FrameReady();
         XImage* GetFrame();
         SDL_Surface* GetFrameAsSurface();
 
@@ -22,7 +26,12 @@ class VimEmulator{
         Window m_rootWindow;
         Window* m_window;
         std::string m_windowName;
+
+        // Frames
         XImage* m_xImage;
+        SDL_Surface* m_surface;
+        bool m_frameReady;
+        std::mutex m_mutex;
 
         // XKeyboard
         unsigned int* m_modmask;

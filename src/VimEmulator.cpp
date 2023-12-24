@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <X11/Xlib.h>
+#include <X11/extensions/XShm.h>
 #include <constants.hpp>
 #include <unistd.h>
 #include <thread>
@@ -16,6 +17,7 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg){
     m_windowName = std::string(APP_TITLE) + "Emulator";
     m_window = nullptr;
     m_modmask = new unsigned int;
+    m_frameReady = false;
 
     // Run the terminal instance
     pid_t pid = fork();
@@ -34,8 +36,14 @@ VimEmulator::~VimEmulator(){}
 
 void VimEmulator::RegisterWindow(){
     m_window = this->findWindowByName(m_rootWindow);
+
+    // Move Window Off Screen
+
     XWindowAttributes attributes;
     XGetWindowAttributes(m_display, *m_window, &attributes);
+
+    XMoveWindow(m_display, *m_window, -attributes.width*2 - 1, -attributes.height*2 -1);
+
     m_xImage = XGetImage(m_display,
             *m_window,
             0,
@@ -46,40 +54,55 @@ void VimEmulator::RegisterWindow(){
             ZPixmap);
 }
 
-XImage* VimEmulator::GetFrame(){
-    XWindowAttributes attributes;
-    XGetWindowAttributes(m_display, *m_window, &attributes);
-    XGetSubImage(m_display,
-            *m_window,
-            0,
-            0,
-            attributes.width,
-            attributes.height,
-            AllPlanes,
-            ZPixmap,
-            m_xImage,
-            0,
-            0);
-    return m_xImage;
-}
-
-SDL_Surface* VimEmulator::GetFrameAsSurface(){
-    XImage* image = this->GetFrame();
-    SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
-            (void*) image->data,
-            image->width,
-            image->height,
-            image->depth,
-            image->bytes_per_line,
+void VimEmulator::QueueFrame(){
+    if (m_frameReady){
+        std::cout << "Frame Already Ready" << std::endl;
+        return;
+    }
+    std::thread([this]() {
+  		XWindowAttributes attributes;
+  		XGetWindowAttributes(m_display, *m_window, &attributes);
+  		XGetSubImage(m_display,
+  		        *m_window,
+  		        0,
+  		        0,
+  		        attributes.width,
+  		        attributes.height,
+  		        AllPlanes,
+  		        ZPixmap,
+  		        m_xImage,
+  		        0,
+  		        0);
+        m_surface = SDL_CreateRGBSurfaceFrom(
+            (void*) m_xImage->data,
+            m_xImage->width,
+            m_xImage->height,
+            m_xImage->depth,
+            m_xImage->bytes_per_line,
             (Uint32) 0XFF0000,
             (Uint32) 0X00FF00,
             (Uint32) 0X0000FF,
             0);
-    if (surface == NULL){
-        std::cout << SDL_GetError() << std::endl;
-        exit(EXIT_FAILURE);
-    }
-    return surface;
+        if (m_surface == NULL){
+            std::cout << SDL_GetError() << std::endl;
+            exit(EXIT_FAILURE);
+        }
+        m_frameReady = true;
+    }).detach();
+}
+
+bool VimEmulator::FrameReady(){
+    return m_frameReady;
+}
+
+XImage* VimEmulator::GetFrame(){
+    m_frameReady = false;
+    return m_xImage;
+}
+
+SDL_Surface* VimEmulator::GetFrameAsSurface(){
+    m_frameReady = false;
+    return m_surface;
 }
 
 Window* VimEmulator::findWindowByName(Window window){

@@ -22,6 +22,8 @@ class App {
 
         void SetVimEmulator(VimEmulator* ve);
 
+        double GetFPS();
+
     private:
         // SDL Vars
         SDL_Window* m_window;
@@ -35,6 +37,9 @@ class App {
         int m_width;
         int m_height;
         bool m_running;
+
+        Uint32 m_startTick;
+        Uint32 m_endTick;
 
         // Test
         VimEmulator* m_ve;

@@ -1,5 +1,6 @@
 #include "SDLToX11Keymap.hpp"
 #include "X11/keysym.h"
+#include <iostream>
 
 SDLToX11Keymap::SDLToX11Keymap(){
     m_keyMap[SDLK_UNKNOWN] = NoSymbol;
