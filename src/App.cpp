@@ -27,6 +27,11 @@ SDL_Renderer* App::GetRenderer(){
 }
 
 void App::Run(){
+    m_rect.h = 600;
+    m_rect.w = 800;
+    std::cout << m_width << std::endl;
+    m_rect.x = (m_width - 800) / 2;
+    m_rect.y = (m_height - 600) / 2;
     m_ve->QueueFrame();
     if(m_running){
         std::cout << "App is already running" << std::endl;
@@ -68,7 +73,7 @@ void App::Run(){
             SDL_FreeSurface(m_surface);
             m_ve->QueueFrame();
         }
-        SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
+        SDL_RenderCopy(m_renderer, m_texture, NULL, &m_rect);
         SDL_RenderPresent(m_renderer);
         m_endTick = SDL_GetTicks();
     }

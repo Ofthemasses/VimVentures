@@ -27,6 +27,8 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg){
                 terminal.c_str(),
                 nArg.c_str(), 
                 m_windowName.c_str(),
+                "-o", // TODO Replace with "nArgs"
+                "window.decorations=None",
                 NULL);
         exit(EXIT_FAILURE);
     }
@@ -37,12 +39,14 @@ VimEmulator::~VimEmulator(){}
 void VimEmulator::RegisterWindow(){
     m_window = this->findWindowByName(m_rootWindow);
 
-    // Move Window Off Screen
-
+    XResizeWindow(m_display, *m_window, 800, 600);
     XWindowAttributes attributes;
     XGetWindowAttributes(m_display, *m_window, &attributes);
 
     XMoveWindow(m_display, *m_window, -attributes.width*2 - 1, -attributes.height*2 -1);
+
+    std::cout << attributes.width << std::endl;
+    std::cout << attributes.height << std::endl;
 
     m_xImage = XGetImage(m_display,
             *m_window,
@@ -52,6 +56,7 @@ void VimEmulator::RegisterWindow(){
             attributes.height,
             AllPlanes,
             ZPixmap);
+    std::cout << "Image Rendered" << std::endl;
 }
 
 void VimEmulator::QueueFrame(){

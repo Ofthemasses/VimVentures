@@ -32,6 +32,7 @@ class App {
         // For now we only need one surface, should be updated to an array in future
         SDL_Surface* m_surface;
         SDL_Texture* m_texture;
+        SDL_Rect m_rect;
         int m_readSurface;
         // Program Details
         int m_width;
