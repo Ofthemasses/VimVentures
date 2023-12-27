@@ -4,9 +4,11 @@
 #include <string>
 #include <X11/Xlib.h>
 #include <SDL2/SDL.h>
-#include <mutex>
 
-class VimEmulator{
+#include "IRender.hpp"
+#include "Rect2D.hpp"
+
+class VimEmulator : public IRender, public Rect2D{
     public:
         VimEmulator(std::string terminal, std::string nArg);
         ~VimEmulator();
@@ -21,6 +23,9 @@ class VimEmulator{
         // XKeyBoard
         void SendSDLKey(SDL_Keycode key);
         void SetSDLMod(SDL_Keymod mod);
+
+        // IRender
+        void Render(SDL_Renderer* renderer);
     private:
         Display* m_display;
         int m_screen;
@@ -34,10 +39,12 @@ class VimEmulator{
         XImage* m_xImage;
         SDL_Surface* m_surface;
         bool m_frameReady;
-        std::mutex m_mutex;
 
         // XKeyboard
         unsigned int* m_modmask;
+
+        // Render Data
+        SDL_Texture* m_texture;
 
         Window* findWindowByName(Window window);
 };

@@ -158,3 +158,15 @@ void VimEmulator::SendSDLKey(SDL_Keycode key){
 void VimEmulator::SetSDLMod(SDL_Keymod mod){
     *m_modmask = mod;
 }
+
+// IRender
+
+void VimEmulator::Render(SDL_Renderer* renderer){
+    if (this->FrameReady()){
+        SDL_DestroyTexture(m_texture);
+        SDL_Surface* surface = this->GetFrameAsSurface();
+        m_texture = SDL_CreateTextureFromSurface(renderer, surface);
+        this->QueueFrame();
+    }
+    SDL_RenderCopy(renderer, m_texture, NULL, &m_rect);
+};

@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include "VimEmulator.hpp"
+#include "IState.hpp"
+#include "IRender.hpp"
 
 class App {
     public:
@@ -12,38 +14,44 @@ class App {
 
         SDL_Renderer* GetRenderer();
 
+        // State Management
+        void SetState(IState* state);
+
         void Run();
 
         void Stop();
 
-        void AddSurface(SDL_Surface *surface);
+        void Render();
 
-        void SetReadSurface(int readSurface);
+        // TODO Create ?Doubly? Linked List for rendering
+        void AddRenderable(IRender* renderable);
 
-        void SetVimEmulator(VimEmulator* ve);
-
+        // Getters
         double GetFPS();
+
+        int GetWidth();
+
+        int GetHeight();
 
     private:
         // SDL Vars
         SDL_Window* m_window;
         SDL_Renderer* m_renderer;
         
-        // For now we only need one surface, should be updated to an array in future
-        SDL_Surface* m_surface;
-        SDL_Texture* m_texture;
-        SDL_Rect m_rect;
-        int m_readSurface;
+        // For now we only need one renderable, should be updated to a vector in future
+        IRender* m_renderable;
+
         // Program Details
         int m_width;
         int m_height;
         bool m_running;
 
+        // State
+        IState* m_state;
+
+        // FPS
         Uint32 m_startTick;
         Uint32 m_endTick;
-
-        // Test
-        VimEmulator* m_ve;
 };
 
 #endif

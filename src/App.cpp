@@ -26,15 +26,11 @@ SDL_Renderer* App::GetRenderer(){
     return m_renderer;
 }
 
+void App::SetState(IState* state){
+    m_state = state;
+}
+
 void App::Run(){
-    int terminalW = (int) (m_width * 2 / 3.0);
-    int terminalH = (int) (m_height * 2 / 3.0);
-    m_ve->ResizeWindow(terminalW ,terminalH);
-    m_rect.w = terminalW;
-    m_rect.h = terminalH;
-    m_rect.x = (m_width - terminalW) / 2;
-    m_rect.y = (m_height - terminalH) / 2;
-    m_ve->QueueFrame();
     if(m_running){
         std::cout << "App is already running" << std::endl;
     }
@@ -44,50 +40,42 @@ void App::Run(){
         // TODO move this
         SDL_Event event;
         while(SDL_PollEvent(&event)){
-            if(event.type == SDL_QUIT){
-                this->Stop();
-            } else if (event.type == SDL_KEYDOWN){
-                m_ve->SetSDLMod((SDL_Keymod)event.key.keysym.mod);
-                m_ve->SendSDLKey(event.key.keysym.sym);
+            m_state->SendEvent(event);
+            if (event.type == SDL_KEYDOWN){
                 if (event.key.keysym.sym == SDLK_SPACE){
                     std::cout << "FPS: " << this->GetFPS() << std::endl;
                 }
             }
         }
         m_startTick = SDL_GetTicks();
-        // TODO move rendering, this is test code
-        SDL_SetRenderDrawColor(m_renderer, 131, 50, 168, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(m_renderer);
-        if (m_ve->FrameReady()){
-            SDL_DestroyTexture(m_texture);
-            m_surface = m_ve->GetFrameAsSurface();
-            m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
-            SDL_FreeSurface(m_surface);
-            m_ve->QueueFrame();
-        }
-        SDL_RenderCopy(m_renderer, m_texture, NULL, &m_rect);
-        SDL_RenderPresent(m_renderer);
+        m_state->Run();
         m_endTick = SDL_GetTicks();
     }
 }
 
 void App::Stop(){
-    delete(m_ve);
     m_running = false;
 }
 
-void App::AddSurface(SDL_Surface *surface){
-    m_surface = surface;
+void App::Render(){
+    SDL_RenderClear(m_renderer);
+    // TODO ?Doubly? Linked List of Renderables
+    m_renderable->Render(m_renderer);
+    SDL_RenderPresent(m_renderer);
 }
 
-void App::SetReadSurface(int readSurface){
-   m_readSurface = readSurface;
-} 
-
-void App::SetVimEmulator(VimEmulator* ve){
-    m_ve = ve;
+void App::AddRenderable(IRender* renderable){
+    m_renderable = renderable;
 }
 
 double App::GetFPS(){
     return 1000.0 / (m_endTick - m_startTick);
+}
+
+int App::GetWidth(){
+    return m_width;
+}
+
+int App::GetHeight(){
+    return m_height;
 }
