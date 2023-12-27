@@ -27,11 +27,13 @@ SDL_Renderer* App::GetRenderer(){
 }
 
 void App::Run(){
-    m_rect.h = 600;
-    m_rect.w = 800;
-    std::cout << m_width << std::endl;
-    m_rect.x = (m_width - 800) / 2;
-    m_rect.y = (m_height - 600) / 2;
+    int terminalW = (int) (m_width * 2 / 3.0);
+    int terminalH = (int) (m_height * 2 / 3.0);
+    m_ve->ResizeWindow(terminalW ,terminalH);
+    m_rect.w = terminalW;
+    m_rect.h = terminalH;
+    m_rect.x = (m_width - terminalW) / 2;
+    m_rect.y = (m_height - terminalH) / 2;
     m_ve->QueueFrame();
     if(m_running){
         std::cout << "App is already running" << std::endl;
@@ -56,16 +58,6 @@ void App::Run(){
         // TODO move rendering, this is test code
         SDL_SetRenderDrawColor(m_renderer, 131, 50, 168, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(m_renderer);
-        //SDL_Rect background;
-        //background.x = 0;
-        //background.y = 0;
-        //background.w = 1280;
-        //background.h = 720;
-        //SDL_RenderDrawRect(m_renderer, &background);
-
-        //std::cout << "Before Read" << std::endl;
-        //read(m_readSurface, &m_surface, sizeof(*m_surface));
-        //std::cout << "After Read" << std::endl;
         if (m_ve->FrameReady()){
             SDL_DestroyTexture(m_texture);
             m_surface = m_ve->GetFrameAsSurface();

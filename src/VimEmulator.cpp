@@ -39,24 +39,37 @@ VimEmulator::~VimEmulator(){}
 void VimEmulator::RegisterWindow(){
     m_window = this->findWindowByName(m_rootWindow);
 
-    XResizeWindow(m_display, *m_window, 800, 600);
     XWindowAttributes attributes;
     XGetWindowAttributes(m_display, *m_window, &attributes);
+    m_width = attributes.width;
+    m_height = attributes.height;
 
     XMoveWindow(m_display, *m_window, -attributes.width*2 - 1, -attributes.height*2 -1);
-
-    std::cout << attributes.width << std::endl;
-    std::cout << attributes.height << std::endl;
 
     m_xImage = XGetImage(m_display,
             *m_window,
             0,
             0,
-            attributes.width,
-            attributes.height,
+            m_width,
+            m_height,
             AllPlanes,
             ZPixmap);
     std::cout << "Image Rendered" << std::endl;
+}
+
+void VimEmulator::ResizeWindow(int w, int h){
+    m_width = w;
+    m_height = h;
+    XResizeWindow(m_display, *m_window, m_width, m_height);
+    m_window = this->findWindowByName(m_rootWindow);
+    m_xImage = XGetImage(m_display,
+            *m_window,
+            0,
+            0,
+            m_width,
+            m_height,
+            AllPlanes,
+            ZPixmap);
 }
 
 void VimEmulator::QueueFrame(){
@@ -65,14 +78,12 @@ void VimEmulator::QueueFrame(){
         return;
     }
     std::thread([this]() {
-  		XWindowAttributes attributes;
-  		XGetWindowAttributes(m_display, *m_window, &attributes);
   		XGetSubImage(m_display,
   		        *m_window,
   		        0,
   		        0,
-  		        attributes.width,
-  		        attributes.height,
+                m_width,
+                m_height,
   		        AllPlanes,
   		        ZPixmap,
   		        m_xImage,

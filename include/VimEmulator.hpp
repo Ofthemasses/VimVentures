@@ -11,6 +11,7 @@ class VimEmulator{
         VimEmulator(std::string terminal, std::string nArg);
         ~VimEmulator();
         void RegisterWindow();
+        void ResizeWindow(int w, int h);
 
         void QueueFrame();
         bool FrameReady();
@@ -26,6 +27,8 @@ class VimEmulator{
         Window m_rootWindow;
         Window* m_window;
         std::string m_windowName;
+        int m_width;
+        int m_height;
 
         // Frames
         XImage* m_xImage;
