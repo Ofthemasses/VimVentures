@@ -29,6 +29,12 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg){
                 m_windowName.c_str(),
                 "-o", // TODO Replace with "nArgs"
                 "window.decorations=None",
+                "-e",
+                "vim", 
+                "-S", 
+                "~/Documents/VimVentures/vim-ventures-autoload.vim",
+                "-c", 
+                "cd ~/.vimventures",
                 NULL);
         exit(EXIT_FAILURE);
     }
