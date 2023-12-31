@@ -9,7 +9,7 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h){
     m_height = h;
 
     if(SDL_Init(ssFlags) < 0){
-        std::cout << "SDL could not initalize: "
+        std::cerr << "SDL could not initalize: "
             << SDL_GetError();
     }
 
@@ -32,7 +32,7 @@ void App::SetState(IState* state){
 
 void App::Run(){
     if(m_running){
-        std::cout << "App is already running" << std::endl;
+        std::cerr << "App is already running" << std::endl;
     }
     m_running = true;
 

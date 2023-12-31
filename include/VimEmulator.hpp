@@ -8,23 +8,19 @@
 #include "IRender.hpp"
 #include "Rect2D.hpp"
 
-class VimEmulator : public IRender, public Rect2D{
+class VimEmulator : public IRender, public Rect2D {
     public:
         VimEmulator(std::string terminal, std::string nArg);
         ~VimEmulator();
         void RegisterWindow();
         void ResizeWindow(int w, int h);
-
         void QueueFrame();
-        bool FrameReady();
-        XImage* GetFrame();
-        SDL_Surface* GetFrameAsSurface();
 
-        // XKeyBoard
+        /** X11 Keyboard **/
         void SendSDLKey(SDL_Keycode key);
         void SetSDLMod(SDL_Keymod mod);
 
-        // IRender
+        /** IRender **/
         void Render(SDL_Renderer* renderer);
     private:
         Display* m_display;
@@ -35,17 +31,19 @@ class VimEmulator : public IRender, public Rect2D{
         int m_width;
         int m_height;
 
-        // Frames
+        /** Frames **/
         XImage* m_xImage;
         SDL_Surface* m_surface;
         bool m_frameReady;
 
-        // XKeyboard
+        /** XKeyboard **/
         unsigned int* m_modmask;
 
-        // Render Data
+        /** Render Data **/
         SDL_Texture* m_texture;
 
+        /** Private Methods **/
+        SDL_Surface* GetFrameAsSurface();
         Window* findWindowByName(Window window);
 };
 

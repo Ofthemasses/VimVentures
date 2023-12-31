@@ -8,7 +8,6 @@
 #include <constants.hpp>
 #include <unistd.h>
 #include <thread>
-#include <chrono>
 
 VimEmulator::VimEmulator(std::string terminal, std::string nArg){
     m_display = XOpenDisplay(NULL);
@@ -60,7 +59,6 @@ void VimEmulator::RegisterWindow(){
             m_height,
             AllPlanes,
             ZPixmap);
-    std::cout << "Image Rendered" << std::endl;
 }
 
 void VimEmulator::ResizeWindow(int w, int h){
@@ -80,7 +78,6 @@ void VimEmulator::ResizeWindow(int w, int h){
 
 void VimEmulator::QueueFrame(){
     if (m_frameReady){
-        std::cout << "Frame Already Ready" << std::endl;
         return;
     }
     std::thread([this]() {
@@ -106,21 +103,45 @@ void VimEmulator::QueueFrame(){
             (Uint32) 0X0000FF,
             0);
         if (m_surface == NULL){
-            std::cout << SDL_GetError() << std::endl;
+            std::cerr << SDL_GetError() << std::endl;
             exit(EXIT_FAILURE);
         }
         m_frameReady = true;
     }).detach();
 }
 
-bool VimEmulator::FrameReady(){
-    return m_frameReady;
+void VimEmulator::SendSDLKey(SDL_Keycode key){
+    KeySym xkey = SDLX11KeymapRef.convert(key);
+
+    XKeyPressedEvent event = {0};
+    event.type = KeyPress;
+    event.display = m_display;
+    event.window = *m_window;
+    event.root = m_rootWindow;
+    event.keycode = XKeysymToKeycode(m_display, xkey);
+    event.state = 0;
+    event.state = *m_modmask;
+
+    XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent*)&event);
 }
 
-XImage* VimEmulator::GetFrame(){
-    m_frameReady = false;
-    return m_xImage;
+void VimEmulator::SetSDLMod(SDL_Keymod mod){
+    *m_modmask = mod;
 }
+
+/** IRender **/
+
+void VimEmulator::Render(SDL_Renderer* renderer){
+    if (m_frameReady){
+        SDL_DestroyTexture(m_texture);
+        SDL_Surface* surface = this->GetFrameAsSurface();
+        m_texture = SDL_CreateTextureFromSurface(renderer, surface);
+        this->QueueFrame();
+    }
+    SDL_RenderCopy(renderer, m_texture, NULL, &m_rect);
+};
+
+/** Private Methods **/
 
 SDL_Surface* VimEmulator::GetFrameAsSurface(){
     m_frameReady = false;
@@ -145,34 +166,3 @@ Window* VimEmulator::findWindowByName(Window window){
     }
     return nullptr;
 }
-
-void VimEmulator::SendSDLKey(SDL_Keycode key){
-    KeySym xkey = SDLX11KeymapRef.convert(key);
-
-    XKeyPressedEvent event = {0};
-    event.type = KeyPress;
-    event.display = m_display;
-    event.window = *m_window;
-    event.root = m_rootWindow;
-    event.keycode = XKeysymToKeycode(m_display, xkey);
-    event.state = 0;
-    event.state = *m_modmask;
-
-    XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent*)&event);
-}
-
-void VimEmulator::SetSDLMod(SDL_Keymod mod){
-    *m_modmask = mod;
-}
-
-// IRender
-
-void VimEmulator::Render(SDL_Renderer* renderer){
-    if (this->FrameReady()){
-        SDL_DestroyTexture(m_texture);
-        SDL_Surface* surface = this->GetFrameAsSurface();
-        m_texture = SDL_CreateTextureFromSurface(renderer, surface);
-        this->QueueFrame();
-    }
-    SDL_RenderCopy(renderer, m_texture, NULL, &m_rect);
-};
