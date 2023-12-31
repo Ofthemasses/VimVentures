@@ -2,6 +2,12 @@
 bin/
 logs/
 
+# CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
 # Vim swp files
 *.swp
 *.swm
