@@ -1,3 +1,13 @@
+# Folders
+bin/
+logs/
+
+# Vim swp files
+*.swp
+*.swm
+*.swn
+*.swo
+
 # Prerequisites
 *.d
 
