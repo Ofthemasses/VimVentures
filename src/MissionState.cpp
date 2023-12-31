@@ -9,8 +9,8 @@ MissionState::MissionState(App& app) : app(app){
     std::this_thread::sleep_for(std::chrono::seconds(1));
     m_vimEmulator->RegisterWindow();
 
-    int terminalW = (int) (app.GetWidth() * 2 / 3.0);
-    int terminalH = (int) (app.GetHeight() * 2 / 3.0);
+    int terminalW = (int) (app.GetWidth() * WIDTH_RATIO);
+    int terminalH = (int) (app.GetHeight() * WIDTH_RATIO);
     m_vimEmulator->ResizeWindow(terminalW ,terminalH);
     m_vimEmulator->SetSize(terminalW, terminalH);
 
@@ -29,7 +29,7 @@ MissionState::~MissionState(){
 
 void MissionState::Run(){
     // Render Sequence
-    SDL_SetRenderDrawColor(app.GetRenderer(), 131, 50, 168, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(app.GetRenderer(), DRAW_R, DRAW_G, DRAW_B, SDL_ALPHA_OPAQUE);
     app.Render();
 }
 

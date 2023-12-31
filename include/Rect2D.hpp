@@ -5,7 +5,7 @@
 
 class Rect2D{
     protected:
-        SDL_Rect m_rect;
+        SDL_Rect m_rect{0,0,0,0};
     public:
         Rect2D() : m_rect{0,0,0,0} {}
         Rect2D(int x, int y, int w, int h) : m_rect{x,y,w,h} {}
@@ -27,7 +27,7 @@ class Rect2D{
 
         SDL_Rect GetSDLRect() const { return m_rect; }
 
-        virtual ~Rect2D() {};
+        virtual ~Rect2D() = default;
 };
 
 #endif

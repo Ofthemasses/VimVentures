@@ -39,13 +39,13 @@ void App::Run(){
     while(m_running){
         // TODO move this
         SDL_Event event;
-        while(SDL_PollEvent(&event)){
-            m_state->SendEvent(event);
-            if (event.type == SDL_KEYDOWN){
-                if (event.key.keysym.sym == SDLK_SPACE){
-                    std::cout << "FPS: " << this->GetFPS() << std::endl;
-                }
+        while (SDL_PollEvent(&event) != 0) {
+          m_state->SendEvent(event);
+          if (event.type == SDL_KEYDOWN) {
+            if (event.key.keysym.sym == SDLK_SPACE) {
+              std::cout << "FPS: " << this->GetFPS() << std::endl;
             }
+          }
         }
         m_startTick = SDL_GetTicks();
         m_state->Run();
@@ -68,14 +68,8 @@ void App::AddRenderable(IRender* renderable){
     m_renderable = renderable;
 }
 
-double App::GetFPS(){
-    return 1000.0 / (m_endTick - m_startTick);
-}
+double App::GetFPS() const { return SECOND_MS / (m_endTick - m_startTick); }
 
-int App::GetWidth(){
-    return m_width;
-}
+int App::GetWidth() const { return m_width; }
 
-int App::GetHeight(){
-    return m_height;
-}
+int App::GetHeight() const { return m_height; }

@@ -22,7 +22,7 @@ SDLToX11Keymap::SDLToX11Keymap(){
     m_keyMap[SDLK_F10] = XK_F10;
     m_keyMap[SDLK_F11] = XK_F11;
     m_keyMap[SDLK_F12] = XK_F12;
-    m_keyMap[SDLK_PRINTSCREEN] = 0XFD1D;
+    m_keyMap[SDLK_PRINTSCREEN] = XK_Print;
     m_keyMap[SDLK_SCROLLLOCK] = XK_Scroll_Lock;
     m_keyMap[SDLK_PAUSE] = XK_Pause;
     m_keyMap[SDLK_INSERT] = XK_Insert;
@@ -138,7 +138,7 @@ KeySym SDLToX11Keymap::convert(SDL_Keycode sdlKey) const{
         return sdlKey;
     }
 
-    std::unordered_map<SDL_Keycode, KeySym>::const_iterator key = m_keyMap.find(sdlKey);
+    auto key = m_keyMap.find(sdlKey);
     if (key != m_keyMap.end()){
         return key->second;
     }

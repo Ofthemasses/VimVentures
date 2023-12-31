@@ -1,8 +1,8 @@
 #include "VimEmulator.hpp"
 #include <iostream>
 #include <fcntl.h>
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 #include <X11/Xlib.h>
 #include <X11/extensions/XShm.h>
 #include <constants.hpp>
@@ -10,36 +10,29 @@
 #include <thread>
 
 VimEmulator::VimEmulator(std::string terminal, std::string nArg){
-    m_display = XOpenDisplay(NULL);
-    m_screen = DefaultScreen(m_display);
-    m_rootWindow = RootWindow(m_display, m_screen);
-    m_windowName = std::string(APP_TITLE) + "Emulator";
-    m_window = nullptr;
-    m_modmask = new unsigned int;
-    m_frameReady = false;
+  m_display = XOpenDisplay(nullptr);
+  m_screen = DefaultScreen(m_display);
+  m_rootWindow = RootWindow(m_display, m_screen);
+  m_windowName = std::string(APP_TITLE) + "Emulator";
+  m_window = nullptr;
+  m_modmask = new unsigned int;
+  m_frameReady = false;
 
-    // Run the terminal instance
-    pid_t pid = fork();
-    if(pid == 0){
-        setenv("DISPLAY", XDisplayString(m_display), 1);
-        execlp(terminal.c_str(),
-                terminal.c_str(),
-                nArg.c_str(), 
-                m_windowName.c_str(),
-                "-o", // TODO Replace with "nArgs"
-                "window.decorations=None",
-                "-e",
-                "vim", 
-                "-S", 
-                "~/Documents/VimVentures/vim-ventures-autoload.vim",
-                "-c", 
-                "cd ~/.vimventures",
-                NULL);
-        exit(EXIT_FAILURE);
+  // Run the terminal instance
+  pid_t pid = fork();
+  if (pid == 0) {
+    setenv("DISPLAY", XDisplayString(m_display), 1);
+    execlp(terminal.c_str(), terminal.c_str(), nArg.c_str(),
+           m_windowName.c_str(),
+           "-o", // TODO Replace with "nArgs"
+           "window.decorations=None", "-e", "vim", "-S",
+           "~/Documents/VimVentures/vim-ventures-autoload.vim", "-c",
+           "cd ~/.vimventures", NULL);
+    exit(EXIT_FAILURE);
     }
 }
 
-VimEmulator::~VimEmulator(){}
+VimEmulator::~VimEmulator() = default;
 
 void VimEmulator::RegisterWindow(){
     m_window = this->findWindowByName(m_rootWindow);
@@ -98,13 +91,13 @@ void VimEmulator::QueueFrame(){
             m_xImage->height,
             m_xImage->depth,
             m_xImage->bytes_per_line,
-            (Uint32) 0XFF0000,
-            (Uint32) 0X00FF00,
-            (Uint32) 0X0000FF,
-            0);
-        if (m_surface == NULL){
-            std::cerr << SDL_GetError() << std::endl;
-            exit(EXIT_FAILURE);
+            R_MASK,
+            G_MASK,
+            B_MASK,
+            A_MASK);
+        if (m_surface == nullptr) {
+          std::cerr << SDL_GetError() << std::endl;
+          exit(EXIT_FAILURE);
         }
         m_frameReady = true;
     }).detach();
@@ -138,7 +131,7 @@ void VimEmulator::Render(SDL_Renderer* renderer){
         m_texture = SDL_CreateTextureFromSurface(renderer, surface);
         this->QueueFrame();
     }
-    SDL_RenderCopy(renderer, m_texture, NULL, &m_rect);
+    SDL_RenderCopy(renderer, m_texture, nullptr, &m_rect);
 };
 
 /** Private Methods **/
@@ -154,15 +147,19 @@ Window* VimEmulator::findWindowByName(Window window){
     unsigned int numChildren;
     char* windowName;
 
-    if (XQueryTree(m_display, window, &window, &parent, &children, &numChildren)){
-        for (unsigned int i = 0; i < numChildren; i++) {
-            XFetchName(m_display, children[i], &windowName);
-            if (windowName && strcmp(windowName, m_windowName.c_str()) == 0){
-                return &children[i];
-            }
-            Window* result = findWindowByName(children[i]);
-            if (result) return result;
+    if (XQueryTree(m_display, window, &window, &parent, &children,
+                   &numChildren) != 0) {
+      for (unsigned int i = 0; i < numChildren; i++) {
+        XFetchName(m_display, children[i], &windowName);
+        if ((windowName != nullptr) &&
+            strcmp(windowName, m_windowName.c_str()) == 0) {
+          return &children[i];
         }
+        Window *result = findWindowByName(children[i]);
+        if (result != nullptr) {
+          return result;
+        }
+      }
     }
     return nullptr;
 }

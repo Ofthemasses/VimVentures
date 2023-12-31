@@ -7,7 +7,7 @@ class IState {
     public:
         virtual void Run() = 0;
         virtual void SendEvent(SDL_Event& event) = 0;
-        virtual ~IState() {}
+        virtual ~IState() = default; 
 };
 
 #endif

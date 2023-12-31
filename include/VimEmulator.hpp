@@ -11,7 +11,7 @@
 class VimEmulator : public IRender, public Rect2D {
     public:
         VimEmulator(std::string terminal, std::string nArg);
-        ~VimEmulator();
+        ~VimEmulator() override;
         void RegisterWindow();
         void ResizeWindow(int w, int h);
         void QueueFrame();
@@ -21,7 +21,7 @@ class VimEmulator : public IRender, public Rect2D {
         void SetSDLMod(SDL_Keymod mod);
 
         /** IRender **/
-        void Render(SDL_Renderer* renderer);
+        void Render(SDL_Renderer* renderer) override;
     private:
         Display* m_display;
         int m_screen;
@@ -32,6 +32,10 @@ class VimEmulator : public IRender, public Rect2D {
         int m_height;
 
         /** Frames **/
+        static constexpr Uint32 R_MASK = 0XFF0000;
+        static constexpr Uint32 G_MASK = 0X00FF00;
+        static constexpr Uint32 B_MASK = 0X0000FF;
+        static constexpr Uint32 A_MASK = 0;
         XImage* m_xImage;
         SDL_Surface* m_surface;
         bool m_frameReady;

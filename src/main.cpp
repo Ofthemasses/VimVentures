@@ -7,10 +7,14 @@
 #include <chrono>
 
 int main(int argc, char* argv[]){
-    App* app = new App(SDL_INIT_VIDEO, 0, 0, 1280, 720);
+    const int WINDOW_WIDTH = 1280;
+    const int WINDOW_HEIGHT = 720;
+    App* app = new App(SDL_INIT_VIDEO, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     app->SetState(new MissionState(*app));
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
     app->Run();
+
+    return 0;
 }

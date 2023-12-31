@@ -27,13 +27,13 @@ class App {
         void AddRenderable(IRender* renderable);
 
         /** Getters **/
-        double GetFPS();
+        double GetFPS() const;
 
-        int GetWidth();
+        int GetWidth() const;
 
-        int GetHeight();
+        int GetHeight() const;
 
-    private:
+      private:
         SDL_Window* m_window;
         SDL_Renderer* m_renderer;
         
@@ -49,6 +49,7 @@ class App {
         IState* m_state;
 
         /** FPS **/
+        static constexpr double SECOND_MS = 1000.0;
         Uint32 m_startTick;
         Uint32 m_endTick;
 };
