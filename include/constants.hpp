@@ -6,6 +6,6 @@
 constexpr char APP_TITLE[] = "VimVentures";
 constexpr char APP_VERSION[] = "MEDIEVAL 0.0.0";
 
-extern const SDLToX11Keymap& SDLX11KeymapRef;
+extern const SDLToX11Keymap &SDLX11KeymapRef;
 
 #endif

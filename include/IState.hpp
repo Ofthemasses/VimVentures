@@ -4,10 +4,10 @@
 #include <SDL2/SDL.h>
 
 class IState {
-    public:
-        virtual void Run() = 0;
-        virtual void SendEvent(SDL_Event& event) = 0;
-        virtual ~IState() = default; 
+public:
+  virtual void Run() = 0;
+  virtual void SendEvent(SDL_Event &event) = 0;
+  virtual ~IState() = default;
 };
 
 #endif
