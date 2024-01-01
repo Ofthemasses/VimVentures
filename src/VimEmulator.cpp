@@ -38,110 +38,18 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
 VimEmulator::~VimEmulator() = default;
 
 void VimEmulator::RegisterWindow() {
-    std::thread([this]() {
-        {
-            std::lock_guard<std::mutex> lock(m_mutex);
-            m_xImage = nullptr;
-            m_window = nullptr;
-        }
-        Window *foundWindow = nullptr;
-        while (true) {
-            {
-                std::lock_guard<std::mutex> lock(m_mutex);
-                if (foundWindow != nullptr) {
-                    break;
-                }
-                foundWindow = this->findWindowByName(m_rootWindow);
-            }
-            std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
-        }
-        if (foundWindow != nullptr) {
-            {
-                std::lock_guard<std::mutex> lock(m_mutex);
-                m_window = foundWindow;
-                XWindowAttributes attributes;
-                XGetWindowAttributes(m_display, *m_window, &attributes);
-                while (attributes.map_state == 0) {
-                    std::this_thread::sleep_for(
-                        std::chrono::milliseconds(REFRESH_MS));
-                    XGetWindowAttributes(m_display, *m_window, &attributes);
-                }
-                m_width = attributes.width;
-                m_height = attributes.height;
-
-                XMoveWindow(m_display, *m_window, -attributes.width * 2 - 1,
-                            -attributes.height * 2 - 1);
-                XSelectInput(m_display, *m_window, StructureNotifyMask);
-
-                m_xImage = XGetImage(m_display, *m_window, 0, 0, m_width,
-                                     m_height, attributes.depth, ZPixmap);
-            }
-        }
-    }).detach();
+    std::thread(&VimEmulator::RegisterWindowThread, this).detach();
 }
 
 void VimEmulator::ResizeWindow(int w, int h) {
-    std::thread(
-        [this](int w, int h) {
-            while (true) {
-                {
-                    std::unique_lock<std::mutex> lock(m_mutex);
-                    if (m_window != nullptr && m_xImage != nullptr) {
-                        m_width = w;
-                        m_height = h;
-                        XEvent event;
-                        while (true) {
-                            XNextEvent(m_display, &event);
-                            if (event.type == ConfigureNotify) {
-                                XConfigureEvent xce = event.xconfigure;
-                                if (xce.width == w && xce.height == h) {
-                                    break;
-                                }
-                            }
-                            XResizeWindow(m_display, *m_window, m_width,
-                                          m_height);
-                        }
-                        break;
-                    }
-                }
-                std::this_thread::sleep_for(
-                    std::chrono::milliseconds(REFRESH_MS));
-            }
-            this->RegisterWindow();
-        },
-        w, h)
-        .detach();
+    std::thread(&VimEmulator::ResizeWindowThread, this, w, h).detach();
 }
 
 void VimEmulator::QueueFrame() {
     if (m_frameReady) {
         return;
     }
-    std::thread([this]() {
-        while (true) {
-            {
-                std::lock_guard<std::mutex> lock(m_mutex);
-                if (m_window != nullptr && m_xImage != nullptr) {
-                    break;
-                }
-            }
-            std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
-        }
-        {
-            std::lock_guard<std::mutex> lock(m_mutex);
-            XGetSubImage(m_display, *m_window, 0, 0, m_width, m_height,
-                         AllPlanes, ZPixmap, m_xImage, 0, 0);
-            m_surface = SDL_CreateRGBSurfaceFrom(
-                (void *)m_xImage->data, m_xImage->width, m_xImage->height,
-                m_xImage->depth, m_xImage->bytes_per_line, R_MASK, G_MASK,
-                B_MASK, A_MASK);
-            if (m_surface == nullptr) {
-                std::cerr << SDL_GetError() << std::endl;
-                exit(EXIT_FAILURE);
-            }
-            m_frameReady = true;
-        }
-    }).detach();
+    std::thread(&VimEmulator::QueueFrameThread, this).detach();
 }
 
 void VimEmulator::SendSDLKey(SDL_Keycode key) {
@@ -204,4 +112,99 @@ Window *VimEmulator::findWindowByName(Window window) {
         }
     }
     return nullptr;
+}
+
+void VimEmulator::RegisterWindowThread(){
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        m_xImage = nullptr;
+        m_window = nullptr;
+    }
+    Window *foundWindow = nullptr;
+    while (true) {
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        if (foundWindow != nullptr) {
+            break;
+        }
+        foundWindow = this->findWindowByName(m_rootWindow);
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+    }
+    if (foundWindow != nullptr) {
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            m_window = foundWindow;
+            XWindowAttributes attributes;
+            XGetWindowAttributes(m_display, *m_window, &attributes);
+            while (attributes.map_state == 0) {
+                std::this_thread::sleep_for(
+                    std::chrono::milliseconds(REFRESH_MS));
+                XGetWindowAttributes(m_display, *m_window, &attributes);
+            }
+            m_width = attributes.width;
+            m_height = attributes.height;
+
+            XMoveWindow(m_display, *m_window, -attributes.width * 2 - 1,
+                        -attributes.height * 2 - 1);
+            XSelectInput(m_display, *m_window, StructureNotifyMask);
+
+            m_xImage = XGetImage(m_display, *m_window, 0, 0, m_width,
+                                 m_height, attributes.depth, ZPixmap);
+        }
+    }
+}
+
+void VimEmulator::ResizeWindowThread(int w, int h){
+    while (true) {
+        {
+            std::unique_lock<std::mutex> lock(m_mutex);
+            if (m_window != nullptr && m_xImage != nullptr) {
+                m_width = w;
+                m_height = h;
+                XEvent event;
+                while (true) {
+                    XNextEvent(m_display, &event);
+                    if (event.type == ConfigureNotify) {
+                        XConfigureEvent xce = event.xconfigure;
+                        if (xce.width == w && xce.height == h) {
+                            break;
+                        }
+                    }
+                    XResizeWindow(m_display, *m_window, m_width,
+                        m_height);
+                }
+                break;
+            }
+        }
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(REFRESH_MS));
+    }
+    this->RegisterWindow();
+}
+
+void VimEmulator::QueueFrameThread(){
+    while (true) {
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            if (m_window != nullptr && m_xImage != nullptr) {
+                break;
+            }
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+    }
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        XGetSubImage(m_display, *m_window, 0, 0, m_width, m_height,
+                     AllPlanes, ZPixmap, m_xImage, 0, 0);
+        m_surface = SDL_CreateRGBSurfaceFrom(
+            (void *)m_xImage->data, m_xImage->width, m_xImage->height,
+            m_xImage->depth, m_xImage->bytes_per_line, R_MASK, G_MASK,
+            B_MASK, A_MASK);
+        if (m_surface == nullptr) {
+            std::cerr << SDL_GetError() << std::endl;
+            exit(EXIT_FAILURE);
+        }
+        m_frameReady = true;
+    }
 }

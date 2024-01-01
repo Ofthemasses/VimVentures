@@ -53,6 +53,9 @@ class VimEmulator : public IRender, public Rect2D {
     /** Private Methods **/
     SDL_Surface *GetFrameAsSurface();
     Window *findWindowByName(Window window);
+    void RegisterWindowThread();
+    void ResizeWindowThread(int w, int h);
+    void QueueFrameThread();
 };
 
 #endif
