@@ -6,12 +6,12 @@
 #include <unordered_map>
 
 class SDLToX11Keymap {
-public:
-  SDLToX11Keymap();
-  KeySym convert(SDL_Keycode sdlKey) const;
+  public:
+    SDLToX11Keymap();
+    KeySym convert(SDL_Keycode sdlKey) const;
 
-private:
-  std::unordered_map<SDL_Keycode, KeySym> m_keyMap;
+  private:
+    std::unordered_map<SDL_Keycode, KeySym> m_keyMap;
 };
 
 #endif

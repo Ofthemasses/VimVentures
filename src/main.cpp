@@ -4,13 +4,13 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-  const int WINDOW_WIDTH = 1280;
-  const int WINDOW_HEIGHT = 720;
-  App *app = new App(SDL_INIT_VIDEO, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    const int WINDOW_WIDTH = 1280;
+    const int WINDOW_HEIGHT = 720;
+    App *app = new App(SDL_INIT_VIDEO, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-  app->SetState(new MissionState(*app));
+    app->SetState(new MissionState(*app));
 
-  app->Run();
+    app->Run();
 
-  return 0;
+    return 0;
 }

@@ -5,21 +5,21 @@
 #include "IState.hpp"
 
 class MissionState : public IState {
-  App &app;
+    App &app;
 
-public:
-  MissionState(App &app);
-  ~MissionState() override;
-  void Run() override;
-  void SendEvent(SDL_Event &event) override;
+  public:
+    MissionState(App &app);
+    ~MissionState() override;
+    void Run() override;
+    void SendEvent(SDL_Event &event) override;
 
-private:
-  static constexpr float WIDTH_RATIO = 2 / 3.0;
-  static constexpr int DRAW_R = 131;
-  static constexpr int DRAW_G = 50;
-  static constexpr int DRAW_B = 168;
+  private:
+    static constexpr float WIDTH_RATIO = 2 / 3.0;
+    static constexpr int DRAW_R = 131;
+    static constexpr int DRAW_G = 50;
+    static constexpr int DRAW_B = 168;
 
-  VimEmulator *m_vimEmulator;
+    VimEmulator *m_vimEmulator;
 };
 
 #endif
