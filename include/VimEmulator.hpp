@@ -56,9 +56,8 @@ class VimEmulator : public IRender, public Rect2D {
     void RegisterWindowThread();
     void ResizeWindowThread(int w, int h);
     // Replace this with a generic event handler if needed
-    bool MatchResizeEvent(int w, int h, XEvent* event);
+    bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
-    
 };
 
 #endif

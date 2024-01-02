@@ -3,13 +3,13 @@
 #include <X11/extensions/XShm.h>
 #include <chrono>
 #include <constants.hpp>
+#include <csignal>
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
 #include <thread>
 #include <unistd.h>
-#include <csignal>
 
 VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_display = XOpenDisplay(nullptr);
@@ -23,7 +23,7 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
 
     // Run the terminal instance
     m_pid = fork();
-    if (m_pid == -1){
+    if (m_pid == -1) {
         std::cerr << "Failed  To Fork VimEmulator" << std::endl;
         exit(EXIT_FAILURE);
     }
@@ -41,7 +41,7 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
 
 VimEmulator::~VimEmulator() {
     kill(m_pid, SIGTERM);
-    delete(m_modmask);
+    delete (m_modmask);
 }
 
 void VimEmulator::RegisterWindow() {
@@ -121,7 +121,7 @@ Window *VimEmulator::findWindowByName(Window window) {
     return nullptr;
 }
 
-void VimEmulator::RegisterWindowThread(){
+void VimEmulator::RegisterWindowThread() {
     {
         std::lock_guard<std::mutex> lock(m_mutex);
         m_xImage = nullptr;
@@ -129,14 +129,14 @@ void VimEmulator::RegisterWindowThread(){
     }
     Window *foundWindow = nullptr;
     while (true) {
-    {
-        std::lock_guard<std::mutex> lock(m_mutex);
-        if (foundWindow != nullptr) {
-            break;
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            if (foundWindow != nullptr) {
+                break;
+            }
+            foundWindow = this->findWindowByName(m_rootWindow);
         }
-        foundWindow = this->findWindowByName(m_rootWindow);
-    }
-    std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+        std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
     }
     if (foundWindow != nullptr) {
         {
@@ -153,18 +153,19 @@ void VimEmulator::RegisterWindowThread(){
             m_height = attributes.height;
 
             XLowerWindow(m_display, *m_window);
-            XSetInputFocus(m_display, m_rootWindow, RevertToPointerRoot, CurrentTime);
+            XSetInputFocus(m_display, m_rootWindow, RevertToPointerRoot,
+                           CurrentTime);
             XMoveWindow(m_display, *m_window, -attributes.width * 2 - 1,
                         -attributes.height * 2 - 1);
             XSelectInput(m_display, *m_window, StructureNotifyMask);
 
-            m_xImage = XGetImage(m_display, *m_window, 0, 0, m_width,
-                                 m_height, attributes.depth, ZPixmap);
+            m_xImage = XGetImage(m_display, *m_window, 0, 0, m_width, m_height,
+                                 attributes.depth, ZPixmap);
         }
     }
 }
 
-void VimEmulator::ResizeWindowThread(int w, int h){
+void VimEmulator::ResizeWindowThread(int w, int h) {
     while (true) {
         {
             std::unique_lock<std::mutex> lock(m_mutex);
@@ -175,18 +176,16 @@ void VimEmulator::ResizeWindowThread(int w, int h){
             m_height = h;
             XEvent event;
             while (!this->MatchResizeEvent(w, h, &event)) {
-                XResizeWindow(m_display, *m_window, m_width,
-                    m_height);
+                XResizeWindow(m_display, *m_window, m_width, m_height);
             }
             break;
         }
-        std::this_thread::sleep_for(
-            std::chrono::milliseconds(REFRESH_MS));
+        std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
     }
     this->RegisterWindow();
 }
 
-bool VimEmulator::MatchResizeEvent(int w, int h, XEvent* event){
+bool VimEmulator::MatchResizeEvent(int w, int h, XEvent *event) {
     XNextEvent(m_display, event);
     if (event->type == ConfigureNotify) {
         XConfigureEvent xce = event->xconfigure;
@@ -195,7 +194,7 @@ bool VimEmulator::MatchResizeEvent(int w, int h, XEvent* event){
     return false;
 }
 
-void VimEmulator::QueueFrameThread(){
+void VimEmulator::QueueFrameThread() {
     while (true) {
         {
             std::lock_guard<std::mutex> lock(m_mutex);
@@ -207,12 +206,12 @@ void VimEmulator::QueueFrameThread(){
     }
     {
         std::lock_guard<std::mutex> lock(m_mutex);
-        XGetSubImage(m_display, *m_window, 0, 0, m_width, m_height,
-            AllPlanes, ZPixmap, m_xImage, 0, 0);
+        XGetSubImage(m_display, *m_window, 0, 0, m_width, m_height, AllPlanes,
+                     ZPixmap, m_xImage, 0, 0);
         m_surface = SDL_CreateRGBSurfaceFrom(
             (void *)m_xImage->data, m_xImage->width, m_xImage->height,
-            m_xImage->depth, m_xImage->bytes_per_line, R_MASK, G_MASK,
-            B_MASK, A_MASK);
+            m_xImage->depth, m_xImage->bytes_per_line, R_MASK, G_MASK, B_MASK,
+            A_MASK);
         if (m_surface == nullptr) {
             std::cerr << SDL_GetError() << std::endl;
             exit(EXIT_FAILURE);

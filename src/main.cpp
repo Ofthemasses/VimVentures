@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 
     app->Run();
 
-    delete(app);
+    delete (app);
 
     return 0;
 }

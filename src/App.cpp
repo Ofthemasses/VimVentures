@@ -19,7 +19,7 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
 }
 
 App::~App() {
-    delete(m_state);
+    delete (m_state);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
 }

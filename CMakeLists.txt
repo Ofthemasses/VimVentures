@@ -18,3 +18,13 @@ set_target_properties(VimVentures PROPERTIES
 )
 
 configure_file(vim-ventures-autoload.vim ${CMAKE_BINARY_DIR}/bin/vim-ventures-autoload.vim COPYONLY)
+
+add_custom_target(
+    tidy
+    COMMAND clang-tidy src/*.cpp -- -I/usr/include/SDL2 -Iinclude/
+)
+
+add_custom_target(
+    format
+    COMMAND find ./src ./include -iname "*.hpp" -o -iname "*.cpp" | xargs clang-format -i
+)
