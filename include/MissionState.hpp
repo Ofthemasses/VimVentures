@@ -3,6 +3,7 @@
 
 #include "App.hpp"
 #include "IState.hpp"
+#include "VimEmulator.hpp"
 
 class MissionState : public IState {
     App &app;

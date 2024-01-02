@@ -32,7 +32,6 @@ class VimEmulator : public IRender, public Rect2D {
     std::string m_windowName;
     int m_width;
     int m_height;
-    bool m_windowReady;
     std::mutex m_mutex;
     pid_t m_pid;
 

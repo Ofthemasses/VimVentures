@@ -20,7 +20,6 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_modmask = new unsigned int;
     m_frameReady = false;
     m_texture = nullptr;
-    m_windowReady = false;
 
     // Run the terminal instance
     m_pid = fork();
@@ -153,6 +152,8 @@ void VimEmulator::RegisterWindowThread(){
             m_width = attributes.width;
             m_height = attributes.height;
 
+            XLowerWindow(m_display, *m_window);
+            XSetInputFocus(m_display, m_rootWindow, RevertToPointerRoot, CurrentTime);
             XMoveWindow(m_display, *m_window, -attributes.width * 2 - 1,
                         -attributes.height * 2 - 1);
             XSelectInput(m_display, *m_window, StructureNotifyMask);

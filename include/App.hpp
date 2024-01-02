@@ -3,7 +3,6 @@
 
 #include "IRender.hpp"
 #include "IState.hpp"
-#include "VimEmulator.hpp"
 #include <SDL2/SDL.h>
 
 class App {
