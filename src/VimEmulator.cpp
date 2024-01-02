@@ -159,28 +159,31 @@ void VimEmulator::ResizeWindowThread(int w, int h){
     while (true) {
         {
             std::unique_lock<std::mutex> lock(m_mutex);
-            if (m_window != nullptr && m_xImage != nullptr) {
-                m_width = w;
-                m_height = h;
-                XEvent event;
-                while (true) {
-                    XNextEvent(m_display, &event);
-                    if (event.type == ConfigureNotify) {
-                        XConfigureEvent xce = event.xconfigure;
-                        if (xce.width == w && xce.height == h) {
-                            break;
-                        }
-                    }
-                    XResizeWindow(m_display, *m_window, m_width,
-                        m_height);
-                }
-                break;
+            if (m_window == nullptr || m_xImage == nullptr) {
+                continue;
             }
+            m_width = w;
+            m_height = h;
+            XEvent event;
+            while (!this->MatchResizeEvent(w, h, &event)) {
+                XResizeWindow(m_display, *m_window, m_width,
+                    m_height);
+            }
+            break;
         }
         std::this_thread::sleep_for(
             std::chrono::milliseconds(REFRESH_MS));
     }
     this->RegisterWindow();
+}
+
+bool VimEmulator::MatchResizeEvent(int w, int h, XEvent* event){
+    XNextEvent(m_display, event);
+    if (event->type == ConfigureNotify) {
+        XConfigureEvent xce = event->xconfigure;
+        return xce.width == w && xce.height == h;
+    }
+    return false;
 }
 
 void VimEmulator::QueueFrameThread(){
@@ -196,7 +199,7 @@ void VimEmulator::QueueFrameThread(){
     {
         std::lock_guard<std::mutex> lock(m_mutex);
         XGetSubImage(m_display, *m_window, 0, 0, m_width, m_height,
-                     AllPlanes, ZPixmap, m_xImage, 0, 0);
+            AllPlanes, ZPixmap, m_xImage, 0, 0);
         m_surface = SDL_CreateRGBSurfaceFrom(
             (void *)m_xImage->data, m_xImage->width, m_xImage->height,
             m_xImage->depth, m_xImage->bytes_per_line, R_MASK, G_MASK,
