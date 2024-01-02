@@ -9,6 +9,7 @@
 #include <iostream>
 #include <thread>
 #include <unistd.h>
+#include <csignal>
 
 VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_display = XOpenDisplay(nullptr);
@@ -22,8 +23,12 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_windowReady = false;
 
     // Run the terminal instance
-    pid_t pid = fork();
-    if (pid == 0) {
+    m_pid = fork();
+    if (m_pid == -1){
+        std::cerr << "Failed  To Fork VimEmulator" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    if (m_pid == 0) {
         setenv("DISPLAY", XDisplayString(m_display), 1);
         execlp(terminal.c_str(), terminal.c_str(), nArg.c_str(),
                m_windowName.c_str(),
@@ -31,11 +36,14 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
                "window.decorations=None", "-e", "vim", "-S",
                "~/Documents/VimVentures/vim-ventures-autoload.vim", "-c",
                "cd ~/.vimventures", NULL);
-        exit(EXIT_FAILURE);
+        std::cerr << "Terminal Unexpected Exited" << std::endl;
     }
 }
 
-VimEmulator::~VimEmulator() = default;
+VimEmulator::~VimEmulator() {
+    kill(m_pid, SIGTERM);
+    delete(m_modmask);
+}
 
 void VimEmulator::RegisterWindow() {
     std::thread(&VimEmulator::RegisterWindowThread, this).detach();

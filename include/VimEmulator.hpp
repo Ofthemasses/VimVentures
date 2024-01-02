@@ -34,6 +34,7 @@ class VimEmulator : public IRender, public Rect2D {
     int m_height;
     bool m_windowReady;
     std::mutex m_mutex;
+    pid_t m_pid;
 
     /** Frames **/
     static constexpr Uint32 R_MASK = 0XFF0000;
