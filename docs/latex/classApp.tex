@@ -1,0 +1,204 @@
+\doxysection{App Class Reference}
+\hypertarget{classApp}{}\label{classApp}\index{App@{App}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classApp_a4751adaf2f075f55bcdf3262c7765579}{App}} (Uint32 ss\+Flags, int x, int y, int w, int h)
+\item 
+\mbox{\hyperlink{classApp_a34f1f253b1cef5f4ecbac66eaf6964ec}{\texorpdfstring{$\sim$}{\string~}\+App}} ()
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classApp_adaf84277805a5f300122fb22fd41d5f7}{Get\+Renderer}} ()
+\item 
+void \mbox{\hyperlink{classApp_a7d2d7b5ff84473d6ca036bc03b442f3b}{Set\+State}} (\mbox{\hyperlink{classIState}{IState}} \texorpdfstring{$\ast$}{*}state)
+\item 
+void \mbox{\hyperlink{classApp_a78d24016da98422fabb55b10dbfe3d72}{Run}} ()
+\item 
+void \mbox{\hyperlink{classApp_ac597a252fb0272b781fb39cb546b8c10}{Stop}} ()
+\item 
+void \mbox{\hyperlink{classApp_a7f42e947a052412c193c689b7e7a73cc}{Render}} ()
+\item 
+void \mbox{\hyperlink{classApp_a63bc0551fe490635456ca60577304d90}{Add\+Renderable}} (\mbox{\hyperlink{classIRender}{IRender}} \texorpdfstring{$\ast$}{*}renderable)
+\item 
+double \mbox{\hyperlink{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}{Get\+FPS}} () const
+\item 
+int \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{Get\+Width}} () const
+\item 
+int \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{Get\+Height}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classApp_a6f87776dba7a1cdec0a6dcc2a94fbb77}\label{classApp_a6f87776dba7a1cdec0a6dcc2a94fbb77} 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+window}
+\item 
+\Hypertarget{classApp_a93a1f459e17941579960b1b78a73a9e3}\label{classApp_a93a1f459e17941579960b1b78a73a9e3} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+renderer}
+\item 
+\Hypertarget{classApp_a162254c727fc7010d227b99a1b5cd9b1}\label{classApp_a162254c727fc7010d227b99a1b5cd9b1} 
+\mbox{\hyperlink{classIRender}{IRender}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+renderable}
+\item 
+int \mbox{\hyperlink{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}{m\+\_\+width}}
+\item 
+\Hypertarget{classApp_af7ea7834e5418e3f0a6ff6cef5c21f37}\label{classApp_af7ea7834e5418e3f0a6ff6cef5c21f37} 
+int {\bfseries m\+\_\+height}
+\item 
+\Hypertarget{classApp_ad01105c7d22892ae1eeffc985450c6ec}\label{classApp_ad01105c7d22892ae1eeffc985450c6ec} 
+bool {\bfseries m\+\_\+running}
+\item 
+\mbox{\hyperlink{classIState}{IState}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classApp_a5af78dfaa7737b0b517c80a066bfd67f}{m\+\_\+state}}
+\item 
+\Hypertarget{classApp_a914eb749c74fdf10326d247b95f56015}\label{classApp_a914eb749c74fdf10326d247b95f56015} 
+Uint32 {\bfseries m\+\_\+start\+Tick}
+\item 
+\Hypertarget{classApp_ad68886e9fb7efdcef1b27924243f78c4}\label{classApp_ad68886e9fb7efdcef1b27924243f78c4} 
+Uint32 {\bfseries m\+\_\+end\+Tick}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr double \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427d22}{SECOND\+\_\+\+MS}} = 1000.\+0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classApp_a4751adaf2f075f55bcdf3262c7765579}\label{classApp_a4751adaf2f075f55bcdf3262c7765579} 
+\index{App@{App}!App@{App}}
+\index{App@{App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{App()}{App()}}
+{\footnotesize\ttfamily App\+::\+App (\begin{DoxyParamCaption}\item[{Uint32}]{ss\+Flags,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+Vim\+Ventures Game.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ss\+Flags} & Subsystem Flags \\
+\hline
+{\em x} & Window X Position \\
+\hline
+{\em y} & Window Y Position \\
+\hline
+{\em w} & Window Width \\
+\hline
+{\em h} & Window Height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classApp_a34f1f253b1cef5f4ecbac66eaf6964ec}\label{classApp_a34f1f253b1cef5f4ecbac66eaf6964ec} 
+\index{App@{App}!````~App@{\texorpdfstring{$\sim$}{\string~}App}}
+\index{````~App@{\texorpdfstring{$\sim$}{\string~}App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}App()}{\string~App()}}
+{\footnotesize\ttfamily App\+::\texorpdfstring{$\sim$}{\string~}\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destroy Game Window and Instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classApp_a63bc0551fe490635456ca60577304d90}\label{classApp_a63bc0551fe490635456ca60577304d90} 
+\index{App@{App}!AddRenderable@{AddRenderable}}
+\index{AddRenderable@{AddRenderable}!App@{App}}
+\doxysubsubsection{\texorpdfstring{AddRenderable()}{AddRenderable()}}
+{\footnotesize\ttfamily void App\+::\+Add\+Renderable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIRender}{IRender}} \texorpdfstring{$\ast$}{*}}]{renderable }\end{DoxyParamCaption})}
+
+Add a new renderable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Renderable} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}\label{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849} 
+\index{App@{App}!GetFPS@{GetFPS}}
+\index{GetFPS@{GetFPS}!App@{App}}
+\doxysubsubsection{\texorpdfstring{GetFPS()}{GetFPS()}}
+{\footnotesize\ttfamily double App\+::\+Get\+FPS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getters
+
+\begin{DoxyReturn}{Returns}
+Game FPS 
+\end{DoxyReturn}
+\Hypertarget{classApp_a29bb358883b2ff18a216bbae5597ba0f}\label{classApp_a29bb358883b2ff18a216bbae5597ba0f} 
+\index{App@{App}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!App@{App}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily int App\+::\+Get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Window Height 
+\end{DoxyReturn}
+\Hypertarget{classApp_adaf84277805a5f300122fb22fd41d5f7}\label{classApp_adaf84277805a5f300122fb22fd41d5f7} 
+\index{App@{App}!GetRenderer@{GetRenderer}}
+\index{GetRenderer@{GetRenderer}!App@{App}}
+\doxysubsubsection{\texorpdfstring{GetRenderer()}{GetRenderer()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} App\+::\+Get\+Renderer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+Renderer context 
+\end{DoxyReturn}
+\Hypertarget{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}\label{classApp_af0576e3cf1540d9d28f47c40bc0bc02c} 
+\index{App@{App}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!App@{App}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily int App\+::\+Get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Window Width 
+\end{DoxyReturn}
+\Hypertarget{classApp_a7f42e947a052412c193c689b7e7a73cc}\label{classApp_a7f42e947a052412c193c689b7e7a73cc} 
+\index{App@{App}!Render@{Render}}
+\index{Render@{Render}!App@{App}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void App\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Render cycle, calls all renderables. \Hypertarget{classApp_a78d24016da98422fabb55b10dbfe3d72}\label{classApp_a78d24016da98422fabb55b10dbfe3d72} 
+\index{App@{App}!Run@{Run}}
+\index{Run@{Run}!App@{App}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void App\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Begin game cycle. \Hypertarget{classApp_a7d2d7b5ff84473d6ca036bc03b442f3b}\label{classApp_a7d2d7b5ff84473d6ca036bc03b442f3b} 
+\index{App@{App}!SetState@{SetState}}
+\index{SetState@{SetState}!App@{App}}
+\doxysubsubsection{\texorpdfstring{SetState()}{SetState()}}
+{\footnotesize\ttfamily void App\+::\+Set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIState}{IState}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+State Management
+
+Sets the game state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Game} & state \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classApp_ac597a252fb0272b781fb39cb546b8c10}\label{classApp_ac597a252fb0272b781fb39cb546b8c10} 
+\index{App@{App}!Stop@{Stop}}
+\index{Stop@{Stop}!App@{App}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void App\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop Game Cycle. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classApp_a5af78dfaa7737b0b517c80a066bfd67f}\label{classApp_a5af78dfaa7737b0b517c80a066bfd67f} 
+\index{App@{App}!m\_state@{m\_state}}
+\index{m\_state@{m\_state}!App@{App}}
+\doxysubsubsection{\texorpdfstring{m\_state}{m\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classIState}{IState}}\texorpdfstring{$\ast$}{*} App\+::m\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+State \Hypertarget{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}\label{classApp_a7d7f94e836c482bdb2a3b532ac84c02f} 
+\index{App@{App}!m\_width@{m\_width}}
+\index{m\_width@{m\_width}!App@{App}}
+\doxysubsubsection{\texorpdfstring{m\_width}{m\_width}}
+{\footnotesize\ttfamily int App\+::m\+\_\+width\hspace{0.3cm}{\ttfamily [private]}}
+
+Program Details \Hypertarget{classApp_a1376e08040b81f065c5bfe5aaf427d22}\label{classApp_a1376e08040b81f065c5bfe5aaf427d22} 
+\index{App@{App}!SECOND\_MS@{SECOND\_MS}}
+\index{SECOND\_MS@{SECOND\_MS}!App@{App}}
+\doxysubsubsection{\texorpdfstring{SECOND\_MS}{SECOND\_MS}}
+{\footnotesize\ttfamily constexpr double App\+::\+SECOND\+\_\+\+MS = 1000.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+FPS 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/App.\+hpp\item 
+src/App.\+cpp\end{DoxyCompactItemize}

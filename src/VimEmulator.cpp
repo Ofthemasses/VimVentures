@@ -11,12 +11,18 @@
 #include <thread>
 #include <unistd.h>
 
+/**
+ * A Vim Terminal Instance.
+ *
+ * @param terminal The name of the terminal program, E.g. 'Alacritty'
+ * @param nArg Arguments for launching vim
+ */
 VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_display = XOpenDisplay(nullptr);
     m_screen = DefaultScreen(m_display);
     m_rootWindow = RootWindow(m_display, m_screen);
-    m_windowName = std::string(APP_TITLE) + "Emulator";
     m_window = nullptr;
+    m_windowName = std::string(APP_TITLE) + "Emulator";
     m_modmask = new unsigned int;
     m_frameReady = false;
     m_texture = nullptr;
@@ -39,19 +45,35 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     }
 }
 
+/**
+ * Destroys the terminal and pointer vars.
+ */
 VimEmulator::~VimEmulator() {
     kill(m_pid, SIGTERM);
     delete (m_modmask);
 }
 
+/**
+ * Calls RegisterWindow Logic in a new thread.
+ */
 void VimEmulator::RegisterWindow() {
     std::thread(&VimEmulator::RegisterWindowThread, this).detach();
 }
 
+/**
+ * Calls ResizeWindow Logic in a new thread.
+ *
+ * @param w Width
+ * @param h Height
+ */
 void VimEmulator::ResizeWindow(int w, int h) {
     std::thread(&VimEmulator::ResizeWindowThread, this, w, h).detach();
 }
 
+/**
+ * Calls QueueFrame Logic in a new thread if the previous frame hasn't been
+ * used.
+ */
 void VimEmulator::QueueFrame() {
     if (m_frameReady) {
         return;
@@ -59,6 +81,11 @@ void VimEmulator::QueueFrame() {
     std::thread(&VimEmulator::QueueFrameThread, this).detach();
 }
 
+/**
+ * Translates an SDL_Keycode and sends it to the terminal.
+ *
+ * @param key An SDL_Keycode
+ */
 void VimEmulator::SendSDLKey(SDL_Keycode key) {
     KeySym xkey = SDLX11KeymapRef.convert(key);
 
@@ -74,10 +101,23 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
     XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent *)&event);
 }
 
+/**
+ * Sets the modmask using an SDL_Keymod.
+ *
+ * @param mod An SDL_Keymod
+ */
 void VimEmulator::SetSDLMod(SDL_Keymod mod) { *m_modmask = mod; }
 
 /** IRender **/
 
+/**
+ * @brief Render cycle for a new frame.
+ *
+ * If a frame is not ready it will request a new frame from the terminal. It
+ * will render the previous frame until a new one is found.
+ *
+ * @param renderer SDL_Renderer context
+ */
 void VimEmulator::Render(SDL_Renderer *renderer) {
     if (m_frameReady) {
         SDL_DestroyTexture(m_texture);
@@ -93,11 +133,24 @@ void VimEmulator::Render(SDL_Renderer *renderer) {
 
 /** Private Methods **/
 
+/**
+ * Returns the current surface and marks the current frame as not ready.
+ *
+ * @return SDL_Surface
+ */
 SDL_Surface *VimEmulator::GetFrameAsSurface() {
     m_frameReady = false;
     return m_surface;
 }
 
+/**
+ * Finds and returns a window on the current system. Returns nullptr if not
+ * found.
+ *
+ * @param window X11 Window to find.
+ *
+ * @return Found Window or nullptr
+ */
 Window *VimEmulator::findWindowByName(Window window) {
     Window parent;
     Window *children;
@@ -105,22 +158,26 @@ Window *VimEmulator::findWindowByName(Window window) {
     char *windowName;
 
     if (XQueryTree(m_display, window, &window, &parent, &children,
-                   &numChildren) != 0) {
-        for (unsigned int i = 0; i < numChildren; i++) {
-            XFetchName(m_display, children[i], &windowName);
-            if ((windowName != nullptr) &&
-                strcmp(windowName, m_windowName.c_str()) == 0) {
-                return &children[i];
-            }
-            Window *result = findWindowByName(children[i]);
-            if (result != nullptr) {
-                return result;
-            }
+                   &numChildren) == 0) {
+        return nullptr;
+    }
+    for (unsigned int i = 0; i < numChildren; i++) {
+        XFetchName(m_display, children[i], &windowName);
+        if ((windowName != nullptr) &&
+            strcmp(windowName, m_windowName.c_str()) == 0) {
+            return &children[i];
+        }
+        Window *result = findWindowByName(children[i]);
+        if (result != nullptr) {
+            return result;
         }
     }
     return nullptr;
 }
 
+/**
+ * Assigns the terminal window and window image to variables.
+ */
 void VimEmulator::RegisterWindowThread() {
     {
         std::lock_guard<std::mutex> lock(m_mutex);
@@ -165,6 +222,12 @@ void VimEmulator::RegisterWindowThread() {
     }
 }
 
+/**
+ * Performs a resize on the terminal window and re-registers it.
+ *
+ * @param w Width
+ * @param h Height
+ */
 void VimEmulator::ResizeWindowThread(int w, int h) {
     while (true) {
         {
@@ -185,6 +248,15 @@ void VimEmulator::ResizeWindowThread(int w, int h) {
     this->RegisterWindow();
 }
 
+/**
+ * Looks for an X11 ConfigureNotify event matching the given width and height.
+ *
+ * @param w Width
+ * @param h Height
+ * @param event X11 Event
+ *
+ * @return True if match is found
+ */
 bool VimEmulator::MatchResizeEvent(int w, int h, XEvent *event) {
     XNextEvent(m_display, event);
     if (event->type == ConfigureNotify) {
@@ -194,6 +266,9 @@ bool VimEmulator::MatchResizeEvent(int w, int h, XEvent *event) {
     return false;
 }
 
+/**
+ * Requests the current terminal frame as an image.
+ */
 void VimEmulator::QueueFrameThread() {
     while (true) {
         {

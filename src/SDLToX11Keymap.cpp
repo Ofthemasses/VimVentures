@@ -1,7 +1,9 @@
 #include "SDLToX11Keymap.hpp"
 #include "X11/keysym.h"
-#include <iostream>
 
+/**
+ * SDL To X11 Key Hashmap.
+ */
 SDLToX11Keymap::SDLToX11Keymap() {
     m_keyMap[SDLK_UNKNOWN] = NoSymbol;
     m_keyMap[SDLK_BACKSPACE] = XK_BackSpace;
@@ -132,6 +134,13 @@ SDLToX11Keymap::SDLToX11Keymap() {
     // SDLK_MODE -> SDLK_SLEEP
 }
 
+/**
+ * Converts an SDL_Keycode to an X11 KeySym.
+ *
+ * @param SDL_Keycode
+ *
+ * @return X11 KeySym
+ */
 KeySym SDLToX11Keymap::convert(SDL_Keycode sdlKey) const {
     // These keys match already
     if ((sdlKey >= SDLK_SPACE) && (sdlKey <= SDLK_z)) {

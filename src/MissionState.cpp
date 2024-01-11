@@ -1,5 +1,8 @@
 #include "MissionState.hpp"
 
+/**
+ * Mission Level State.
+ */
 MissionState::MissionState(App &app) : app(app) {
     m_vimEmulator = new VimEmulator("alacritty", "--title");
 
@@ -19,8 +22,14 @@ MissionState::MissionState(App &app) : app(app) {
     app.AddRenderable(m_vimEmulator);
 }
 
+/**
+ * Destroy the terminal emulator on deletion.
+ */
 MissionState::~MissionState() { delete (m_vimEmulator); }
 
+/**
+ * Runs the state loop.
+ */
 void MissionState::Run() {
     // Render Sequence
     SDL_SetRenderDrawColor(app.GetRenderer(), DRAW_R, DRAW_G, DRAW_B,
@@ -28,6 +37,9 @@ void MissionState::Run() {
     app.Render();
 }
 
+/**
+ * Handles SDL Input.
+ */
 void MissionState::SendEvent(SDL_Event &event) {
     if (event.type == SDL_QUIT) {
         // Stopping should be handled in states so we can give

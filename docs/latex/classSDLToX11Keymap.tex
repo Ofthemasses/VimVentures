@@ -1,0 +1,49 @@
+\doxysection{SDLTo\+X11\+Keymap Class Reference}
+\hypertarget{classSDLToX11Keymap}{}\label{classSDLToX11Keymap}\index{SDLToX11Keymap@{SDLToX11Keymap}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSDLToX11Keymap_af235bab78df439696c163ba5ffdcb63a}{SDLTo\+X11\+Keymap}} ()
+\item 
+Key\+Sym \mbox{\hyperlink{classSDLToX11Keymap_ab34246c557e9be74299416bc24d11fcc}{convert}} (SDL\+\_\+\+Keycode sdl\+Key) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSDLToX11Keymap_a82a1a4436158432e5822636758ed977e}\label{classSDLToX11Keymap_a82a1a4436158432e5822636758ed977e} 
+std\+::unordered\+\_\+map$<$ SDL\+\_\+\+Keycode, Key\+Sym $>$ {\bfseries m\+\_\+key\+Map}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSDLToX11Keymap_af235bab78df439696c163ba5ffdcb63a}\label{classSDLToX11Keymap_af235bab78df439696c163ba5ffdcb63a} 
+\index{SDLToX11Keymap@{SDLToX11Keymap}!SDLToX11Keymap@{SDLToX11Keymap}}
+\index{SDLToX11Keymap@{SDLToX11Keymap}!SDLToX11Keymap@{SDLToX11Keymap}}
+\doxysubsubsection{\texorpdfstring{SDLToX11Keymap()}{SDLToX11Keymap()}}
+{\footnotesize\ttfamily SDLTo\+X11\+Keymap\+::\+SDLTo\+X11\+Keymap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+SDL To X11 Key Hashmap. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSDLToX11Keymap_ab34246c557e9be74299416bc24d11fcc}\label{classSDLToX11Keymap_ab34246c557e9be74299416bc24d11fcc} 
+\index{SDLToX11Keymap@{SDLToX11Keymap}!convert@{convert}}
+\index{convert@{convert}!SDLToX11Keymap@{SDLToX11Keymap}}
+\doxysubsubsection{\texorpdfstring{convert()}{convert()}}
+{\footnotesize\ttfamily Key\+Sym SDLTo\+X11\+Keymap\+::convert (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keycode}]{sdl\+Key }\end{DoxyParamCaption}) const}
+
+Converts an SDL\+\_\+\+Keycode to an X11 Key\+Sym.
+
+
+\begin{DoxyParams}{Parameters}
+{\em SDL\+\_\+\+Keycode} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X11 Key\+Sym 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/SDLTo\+X11\+Keymap.\+hpp\item 
+src/SDLTo\+X11\+Keymap.\+cpp\end{DoxyCompactItemize}

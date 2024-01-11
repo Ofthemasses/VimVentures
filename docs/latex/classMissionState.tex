@@ -1,0 +1,87 @@
+\doxysection{Mission\+State Class Reference}
+\hypertarget{classMissionState}{}\label{classMissionState}\index{MissionState@{MissionState}}
+Inheritance diagram for Mission\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMissionState}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMissionState_aac7344320cd7eb188a2fce4acead50d5}{Mission\+State}} (\mbox{\hyperlink{classApp}{App}} \&app)
+\item 
+\mbox{\hyperlink{classMissionState_a09bc7b5f761f4c1a9477e605b72ae5f7}{\texorpdfstring{$\sim$}{\string~}\+Mission\+State}} () override
+\item 
+void \mbox{\hyperlink{classMissionState_ac2775c5ad3a68d6a24324b862bbd18ee}{Run}} () override
+\item 
+void \mbox{\hyperlink{classMissionState_aac05233c1924ac8c40c3277815716388}{Send\+Event}} (SDL\+\_\+\+Event \&event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMissionState_abd71c090cc8615a3f95a0de68fdce398}\label{classMissionState_abd71c090cc8615a3f95a0de68fdce398} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classMissionState_af9f72f55142c423e5f75abe3f7ae4c16}\label{classMissionState_af9f72f55142c423e5f75abe3f7ae4c16} 
+\mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+vim\+Emulator}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMissionState_aff2736ba5255365bcc216ec63e777d54}\label{classMissionState_aff2736ba5255365bcc216ec63e777d54} 
+static constexpr float {\bfseries WIDTH\+\_\+\+RATIO} = 2 / 3.\+0
+\item 
+\Hypertarget{classMissionState_a8398e4f04f44499105a82ffe0868a572}\label{classMissionState_a8398e4f04f44499105a82ffe0868a572} 
+static constexpr int {\bfseries DRAW\+\_\+R} = 131
+\item 
+\Hypertarget{classMissionState_a31785cda52053e12cb0686982a939a57}\label{classMissionState_a31785cda52053e12cb0686982a939a57} 
+static constexpr int {\bfseries DRAW\+\_\+G} = 50
+\item 
+\Hypertarget{classMissionState_a8d3485e73df960fd20e5f2b16e8deca0}\label{classMissionState_a8d3485e73df960fd20e5f2b16e8deca0} 
+static constexpr int {\bfseries DRAW\+\_\+B} = 168
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMissionState_aac7344320cd7eb188a2fce4acead50d5}\label{classMissionState_aac7344320cd7eb188a2fce4acead50d5} 
+\index{MissionState@{MissionState}!MissionState@{MissionState}}
+\index{MissionState@{MissionState}!MissionState@{MissionState}}
+\doxysubsubsection{\texorpdfstring{MissionState()}{MissionState()}}
+{\footnotesize\ttfamily Mission\+State\+::\+Mission\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classApp}{App}} \&}]{app }\end{DoxyParamCaption})}
+
+Mission Level State. \Hypertarget{classMissionState_a09bc7b5f761f4c1a9477e605b72ae5f7}\label{classMissionState_a09bc7b5f761f4c1a9477e605b72ae5f7} 
+\index{MissionState@{MissionState}!````~MissionState@{\texorpdfstring{$\sim$}{\string~}MissionState}}
+\index{````~MissionState@{\texorpdfstring{$\sim$}{\string~}MissionState}!MissionState@{MissionState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MissionState()}{\string~MissionState()}}
+{\footnotesize\ttfamily Mission\+State\+::\texorpdfstring{$\sim$}{\string~}\+Mission\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Destroy the terminal emulator on deletion. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMissionState_ac2775c5ad3a68d6a24324b862bbd18ee}\label{classMissionState_ac2775c5ad3a68d6a24324b862bbd18ee} 
+\index{MissionState@{MissionState}!Run@{Run}}
+\index{Run@{Run}!MissionState@{MissionState}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Mission\+State\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Runs the state loop. 
+
+Implements \mbox{\hyperlink{classIState}{IState}}.
+
+\Hypertarget{classMissionState_aac05233c1924ac8c40c3277815716388}\label{classMissionState_aac05233c1924ac8c40c3277815716388} 
+\index{MissionState@{MissionState}!SendEvent@{SendEvent}}
+\index{SendEvent@{SendEvent}!MissionState@{MissionState}}
+\doxysubsubsection{\texorpdfstring{SendEvent()}{SendEvent()}}
+{\footnotesize\ttfamily void Mission\+State\+::\+Send\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles SDL Input. 
+
+Implements \mbox{\hyperlink{classIState}{IState}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Mission\+State.\+hpp\item 
+src/Mission\+State.\+cpp\end{DoxyCompactItemize}
