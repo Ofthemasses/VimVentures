@@ -1,0 +1,337 @@
+\doxysection{Vim\+Emulator Class Reference}
+\hypertarget{classVimEmulator}{}\label{classVimEmulator}\index{VimEmulator@{VimEmulator}}
+Inheritance diagram for Vim\+Emulator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVimEmulator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVimEmulator_af3e2121729f336725954a5bef11cb7a0}{Vim\+Emulator}} (std\+::string terminal, std\+::string n\+Arg)
+\item 
+\mbox{\hyperlink{classVimEmulator_a2d029e3d7f92316b4938dc0b7d021cfa}{\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator}} () override
+\item 
+void \mbox{\hyperlink{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d}{Register\+Window}} ()
+\item 
+void \mbox{\hyperlink{classVimEmulator_af5987f17f3d47c66562a327d0b65c706}{Resize\+Window}} (int w, int h)
+\item 
+void \mbox{\hyperlink{classVimEmulator_a7fec5a7cb831697dabe2738cbedaa813}{Queue\+Frame}} ()
+\item 
+void \mbox{\hyperlink{classVimEmulator_af1ba75fdcd9ff4daabaef5c41e29fef8}{Send\+SDLKey}} (SDL\+\_\+\+Keycode key)
+\item 
+void \mbox{\hyperlink{classVimEmulator_a948246f2c41a62b5eb3d5764b113cd14}{Set\+SDLMod}} (SDL\+\_\+\+Keymod mod)
+\item 
+void \mbox{\hyperlink{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918}{Render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer) override
+\begin{DoxyCompactList}\small\item\em Render cycle for a new frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Rect2D} (int x, int y, int w, int h)
+\item 
+void {\bfseries Set\+Position} (int x, int y)
+\item 
+void {\bfseries Set\+Size} (int w, int h)
+\item 
+int {\bfseries GetX} () const
+\item 
+int {\bfseries GetY} () const
+\item 
+int {\bfseries Get\+Width} () const
+\item 
+int {\bfseries Get\+Height} () const
+\item 
+SDL\+\_\+\+Rect {\bfseries Get\+SDLRect} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVimEmulator_a0eee5cfa4e989ed3f1edcba51e37b90b}{Get\+Frame\+As\+Surface}} ()
+\item 
+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVimEmulator_a3937f77dd5ef8b8d33185f17e9d62198}{find\+Window\+By\+Name}} (Window window)
+\item 
+void \mbox{\hyperlink{classVimEmulator_a7c8166d73089c6d5da78042ef88e2bef}{Register\+Window\+Thread}} ()
+\item 
+void \mbox{\hyperlink{classVimEmulator_aa1d6788ba48dae81938d387a6d21894e}{Resize\+Window\+Thread}} (int w, int h)
+\item 
+bool \mbox{\hyperlink{classVimEmulator_a30ade3d0a1052a8fd7712929db63d2a4}{Match\+Resize\+Event}} (int w, int h, XEvent \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{classVimEmulator_a7a40651ebf64b18180678145733be785}{Queue\+Frame\+Thread}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVimEmulator_a60786fc186c8888b0c1c8a8f4056996a}\label{classVimEmulator_a60786fc186c8888b0c1c8a8f4056996a} 
+Display \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+display}
+\item 
+\Hypertarget{classVimEmulator_a64cc73fc9db6196919f3d1aa912b60b6}\label{classVimEmulator_a64cc73fc9db6196919f3d1aa912b60b6} 
+int {\bfseries m\+\_\+screen}
+\item 
+\Hypertarget{classVimEmulator_af6c27a51bb66d0769e0c13732ddbeadc}\label{classVimEmulator_af6c27a51bb66d0769e0c13732ddbeadc} 
+Window {\bfseries m\+\_\+root\+Window}
+\item 
+\Hypertarget{classVimEmulator_adfb6d3ac45f20b8935289b3ed7ea866f}\label{classVimEmulator_adfb6d3ac45f20b8935289b3ed7ea866f} 
+Window \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+window}
+\item 
+\Hypertarget{classVimEmulator_a93e6ab2eec8c78ac2ac337bc267e2365}\label{classVimEmulator_a93e6ab2eec8c78ac2ac337bc267e2365} 
+std\+::string {\bfseries m\+\_\+window\+Name}
+\item 
+\Hypertarget{classVimEmulator_a33e9a74f02deb4c4397868a5f9504b14}\label{classVimEmulator_a33e9a74f02deb4c4397868a5f9504b14} 
+int {\bfseries m\+\_\+width}
+\item 
+\Hypertarget{classVimEmulator_a88ac8a62644e55b846878c272a20a0e6}\label{classVimEmulator_a88ac8a62644e55b846878c272a20a0e6} 
+int {\bfseries m\+\_\+height}
+\item 
+\Hypertarget{classVimEmulator_a9a8fd36cb33d569cb48f83ef6f0d7339}\label{classVimEmulator_a9a8fd36cb33d569cb48f83ef6f0d7339} 
+std\+::mutex {\bfseries m\+\_\+mutex}
+\item 
+\Hypertarget{classVimEmulator_a3c0b74cd26c81fd5951ae1a094eeb938}\label{classVimEmulator_a3c0b74cd26c81fd5951ae1a094eeb938} 
+pid\+\_\+t {\bfseries m\+\_\+pid}
+\item 
+\Hypertarget{classVimEmulator_a10ed497f7199e9238c3f0cb372b4ebde}\label{classVimEmulator_a10ed497f7199e9238c3f0cb372b4ebde} 
+XImage \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+x\+Image}
+\item 
+\Hypertarget{classVimEmulator_a254aa26dcd66402dcb4728275f78d62e}\label{classVimEmulator_a254aa26dcd66402dcb4728275f78d62e} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+surface}
+\item 
+\Hypertarget{classVimEmulator_af996bae7fba24577771fd11f92459db0}\label{classVimEmulator_af996bae7fba24577771fd11f92459db0} 
+bool {\bfseries m\+\_\+frame\+Ready}
+\item 
+unsigned int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVimEmulator_aa1edd3ceb9dcf27d0bead6d31ca319d7}{m\+\_\+modmask}}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVimEmulator_a0b56b642ac7e8b3912c3e70b848f23a9}{m\+\_\+texture}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVimEmulator_a065f5cac3f08d0a1687eeec40338100f}\label{classVimEmulator_a065f5cac3f08d0a1687eeec40338100f} 
+static constexpr int {\bfseries REFRESH\+\_\+\+MS} = 100
+\item 
+static constexpr Uint32 \mbox{\hyperlink{classVimEmulator_a77428bd08f69860b090e434d1d5c6553}{R\+\_\+\+MASK}} = 0\+XFF0000
+\item 
+\Hypertarget{classVimEmulator_ad9d55c00fcf565f1dcd3e6f8f91e2d90}\label{classVimEmulator_ad9d55c00fcf565f1dcd3e6f8f91e2d90} 
+static constexpr Uint32 {\bfseries G\+\_\+\+MASK} = 0\+X00\+FF00
+\item 
+\Hypertarget{classVimEmulator_a561249296da90098c5b83685e0cb7f07}\label{classVimEmulator_a561249296da90098c5b83685e0cb7f07} 
+static constexpr Uint32 {\bfseries B\+\_\+\+MASK} = 0\+X0000\+FF
+\item 
+\Hypertarget{classVimEmulator_a4d20e88827cae65d118d2db7b214948e}\label{classVimEmulator_a4d20e88827cae65d118d2db7b214948e} 
+static constexpr Uint32 {\bfseries A\+\_\+\+MASK} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Rect {\bfseries m\+\_\+rect} \{0, 0, 0, 0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVimEmulator_af3e2121729f336725954a5bef11cb7a0}\label{classVimEmulator_af3e2121729f336725954a5bef11cb7a0} 
+\index{VimEmulator@{VimEmulator}!VimEmulator@{VimEmulator}}
+\index{VimEmulator@{VimEmulator}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{VimEmulator()}{VimEmulator()}}
+{\footnotesize\ttfamily Vim\+Emulator\+::\+Vim\+Emulator (\begin{DoxyParamCaption}\item[{std\+::string}]{terminal,  }\item[{std\+::string}]{n\+Arg }\end{DoxyParamCaption})}
+
+A Vim Terminal Instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em terminal} & The name of the terminal program, E.\+g. \textquotesingle{}Alacritty\textquotesingle{} \\
+\hline
+{\em n\+Arg} & Arguments for launching vim \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVimEmulator_a2d029e3d7f92316b4938dc0b7d021cfa}\label{classVimEmulator_a2d029e3d7f92316b4938dc0b7d021cfa} 
+\index{VimEmulator@{VimEmulator}!````~VimEmulator@{\texorpdfstring{$\sim$}{\string~}VimEmulator}}
+\index{````~VimEmulator@{\texorpdfstring{$\sim$}{\string~}VimEmulator}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VimEmulator()}{\string~VimEmulator()}}
+{\footnotesize\ttfamily Vim\+Emulator\+::\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Destroys the terminal and pointer vars. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVimEmulator_a3937f77dd5ef8b8d33185f17e9d62198}\label{classVimEmulator_a3937f77dd5ef8b8d33185f17e9d62198} 
+\index{VimEmulator@{VimEmulator}!findWindowByName@{findWindowByName}}
+\index{findWindowByName@{findWindowByName}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{findWindowByName()}{findWindowByName()}}
+{\footnotesize\ttfamily Window \texorpdfstring{$\ast$}{*} Vim\+Emulator\+::find\+Window\+By\+Name (\begin{DoxyParamCaption}\item[{Window}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Finds and returns a window on the current system. Returns nullptr if not found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & X11 Window to find.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Found Window or nullptr 
+\end{DoxyReturn}
+\Hypertarget{classVimEmulator_a0eee5cfa4e989ed3f1edcba51e37b90b}\label{classVimEmulator_a0eee5cfa4e989ed3f1edcba51e37b90b} 
+\index{VimEmulator@{VimEmulator}!GetFrameAsSurface@{GetFrameAsSurface}}
+\index{GetFrameAsSurface@{GetFrameAsSurface}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{GetFrameAsSurface()}{GetFrameAsSurface()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} Vim\+Emulator\+::\+Get\+Frame\+As\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Private Methods
+
+Private Methods Returns the current surface and marks the current frame as not ready.
+
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+Surface 
+\end{DoxyReturn}
+\Hypertarget{classVimEmulator_a30ade3d0a1052a8fd7712929db63d2a4}\label{classVimEmulator_a30ade3d0a1052a8fd7712929db63d2a4} 
+\index{VimEmulator@{VimEmulator}!MatchResizeEvent@{MatchResizeEvent}}
+\index{MatchResizeEvent@{MatchResizeEvent}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{MatchResizeEvent()}{MatchResizeEvent()}}
+{\footnotesize\ttfamily bool Vim\+Emulator\+::\+Match\+Resize\+Event (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h,  }\item[{XEvent \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Looks for an X11 Configure\+Notify event matching the given width and height.
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Width \\
+\hline
+{\em h} & Height \\
+\hline
+{\em event} & X11 Event\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if match is found 
+\end{DoxyReturn}
+\Hypertarget{classVimEmulator_a7fec5a7cb831697dabe2738cbedaa813}\label{classVimEmulator_a7fec5a7cb831697dabe2738cbedaa813} 
+\index{VimEmulator@{VimEmulator}!QueueFrame@{QueueFrame}}
+\index{QueueFrame@{QueueFrame}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{QueueFrame()}{QueueFrame()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Queue\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calls Queue\+Frame Logic in a new thread if the previous frame hasn\textquotesingle{}t been used. \Hypertarget{classVimEmulator_a7a40651ebf64b18180678145733be785}\label{classVimEmulator_a7a40651ebf64b18180678145733be785} 
+\index{VimEmulator@{VimEmulator}!QueueFrameThread@{QueueFrameThread}}
+\index{QueueFrameThread@{QueueFrameThread}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{QueueFrameThread()}{QueueFrameThread()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Queue\+Frame\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Requests the current terminal frame as an image. \Hypertarget{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d}\label{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d} 
+\index{VimEmulator@{VimEmulator}!RegisterWindow@{RegisterWindow}}
+\index{RegisterWindow@{RegisterWindow}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{RegisterWindow()}{RegisterWindow()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Register\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calls Register\+Window Logic in a new thread. \Hypertarget{classVimEmulator_a7c8166d73089c6d5da78042ef88e2bef}\label{classVimEmulator_a7c8166d73089c6d5da78042ef88e2bef} 
+\index{VimEmulator@{VimEmulator}!RegisterWindowThread@{RegisterWindowThread}}
+\index{RegisterWindowThread@{RegisterWindowThread}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{RegisterWindowThread()}{RegisterWindowThread()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Register\+Window\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Assigns the terminal window and window image to variables. \Hypertarget{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918}\label{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918} 
+\index{VimEmulator@{VimEmulator}!Render@{Render}}
+\index{Render@{Render}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Render cycle for a new frame. 
+
+\doxylink{classIRender}{IRender}
+
+\doxylink{classIRender}{IRender} 
+
+If a frame is not ready it will request a new frame from the terminal. It will render the previous frame until a new one is found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & SDL\+\_\+\+Renderer context \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIRender}{IRender}}.
+
+\Hypertarget{classVimEmulator_af5987f17f3d47c66562a327d0b65c706}\label{classVimEmulator_af5987f17f3d47c66562a327d0b65c706} 
+\index{VimEmulator@{VimEmulator}!ResizeWindow@{ResizeWindow}}
+\index{ResizeWindow@{ResizeWindow}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{ResizeWindow()}{ResizeWindow()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Resize\+Window (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+Calls Resize\+Window Logic in a new thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Width \\
+\hline
+{\em h} & Height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVimEmulator_aa1d6788ba48dae81938d387a6d21894e}\label{classVimEmulator_aa1d6788ba48dae81938d387a6d21894e} 
+\index{VimEmulator@{VimEmulator}!ResizeWindowThread@{ResizeWindowThread}}
+\index{ResizeWindowThread@{ResizeWindowThread}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{ResizeWindowThread()}{ResizeWindowThread()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Resize\+Window\+Thread (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Performs a resize on the terminal window and re-\/registers it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Width \\
+\hline
+{\em h} & Height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVimEmulator_af1ba75fdcd9ff4daabaef5c41e29fef8}\label{classVimEmulator_af1ba75fdcd9ff4daabaef5c41e29fef8} 
+\index{VimEmulator@{VimEmulator}!SendSDLKey@{SendSDLKey}}
+\index{SendSDLKey@{SendSDLKey}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{SendSDLKey()}{SendSDLKey()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Send\+SDLKey (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keycode}]{key }\end{DoxyParamCaption})}
+
+X11 Keyboard
+
+Translates an SDL\+\_\+\+Keycode and sends it to the terminal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & An SDL\+\_\+\+Keycode \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVimEmulator_a948246f2c41a62b5eb3d5764b113cd14}\label{classVimEmulator_a948246f2c41a62b5eb3d5764b113cd14} 
+\index{VimEmulator@{VimEmulator}!SetSDLMod@{SetSDLMod}}
+\index{SetSDLMod@{SetSDLMod}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{SetSDLMod()}{SetSDLMod()}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Set\+SDLMod (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Keymod}]{mod }\end{DoxyParamCaption})}
+
+Sets the modmask using an SDL\+\_\+\+Keymod.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mod} & An SDL\+\_\+\+Keymod \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVimEmulator_aa1edd3ceb9dcf27d0bead6d31ca319d7}\label{classVimEmulator_aa1edd3ceb9dcf27d0bead6d31ca319d7} 
+\index{VimEmulator@{VimEmulator}!m\_modmask@{m\_modmask}}
+\index{m\_modmask@{m\_modmask}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{m\_modmask}{m\_modmask}}
+{\footnotesize\ttfamily unsigned int\texorpdfstring{$\ast$}{*} Vim\+Emulator\+::m\+\_\+modmask\hspace{0.3cm}{\ttfamily [private]}}
+
+XKeyboard \Hypertarget{classVimEmulator_a0b56b642ac7e8b3912c3e70b848f23a9}\label{classVimEmulator_a0b56b642ac7e8b3912c3e70b848f23a9} 
+\index{VimEmulator@{VimEmulator}!m\_texture@{m\_texture}}
+\index{m\_texture@{m\_texture}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{m\_texture}{m\_texture}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Vim\+Emulator\+::m\+\_\+texture\hspace{0.3cm}{\ttfamily [private]}}
+
+Render Data \Hypertarget{classVimEmulator_a77428bd08f69860b090e434d1d5c6553}\label{classVimEmulator_a77428bd08f69860b090e434d1d5c6553} 
+\index{VimEmulator@{VimEmulator}!R\_MASK@{R\_MASK}}
+\index{R\_MASK@{R\_MASK}!VimEmulator@{VimEmulator}}
+\doxysubsubsection{\texorpdfstring{R\_MASK}{R\_MASK}}
+{\footnotesize\ttfamily constexpr Uint32 Vim\+Emulator\+::\+R\+\_\+\+MASK = 0\+XFF0000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+Frames 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Vim\+Emulator.\+hpp\item 
+src/Vim\+Emulator.\+cpp\end{DoxyCompactItemize}

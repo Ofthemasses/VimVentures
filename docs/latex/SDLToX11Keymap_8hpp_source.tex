@@ -1,0 +1,23 @@
+\doxysection{SDLTo\+X11\+Keymap.\+hpp}
+\hypertarget{SDLToX11Keymap_8hpp_source}{}\label{SDLToX11Keymap_8hpp_source}\index{include/SDLToX11Keymap.hpp@{include/SDLToX11Keymap.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SDLTOX11KEYMAP\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SDLTOX11KEYMAP\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <X11/Xlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSDLToX11Keymap}{SDLToX11Keymap}}\ \{}
+\DoxyCodeLine{00009\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classSDLToX11Keymap_af235bab78df439696c163ba5ffdcb63a}{SDLToX11Keymap}}();}
+\DoxyCodeLine{00011\ \ \ \ \ KeySym\ \mbox{\hyperlink{classSDLToX11Keymap_ab34246c557e9be74299416bc24d11fcc}{convert}}(SDL\_Keycode\ sdlKey)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::unordered\_map<SDL\_Keycode,\ KeySym>\ m\_keyMap;}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

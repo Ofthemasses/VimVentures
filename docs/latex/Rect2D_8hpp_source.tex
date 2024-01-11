@@ -1,0 +1,40 @@
+\doxysection{Rect2\+D.\+hpp}
+\hypertarget{Rect2D_8hpp_source}{}\label{Rect2D_8hpp_source}\index{include/Rect2D.hpp@{include/Rect2D.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RECT2D\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RECT2D\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRect2D}{Rect2D}}\ \{}
+\DoxyCodeLine{00007\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00008\ \ \ \ \ SDL\_Rect\ m\_rect\{0,\ 0,\ 0,\ 0\};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classRect2D}{Rect2D}}()\ :\ m\_rect\{0,\ 0,\ 0,\ 0\}\ \{\}}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classRect2D}{Rect2D}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h)\ :\ m\_rect\{x,\ y,\ w,\ h\}\ \{\}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPosition(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ m\_rect.x\ =\ x;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ m\_rect.y\ =\ y;}
+\DoxyCodeLine{00017\ \ \ \ \ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSize(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ m\_rect.w\ =\ w;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ m\_rect.h\ =\ h;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ GetX()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rect.x;\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ GetY()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rect.y;\ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ GetWidth()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rect.w;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ GetHeight()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rect.h;\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ SDL\_Rect\ GetSDLRect()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rect;\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classRect2D}{\string~Rect2D}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

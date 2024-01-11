@@ -22,6 +22,25 @@ You pressed 'x' the most efficient command here would be 'diw'
 
 **Under Construction:** Alongside this being a contribution to the vim community, this is also a learning project for me!
 
+## Installation
+Before installing, VimVentures relies on the following dependencies:
+- SDL2
+- X11
+- Alacritty
+- Vim
+
+To install, perform the following inside of the root directory:
+
+```
+cmake .
+make
+```
+
+Then, the game will be compiled inside of the `bin/` directory.
+```
+./bin/VimVentures
+```
+
 ## Contributing
 The game is in its early stages. Contribution guidelines will evolve as the project matures towards a phase where building a collaborative community becomes feasible.
 
