@@ -46,4 +46,4 @@ The game is in its early stages. Contribution guidelines will evolve as the proj
 
 **Source Code**: Source code is under the AGPL license, please keep this in mind if you wish to contribute.
 
-**Assets**: All assets, including images, music, and sound effects, should adhere to the Creative Commons (CC) License. Contributions will be credited to the game's documentation and credits.
+**Assets**: All assets, including images, music, and sound effects, should adhere to the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) License. Contributions will be credited to the game's documentation and credits.
