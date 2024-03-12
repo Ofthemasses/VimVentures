@@ -22,6 +22,8 @@ You pressed 'x' the most efficient command here would be 'diw'
 
 **Under Construction:** Alongside this being a contribution to the vim community, this is also a learning project for me!
 
+If you want to learn more about VimVentures, all resources and information for the project are available at the [VimVentures Wiki](https://finlay.toru.studio/#/vim-ventures).
+
 ## Installation
 Before installing, VimVentures relies on the following dependencies:
 - SDL2
