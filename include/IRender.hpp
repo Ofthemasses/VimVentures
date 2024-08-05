@@ -2,10 +2,11 @@
 #define IRENDER_HPP
 
 #include <SDL2/SDL.h>
+#include <glad/glad.h>
 
 class IRender {
   public:
-    virtual void Render(SDL_Renderer *renderer) = 0;
+    virtual void Render(GLuint renderer) = 0;
 };
 
 #endif

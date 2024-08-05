@@ -21,7 +21,7 @@ class VimEmulator : public IRender, public Rect2D {
     void SetSDLMod(SDL_Keymod mod);
 
     /** IRender **/
-    void Render(SDL_Renderer *renderer) override;
+    void Render(GLuint renderer) override;
 
   private:
     static constexpr int REFRESH_MS = 100;
@@ -46,9 +46,6 @@ class VimEmulator : public IRender, public Rect2D {
 
     /** XKeyboard **/
     unsigned int *m_modmask;
-
-    /** Render Data **/
-    SDL_Texture *m_texture;
 
     /** Private Methods **/
     SDL_Surface *GetFrameAsSurface();

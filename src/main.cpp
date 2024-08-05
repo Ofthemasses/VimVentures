@@ -1,6 +1,7 @@
 #include "App.hpp"
 #include "MissionState.hpp"
 #include <SDL2/SDL.h> // Does SDL inclusion need to be in main.cpp?
+#include <glad/glad.h>
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {

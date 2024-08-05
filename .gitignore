@@ -8,6 +8,11 @@ CMakeFiles/
 Makefile
 cmake_install.cmake
 
+# glad
+src/glad.c
+include/glad
+include/KHR
+
 # Vim swp files
 *.swp
 *.swm

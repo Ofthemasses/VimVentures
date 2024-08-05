@@ -25,7 +25,6 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_windowName = std::string(APP_TITLE) + "Emulator";
     m_modmask = new unsigned int;
     m_frameReady = false;
-    m_texture = nullptr;
 
     // Run the terminal instance
     m_pid = fork();
@@ -118,17 +117,13 @@ void VimEmulator::SetSDLMod(SDL_Keymod mod) { *m_modmask = mod; }
  *
  * @param renderer SDL_Renderer context
  */
-void VimEmulator::Render(SDL_Renderer *renderer) {
+void VimEmulator::Render(GLuint renderer) {
     if (m_frameReady) {
-        SDL_DestroyTexture(m_texture);
         SDL_Surface *surface = this->GetFrameAsSurface();
-        m_texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SetTexture(surface->pixels, surface->w, surface->h);
         this->QueueFrame();
     }
-    if (m_texture == nullptr) {
-        return;
-    }
-    SDL_RenderCopy(renderer, m_texture, nullptr, &m_rect);
+    Draw(renderer);
 };
 
 /** Private Methods **/

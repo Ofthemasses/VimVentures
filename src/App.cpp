@@ -1,9 +1,18 @@
 #include "App.hpp"
-
 #include "constants.hpp"
+#include "glad/glad.h"
+#include <fstream>
 #include <iostream>
 #include <unistd.h>
+#include <vector>
 
+void App::debugMessage(GLenum source, GLenum type, GLuint debug_id,
+                       GLenum severity, GLsizei length, const GLchar *message,
+                       const void *userParam) {
+    std::cout << severity << std::endl;
+    std::string message_str(message, length);
+    std::cout << message_str << '\n';
+}
 /**
  * VimVentures Game.
  *
@@ -21,10 +30,101 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
         std::cerr << "SDL could not initalize: " << SDL_GetError();
     }
 
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+                        SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, APP_GL_DEPTH_SIZE);
+
     m_window = SDL_CreateWindow(APP_TITLE, x, y, m_width, m_height,
-                                SDL_WINDOW_SHOWN |
-                                    SDL_WINDOW_OPENGL); // TODO Look into Vulkan
-    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+                                SDL_WINDOW_OPENGL); // TODO Look into Vulkan
+
+    m_glcontext = SDL_GL_CreateContext(m_window);
+
+    if (m_glcontext == nullptr) {
+        std::cerr << "OpenGL context not available: " << SDL_GetError();
+    }
+
+    // Initialize GL
+    if (gladLoadGLLoader(SDL_GL_GetProcAddress) == 0) {
+        std::cerr << "Glad Not Initialised: " << std::endl;
+        exit(1);
+    }
+
+    glEnable(GL_DEBUG_OUTPUT);
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+    glDebugMessageCallback(debugMessage, nullptr);
+
+    glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr,
+                          GL_TRUE);
+    CreateGraphicsPipeline();
+}
+
+GLuint App::CompileShader(GLuint type, const std::string &source) {
+    GLuint shaderObject;
+    switch (type) {
+    case GL_VERTEX_SHADER:
+        shaderObject = glCreateShader(GL_VERTEX_SHADER);
+        break;
+    case GL_FRAGMENT_SHADER:
+        shaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+        break;
+    default:
+        std::cout << "TEST" << std::endl;
+        shaderObject = 0;
+        break;
+    }
+
+    const char *src = source.c_str();
+    glShaderSource(shaderObject, 1, &src, nullptr);
+    glCompileShader(shaderObject);
+    return shaderObject;
+}
+
+GLuint App::CreateShaderProgram(const std::string &vertexshadersource,
+                                const std::string &fragmentshadersource) {
+    GLuint programObject = glCreateProgram();
+
+    GLuint myVertexShader = CompileShader(GL_VERTEX_SHADER, vertexshadersource);
+    GLuint myFragmentShader =
+        CompileShader(GL_FRAGMENT_SHADER, fragmentshadersource);
+
+    glAttachShader(programObject, myVertexShader);
+    glAttachShader(programObject, myFragmentShader);
+    glLinkProgram(programObject);
+
+    // Validate our program
+    glValidateProgram(programObject);
+
+    return programObject;
+}
+
+std::string App::LoadShaderAsString(const std::string &filename) {
+    std::string result;
+
+    std::string line;
+    std::ifstream myFile(filename.c_str());
+
+    if (myFile.is_open()) {
+        while (std::getline(myFile, line)) {
+            result += line + '\n';
+        }
+        myFile.close();
+    }
+
+    return result;
+}
+
+void App::CreateGraphicsPipeline() {
+
+    std::string vertexShaderSource = LoadShaderAsString("./shaders/basic.vert");
+    std::string fragmentShaderSource =
+        LoadShaderAsString("./shaders/basic.frag");
+
+    m_GraphicsPipelineShaderProgram =
+        CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
 }
 
 /**
@@ -79,14 +179,27 @@ void App::Run() {
  */
 void App::Stop() { m_running = false; }
 
+void App::PreDraw() const {
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
+
+    glViewport(0, 0, m_width, m_height);
+    glClearColor(1.0F, 1.0F, 0.0F, 1.0F);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glUseProgram(m_GraphicsPipelineShaderProgram);
+}
 /**
  * Render cycle, calls all renderables.
  */
 void App::Render() {
-    SDL_RenderClear(m_renderer);
+    PreDraw();
+    // SDL_RenderClear(m_renderer);
     // TODO ?Doubly? Linked List of Renderables
-    m_renderable->Render(m_renderer);
-    SDL_RenderPresent(m_renderer);
+    m_renderable->Render(m_GraphicsPipelineShaderProgram);
+    glUseProgram(0);
+    // SDL_RenderPresent(m_renderer);
+    SDL_GL_SwapWindow(m_window);
 }
 
 /**

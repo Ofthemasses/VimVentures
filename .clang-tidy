@@ -1,4 +1,4 @@
 Checks: 'readability-*, modernize-*, clang-analyzer-*, -modernize-use-trailing-return-type, -modernize-avoid-c-arrays'
 WarningsAsErrors: ''
-HeaderFilterRegex: 'include/.*' 
+HeaderFilterRegex: 'include/*.hpp' 
 FormatStyle: 'file'

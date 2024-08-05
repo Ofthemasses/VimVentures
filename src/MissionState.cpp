@@ -11,11 +11,9 @@ MissionState::MissionState(App &app) : app(app) {
     int terminalW = (int)(app.GetWidth() * WIDTH_RATIO);
     int terminalH = (int)(app.GetHeight() * WIDTH_RATIO);
     m_vimEmulator->ResizeWindow(terminalW, terminalH);
-    m_vimEmulator->SetSize(terminalW, terminalH);
+    m_vimEmulator->SetSize(WIDTH_RATIO, WIDTH_RATIO);
 
-    int posX = (app.GetWidth() - terminalW) / 2;
-    int posY = (app.GetHeight() - terminalH) / 2;
-    m_vimEmulator->SetPosition(posX, posY);
+    m_vimEmulator->SetPosition(-WIDTH_RATIO / 2, -WIDTH_RATIO / 2);
 
     m_vimEmulator->QueueFrame();
 
@@ -32,8 +30,6 @@ MissionState::~MissionState() { delete (m_vimEmulator); }
  */
 void MissionState::Run() {
     // Render Sequence
-    SDL_SetRenderDrawColor(app.GetRenderer(), DRAW_R, DRAW_G, DRAW_B,
-                           SDL_ALPHA_OPAQUE);
     app.Render();
 }
 
