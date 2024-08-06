@@ -16,6 +16,9 @@ class Rect2D {
     GLfloat m_width;
     GLfloat m_height;
 
+    GLuint m_texture_width;
+    GLuint m_texture_height;
+
     GLuint m_vertexArrayObject;
     GLuint m_vertexBufferObject;
     GLuint m_indexBufferObject;
@@ -29,6 +32,8 @@ class Rect2D {
         m_y = y;
         m_width = width;
         m_height = height;
+        m_texture_width = 0;
+        m_texture_height = 0;
         m_vertexData = {x, y + height, x + width, y + height,
                         x, y,          x + width, y};
 
@@ -41,17 +46,7 @@ class Rect2D {
         m_y = y;
 
         if (m_has_texture) {
-
-            m_vertexData = {
-                x,           y + m_height,
-                0.0F,        0.0F,
-                x + m_width, y + m_height,
-                1.0F,        0.0F,
-                x,           y,
-                0.0F,        1.0F,
-                x + m_width, y,
-                1.0F,        1.0F,
-            };
+            m_has_texture = false;
         } else {
             m_vertexData = {
                 x, y + m_height, x + m_width, y + m_height, x, y, x + m_width,
@@ -67,10 +62,7 @@ class Rect2D {
 
         std::cout << m_x + width << std::endl;
         if (m_has_texture) {
-            m_vertexData = {m_x,         m_y + height, 0.0F, 0.0F,
-                            m_x + width, m_y + height, 1.0,  0.0F,
-                            m_x,         m_y,          0.0F, 1.0F,
-                            m_x + width, m_y,          1.0F, 1.0F};
+            m_has_texture = false;
         } else {
             m_vertexData = {m_x, m_y + height, m_x + width, m_y + height,
                             m_x, m_y,          m_x + width, m_y};
@@ -79,6 +71,19 @@ class Rect2D {
     }
 
     void SetTexture(void *data, GLuint width, GLuint height) {
+        if (m_has_texture && width == m_texture_width
+                && height == m_texture_height){
+            glTexSubImage2D(GL_TEXTURE_2D,
+                    0,
+                    0,
+                    0,
+                    width,
+                    height,
+                    GL_RGBA,
+                    GL_UNSIGNED_BYTE,
+                    data);
+            return;
+        }
         m_vertexData = {m_x,           m_y + m_height,
                         0.0F,          0.0F,
                         m_x + m_width, m_y + m_height,
@@ -88,6 +93,8 @@ class Rect2D {
                         m_x + m_width, m_y,
                         1.0F,          1.0F};
 
+        m_texture_width = width;
+        m_texture_height = height;
         glGenTextures(1, &m_texture);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, m_texture);
