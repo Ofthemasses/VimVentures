@@ -3,9 +3,11 @@
 
 #include "IRender.hpp"
 #include "IState.hpp"
+#include "ShaderProgram.hpp"
 #include <SDL2/SDL.h>
 #include <glad/glad.h>
 #include <string>
+#include <memory>
 
 class App {
   public:
@@ -57,18 +59,14 @@ class App {
 
     // Shaders
     static constexpr int APP_GL_DEPTH_SIZE = 24;
-    static GLuint CompileShader(GLuint type, const std::string &source);
-    static GLuint CreateShaderProgram(const std::string &vertexshadersource,
-                                      const std::string &fragmentshadersource);
     static void debugMessage(GLenum source, GLenum type, GLuint debug_id,
                              GLenum severity, GLsizei length,
                              const GLchar *message, const void *userParam);
     void CreateGraphicsPipeline();
     void PreDraw() const;
-    static std::string LoadShaderAsString(const std::string &filename);
 
     // Program Object (for our shaders)
-    GLuint m_GraphicsPipelineShaderProgram = 0;
+    std::unique_ptr<ShaderProgram> m_GraphicsPipelineShaderProgram;
 };
 
 #endif

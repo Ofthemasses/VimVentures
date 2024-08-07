@@ -1,10 +1,14 @@
 #include "App.hpp"
-#include "constants.hpp"
-#include "glad/glad.h"
+
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
-#include <vector>
+#include <memory>
+#include <variant>
+#include "glad/glad.h"
+#include "constants.hpp"
+#include "Error.hpp"
+#include "ShaderProgramBuilder.hpp"
 
 void App::debugMessage(GLenum source, GLenum type, GLuint debug_id,
                        GLenum severity, GLsizei length, const GLchar *message,
@@ -62,69 +66,23 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     CreateGraphicsPipeline();
 }
 
-GLuint App::CompileShader(GLuint type, const std::string &source) {
-    GLuint shaderObject;
-    switch (type) {
-    case GL_VERTEX_SHADER:
-        shaderObject = glCreateShader(GL_VERTEX_SHADER);
-        break;
-    case GL_FRAGMENT_SHADER:
-        shaderObject = glCreateShader(GL_FRAGMENT_SHADER);
-        break;
-    default:
-        std::cout << "TEST" << std::endl;
-        shaderObject = 0;
-        break;
-    }
-
-    const char *src = source.c_str();
-    glShaderSource(shaderObject, 1, &src, nullptr);
-    glCompileShader(shaderObject);
-    return shaderObject;
-}
-
-GLuint App::CreateShaderProgram(const std::string &vertexshadersource,
-                                const std::string &fragmentshadersource) {
-    GLuint programObject = glCreateProgram();
-
-    GLuint myVertexShader = CompileShader(GL_VERTEX_SHADER, vertexshadersource);
-    GLuint myFragmentShader =
-        CompileShader(GL_FRAGMENT_SHADER, fragmentshadersource);
-
-    glAttachShader(programObject, myVertexShader);
-    glAttachShader(programObject, myFragmentShader);
-    glLinkProgram(programObject);
-
-    // Validate our program
-    glValidateProgram(programObject);
-
-    return programObject;
-}
-
-std::string App::LoadShaderAsString(const std::string &filename) {
-    std::string result;
-
-    std::string line;
-    std::ifstream myFile(filename.c_str());
-
-    if (myFile.is_open()) {
-        while (std::getline(myFile, line)) {
-            result += line + '\n';
-        }
-        myFile.close();
-    }
-
-    return result;
-}
 
 void App::CreateGraphicsPipeline() {
 
-    std::string vertexShaderSource = LoadShaderAsString("./shaders/basic.vert");
-    std::string fragmentShaderSource =
-        LoadShaderAsString("./shaders/basic.frag");
+    ShaderProgramBuilder shaderBuilder;
 
-    m_GraphicsPipelineShaderProgram =
-        CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
+    shaderBuilder
+        .LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
+
+    std::variant<Error, std::unique_ptr<ShaderProgram>> shaderProgramResult = shaderBuilder.GenerateShaderProgram();
+
+    if (std::holds_alternative<Error>(shaderProgramResult)){
+        std::cout << std::get<Error>(shaderProgramResult).toString() << std::endl;
+    } else {
+        m_GraphicsPipelineShaderProgram = std::move(std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult));
+    }
+
 }
 
 /**
@@ -187,7 +145,7 @@ void App::PreDraw() const {
     glClearColor(1.0F, 1.0F, 0.0F, 1.0F);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glUseProgram(m_GraphicsPipelineShaderProgram);
+    glUseProgram(m_GraphicsPipelineShaderProgram->GetProgramId());
 }
 /**
  * Render cycle, calls all renderables.
@@ -196,7 +154,7 @@ void App::Render() {
     PreDraw();
     // SDL_RenderClear(m_renderer);
     // TODO ?Doubly? Linked List of Renderables
-    m_renderable->Render(m_GraphicsPipelineShaderProgram);
+    m_renderable->Render(m_GraphicsPipelineShaderProgram->GetProgramId());
     glUseProgram(0);
     // SDL_RenderPresent(m_renderer);
     SDL_GL_SwapWindow(m_window);
