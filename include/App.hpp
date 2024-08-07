@@ -6,8 +6,8 @@
 #include "ShaderProgram.hpp"
 #include <SDL2/SDL.h>
 #include <glad/glad.h>
-#include <string>
 #include <memory>
+#include <string>
 
 class App {
   public:

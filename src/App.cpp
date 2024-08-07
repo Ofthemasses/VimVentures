@@ -1,14 +1,14 @@
 #include "App.hpp"
 
-#include <fstream>
-#include <iostream>
-#include <unistd.h>
-#include <memory>
-#include <variant>
-#include "glad/glad.h"
-#include "constants.hpp"
 #include "Error.hpp"
 #include "ShaderProgramBuilder.hpp"
+#include "constants.hpp"
+#include "glad/glad.h"
+#include <fstream>
+#include <iostream>
+#include <memory>
+#include <unistd.h>
+#include <variant>
 
 void App::debugMessage(GLenum source, GLenum type, GLuint debug_id,
                        GLenum severity, GLsizei length, const GLchar *message,
@@ -66,23 +66,23 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     CreateGraphicsPipeline();
 }
 
-
 void App::CreateGraphicsPipeline() {
 
     ShaderProgramBuilder shaderBuilder;
 
-    shaderBuilder
-        .LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
         .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
 
-    std::variant<Error, std::unique_ptr<ShaderProgram>> shaderProgramResult = shaderBuilder.GenerateShaderProgram();
+    std::variant<Error, std::unique_ptr<ShaderProgram>> shaderProgramResult =
+        shaderBuilder.GenerateShaderProgram();
 
-    if (std::holds_alternative<Error>(shaderProgramResult)){
-        std::cout << std::get<Error>(shaderProgramResult).toString() << std::endl;
+    if (std::holds_alternative<Error>(shaderProgramResult)) {
+        std::cout << std::get<Error>(shaderProgramResult).toString()
+                  << std::endl;
     } else {
-        m_GraphicsPipelineShaderProgram = std::move(std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult));
+        m_GraphicsPipelineShaderProgram = std::move(
+            std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult));
     }
-
 }
 
 /**

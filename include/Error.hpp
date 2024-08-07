@@ -1,13 +1,13 @@
 #ifndef ERROR_HPP
 #define ERROR_HPP
 
-#include<string>
+#include <string>
 
-struct Error{
+struct Error {
     const int m_infoLogLen;
-    const char* m_infoLog;
-    Error(int infoLogLen, const char* infoLog);
-    std::string toString();
+    const char *m_infoLog;
+    Error(int infoLogLen, const char *infoLog);
+    [[nodiscard]] std::string toString() const;
 };
 
 #endif

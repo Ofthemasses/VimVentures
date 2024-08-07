@@ -71,17 +71,10 @@ class Rect2D {
     }
 
     void SetTexture(void *data, GLuint width, GLuint height) {
-        if (m_has_texture && width == m_texture_width
-                && height == m_texture_height){
-            glTexSubImage2D(GL_TEXTURE_2D,
-                    0,
-                    0,
-                    0,
-                    width,
-                    height,
-                    GL_RGBA,
-                    GL_UNSIGNED_BYTE,
-                    data);
+        if (m_has_texture && width == m_texture_width &&
+            height == m_texture_height) {
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA,
+                            GL_UNSIGNED_BYTE, data);
             return;
         }
         m_vertexData = {m_x,           m_y + m_height,

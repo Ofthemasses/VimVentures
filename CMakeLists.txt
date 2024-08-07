@@ -22,7 +22,7 @@ autoload.vim COPYONLY)
 
 add_custom_target(
 	tidy
-	COMMAND clang-tidy src/*.cpp -- -I/usr/include/SDL2 -Iinclude/
+	COMMAND clang-tidy src/*.cpp -- -I/usr/include/SDL2 -Iinclude/ -std=c++17
 )
 
 add_custom_target(
