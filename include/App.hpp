@@ -39,7 +39,6 @@ class App {
   private:
     SDL_Window *m_window;
     SDL_Renderer *m_renderer;
-    SDL_GLContext m_glcontext;
     // For now we only need one renderable, should be updated to a vector in
     // future
     IRender *m_renderable;

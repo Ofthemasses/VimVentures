@@ -1,6 +1,7 @@
 #include "App.hpp"
 
 #include "Error.hpp"
+#include "GraphicsController.hpp"
 #include "ShaderProgramBuilder.hpp"
 #include "constants.hpp"
 #include "glad/glad.h"
@@ -10,13 +11,6 @@
 #include <unistd.h>
 #include <variant>
 
-void App::debugMessage(GLenum source, GLenum type, GLuint debug_id,
-                       GLenum severity, GLsizei length, const GLchar *message,
-                       const void *userParam) {
-    std::cout << severity << std::endl;
-    std::string message_str(message, length);
-    std::cout << message_str << '\n';
-}
 /**
  * VimVentures Game.
  *
@@ -45,24 +39,9 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     m_window = SDL_CreateWindow(APP_TITLE, x, y, m_width, m_height,
                                 SDL_WINDOW_OPENGL); // TODO Look into Vulkan
 
-    m_glcontext = SDL_GL_CreateContext(m_window);
+    GraphicsController::initGL(m_window);
+    GraphicsController::enableDebug();
 
-    if (m_glcontext == nullptr) {
-        std::cerr << "OpenGL context not available: " << SDL_GetError();
-    }
-
-    // Initialize GL
-    if (gladLoadGLLoader(SDL_GL_GetProcAddress) == 0) {
-        std::cerr << "Glad Not Initialised: " << std::endl;
-        exit(1);
-    }
-
-    glEnable(GL_DEBUG_OUTPUT);
-    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-    glDebugMessageCallback(debugMessage, nullptr);
-
-    glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr,
-                          GL_TRUE);
     CreateGraphicsPipeline();
 }
 
