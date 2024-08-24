@@ -1,0 +1,38 @@
+\doxysection{Graphics\+Controller.\+hpp}
+\hypertarget{GraphicsController_8hpp_source}{}\label{GraphicsController_8hpp_source}\index{include/GraphicsController.hpp@{include/GraphicsController.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPHICSCONTROLLER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPHICSCONTROLLER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Error.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <ShaderProgram.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphicsController}{GraphicsController}}\ \{}
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicsController_a9de1c70199ce430b0fb79ed39ac0648e}{debugMessage}}(GLenum\ source,\ GLenum\ type,\ GLuint\ debug\_id,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLenum\ severity,\ GLsizei\ length,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ GLchar\ *message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *userParam);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicsController_aa867e13a657ae705ce0c43291df71e8b}{enableDebug}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ std::optional<Error>\ \mbox{\hyperlink{classGraphicsController_ab4afc0842a7845fa8aa2c887e1c4d1b9}{initGL}}(SDL\_Window\ *sdlWindow);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ std::optional<Error>\ \mbox{\hyperlink{classGraphicsController_ae611e80b5ec7cd0d84a54b472eb55b24}{CheckGLObjectStatus}}(}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ GLuint\ \textcolor{keywordtype}{object},\ GLenum\ parameter,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(GLuint,\ GLenum,\ GLint\ *)>\ \&getiv,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(GLuint,\ GLsizei,\ GLsizei\ *,\ GLchar\ *)>}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \&getInfoLog);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ std::unique\_ptr<ShaderProgram>>}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraphicsController_a0268ab41ebc3b24d360d0e90bd8c658f}{s\_shaderPrograms}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ SDL\_GLContext\ s\_glContext;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

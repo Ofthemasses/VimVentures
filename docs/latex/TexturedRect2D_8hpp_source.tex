@@ -1,0 +1,40 @@
+\doxysection{Textured\+Rect2\+D.\+hpp}
+\hypertarget{TexturedRect2D_8hpp_source}{}\label{TexturedRect2D_8hpp_source}\index{include/TexturedRect2D.hpp@{include/TexturedRect2D.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TEXTUREDRECT2D\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TEXTUREDRECT2D\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <GraphicsController.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Rect2D.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTexturedRect2D}{TexturedRect2D}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRect2D}{Rect2D}}\ \{}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00013\ \ \ \ \ GLuint\ m\_texture;}
+\DoxyCodeLine{00014\ \ \ \ \ GLuint\ m\_texture\_width;}
+\DoxyCodeLine{00015\ \ \ \ \ GLuint\ m\_texture\_height;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a615344905b23e8ad55beeec18854d784}{TexturedRect2D}}(GLfloat\ xPos\ =\ 0,\ GLfloat\ yPos\ =\ 0,\ GLfloat\ width\ =\ 0,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ height\ =\ 0);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{UpdateVertexData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{SetTexture}}(\textcolor{keywordtype}{void}\ *data,\ GLuint\ width,\ GLuint\ height,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ force\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\string~TexturedRect2D}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{UpdateGL}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

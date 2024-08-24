@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['contributing_0',['Contributing',['../md_README.html#autotoc_md4',1,'']]],
-  ['convert_1',['convert',['../classSDLToX11Keymap.html#ab34246c557e9be74299416bc24d11fcc',1,'SDLToX11Keymap']]]
+  ['addrenderable_0',['AddRenderable',['../classApp.html#a63bc0551fe490635456ca60577304d90',1,'App']]],
+  ['app_1',['App',['../classApp.html',1,'App'],['../classApp.html#a4751adaf2f075f55bcdf3262c7765579',1,'App::App()']]]
 ];

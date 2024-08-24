@@ -7,52 +7,63 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}IRender.hpp"{}}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}IState.hpp"{}}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classApp}{App}}\ \{}
-\DoxyCodeLine{00009\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classApp_a4751adaf2f075f55bcdf3262c7765579}{App}}(Uint32\ ssFlags,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ShaderProgram.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classApp_a34f1f253b1cef5f4ecbac66eaf6964ec}{\string~App}}();}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \ \ \ \ SDL\_Renderer\ *\mbox{\hyperlink{classApp_adaf84277805a5f300122fb22fd41d5f7}{GetRenderer}}();}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classApp}{App}}\ \{}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classApp_a4751adaf2f075f55bcdf3262c7765579}{App}}(Uint32\ ssFlags,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a7d2d7b5ff84473d6ca036bc03b442f3b}{SetState}}(\mbox{\hyperlink{classIState}{IState}}\ *state);}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a78d24016da98422fabb55b10dbfe3d72}{Run}}();}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_ac597a252fb0272b781fb39cb546b8c10}{Stop}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classApp_a34f1f253b1cef5f4ecbac66eaf6964ec}{\string~App}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ SDL\_Renderer\ *\mbox{\hyperlink{classApp_adaf84277805a5f300122fb22fd41d5f7}{GetRenderer}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a7d2d7b5ff84473d6ca036bc03b442f3b}{SetState}}(\mbox{\hyperlink{classIState}{IState}}\ *state);}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a7f42e947a052412c193c689b7e7a73cc}{Render}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a78d24016da98422fabb55b10dbfe3d72}{Run}}();}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ TODO\ Create\ ?Doubly?\ Linked\ List\ for\ rendering}}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a63bc0551fe490635456ca60577304d90}{AddRenderable}}(\mbox{\hyperlink{classIRender}{IRender}}\ *renderable);}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}{GetFPS}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{GetWidth}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{GetHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_ac597a252fb0272b781fb39cb546b8c10}{Stop}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a7f42e947a052412c193c689b7e7a73cc}{Render}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ TODO\ Create\ ?Doubly?\ Linked\ List\ for\ rendering}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a63bc0551fe490635456ca60577304d90}{AddRenderable}}(\mbox{\hyperlink{classIRender}{IRender}}\ *renderable);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}{GetFPS}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00036\ \ \ \ \ SDL\_Window\ *m\_window;}
-\DoxyCodeLine{00037\ \ \ \ \ SDL\_Renderer\ *m\_renderer;}
+\DoxyCodeLine{00035\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{GetWidth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{GetHeight}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ For\ now\ we\ only\ need\ one\ renderable,\ should\ be\ updated\ to\ a\ vector\ in}}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ future}}
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classIRender}{IRender}}\ *m\_renderable;}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}{m\_width}};}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_height;}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_running;}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classIState}{IState}}\ *\mbox{\hyperlink{classApp_a5af78dfaa7737b0b517c80a066bfd67f}{m\_state}};}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ SDL\_Window\ *m\_window;}
+\DoxyCodeLine{00041\ \ \ \ \ SDL\_Renderer\ *m\_renderer;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ For\ now\ we\ only\ need\ one\ renderable,\ should\ be\ updated\ to\ a\ vector\ in}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ future}}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classIRender}{IRender}}\ *m\_renderable;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}{m\_width}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_height;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_running;}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427d22}{SECOND\_MS}}\ =\ 1000.0;}
-\DoxyCodeLine{00053\ \ \ \ \ Uint32\ m\_startTick;}
-\DoxyCodeLine{00054\ \ \ \ \ Uint32\ m\_endTick;}
-\DoxyCodeLine{00055\ \};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classIState}{IState}}\ *\mbox{\hyperlink{classApp_a5af78dfaa7737b0b517c80a066bfd67f}{m\_state}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427d22}{SECOND\_MS}}\ =\ 1000.0;}
+\DoxyCodeLine{00056\ \ \ \ \ Uint32\ m\_startTick;}
+\DoxyCodeLine{00057\ \ \ \ \ Uint32\ m\_endTick;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Shaders}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ APP\_GL\_DEPTH\_SIZE\ =\ 24;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ debugMessage(GLenum\ source,\ GLenum\ type,\ GLuint\ debug\_id,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLenum\ severity,\ GLsizei\ length,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ GLchar\ *message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *userParam);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a26c8801e7a5375be8b96453ae0a7f451}{CreateGraphicsPipeline}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ PreDraw()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

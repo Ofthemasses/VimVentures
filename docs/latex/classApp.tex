@@ -25,6 +25,20 @@ int \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{Get\+Width}} ()
 \item 
 int \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{Get\+Height}} () const
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classApp_a0546f0b4d45b9e1866369713d0c397d7}\label{classApp_a0546f0b4d45b9e1866369713d0c397d7} 
+void {\bfseries Pre\+Draw} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classApp_ac0e8498205bf068952f386f64c99d43a}\label{classApp_ac0e8498205bf068952f386f64c99d43a} 
+static void {\bfseries debug\+Message} (GLenum source, GLenum type, GLuint debug\+\_\+id, GLenum severity, GLsizei length, const GLchar \texorpdfstring{$\ast$}{*}message, const void \texorpdfstring{$\ast$}{*}user\+Param)
+\item 
+static void \mbox{\hyperlink{classApp_a26c8801e7a5375be8b96453ae0a7f451}{Create\+Graphics\+Pipeline}} ()
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,6 +71,9 @@ Uint32 {\bfseries m\+\_\+end\+Tick}
 \begin{DoxyCompactItemize}
 \item 
 static constexpr double \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427d22}{SECOND\+\_\+\+MS}} = 1000.\+0
+\item 
+\Hypertarget{classApp_af79ea97ede88555d7cd475301e958cc8}\label{classApp_af79ea97ede88555d7cd475301e958cc8} 
+static constexpr int {\bfseries APP\+\_\+\+GL\+\_\+\+DEPTH\+\_\+\+SIZE} = 24
 \end{DoxyCompactItemize}
 
 
@@ -104,6 +121,16 @@ Add a new renderable.
 {\em Renderable} & \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classApp_a26c8801e7a5375be8b96453ae0a7f451}\label{classApp_a26c8801e7a5375be8b96453ae0a7f451} 
+\index{App@{App}!CreateGraphicsPipeline@{CreateGraphicsPipeline}}
+\index{CreateGraphicsPipeline@{CreateGraphicsPipeline}!App@{App}}
+\doxysubsubsection{\texorpdfstring{CreateGraphicsPipeline()}{CreateGraphicsPipeline()}}
+{\footnotesize\ttfamily void App\+::\+Create\+Graphics\+Pipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Builds and loads the canode shader into the shader map.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Incorporate other shaders, perhaps a constexpr list \end{DoxyRefDesc}
 \Hypertarget{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}\label{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849} 
 \index{App@{App}!GetFPS@{GetFPS}}
 \index{GetFPS@{GetFPS}!App@{App}}

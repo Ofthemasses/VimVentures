@@ -1,11 +1,26 @@
 #include "TexturedRect2D.hpp"
 
+/**
+ * An extension of Rect2D, representing a 2D quad with a texture.
+ *
+ * @param xPos X position
+ * @param yPos Y position
+ * @param width Width of the quad
+ * @param height Height of the quad
+ */
 TexturedRect2D::TexturedRect2D(GLfloat xPos, GLfloat yPos, GLfloat width,
                                GLfloat height)
     : Rect2D(xPos, yPos, width, height) {}
 
+/**
+ * Deletes the texture on destruction.
+ */
 TexturedRect2D::~TexturedRect2D() { glDeleteTextures(1, &m_texture); }
 
+/**
+ * Updates the vertex data. Adds two more data points
+ * to the strides defining the texture coordinates.
+ */
 void TexturedRect2D::UpdateVertexData() {
     m_vertexData = {m_x,           m_y + m_height,
                     0.0F,          0.0F,
@@ -17,6 +32,16 @@ void TexturedRect2D::UpdateVertexData() {
                     1.0F,          1.0F};
 }
 
+/**
+ * Sets the texture with raw pixel data. Unless forced or the new texture has
+ * a different width and/or height will sub-image the texture rather than
+ * generate a new one. This helps for texture streaming such as in VimEmulator.
+ *
+ * @param data Pointer to pixel data
+ * @param width Width of the texture in pixels
+ * @param height Height of the texture in pixels
+ * @param force If set to true forces the texture to be re-generated
+ */
 void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
                                 bool force) {
     if (width == m_texture_width && height == m_texture_height && !force) {
@@ -49,6 +74,12 @@ void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
     UpdateGL();
 }
 
+/**
+ * Renders the Textured Quad. Currently uses the sp_cathode shader.
+ *
+ * @todo Gives texture rects a default shader program and method to
+ * select others.
+ */
 void TexturedRect2D::Render() {
     glUseProgram(
         GraphicsController::s_shaderPrograms.at("sp_cathode")->GetProgramId());
@@ -62,6 +93,10 @@ void TexturedRect2D::Render() {
     Rect2D::Render();
 }
 
+/**
+ * Updates the vertex arrays in the OpenGL FSM.
+ * Uses strides to get texture data as well as coordinate data.
+ */
 void TexturedRect2D::UpdateGL() {
     GenBindBufferGL();
     glEnableVertexAttribArray(0);

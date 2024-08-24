@@ -3,7 +3,7 @@
 Inheritance diagram for Vim\+Emulator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classVimEmulator}
+\includegraphics[height=4.000000cm]{classVimEmulator}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -11,7 +11,7 @@ Inheritance diagram for Vim\+Emulator\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classVimEmulator_af3e2121729f336725954a5bef11cb7a0}{Vim\+Emulator}} (std\+::string terminal, std\+::string n\+Arg)
 \item 
-\mbox{\hyperlink{classVimEmulator_a2d029e3d7f92316b4938dc0b7d021cfa}{\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator}} () override
+\mbox{\hyperlink{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2}{\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator}} ()
 \item 
 void \mbox{\hyperlink{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d}{Register\+Window}} ()
 \item 
@@ -23,26 +23,39 @@ void \mbox{\hyperlink{classVimEmulator_af1ba75fdcd9ff4daabaef5c41e29fef8}{Send\+
 \item 
 void \mbox{\hyperlink{classVimEmulator_a948246f2c41a62b5eb3d5764b113cd14}{Set\+SDLMod}} (SDL\+\_\+\+Keymod mod)
 \item 
-void \mbox{\hyperlink{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918}{Render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer) override
+void \mbox{\hyperlink{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}{Render}} () override
 \begin{DoxyCompactList}\small\item\em Render cycle for a new frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTexturedRect2D_a615344905b23e8ad55beeec18854d784}{Textured\+Rect2D}} (GLfloat x\+Pos=0, GLfloat y\+Pos=0, GLfloat width=0, GLfloat height=0)
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{Update\+Vertex\+Data}} () override
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{Set\+Texture}} (void \texorpdfstring{$\ast$}{*}data, GLuint width, GLuint height, bool force=false)
+\item 
+\mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\texorpdfstring{$\sim$}{\string~}\+Textured\+Rect2D}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Rect2D} (int x, int y, int w, int h)
+\mbox{\hyperlink{classRect2D_a354f1a1801cd499e2fb840a884c8114e}{Rect2D}} (GLfloat x\+Pos=0, GLfloat y\+Pos=0, GLfloat width=0, GLfloat height=0)
 \item 
-void {\bfseries Set\+Position} (int x, int y)
+void \mbox{\hyperlink{classRect2D_abf79cbb573a5962ad558453037bb8dc2}{Set\+Position}} (GLfloat x\+Pos, GLfloat y\+Pos)
 \item 
-void {\bfseries Set\+Size} (int w, int h)
+void \mbox{\hyperlink{classRect2D_aace8b1695889cb276f35e7e059eb62da}{Set\+Size}} (GLfloat width, GLfloat height)
 \item 
-int {\bfseries GetX} () const
+GLfloat \mbox{\hyperlink{classRect2D_a666f3d46180fa5a78588f1ca1f2e62c4}{GetX}} () const
 \item 
-int {\bfseries GetY} () const
+GLfloat \mbox{\hyperlink{classRect2D_a7e981c0da83e69419a870e01c9931038}{GetY}} () const
 \item 
-int {\bfseries Get\+Width} () const
+GLfloat \mbox{\hyperlink{classRect2D_ab0f4e1cab776a0eabd9230515b6f2464}{Get\+Width}} () const
 \item 
-int {\bfseries Get\+Height} () const
+GLfloat \mbox{\hyperlink{classRect2D_a421133bd8822adc575ae4e3fd6be55d7}{Get\+Height}} () const
 \item 
-SDL\+\_\+\+Rect {\bfseries Get\+SDLRect} () const
+std\+::vector$<$ GLfloat $>$ \mbox{\hyperlink{classRect2D_a50be78f5d82d97a654bf05528899cdc3}{Get\+Vertex\+Data}} () const
+\item 
+\mbox{\hyperlink{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e}{\texorpdfstring{$\sim$}{\string~}\+Rect2D}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -99,8 +112,6 @@ SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+surface}
 bool {\bfseries m\+\_\+frame\+Ready}
 \item 
 unsigned int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVimEmulator_aa1edd3ceb9dcf27d0bead6d31ca319d7}{m\+\_\+modmask}}
-\item 
-SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVimEmulator_a0b56b642ac7e8b3912c3e70b848f23a9}{m\+\_\+texture}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -120,10 +131,47 @@ static constexpr Uint32 {\bfseries B\+\_\+\+MASK} = 0\+X0000\+FF
 static constexpr Uint32 {\bfseries A\+\_\+\+MASK} = 0
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRect2D_a0d4d3d2a5dc76eb349190bb685cd94d4}{Gen\+Bind\+Buffer\+GL}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}}}
+\begin{DoxyCompactItemize}
+\item 
+GLuint {\bfseries m\+\_\+texture}
+\item 
+GLuint {\bfseries m\+\_\+texture\+\_\+width}
+\item 
+GLuint {\bfseries m\+\_\+texture\+\_\+height}
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
 \begin{DoxyCompactItemize}
 \item 
-SDL\+\_\+\+Rect {\bfseries m\+\_\+rect} \{0, 0, 0, 0\}
+std\+::vector$<$ GLfloat $>$ {\bfseries m\+\_\+vertex\+Data}
+\item 
+std\+::vector$<$ GLuint $>$ {\bfseries m\+\_\+index\+Data}
+\item 
+GLfloat {\bfseries m\+\_\+x}
+\item 
+GLfloat {\bfseries m\+\_\+y}
+\item 
+GLfloat {\bfseries m\+\_\+width}
+\item 
+GLfloat {\bfseries m\+\_\+height}
+\item 
+GLuint {\bfseries m\+\_\+texture\+\_\+width}
+\item 
+GLuint {\bfseries m\+\_\+texture\+\_\+height}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classIRender}{IRender}}}
+\begin{DoxyCompactItemize}
+\item 
+GLuint {\bfseries m\+\_\+vertex\+Array\+Object}
+\item 
+GLuint {\bfseries m\+\_\+vertex\+Buffer\+Object}
+\item 
+GLuint {\bfseries m\+\_\+index\+Buffer\+Object}
 \end{DoxyCompactItemize}
 
 
@@ -143,11 +191,11 @@ A Vim Terminal Instance.
 {\em n\+Arg} & Arguments for launching vim \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classVimEmulator_a2d029e3d7f92316b4938dc0b7d021cfa}\label{classVimEmulator_a2d029e3d7f92316b4938dc0b7d021cfa} 
+\Hypertarget{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2}\label{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2} 
 \index{VimEmulator@{VimEmulator}!````~VimEmulator@{\texorpdfstring{$\sim$}{\string~}VimEmulator}}
 \index{````~VimEmulator@{\texorpdfstring{$\sim$}{\string~}VimEmulator}!VimEmulator@{VimEmulator}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VimEmulator()}{\string~VimEmulator()}}
-{\footnotesize\ttfamily Vim\+Emulator\+::\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+{\footnotesize\ttfamily Vim\+Emulator\+::\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Destroys the terminal and pointer vars. 
 
@@ -225,11 +273,11 @@ Calls Register\+Window Logic in a new thread. \Hypertarget{classVimEmulator_a7c8
 \doxysubsubsection{\texorpdfstring{RegisterWindowThread()}{RegisterWindowThread()}}
 {\footnotesize\ttfamily void Vim\+Emulator\+::\+Register\+Window\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Assigns the terminal window and window image to variables. \Hypertarget{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918}\label{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918} 
+Assigns the terminal window and window image to variables. \Hypertarget{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}\label{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a} 
 \index{VimEmulator@{VimEmulator}!Render@{Render}}
 \index{Render@{Render}!VimEmulator@{VimEmulator}}
 \doxysubsubsection{\texorpdfstring{Render()}{Render()}}
-{\footnotesize\ttfamily void Vim\+Emulator\+::\+Render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Vim\+Emulator\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -248,7 +296,7 @@ If a frame is not ready it will request a new frame from the terminal. It will r
 \end{DoxyParams}
 
 
-Implements \mbox{\hyperlink{classIRender}{IRender}}.
+Reimplemented from \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Textured\+Rect2D}}.
 
 \Hypertarget{classVimEmulator_af5987f17f3d47c66562a327d0b65c706}\label{classVimEmulator_af5987f17f3d47c66562a327d0b65c706} 
 \index{VimEmulator@{VimEmulator}!ResizeWindow@{ResizeWindow}}
@@ -317,13 +365,7 @@ Sets the modmask using an SDL\+\_\+\+Keymod.
 \doxysubsubsection{\texorpdfstring{m\_modmask}{m\_modmask}}
 {\footnotesize\ttfamily unsigned int\texorpdfstring{$\ast$}{*} Vim\+Emulator\+::m\+\_\+modmask\hspace{0.3cm}{\ttfamily [private]}}
 
-XKeyboard \Hypertarget{classVimEmulator_a0b56b642ac7e8b3912c3e70b848f23a9}\label{classVimEmulator_a0b56b642ac7e8b3912c3e70b848f23a9} 
-\index{VimEmulator@{VimEmulator}!m\_texture@{m\_texture}}
-\index{m\_texture@{m\_texture}!VimEmulator@{VimEmulator}}
-\doxysubsubsection{\texorpdfstring{m\_texture}{m\_texture}}
-{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Vim\+Emulator\+::m\+\_\+texture\hspace{0.3cm}{\ttfamily [private]}}
-
-Render Data \Hypertarget{classVimEmulator_a77428bd08f69860b090e434d1d5c6553}\label{classVimEmulator_a77428bd08f69860b090e434d1d5c6553} 
+XKeyboard \Hypertarget{classVimEmulator_a77428bd08f69860b090e434d1d5c6553}\label{classVimEmulator_a77428bd08f69860b090e434d1d5c6553} 
 \index{VimEmulator@{VimEmulator}!R\_MASK@{R\_MASK}}
 \index{R\_MASK@{R\_MASK}!VimEmulator@{VimEmulator}}
 \doxysubsubsection{\texorpdfstring{R\_MASK}{R\_MASK}}

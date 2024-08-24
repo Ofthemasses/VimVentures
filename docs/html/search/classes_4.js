@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sdltox11keymap_0',['SDLToX11Keymap',['../classSDLToX11Keymap.html',1,'']]]
+  ['irender_0',['IRender',['../classIRender.html',1,'']]],
+  ['istate_1',['IState',['../classIState.html',1,'']]]
 ];

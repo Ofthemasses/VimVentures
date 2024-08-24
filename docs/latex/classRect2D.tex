@@ -3,44 +3,267 @@
 Inheritance diagram for Rect2D\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classRect2D}
+\includegraphics[height=4.000000cm]{classRect2D}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classRect2D_a54cdf98af3d47fd9d3799d91cb81003b}\label{classRect2D_a54cdf98af3d47fd9d3799d91cb81003b} 
-{\bfseries Rect2D} (int x, int y, int w, int h)
+\mbox{\hyperlink{classRect2D_a354f1a1801cd499e2fb840a884c8114e}{Rect2D}} (GLfloat x\+Pos=0, GLfloat y\+Pos=0, GLfloat width=0, GLfloat height=0)
 \item 
-\Hypertarget{classRect2D_a69434e1b5d50535fefa2a32ba658f0a7}\label{classRect2D_a69434e1b5d50535fefa2a32ba658f0a7} 
-void {\bfseries Set\+Position} (int x, int y)
+virtual void \mbox{\hyperlink{classRect2D_a8754759bde669f7bfc6ebe148fa7f062}{Update\+Vertex\+Data}} ()
 \item 
-\Hypertarget{classRect2D_a611f204619bcd2fac7e0225ecbbfe0c3}\label{classRect2D_a611f204619bcd2fac7e0225ecbbfe0c3} 
-void {\bfseries Set\+Size} (int w, int h)
+void \mbox{\hyperlink{classRect2D_abf79cbb573a5962ad558453037bb8dc2}{Set\+Position}} (GLfloat x\+Pos, GLfloat y\+Pos)
 \item 
-\Hypertarget{classRect2D_a6555ca8ee4d0bd8db8a9d9a43a3ad825}\label{classRect2D_a6555ca8ee4d0bd8db8a9d9a43a3ad825} 
-int {\bfseries GetX} () const
+void \mbox{\hyperlink{classRect2D_aace8b1695889cb276f35e7e059eb62da}{Set\+Size}} (GLfloat width, GLfloat height)
 \item 
-\Hypertarget{classRect2D_a94f519334e6706a5717237dd7db073d9}\label{classRect2D_a94f519334e6706a5717237dd7db073d9} 
-int {\bfseries GetY} () const
+GLfloat \mbox{\hyperlink{classRect2D_a666f3d46180fa5a78588f1ca1f2e62c4}{GetX}} () const
 \item 
-\Hypertarget{classRect2D_aa532458d311520a154cea21efb92abd6}\label{classRect2D_aa532458d311520a154cea21efb92abd6} 
-int {\bfseries Get\+Width} () const
+GLfloat \mbox{\hyperlink{classRect2D_a7e981c0da83e69419a870e01c9931038}{GetY}} () const
 \item 
-\Hypertarget{classRect2D_a66c5d36f0a3bccf93b6b02ced2a04d29}\label{classRect2D_a66c5d36f0a3bccf93b6b02ced2a04d29} 
-int {\bfseries Get\+Height} () const
+GLfloat \mbox{\hyperlink{classRect2D_ab0f4e1cab776a0eabd9230515b6f2464}{Get\+Width}} () const
 \item 
-\Hypertarget{classRect2D_a371a416a26292a36956803276045dbc9}\label{classRect2D_a371a416a26292a36956803276045dbc9} 
-SDL\+\_\+\+Rect {\bfseries Get\+SDLRect} () const
+GLfloat \mbox{\hyperlink{classRect2D_a421133bd8822adc575ae4e3fd6be55d7}{Get\+Height}} () const
+\item 
+std\+::vector$<$ GLfloat $>$ \mbox{\hyperlink{classRect2D_a50be78f5d82d97a654bf05528899cdc3}{Get\+Vertex\+Data}} () const
+\item 
+\mbox{\hyperlink{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e}{\texorpdfstring{$\sim$}{\string~}\+Rect2D}} ()
+\item 
+void \mbox{\hyperlink{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5}{Render}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRect2D_a0d4d3d2a5dc76eb349190bb685cd94d4}{Gen\+Bind\+Buffer\+GL}} () override
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classRect2D_ac99fc99a13d03f4c49ffe4bdf715b41f}\label{classRect2D_ac99fc99a13d03f4c49ffe4bdf715b41f} 
-SDL\+\_\+\+Rect {\bfseries m\+\_\+rect} \{0, 0, 0, 0\}
+\Hypertarget{classRect2D_ae3264d2cdf55eceb905183c8f4d14291}\label{classRect2D_ae3264d2cdf55eceb905183c8f4d14291} 
+std\+::vector$<$ GLfloat $>$ {\bfseries m\+\_\+vertex\+Data}
+\item 
+\Hypertarget{classRect2D_af85455852083576e694dcbc44eff69e7}\label{classRect2D_af85455852083576e694dcbc44eff69e7} 
+std\+::vector$<$ GLuint $>$ {\bfseries m\+\_\+index\+Data}
+\item 
+\Hypertarget{classRect2D_a2cc323ab286e75539015e90f0cf69efe}\label{classRect2D_a2cc323ab286e75539015e90f0cf69efe} 
+GLfloat {\bfseries m\+\_\+x}
+\item 
+\Hypertarget{classRect2D_a7f5dd8d799ca5f668ead95944e9eab59}\label{classRect2D_a7f5dd8d799ca5f668ead95944e9eab59} 
+GLfloat {\bfseries m\+\_\+y}
+\item 
+\Hypertarget{classRect2D_ac7282684c72a3c19740950b9c0bcb160}\label{classRect2D_ac7282684c72a3c19740950b9c0bcb160} 
+GLfloat {\bfseries m\+\_\+width}
+\item 
+\Hypertarget{classRect2D_a9c3d0322df434d423366e3673d982006}\label{classRect2D_a9c3d0322df434d423366e3673d982006} 
+GLfloat {\bfseries m\+\_\+height}
+\item 
+\Hypertarget{classRect2D_ad47e1a346e69f91072c6214f8ccdfedc}\label{classRect2D_ad47e1a346e69f91072c6214f8ccdfedc} 
+GLuint {\bfseries m\+\_\+texture\+\_\+width}
+\item 
+\Hypertarget{classRect2D_a315e43ff0a4d5c833bf747066fde0ff2}\label{classRect2D_a315e43ff0a4d5c833bf747066fde0ff2} 
+GLuint {\bfseries m\+\_\+texture\+\_\+height}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classIRender}{IRender}}}
+\begin{DoxyCompactItemize}
+\item 
+GLuint {\bfseries m\+\_\+vertex\+Array\+Object}
+\item 
+GLuint {\bfseries m\+\_\+vertex\+Buffer\+Object}
+\item 
+GLuint {\bfseries m\+\_\+index\+Buffer\+Object}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{Update\+GL}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRect2D_a367725c78670a8918b3153e304c6cb0e}\label{classRect2D_a367725c78670a8918b3153e304c6cb0e} 
+static constexpr int {\bfseries RECT\+\_\+\+ELEMENTS} = 6
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classRect2D_a354f1a1801cd499e2fb840a884c8114e}\label{classRect2D_a354f1a1801cd499e2fb840a884c8114e} 
+\index{Rect2D@{Rect2D}!Rect2D@{Rect2D}}
+\index{Rect2D@{Rect2D}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{Rect2D()}{Rect2D()}}
+{\footnotesize\ttfamily Rect2\+D\+::\+Rect2D (\begin{DoxyParamCaption}\item[{GLfloat}]{x\+Pos = {\ttfamily 0},  }\item[{GLfloat}]{y\+Pos = {\ttfamily 0},  }\item[{GLfloat}]{width = {\ttfamily 0},  }\item[{GLfloat}]{height = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Representation a 2D quad, an encapsulation of two GL Triangles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Pos} & X position \\
+\hline
+{\em y\+Pos} & Y position \\
+\hline
+{\em width} & Width of the quad \\
+\hline
+{\em height} & Height of the quad \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e}\label{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e} 
+\index{Rect2D@{Rect2D}!````~Rect2D@{\texorpdfstring{$\sim$}{\string~}Rect2D}}
+\index{````~Rect2D@{\texorpdfstring{$\sim$}{\string~}Rect2D}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Rect2D()}{\string~Rect2D()}}
+{\footnotesize\ttfamily Rect2\+D\+::\texorpdfstring{$\sim$}{\string~}\+Rect2D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cleans up Open\+GL vertex arrays and buffers on destruction. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRect2D_a0d4d3d2a5dc76eb349190bb685cd94d4}\label{classRect2D_a0d4d3d2a5dc76eb349190bb685cd94d4} 
+\index{Rect2D@{Rect2D}!GenBindBufferGL@{GenBindBufferGL}}
+\index{GenBindBufferGL@{GenBindBufferGL}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{GenBindBufferGL()}{GenBindBufferGL()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Gen\+Bind\+Buffer\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Generates vertex arrays and buffers. Binds vertex arrays and buffers. Then initializes data stores for the vertex and index data. 
+
+Implements \mbox{\hyperlink{classIRender}{IRender}}.
+
+\Hypertarget{classRect2D_a421133bd8822adc575ae4e3fd6be55d7}\label{classRect2D_a421133bd8822adc575ae4e3fd6be55d7} 
+\index{Rect2D@{Rect2D}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily GLfloat Rect2\+D\+::\+Get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the height of the quad.
+
+\begin{DoxyReturn}{Returns}
+Height of the quad 
+\end{DoxyReturn}
+\Hypertarget{classRect2D_a50be78f5d82d97a654bf05528899cdc3}\label{classRect2D_a50be78f5d82d97a654bf05528899cdc3} 
+\index{Rect2D@{Rect2D}!GetVertexData@{GetVertexData}}
+\index{GetVertexData@{GetVertexData}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{GetVertexData()}{GetVertexData()}}
+{\footnotesize\ttfamily std\+::vector$<$ GLfloat $>$ Rect2\+D\+::\+Get\+Vertex\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the raw vertex data.
+
+\begin{DoxyReturn}{Returns}
+Vertex data as vector 
+\end{DoxyReturn}
+\Hypertarget{classRect2D_ab0f4e1cab776a0eabd9230515b6f2464}\label{classRect2D_ab0f4e1cab776a0eabd9230515b6f2464} 
+\index{Rect2D@{Rect2D}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily GLfloat Rect2\+D\+::\+Get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the width of the quad.
+
+\begin{DoxyReturn}{Returns}
+Width of the quad 
+\end{DoxyReturn}
+\Hypertarget{classRect2D_a666f3d46180fa5a78588f1ca1f2e62c4}\label{classRect2D_a666f3d46180fa5a78588f1ca1f2e62c4} 
+\index{Rect2D@{Rect2D}!GetX@{GetX}}
+\index{GetX@{GetX}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily GLfloat Rect2\+D\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the X position of the quad.
+
+\begin{DoxyReturn}{Returns}
+X position of the quad 
+\end{DoxyReturn}
+\Hypertarget{classRect2D_a7e981c0da83e69419a870e01c9931038}\label{classRect2D_a7e981c0da83e69419a870e01c9931038} 
+\index{Rect2D@{Rect2D}!GetY@{GetY}}
+\index{GetY@{GetY}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily GLfloat Rect2\+D\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the Y position of the quad.
+
+\begin{DoxyReturn}{Returns}
+Y position of the quad 
+\end{DoxyReturn}
+\Hypertarget{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5}\label{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5} 
+\index{Rect2D@{Rect2D}!Render@{Render}}
+\index{Render@{Render}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Renders the quad. 
+
+Implements \mbox{\hyperlink{classIRender}{IRender}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Textured\+Rect2D}}, and \mbox{\hyperlink{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}{Vim\+Emulator}}.
+
+\Hypertarget{classRect2D_abf79cbb573a5962ad558453037bb8dc2}\label{classRect2D_abf79cbb573a5962ad558453037bb8dc2} 
+\index{Rect2D@{Rect2D}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{GLfloat}]{x\+Pos,  }\item[{GLfloat}]{y\+Pos }\end{DoxyParamCaption})}
+
+Set the position and update the vertex data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Pos} & New x Position \\
+\hline
+{\em y\+Pos} & New y Position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRect2D_aace8b1695889cb276f35e7e059eb62da}\label{classRect2D_aace8b1695889cb276f35e7e059eb62da} 
+\index{Rect2D@{Rect2D}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{GLfloat}]{width,  }\item[{GLfloat}]{height }\end{DoxyParamCaption})}
+
+Set the width and height of the quad and update the vertex data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & New quad width \\
+\hline
+{\em height} & New quad height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRect2D_a7004e540e40fe825be028efaf7a270f6}\label{classRect2D_a7004e540e40fe825be028efaf7a270f6} 
+\index{Rect2D@{Rect2D}!UpdateGL@{UpdateGL}}
+\index{UpdateGL@{UpdateGL}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{UpdateGL()}{UpdateGL()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Update\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+Updates the vertex arrays in the Open\+GL FSM. 
+
+Implements \mbox{\hyperlink{classIRender}{IRender}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{Textured\+Rect2D}}.
+
+\Hypertarget{classRect2D_a8754759bde669f7bfc6ebe148fa7f062}\label{classRect2D_a8754759bde669f7bfc6ebe148fa7f062} 
+\index{Rect2D@{Rect2D}!UpdateVertexData@{UpdateVertexData}}
+\index{UpdateVertexData@{UpdateVertexData}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{UpdateVertexData()}{UpdateVertexData()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Update\+Vertex\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Updates the Vertex Data.
+
+\begin{DoxyNote}{Note}
+This should be overridden if you want to provide more data in strides.
+\end{DoxyNote}
+There are four groups, describing the four points of the quad. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRect2D_a8754759bde669f7bfc6ebe148fa7f062}{Rect2D::UpdateVertexData}}()\ \{}
+\DoxyCodeLine{\ \ \ m\_vertexData\ =\ \{TL,\ BR,\ BL,\ TR\}}
+\DoxyCodeLine{\ \ \ \(\backslash\)/\(\backslash\)/\ Always\ \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{UpdateGL}}\ after\ changing\ vertex\ data.}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{UpdateGL}}();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+Reimplemented in \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{Textured\+Rect2D}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/Rect2\+D.\+hpp\end{DoxyCompactItemize}
+include/Rect2\+D.\+hpp\item 
+src/Rect2\+D.\+cpp\end{DoxyCompactItemize}

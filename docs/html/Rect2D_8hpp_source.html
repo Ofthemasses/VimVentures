@@ -87,40 +87,72 @@ $(function() { codefold.init(0); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef RECT2D_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define RECT2D_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classRect2D.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="classRect2D.html">Rect2D</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    SDL_Rect m_rect{0, 0, 0, 0};</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_class" href="classRect2D.html">Rect2D</a>() : m_rect{0, 0, 0, 0} {}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_class" href="classRect2D.html">Rect2D</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h) : m_rect{x, y, w, h} {}</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">void</span> SetPosition(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        m_rect.x = x;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        m_rect.y = y;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> SetSize(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h) {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        m_rect.w = w;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        m_rect.h = h;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">int</span> GetX()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_rect.x; }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> GetY()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_rect.y; }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">int</span> GetWidth()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_rect.w; }</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> GetHeight()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_rect.h; }</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;GraphicsController.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;IRender.hpp&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classRect2D.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classRect2D.html">Rect2D</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIRender.html">IRender</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    std::vector&lt;GLfloat&gt; m_vertexData;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    std::vector&lt;GLuint&gt; m_indexData;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    GLfloat m_x;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    GLfloat m_y;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    GLfloat m_width;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    GLfloat m_height;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    GLuint m_texture_width;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    GLuint m_texture_height;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a0d4d3d2a5dc76eb349190bb685cd94d4">GenBindBufferGL</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="classRect2D.html#a354f1a1801cd499e2fb840a884c8114e">Rect2D</a>(GLfloat xPos = 0, GLfloat yPos = 0, GLfloat width = 0,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>           GLfloat height = 0);</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    SDL_Rect GetSDLRect()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_rect; }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a8754759bde669f7bfc6ebe148fa7f062">UpdateVertexData</a>();</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classRect2D.html">~Rect2D</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#abf79cbb573a5962ad558453037bb8dc2">SetPosition</a>(GLfloat xPos, GLfloat yPos);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#aace8b1695889cb276f35e7e059eb62da">SetSize</a>(GLfloat width, GLfloat height);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    [[nodiscard]] GLfloat <a class="code hl_function" href="classRect2D.html#a666f3d46180fa5a78588f1ca1f2e62c4">GetX</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    [[nodiscard]] GLfloat <a class="code hl_function" href="classRect2D.html#a7e981c0da83e69419a870e01c9931038">GetY</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [[nodiscard]] GLfloat <a class="code hl_function" href="classRect2D.html#ab0f4e1cab776a0eabd9230515b6f2464">GetWidth</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    [[nodiscard]] GLfloat <a class="code hl_function" href="classRect2D.html#a421133bd8822adc575ae4e3fd6be55d7">GetHeight</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    [[nodiscard]] std::vector&lt;GLfloat&gt; <a class="code hl_function" href="classRect2D.html#a50be78f5d82d97a654bf05528899cdc3">GetVertexData</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_function" href="classRect2D.html#a7e48bcc4ca159e58b51e2b9b0453225e">~Rect2D</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a54a14b1e63c6cf187aa00ebf20044ae5">Render</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> RECT_ELEMENTS = 6;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassRect2D_html"><div class="ttname"><a href="classRect2D.html">Rect2D</a></div><div class="ttdef"><b>Definition</b> Rect2D.hpp:6</div></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassIRender_html"><div class="ttname"><a href="classIRender.html">IRender</a></div><div class="ttdef"><b>Definition</b> IRender.hpp:7</div></div>
+<div class="ttc" id="aclassRect2D_html"><div class="ttname"><a href="classRect2D.html">Rect2D</a></div><div class="ttdef"><b>Definition</b> Rect2D.hpp:11</div></div>
+<div class="ttc" id="aclassRect2D_html_a0d4d3d2a5dc76eb349190bb685cd94d4"><div class="ttname"><a href="classRect2D.html#a0d4d3d2a5dc76eb349190bb685cd94d4">Rect2D::GenBindBufferGL</a></div><div class="ttdeci">void GenBindBufferGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:36</div></div>
+<div class="ttc" id="aclassRect2D_html_a354f1a1801cd499e2fb840a884c8114e"><div class="ttname"><a href="classRect2D.html#a354f1a1801cd499e2fb840a884c8114e">Rect2D::Rect2D</a></div><div class="ttdeci">Rect2D(GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:11</div></div>
+<div class="ttc" id="aclassRect2D_html_a421133bd8822adc575ae4e3fd6be55d7"><div class="ttname"><a href="classRect2D.html#a421133bd8822adc575ae4e3fd6be55d7">Rect2D::GetHeight</a></div><div class="ttdeci">GLfloat GetHeight() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:125</div></div>
+<div class="ttc" id="aclassRect2D_html_a50be78f5d82d97a654bf05528899cdc3"><div class="ttname"><a href="classRect2D.html#a50be78f5d82d97a654bf05528899cdc3">Rect2D::GetVertexData</a></div><div class="ttdeci">std::vector&lt; GLfloat &gt; GetVertexData() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:132</div></div>
+<div class="ttc" id="aclassRect2D_html_a54a14b1e63c6cf187aa00ebf20044ae5"><div class="ttname"><a href="classRect2D.html#a54a14b1e63c6cf187aa00ebf20044ae5">Rect2D::Render</a></div><div class="ttdeci">void Render() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:137</div></div>
+<div class="ttc" id="aclassRect2D_html_a666f3d46180fa5a78588f1ca1f2e62c4"><div class="ttname"><a href="classRect2D.html#a666f3d46180fa5a78588f1ca1f2e62c4">Rect2D::GetX</a></div><div class="ttdeci">GLfloat GetX() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:104</div></div>
+<div class="ttc" id="aclassRect2D_html_a7004e540e40fe825be028efaf7a270f6"><div class="ttname"><a href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">Rect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:147</div></div>
+<div class="ttc" id="aclassRect2D_html_a7e48bcc4ca159e58b51e2b9b0453225e"><div class="ttname"><a href="classRect2D.html#a7e48bcc4ca159e58b51e2b9b0453225e">Rect2D::~Rect2D</a></div><div class="ttdeci">~Rect2D()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:25</div></div>
+<div class="ttc" id="aclassRect2D_html_a7e981c0da83e69419a870e01c9931038"><div class="ttname"><a href="classRect2D.html#a7e981c0da83e69419a870e01c9931038">Rect2D::GetY</a></div><div class="ttdeci">GLfloat GetY() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:111</div></div>
+<div class="ttc" id="aclassRect2D_html_a8754759bde669f7bfc6ebe148fa7f062"><div class="ttname"><a href="classRect2D.html#a8754759bde669f7bfc6ebe148fa7f062">Rect2D::UpdateVertexData</a></div><div class="ttdeci">virtual void UpdateVertexData()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:65</div></div>
+<div class="ttc" id="aclassRect2D_html_aace8b1695889cb276f35e7e059eb62da"><div class="ttname"><a href="classRect2D.html#aace8b1695889cb276f35e7e059eb62da">Rect2D::SetSize</a></div><div class="ttdeci">void SetSize(GLfloat width, GLfloat height)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:92</div></div>
+<div class="ttc" id="aclassRect2D_html_ab0f4e1cab776a0eabd9230515b6f2464"><div class="ttname"><a href="classRect2D.html#ab0f4e1cab776a0eabd9230515b6f2464">Rect2D::GetWidth</a></div><div class="ttdeci">GLfloat GetWidth() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:118</div></div>
+<div class="ttc" id="aclassRect2D_html_abf79cbb573a5962ad558453037bb8dc2"><div class="ttname"><a href="classRect2D.html#abf79cbb573a5962ad558453037bb8dc2">Rect2D::SetPosition</a></div><div class="ttdeci">void SetPosition(GLfloat xPos, GLfloat yPos)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:79</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

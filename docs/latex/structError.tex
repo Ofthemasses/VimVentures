@@ -1,0 +1,56 @@
+\doxysection{Error Struct Reference}
+\hypertarget{structError}{}\label{structError}\index{Error@{Error}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structError_a94fb52aea7e4c307c536978ffbc7f820}{Error}} (int info\+Log\+Len, const char \texorpdfstring{$\ast$}{*}info\+Log)
+\item 
+std\+::string \mbox{\hyperlink{structError_ad7ebc617894d27d8faee9486d3789a39}{to\+String}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structError_aea82b645e533baf42c480d1f6ca02c0e}\label{structError_aea82b645e533baf42c480d1f6ca02c0e} 
+const int {\bfseries m\+\_\+info\+Log\+Len}
+\item 
+\Hypertarget{structError_a4b951d8828b7043e8231f61c40f9b491}\label{structError_a4b951d8828b7043e8231f61c40f9b491} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+info\+Log}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structError_a94fb52aea7e4c307c536978ffbc7f820}\label{structError_a94fb52aea7e4c307c536978ffbc7f820} 
+\index{Error@{Error}!Error@{Error}}
+\index{Error@{Error}!Error@{Error}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily Error\+::\+Error (\begin{DoxyParamCaption}\item[{int}]{info\+Log\+Len,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{info\+Log }\end{DoxyParamCaption})}
+
+\doxylink{structError}{Error} type for Open\+GL errors, stored as a c-\/string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em info\+Log\+Len} & Length of the string \\
+\hline
+{\em info\+Log} & C-\/string log \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structError_ad7ebc617894d27d8faee9486d3789a39}\label{structError_ad7ebc617894d27d8faee9486d3789a39} 
+\index{Error@{Error}!toString@{toString}}
+\index{toString@{toString}!Error@{Error}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Error\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Converts error log to std\+::string.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structError}{Error} log as std\+::string 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Error.\+hpp\item 
+src/Error.\+cpp\end{DoxyCompactItemize}

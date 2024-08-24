@@ -1,0 +1,106 @@
+\doxysection{Graphics\+Controller Class Reference}
+\hypertarget{classGraphicsController}{}\label{classGraphicsController}\index{GraphicsController@{GraphicsController}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classGraphicsController_a9de1c70199ce430b0fb79ed39ac0648e}{debug\+Message}} (GLenum source, GLenum type, GLuint debug\+\_\+id, GLenum severity, GLsizei length, const GLchar \texorpdfstring{$\ast$}{*}message, const void \texorpdfstring{$\ast$}{*}user\+Param)
+\item 
+static void \mbox{\hyperlink{classGraphicsController_aa867e13a657ae705ce0c43291df71e8b}{enable\+Debug}} ()
+\item 
+static std\+::optional$<$ \mbox{\hyperlink{structError}{Error}} $>$ \mbox{\hyperlink{classGraphicsController_ab4afc0842a7845fa8aa2c887e1c4d1b9}{init\+GL}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}sdl\+Window)
+\item 
+static std\+::optional$<$ \mbox{\hyperlink{structError}{Error}} $>$ \mbox{\hyperlink{classGraphicsController_ae611e80b5ec7cd0d84a54b472eb55b24}{Check\+GLObject\+Status}} (GLuint object, GLenum parameter, const std\+::function$<$ void(GLuint, GLenum, GLint \texorpdfstring{$\ast$}{*})$>$ \&getiv, const std\+::function$<$ void(GLuint, GLsizei, GLsizei \texorpdfstring{$\ast$}{*}, GLchar \texorpdfstring{$\ast$}{*})$>$ \&get\+Info\+Log)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unordered\+\_\+map$<$ std\+::string, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classShaderProgram}{Shader\+Program}} $>$ $>$ \mbox{\hyperlink{classGraphicsController_a0268ab41ebc3b24d360d0e90bd8c658f}{s\+\_\+shader\+Programs}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGraphicsController_a9130813820a270205fd9f5569598704e}\label{classGraphicsController_a9130813820a270205fd9f5569598704e} 
+static SDL\+\_\+\+GLContext {\bfseries s\+\_\+gl\+Context}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGraphicsController_ae611e80b5ec7cd0d84a54b472eb55b24}\label{classGraphicsController_ae611e80b5ec7cd0d84a54b472eb55b24} 
+\index{GraphicsController@{GraphicsController}!CheckGLObjectStatus@{CheckGLObjectStatus}}
+\index{CheckGLObjectStatus@{CheckGLObjectStatus}!GraphicsController@{GraphicsController}}
+\doxysubsubsection{\texorpdfstring{CheckGLObjectStatus()}{CheckGLObjectStatus()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structError}{Error}} $>$ Graphics\+Controller\+::\+Check\+GLObject\+Status (\begin{DoxyParamCaption}\item[{GLuint}]{object,  }\item[{GLenum}]{parameter,  }\item[{const std\+::function$<$ void(GLuint, GLenum, GLint \texorpdfstring{$\ast$}{*})$>$ \&}]{getiv,  }\item[{const std\+::function$<$ void(GLuint, GLsizei, GLsizei \texorpdfstring{$\ast$}{*}, GLchar \texorpdfstring{$\ast$}{*})$>$ \&}]{get\+Info\+Log }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Checks the status of an Open\+GL object and retrieves info logs if there are any errors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & The ID of the Open\+GL object (e.\+g. shaders, program) \\
+\hline
+{\em parameter} & The specific status parameter to query (e.\+g. GL\+\_\+\+COMPILE\+\_\+\+STATUS, GL\+\_\+\+LINK\+\_\+\+STATUS) \\
+\hline
+{\em getiv} & Parameter getter for the object type (e.\+g. gl\+Get\+Shaderiv) \\
+\hline
+{\em get\+Info\+Log} & Info log getter for the object type (e.\+g. gl\+Get\+Shader\+Info\+Log)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::optional$<$\+Error$>$ Returns infolog if status results in an error 
+\end{DoxyReturn}
+\Hypertarget{classGraphicsController_a9de1c70199ce430b0fb79ed39ac0648e}\label{classGraphicsController_a9de1c70199ce430b0fb79ed39ac0648e} 
+\index{GraphicsController@{GraphicsController}!debugMessage@{debugMessage}}
+\index{debugMessage@{debugMessage}!GraphicsController@{GraphicsController}}
+\doxysubsubsection{\texorpdfstring{debugMessage()}{debugMessage()}}
+{\footnotesize\ttfamily void Graphics\+Controller\+::debug\+Message (\begin{DoxyParamCaption}\item[{GLenum}]{source,  }\item[{GLenum}]{type,  }\item[{GLuint}]{debug\+\_\+id,  }\item[{GLenum}]{severity,  }\item[{GLsizei}]{length,  }\item[{const GLchar \texorpdfstring{$\ast$}{*}}]{message,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{user\+Param }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Debug message hook for Open\+GL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & \\
+\hline
+{\em type} & \\
+\hline
+{\em debug\+\_\+id} & \\
+\hline
+{\em severity} & \\
+\hline
+{\em length} & \\
+\hline
+{\em message} & \\
+\hline
+{\em user\+Param} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraphicsController_aa867e13a657ae705ce0c43291df71e8b}\label{classGraphicsController_aa867e13a657ae705ce0c43291df71e8b} 
+\index{GraphicsController@{GraphicsController}!enableDebug@{enableDebug}}
+\index{enableDebug@{enableDebug}!GraphicsController@{GraphicsController}}
+\doxysubsubsection{\texorpdfstring{enableDebug()}{enableDebug()}}
+{\footnotesize\ttfamily void Graphics\+Controller\+::enable\+Debug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Enables debug message callbacks on \doxylink{classGraphicsController_a9de1c70199ce430b0fb79ed39ac0648e}{Graphics\+Controller\+::debug\+Message}. \Hypertarget{classGraphicsController_ab4afc0842a7845fa8aa2c887e1c4d1b9}\label{classGraphicsController_ab4afc0842a7845fa8aa2c887e1c4d1b9} 
+\index{GraphicsController@{GraphicsController}!initGL@{initGL}}
+\index{initGL@{initGL}!GraphicsController@{GraphicsController}}
+\doxysubsubsection{\texorpdfstring{initGL()}{initGL()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structError}{Error}} $>$ Graphics\+Controller\+::init\+GL (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{sdl\+Window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Initializes the Open\+GL context.
+
+\begin{DoxyReturn}{Returns}
+std\+::optional$<$\+Error$>$ Returns error if initialization fails 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGraphicsController_a0268ab41ebc3b24d360d0e90bd8c658f}\label{classGraphicsController_a0268ab41ebc3b24d360d0e90bd8c658f} 
+\index{GraphicsController@{GraphicsController}!s\_shaderPrograms@{s\_shaderPrograms}}
+\index{s\_shaderPrograms@{s\_shaderPrograms}!GraphicsController@{GraphicsController}}
+\doxysubsubsection{\texorpdfstring{s\_shaderPrograms}{s\_shaderPrograms}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classShaderProgram}{Shader\+Program}} $>$ $>$ Graphics\+Controller\+::s\+\_\+shader\+Programs\hspace{0.3cm}{\ttfamily [static]}}
+
+Static map storing shader programs, with strings as keys. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Graphics\+Controller.\+hpp\item 
+src/Graphics\+Controller.\+cpp\end{DoxyCompactItemize}

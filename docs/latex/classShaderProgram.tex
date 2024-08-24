@@ -1,0 +1,72 @@
+\doxysection{Shader\+Program Class Reference}
+\hypertarget{classShaderProgram}{}\label{classShaderProgram}\index{ShaderProgram@{ShaderProgram}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structShaderProgram_1_1__passKey__t}{\+\_\+pass\+Key\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShaderProgram_a2d2eadcfc48cc2e2ddb82aba70553a9f}{\texorpdfstring{$\sim$}{\string~}\+Shader\+Program}} ()
+\item 
+GLuint \mbox{\hyperlink{classShaderProgram_abc63a93bb13ad4ea96c1ea37811cad5f}{Get\+Program\+Id}} () const
+\item 
+\mbox{\hyperlink{classShaderProgram_a34c19143036eb0ebdbedc8d5275edda8}{Shader\+Program}} (\mbox{\hyperlink{structShaderProgram_1_1__passKey__t}{\+\_\+pass\+Key\+\_\+t}}, GLuint program\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classShaderProgram_af5ccfa3253f1dcf820fd9d87d505933e}\label{classShaderProgram_af5ccfa3253f1dcf820fd9d87d505933e} 
+const GLuint {\bfseries m\+\_\+program\+\_\+id} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classShaderProgram_a95d0213badfc8214cbfd42122b313cef}\label{classShaderProgram_a95d0213badfc8214cbfd42122b313cef} 
+class {\bfseries Shader\+Program\+Builder}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classShaderProgram_a2d2eadcfc48cc2e2ddb82aba70553a9f}\label{classShaderProgram_a2d2eadcfc48cc2e2ddb82aba70553a9f} 
+\index{ShaderProgram@{ShaderProgram}!````~ShaderProgram@{\texorpdfstring{$\sim$}{\string~}ShaderProgram}}
+\index{````~ShaderProgram@{\texorpdfstring{$\sim$}{\string~}ShaderProgram}!ShaderProgram@{ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ShaderProgram()}{\string~ShaderProgram()}}
+{\footnotesize\ttfamily Shader\+Program\+::\texorpdfstring{$\sim$}{\string~}\+Shader\+Program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cleans up the program on destruction. \Hypertarget{classShaderProgram_a34c19143036eb0ebdbedc8d5275edda8}\label{classShaderProgram_a34c19143036eb0ebdbedc8d5275edda8} 
+\index{ShaderProgram@{ShaderProgram}!ShaderProgram@{ShaderProgram}}
+\index{ShaderProgram@{ShaderProgram}!ShaderProgram@{ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{ShaderProgram()}{ShaderProgram()}}
+{\footnotesize\ttfamily Shader\+Program\+::\+Shader\+Program (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structShaderProgram_1_1__passKey__t}{\+\_\+pass\+Key\+\_\+t}}}]{\+\_\+pass\+Key,  }\item[{GLuint}]{program\+\_\+id }\end{DoxyParamCaption})}
+
+Encapsulation of an Open\+GL program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passkey} & An instance of the \doxylink{structShaderProgram_1_1__passKey__t}{\+\_\+pass\+Key\+\_\+t} struct. This restricts the constructor usage. \\
+\hline
+{\em program\+\_\+id} & The Open\+GL shader program ID.\\
+\hline
+\end{DoxyParams}
+The passkey is used to restrict instantiation of \doxylink{classShaderProgram}{Shader\+Program} objects Only classes that have access to the \doxylink{structShaderProgram_1_1__passKey__t}{\+\_\+pass\+Key\+\_\+t} struct can create \doxylink{classShaderProgram}{Shader\+Program} objects. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classShaderProgram_abc63a93bb13ad4ea96c1ea37811cad5f}\label{classShaderProgram_abc63a93bb13ad4ea96c1ea37811cad5f} 
+\index{ShaderProgram@{ShaderProgram}!GetProgramId@{GetProgramId}}
+\index{GetProgramId@{GetProgramId}!ShaderProgram@{ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{GetProgramId()}{GetProgramId()}}
+{\footnotesize\ttfamily GLuint Shader\+Program\+::\+Get\+Program\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the program\+ID.
+
+\begin{DoxyReturn}{Returns}
+Open\+GL Program ID as GLuint. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Shader\+Program.\+hpp\item 
+src/Shader\+Program.\+cpp\end{DoxyCompactItemize}

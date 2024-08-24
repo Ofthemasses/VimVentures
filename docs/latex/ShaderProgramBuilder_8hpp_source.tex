@@ -1,0 +1,31 @@
+\doxysection{Shader\+Program\+Builder.\+hpp}
+\hypertarget{ShaderProgramBuilder_8hpp_source}{}\label{ShaderProgramBuilder_8hpp_source}\index{include/ShaderProgramBuilder.hpp@{include/ShaderProgramBuilder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHADERPROGRAMBUILDER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHADERPROGRAMBUILDER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Error.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <ShaderProgram.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShaderProgramBuilder}{ShaderProgramBuilder}}\ \{}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classShaderProgramBuilder_a38f64eaa263cc195190502af4069b9c1}{\string~ShaderProgramBuilder}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classShaderProgramBuilder}{ShaderProgramBuilder}}\ \&\mbox{\hyperlink{classShaderProgramBuilder_a507b0d834e9d2ba7169342c66d27fe06}{LoadShaderFile}}(GLenum\ type,\ std::string\ file);}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classShaderProgramBuilder}{ShaderProgramBuilder}}\ \&\mbox{\hyperlink{classShaderProgramBuilder_ae1b65700bc914925df94349c29f1b2a8}{LoadShader}}(GLenum\ type,\ std::string\ shaderCode);}
+\DoxyCodeLine{00018\ \ \ \ \ std::variant<Error,\ std::unique\_ptr<ShaderProgram>>\ \mbox{\hyperlink{classShaderProgramBuilder_a6f593f18242d03db9d27a89bc48229c9}{GenerateShaderProgram}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<GLuint>\ m\_shaders;}
+\DoxyCodeLine{00022\ \ \ \ \ std::optional<Error>\ m\_error\ =\ std::nullopt;}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

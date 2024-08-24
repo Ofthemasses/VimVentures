@@ -45,6 +45,11 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     CreateGraphicsPipeline();
 }
 
+/**
+ * Builds and loads the canode shader into the shader map.
+ *
+ * @todo Incorporate other shaders, perhaps a constexpr list
+ */
 void App::CreateGraphicsPipeline() {
 
     ShaderProgramBuilder shaderBuilder;
