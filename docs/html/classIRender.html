@@ -74,6 +74,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classIRender-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">IRender Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -84,18 +86,66 @@ Inheritance diagram for IRender:</div>
  <div class="center">
   <img src="classIRender.png" usemap="#IRender_map" alt=""/>
   <map id="IRender_map" name="IRender_map">
-<area href="classVimEmulator.html" alt="VimEmulator" shape="rect" coords="0,56,82,80"/>
+<area href="classRect2D.html" alt="Rect2D" shape="rect" coords="0,56,102,80"/>
+<area href="classTexturedRect2D.html" alt="TexturedRect2D" shape="rect" coords="0,112,102,136"/>
+<area href="classVimEmulator.html" alt="VimEmulator" shape="rect" coords="0,168,102,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:addaa1b1ffb6ad77df18054bf32d35d4a" id="r_addaa1b1ffb6ad77df18054bf32d35d4a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addaa1b1ffb6ad77df18054bf32d35d4a">Render</a> (SDL_Renderer *renderer)=0</td></tr>
-<tr class="separator:addaa1b1ffb6ad77df18054bf32d35d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab932ef81f44200c5fc18805b4a05f86e" id="r_ab932ef81f44200c5fc18805b4a05f86e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab932ef81f44200c5fc18805b4a05f86e">Render</a> ()=0</td></tr>
+<tr class="separator:ab932ef81f44200c5fc18805b4a05f86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70924aa5ec7daa87c526e25bcc9df3c" id="r_ad70924aa5ec7daa87c526e25bcc9df3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad70924aa5ec7daa87c526e25bcc9df3c">UpdateGL</a> ()=0</td></tr>
+<tr class="separator:ad70924aa5ec7daa87c526e25bcc9df3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a346dcb5271d0a040bbea14bc5034bd40" id="r_a346dcb5271d0a040bbea14bc5034bd40"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a346dcb5271d0a040bbea14bc5034bd40">GenBindBufferGL</a> ()=0</td></tr>
+<tr class="separator:a346dcb5271d0a040bbea14bc5034bd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a3d6787309f3e35d2ece56e6150ba145a" id="r_a3d6787309f3e35d2ece56e6150ba145a"><td class="memItemLeft" align="right" valign="top"><a id="a3d6787309f3e35d2ece56e6150ba145a" name="a3d6787309f3e35d2ece56e6150ba145a"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_vertexArrayObject</b></td></tr>
+<tr class="separator:a3d6787309f3e35d2ece56e6150ba145a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7182a6e358165fe0d4b360b523a47d16" id="r_a7182a6e358165fe0d4b360b523a47d16"><td class="memItemLeft" align="right" valign="top"><a id="a7182a6e358165fe0d4b360b523a47d16" name="a7182a6e358165fe0d4b360b523a47d16"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_vertexBufferObject</b></td></tr>
+<tr class="separator:a7182a6e358165fe0d4b360b523a47d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab28fa2d3ba973a626a53d88b58814d91" id="r_ab28fa2d3ba973a626a53d88b58814d91"><td class="memItemLeft" align="right" valign="top"><a id="ab28fa2d3ba973a626a53d88b58814d91" name="ab28fa2d3ba973a626a53d88b58814d91"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_indexBufferObject</b></td></tr>
+<tr class="separator:ab28fa2d3ba973a626a53d88b58814d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="addaa1b1ffb6ad77df18054bf32d35d4a" name="addaa1b1ffb6ad77df18054bf32d35d4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addaa1b1ffb6ad77df18054bf32d35d4a">&#9670;&#160;</a></span>Render()</h2>
+<a id="a346dcb5271d0a040bbea14bc5034bd40" name="a346dcb5271d0a040bbea14bc5034bd40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a346dcb5271d0a040bbea14bc5034bd40">&#9670;&#160;</a></span>GenBindBufferGL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IRender::GenBindBufferGL </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classRect2D.html#a0d4d3d2a5dc76eb349190bb685cd94d4">Rect2D</a>.</p>
+
+</div>
+</div>
+<a id="ab932ef81f44200c5fc18805b4a05f86e" name="ab932ef81f44200c5fc18805b4a05f86e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab932ef81f44200c5fc18805b4a05f86e">&#9670;&#160;</a></span>Render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,7 +156,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void IRender::Render </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -117,7 +167,34 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classVimEmulator.html#a08e7ecf4cec7b97b29b32242075f2918">VimEmulator</a>.</p>
+<p>Implemented in <a class="el" href="classRect2D.html#a54a14b1e63c6cf187aa00ebf20044ae5">Rect2D</a>, <a class="el" href="classTexturedRect2D.html#aa37daeff9f2db40e9effbb737349e99e">TexturedRect2D</a>, and <a class="el" href="classVimEmulator.html#acbea0a2d9f159a125cfad14e4a57266a">VimEmulator</a>.</p>
+
+</div>
+</div>
+<a id="ad70924aa5ec7daa87c526e25bcc9df3c" name="ad70924aa5ec7daa87c526e25bcc9df3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70924aa5ec7daa87c526e25bcc9df3c">&#9670;&#160;</a></span>UpdateGL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IRender::UpdateGL </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">Rect2D</a>, and <a class="el" href="classTexturedRect2D.html#aec53724ec19e14b728702fe9b6e09d4f">TexturedRect2D</a>.</p>
 
 </div>
 </div>

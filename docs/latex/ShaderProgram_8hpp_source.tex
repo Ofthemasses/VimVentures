@@ -1,0 +1,25 @@
+\doxysection{Shader\+Program.\+hpp}
+\hypertarget{ShaderProgram_8hpp_source}{}\label{ShaderProgram_8hpp_source}\index{include/ShaderProgram.hpp@{include/ShaderProgram.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHADERPROGRAM\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHADERPROGRAM\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShaderProgram}{ShaderProgram}}\ \{}
+\DoxyCodeLine{00007\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShaderProgramBuilder}{ShaderProgramBuilder}};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structShaderProgram_1_1__passKey__t}{\_passKey\_t}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structShaderProgram_1_1__passKey__t}{\_passKey\_t}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00011\ \ \ \ \ \};}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{const}\ GLuint\ m\_program\_id\ =\ 0;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classShaderProgram_a2d2eadcfc48cc2e2ddb82aba70553a9f}{\string~ShaderProgram}}();}
+\DoxyCodeLine{00016\ \ \ \ \ [[nodiscard]]\ GLuint\ \mbox{\hyperlink{classShaderProgram_abc63a93bb13ad4ea96c1ea37811cad5f}{GetProgramId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classShaderProgram_a34c19143036eb0ebdbedc8d5275edda8}{ShaderProgram}}(\mbox{\hyperlink{structShaderProgram_1_1__passKey__t}{\_passKey\_t}},\ GLuint\ program\_id);}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

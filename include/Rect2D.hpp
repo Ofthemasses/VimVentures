@@ -1,34 +1,52 @@
 #ifndef RECT2D_HPP
 #define RECT2D_HPP
 
+#include <GraphicsController.hpp>
+#include <IRender.hpp>
 #include <SDL2/SDL.h>
+#include <glad/glad.h>
+#include <iostream>
+#include <vector>
 
-class Rect2D {
+class Rect2D : public IRender {
   protected:
-    SDL_Rect m_rect{0, 0, 0, 0};
+    std::vector<GLfloat> m_vertexData;
+    std::vector<GLuint> m_indexData;
+    GLfloat m_x;
+    GLfloat m_y;
+    GLfloat m_width;
+    GLfloat m_height;
+
+    GLuint m_texture_width;
+    GLuint m_texture_height;
+
+    void GenBindBufferGL() override;
 
   public:
-    Rect2D() : m_rect{0, 0, 0, 0} {}
-    Rect2D(int x, int y, int w, int h) : m_rect{x, y, w, h} {}
+    Rect2D(GLfloat xPos = 0, GLfloat yPos = 0, GLfloat width = 0,
+           GLfloat height = 0);
 
-    void SetPosition(int x, int y) {
-        m_rect.x = x;
-        m_rect.y = y;
-    }
+    virtual void UpdateVertexData();
 
-    void SetSize(int w, int h) {
-        m_rect.w = w;
-        m_rect.h = h;
-    }
+    void SetPosition(GLfloat xPos, GLfloat yPos);
 
-    int GetX() const { return m_rect.x; }
-    int GetY() const { return m_rect.y; }
-    int GetWidth() const { return m_rect.w; }
-    int GetHeight() const { return m_rect.h; }
+    void SetSize(GLfloat width, GLfloat height);
 
-    SDL_Rect GetSDLRect() const { return m_rect; }
+    [[nodiscard]] GLfloat GetX() const;
+    [[nodiscard]] GLfloat GetY() const;
+    [[nodiscard]] GLfloat GetWidth() const;
+    [[nodiscard]] GLfloat GetHeight() const;
 
-    virtual ~Rect2D() = default;
+    [[nodiscard]] std::vector<GLfloat> GetVertexData() const;
+
+    ~Rect2D();
+
+    void Render() override;
+
+  private:
+    void UpdateGL() override;
+
+    static constexpr int RECT_ELEMENTS = 6;
 };
 
 #endif

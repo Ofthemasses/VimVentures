@@ -1,8 +1,15 @@
 #include "App.hpp"
 
+#include "Error.hpp"
+#include "GraphicsController.hpp"
+#include "ShaderProgramBuilder.hpp"
 #include "constants.hpp"
+#include "glad/glad.h"
+#include <fstream>
 #include <iostream>
+#include <memory>
 #include <unistd.h>
+#include <variant>
 
 /**
  * VimVentures Game.
@@ -21,10 +28,47 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
         std::cerr << "SDL could not initalize: " << SDL_GetError();
     }
 
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+                        SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, APP_GL_DEPTH_SIZE);
+
     m_window = SDL_CreateWindow(APP_TITLE, x, y, m_width, m_height,
-                                SDL_WINDOW_SHOWN |
-                                    SDL_WINDOW_OPENGL); // TODO Look into Vulkan
-    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+                                SDL_WINDOW_OPENGL); // TODO Look into Vulkan
+
+    GraphicsController::initGL(m_window);
+    GraphicsController::enableDebug();
+
+    CreateGraphicsPipeline();
+}
+
+/**
+ * Builds and loads the canode shader into the shader map.
+ *
+ * @todo Incorporate other shaders, perhaps a constexpr list
+ */
+void App::CreateGraphicsPipeline() {
+
+    ShaderProgramBuilder shaderBuilder;
+
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
+
+    std::variant<Error, std::unique_ptr<ShaderProgram>> shaderProgramResult =
+        shaderBuilder.GenerateShaderProgram();
+
+    if (std::holds_alternative<Error>(shaderProgramResult)) {
+        std::cout << std::get<Error>(shaderProgramResult).toString()
+                  << std::endl;
+    } else {
+        GraphicsController::s_shaderPrograms.try_emplace(
+            std::string("sp_cathode"),
+            std::move(
+                std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
+    }
 }
 
 /**
@@ -79,14 +123,25 @@ void App::Run() {
  */
 void App::Stop() { m_running = false; }
 
+void App::PreDraw() const {
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
+
+    glViewport(0, 0, m_width, m_height);
+    glClearColor(1.0F, 1.0F, 0.0F, 1.0F);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
 /**
  * Render cycle, calls all renderables.
  */
 void App::Render() {
-    SDL_RenderClear(m_renderer);
+    PreDraw();
+    // SDL_RenderClear(m_renderer);
     // TODO ?Doubly? Linked List of Renderables
-    m_renderable->Render(m_renderer);
-    SDL_RenderPresent(m_renderer);
+    m_renderable->Render();
+    glUseProgram(0);
+    // SDL_RenderPresent(m_renderer);
+    SDL_GL_SwapWindow(m_window);
 }
 
 /**

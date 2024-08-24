@@ -3,26 +3,65 @@
 Inheritance diagram for IRender\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classIRender}
+\includegraphics[height=4.000000cm]{classIRender}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual void \mbox{\hyperlink{classIRender_addaa1b1ffb6ad77df18054bf32d35d4a}{Render}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)=0
+virtual void \mbox{\hyperlink{classIRender_ab932ef81f44200c5fc18805b4a05f86e}{Render}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classIRender_ad70924aa5ec7daa87c526e25bcc9df3c}{Update\+GL}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classIRender_a346dcb5271d0a040bbea14bc5034bd40}{Gen\+Bind\+Buffer\+GL}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classIRender_a3d6787309f3e35d2ece56e6150ba145a}\label{classIRender_a3d6787309f3e35d2ece56e6150ba145a} 
+GLuint {\bfseries m\+\_\+vertex\+Array\+Object}
+\item 
+\Hypertarget{classIRender_a7182a6e358165fe0d4b360b523a47d16}\label{classIRender_a7182a6e358165fe0d4b360b523a47d16} 
+GLuint {\bfseries m\+\_\+vertex\+Buffer\+Object}
+\item 
+\Hypertarget{classIRender_ab28fa2d3ba973a626a53d88b58814d91}\label{classIRender_ab28fa2d3ba973a626a53d88b58814d91} 
+GLuint {\bfseries m\+\_\+index\+Buffer\+Object}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classIRender_addaa1b1ffb6ad77df18054bf32d35d4a}\label{classIRender_addaa1b1ffb6ad77df18054bf32d35d4a} 
+\Hypertarget{classIRender_a346dcb5271d0a040bbea14bc5034bd40}\label{classIRender_a346dcb5271d0a040bbea14bc5034bd40} 
+\index{IRender@{IRender}!GenBindBufferGL@{GenBindBufferGL}}
+\index{GenBindBufferGL@{GenBindBufferGL}!IRender@{IRender}}
+\doxysubsubsection{\texorpdfstring{GenBindBufferGL()}{GenBindBufferGL()}}
+{\footnotesize\ttfamily virtual void IRender\+::\+Gen\+Bind\+Buffer\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRect2D_a0d4d3d2a5dc76eb349190bb685cd94d4}{Rect2D}}.
+
+\Hypertarget{classIRender_ab932ef81f44200c5fc18805b4a05f86e}\label{classIRender_ab932ef81f44200c5fc18805b4a05f86e} 
 \index{IRender@{IRender}!Render@{Render}}
 \index{Render@{Render}!IRender@{IRender}}
 \doxysubsubsection{\texorpdfstring{Render()}{Render()}}
-{\footnotesize\ttfamily virtual void IRender\+::\+Render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void IRender\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \mbox{\hyperlink{classVimEmulator_a08e7ecf4cec7b97b29b32242075f2918}{Vim\+Emulator}}.
+Implemented in \mbox{\hyperlink{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5}{Rect2D}}, \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Textured\+Rect2D}}, and \mbox{\hyperlink{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}{Vim\+Emulator}}.
+
+\Hypertarget{classIRender_ad70924aa5ec7daa87c526e25bcc9df3c}\label{classIRender_ad70924aa5ec7daa87c526e25bcc9df3c} 
+\index{IRender@{IRender}!UpdateGL@{UpdateGL}}
+\index{UpdateGL@{UpdateGL}!IRender@{IRender}}
+\doxysubsubsection{\texorpdfstring{UpdateGL()}{UpdateGL()}}
+{\footnotesize\ttfamily virtual void IRender\+::\+Update\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{Rect2D}}, and \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{Textured\+Rect2D}}.
 
 
 

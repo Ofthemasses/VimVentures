@@ -5,13 +5,12 @@
 #include <mutex>
 #include <string>
 
-#include "IRender.hpp"
-#include "Rect2D.hpp"
+#include "TexturedRect2D.hpp"
 
-class VimEmulator : public IRender, public Rect2D {
+class VimEmulator : public TexturedRect2D {
   public:
     VimEmulator(std::string terminal, std::string nArg);
-    ~VimEmulator() override;
+    ~VimEmulator();
     void RegisterWindow();
     void ResizeWindow(int w, int h);
     void QueueFrame();
@@ -21,7 +20,7 @@ class VimEmulator : public IRender, public Rect2D {
     void SetSDLMod(SDL_Keymod mod);
 
     /** IRender **/
-    void Render(SDL_Renderer *renderer) override;
+    void Render() override;
 
   private:
     static constexpr int REFRESH_MS = 100;
@@ -46,9 +45,6 @@ class VimEmulator : public IRender, public Rect2D {
 
     /** XKeyboard **/
     unsigned int *m_modmask;
-
-    /** Render Data **/
-    SDL_Texture *m_texture;
 
     /** Private Methods **/
     SDL_Surface *GetFrameAsSurface();

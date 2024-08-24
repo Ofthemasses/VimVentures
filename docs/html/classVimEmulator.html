@@ -87,8 +87,9 @@ Inheritance diagram for VimEmulator:</div>
  <div class="center">
   <img src="classVimEmulator.png" usemap="#VimEmulator_map" alt=""/>
   <map id="VimEmulator_map" name="VimEmulator_map">
-<area href="classIRender.html" alt="IRender" shape="rect" coords="0,0,82,24"/>
-<area href="classRect2D.html" alt="Rect2D" shape="rect" coords="92,0,174,24"/>
+<area href="classTexturedRect2D.html" alt="TexturedRect2D" shape="rect" coords="0,112,102,136"/>
+<area href="classRect2D.html" alt="Rect2D" shape="rect" coords="0,56,102,80"/>
+<area href="classIRender.html" alt="IRender" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -96,8 +97,8 @@ Inheritance diagram for VimEmulator:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af3e2121729f336725954a5bef11cb7a0" id="r_af3e2121729f336725954a5bef11cb7a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3e2121729f336725954a5bef11cb7a0">VimEmulator</a> (std::string terminal, std::string nArg)</td></tr>
 <tr class="separator:af3e2121729f336725954a5bef11cb7a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d029e3d7f92316b4938dc0b7d021cfa" id="r_a2d029e3d7f92316b4938dc0b7d021cfa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d029e3d7f92316b4938dc0b7d021cfa">~VimEmulator</a> () override</td></tr>
-<tr class="separator:a2d029e3d7f92316b4938dc0b7d021cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296f8d4387a19973a60e5a8f8cb77bf2" id="r_a296f8d4387a19973a60e5a8f8cb77bf2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a296f8d4387a19973a60e5a8f8cb77bf2">~VimEmulator</a> ()</td></tr>
+<tr class="separator:a296f8d4387a19973a60e5a8f8cb77bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3213cb5fd67ef8511d40e2bb8304e97d" id="r_a3213cb5fd67ef8511d40e2bb8304e97d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3213cb5fd67ef8511d40e2bb8304e97d">RegisterWindow</a> ()</td></tr>
 <tr class="separator:a3213cb5fd67ef8511d40e2bb8304e97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5987f17f3d47c66562a327d0b65c706" id="r_af5987f17f3d47c66562a327d0b65c706"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5987f17f3d47c66562a327d0b65c706">ResizeWindow</a> (int w, int h)</td></tr>
@@ -108,34 +109,37 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af1ba75fdcd9ff4daabaef5c41e29fef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948246f2c41a62b5eb3d5764b113cd14" id="r_a948246f2c41a62b5eb3d5764b113cd14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a948246f2c41a62b5eb3d5764b113cd14">SetSDLMod</a> (SDL_Keymod mod)</td></tr>
 <tr class="separator:a948246f2c41a62b5eb3d5764b113cd14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e7ecf4cec7b97b29b32242075f2918" id="r_a08e7ecf4cec7b97b29b32242075f2918"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08e7ecf4cec7b97b29b32242075f2918">Render</a> (SDL_Renderer *renderer) override</td></tr>
-<tr class="memdesc:a08e7ecf4cec7b97b29b32242075f2918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render cycle for a new frame.  <br /></td></tr>
-<tr class="separator:a08e7ecf4cec7b97b29b32242075f2918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbea0a2d9f159a125cfad14e4a57266a" id="r_acbea0a2d9f159a125cfad14e4a57266a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbea0a2d9f159a125cfad14e4a57266a">Render</a> () override</td></tr>
+<tr class="memdesc:acbea0a2d9f159a125cfad14e4a57266a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render cycle for a new frame.  <br /></td></tr>
+<tr class="separator:acbea0a2d9f159a125cfad14e4a57266a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classTexturedRect2D"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classTexturedRect2D')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTexturedRect2D.html">TexturedRect2D</a></td></tr>
+<tr class="memitem:a615344905b23e8ad55beeec18854d784 inherit pub_methods_classTexturedRect2D" id="r_a615344905b23e8ad55beeec18854d784"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexturedRect2D.html#a615344905b23e8ad55beeec18854d784">TexturedRect2D</a> (GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</td></tr>
+<tr class="separator:a615344905b23e8ad55beeec18854d784 inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d7e9d3f2a8f6c1772ba5e0a84cc27e inherit pub_methods_classTexturedRect2D" id="r_a75d7e9d3f2a8f6c1772ba5e0a84cc27e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexturedRect2D.html#a75d7e9d3f2a8f6c1772ba5e0a84cc27e">UpdateVertexData</a> () override</td></tr>
+<tr class="separator:a75d7e9d3f2a8f6c1772ba5e0a84cc27e inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3125472341cd3feef5b88964ae65eb8d inherit pub_methods_classTexturedRect2D" id="r_a3125472341cd3feef5b88964ae65eb8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexturedRect2D.html#a3125472341cd3feef5b88964ae65eb8d">SetTexture</a> (void *data, GLuint width, GLuint height, bool force=false)</td></tr>
+<tr class="separator:a3125472341cd3feef5b88964ae65eb8d inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45538e526e981eddb69074e6a7d11808 inherit pub_methods_classTexturedRect2D" id="r_a45538e526e981eddb69074e6a7d11808"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexturedRect2D.html#a45538e526e981eddb69074e6a7d11808">~TexturedRect2D</a> ()</td></tr>
+<tr class="separator:a45538e526e981eddb69074e6a7d11808 inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classRect2D"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classRect2D')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classRect2D.html">Rect2D</a></td></tr>
-<tr class="memitem:a54cdf98af3d47fd9d3799d91cb81003b inherit pub_methods_classRect2D" id="r_a54cdf98af3d47fd9d3799d91cb81003b"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>Rect2D</b> (int x, int y, int w, int h)</td></tr>
-<tr class="separator:a54cdf98af3d47fd9d3799d91cb81003b inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69434e1b5d50535fefa2a32ba658f0a7 inherit pub_methods_classRect2D" id="r_a69434e1b5d50535fefa2a32ba658f0a7"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPosition</b> (int x, int y)</td></tr>
-<tr class="separator:a69434e1b5d50535fefa2a32ba658f0a7 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a611f204619bcd2fac7e0225ecbbfe0c3 inherit pub_methods_classRect2D" id="r_a611f204619bcd2fac7e0225ecbbfe0c3"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSize</b> (int w, int h)</td></tr>
-<tr class="separator:a611f204619bcd2fac7e0225ecbbfe0c3 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6555ca8ee4d0bd8db8a9d9a43a3ad825 inherit pub_methods_classRect2D" id="r_a6555ca8ee4d0bd8db8a9d9a43a3ad825"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetX</b> () const</td></tr>
-<tr class="separator:a6555ca8ee4d0bd8db8a9d9a43a3ad825 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94f519334e6706a5717237dd7db073d9 inherit pub_methods_classRect2D" id="r_a94f519334e6706a5717237dd7db073d9"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetY</b> () const</td></tr>
-<tr class="separator:a94f519334e6706a5717237dd7db073d9 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa532458d311520a154cea21efb92abd6 inherit pub_methods_classRect2D" id="r_aa532458d311520a154cea21efb92abd6"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetWidth</b> () const</td></tr>
-<tr class="separator:aa532458d311520a154cea21efb92abd6 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66c5d36f0a3bccf93b6b02ced2a04d29 inherit pub_methods_classRect2D" id="r_a66c5d36f0a3bccf93b6b02ced2a04d29"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetHeight</b> () const</td></tr>
-<tr class="separator:a66c5d36f0a3bccf93b6b02ced2a04d29 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a371a416a26292a36956803276045dbc9 inherit pub_methods_classRect2D" id="r_a371a416a26292a36956803276045dbc9"><td class="memItemLeft" align="right" valign="top">
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>GetSDLRect</b> () const</td></tr>
-<tr class="separator:a371a416a26292a36956803276045dbc9 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354f1a1801cd499e2fb840a884c8114e inherit pub_methods_classRect2D" id="r_a354f1a1801cd499e2fb840a884c8114e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a354f1a1801cd499e2fb840a884c8114e">Rect2D</a> (GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</td></tr>
+<tr class="separator:a354f1a1801cd499e2fb840a884c8114e inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf79cbb573a5962ad558453037bb8dc2 inherit pub_methods_classRect2D" id="r_abf79cbb573a5962ad558453037bb8dc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#abf79cbb573a5962ad558453037bb8dc2">SetPosition</a> (GLfloat xPos, GLfloat yPos)</td></tr>
+<tr class="separator:abf79cbb573a5962ad558453037bb8dc2 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace8b1695889cb276f35e7e059eb62da inherit pub_methods_classRect2D" id="r_aace8b1695889cb276f35e7e059eb62da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#aace8b1695889cb276f35e7e059eb62da">SetSize</a> (GLfloat width, GLfloat height)</td></tr>
+<tr class="separator:aace8b1695889cb276f35e7e059eb62da inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a666f3d46180fa5a78588f1ca1f2e62c4 inherit pub_methods_classRect2D" id="r_a666f3d46180fa5a78588f1ca1f2e62c4"><td class="memItemLeft" align="right" valign="top">GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a666f3d46180fa5a78588f1ca1f2e62c4">GetX</a> () const</td></tr>
+<tr class="separator:a666f3d46180fa5a78588f1ca1f2e62c4 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e981c0da83e69419a870e01c9931038 inherit pub_methods_classRect2D" id="r_a7e981c0da83e69419a870e01c9931038"><td class="memItemLeft" align="right" valign="top">GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a7e981c0da83e69419a870e01c9931038">GetY</a> () const</td></tr>
+<tr class="separator:a7e981c0da83e69419a870e01c9931038 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f4e1cab776a0eabd9230515b6f2464 inherit pub_methods_classRect2D" id="r_ab0f4e1cab776a0eabd9230515b6f2464"><td class="memItemLeft" align="right" valign="top">GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#ab0f4e1cab776a0eabd9230515b6f2464">GetWidth</a> () const</td></tr>
+<tr class="separator:ab0f4e1cab776a0eabd9230515b6f2464 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421133bd8822adc575ae4e3fd6be55d7 inherit pub_methods_classRect2D" id="r_a421133bd8822adc575ae4e3fd6be55d7"><td class="memItemLeft" align="right" valign="top">GLfloat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a421133bd8822adc575ae4e3fd6be55d7">GetHeight</a> () const</td></tr>
+<tr class="separator:a421133bd8822adc575ae4e3fd6be55d7 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50be78f5d82d97a654bf05528899cdc3 inherit pub_methods_classRect2D" id="r_a50be78f5d82d97a654bf05528899cdc3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; GLfloat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a50be78f5d82d97a654bf05528899cdc3">GetVertexData</a> () const</td></tr>
+<tr class="separator:a50be78f5d82d97a654bf05528899cdc3 inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e48bcc4ca159e58b51e2b9b0453225e inherit pub_methods_classRect2D" id="r_a7e48bcc4ca159e58b51e2b9b0453225e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a7e48bcc4ca159e58b51e2b9b0453225e">~Rect2D</a> ()</td></tr>
+<tr class="separator:a7e48bcc4ca159e58b51e2b9b0453225e inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -192,8 +196,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_frameReady</b></td>
 <tr class="separator:af996bae7fba24577771fd11f92459db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1edd3ceb9dcf27d0bead6d31ca319d7" id="r_aa1edd3ceb9dcf27d0bead6d31ca319d7"><td class="memItemLeft" align="right" valign="top">unsigned int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1edd3ceb9dcf27d0bead6d31ca319d7">m_modmask</a></td></tr>
 <tr class="separator:aa1edd3ceb9dcf27d0bead6d31ca319d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b56b642ac7e8b3912c3e70b848f23a9" id="r_a0b56b642ac7e8b3912c3e70b848f23a9"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b56b642ac7e8b3912c3e70b848f23a9">m_texture</a></td></tr>
-<tr class="separator:a0b56b642ac7e8b3912c3e70b848f23a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -214,10 +216,54 @@ static constexpr Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>A_
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classRect2D"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classRect2D')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classRect2D.html">Rect2D</a></td></tr>
+<tr class="memitem:a0d4d3d2a5dc76eb349190bb685cd94d4 inherit pro_methods_classRect2D" id="r_a0d4d3d2a5dc76eb349190bb685cd94d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a0d4d3d2a5dc76eb349190bb685cd94d4">GenBindBufferGL</a> () override</td></tr>
+<tr class="separator:a0d4d3d2a5dc76eb349190bb685cd94d4 inherit pro_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classTexturedRect2D"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classTexturedRect2D')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTexturedRect2D.html">TexturedRect2D</a></td></tr>
+<tr class="memitem:affff9bbb81181fc4fe2d737790eec254 inherit pro_attribs_classTexturedRect2D" id="r_affff9bbb81181fc4fe2d737790eec254"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_texture</b></td></tr>
+<tr class="separator:affff9bbb81181fc4fe2d737790eec254 inherit pro_attribs_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a624037aaf059723b1286aafe403fe157 inherit pro_attribs_classTexturedRect2D" id="r_a624037aaf059723b1286aafe403fe157"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_texture_width</b></td></tr>
+<tr class="separator:a624037aaf059723b1286aafe403fe157 inherit pro_attribs_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5fa3ca8d57bdd934dc643acf9f9dbc inherit pro_attribs_classTexturedRect2D" id="r_aef5fa3ca8d57bdd934dc643acf9f9dbc"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_texture_height</b></td></tr>
+<tr class="separator:aef5fa3ca8d57bdd934dc643acf9f9dbc inherit pro_attribs_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classRect2D"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classRect2D')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classRect2D.html">Rect2D</a></td></tr>
-<tr class="memitem:ac99fc99a13d03f4c49ffe4bdf715b41f inherit pro_attribs_classRect2D" id="r_ac99fc99a13d03f4c49ffe4bdf715b41f"><td class="memItemLeft" align="right" valign="top">
-SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0, 0, 0}</td></tr>
-<tr class="separator:ac99fc99a13d03f4c49ffe4bdf715b41f inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3264d2cdf55eceb905183c8f4d14291 inherit pro_attribs_classRect2D" id="r_ae3264d2cdf55eceb905183c8f4d14291"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; GLfloat &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_vertexData</b></td></tr>
+<tr class="separator:ae3264d2cdf55eceb905183c8f4d14291 inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af85455852083576e694dcbc44eff69e7 inherit pro_attribs_classRect2D" id="r_af85455852083576e694dcbc44eff69e7"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_indexData</b></td></tr>
+<tr class="separator:af85455852083576e694dcbc44eff69e7 inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc323ab286e75539015e90f0cf69efe inherit pro_attribs_classRect2D" id="r_a2cc323ab286e75539015e90f0cf69efe"><td class="memItemLeft" align="right" valign="top">
+GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>m_x</b></td></tr>
+<tr class="separator:a2cc323ab286e75539015e90f0cf69efe inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f5dd8d799ca5f668ead95944e9eab59 inherit pro_attribs_classRect2D" id="r_a7f5dd8d799ca5f668ead95944e9eab59"><td class="memItemLeft" align="right" valign="top">
+GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>m_y</b></td></tr>
+<tr class="separator:a7f5dd8d799ca5f668ead95944e9eab59 inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7282684c72a3c19740950b9c0bcb160 inherit pro_attribs_classRect2D" id="r_ac7282684c72a3c19740950b9c0bcb160"><td class="memItemLeft" align="right" valign="top">
+GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>m_width</b></td></tr>
+<tr class="separator:ac7282684c72a3c19740950b9c0bcb160 inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3d0322df434d423366e3673d982006 inherit pro_attribs_classRect2D" id="r_a9c3d0322df434d423366e3673d982006"><td class="memItemLeft" align="right" valign="top">
+GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>m_height</b></td></tr>
+<tr class="separator:a9c3d0322df434d423366e3673d982006 inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47e1a346e69f91072c6214f8ccdfedc inherit pro_attribs_classRect2D" id="r_ad47e1a346e69f91072c6214f8ccdfedc"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_texture_width</b></td></tr>
+<tr class="separator:ad47e1a346e69f91072c6214f8ccdfedc inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a315e43ff0a4d5c833bf747066fde0ff2 inherit pro_attribs_classRect2D" id="r_a315e43ff0a4d5c833bf747066fde0ff2"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_texture_height</b></td></tr>
+<tr class="separator:a315e43ff0a4d5c833bf747066fde0ff2 inherit pro_attribs_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classIRender"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classIRender')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classIRender.html">IRender</a></td></tr>
+<tr class="memitem:a3d6787309f3e35d2ece56e6150ba145a inherit pro_attribs_classIRender" id="r_a3d6787309f3e35d2ece56e6150ba145a"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_vertexArrayObject</b></td></tr>
+<tr class="separator:a3d6787309f3e35d2ece56e6150ba145a inherit pro_attribs_classIRender"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7182a6e358165fe0d4b360b523a47d16 inherit pro_attribs_classIRender" id="r_a7182a6e358165fe0d4b360b523a47d16"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_vertexBufferObject</b></td></tr>
+<tr class="separator:a7182a6e358165fe0d4b360b523a47d16 inherit pro_attribs_classIRender"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab28fa2d3ba973a626a53d88b58814d91 inherit pro_attribs_classIRender" id="r_ab28fa2d3ba973a626a53d88b58814d91"><td class="memItemLeft" align="right" valign="top">
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_indexBufferObject</b></td></tr>
+<tr class="separator:ab28fa2d3ba973a626a53d88b58814d91 inherit pro_attribs_classIRender"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af3e2121729f336725954a5bef11cb7a0" name="af3e2121729f336725954a5bef11cb7a0"></a>
@@ -249,14 +295,11 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0,
 
 </div>
 </div>
-<a id="a2d029e3d7f92316b4938dc0b7d021cfa" name="a2d029e3d7f92316b4938dc0b7d021cfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d029e3d7f92316b4938dc0b7d021cfa">&#9670;&#160;</a></span>~VimEmulator()</h2>
+<a id="a296f8d4387a19973a60e5a8f8cb77bf2" name="a296f8d4387a19973a60e5a8f8cb77bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a296f8d4387a19973a60e5a8f8cb77bf2">&#9670;&#160;</a></span>~VimEmulator()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">VimEmulator::~VimEmulator </td>
@@ -265,11 +308,6 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0,
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Destroys the terminal and pointer vars. </p>
 
@@ -469,8 +507,8 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0,
 
 </div>
 </div>
-<a id="a08e7ecf4cec7b97b29b32242075f2918" name="a08e7ecf4cec7b97b29b32242075f2918"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08e7ecf4cec7b97b29b32242075f2918">&#9670;&#160;</a></span>Render()</h2>
+<a id="acbea0a2d9f159a125cfad14e4a57266a" name="acbea0a2d9f159a125cfad14e4a57266a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbea0a2d9f159a125cfad14e4a57266a">&#9670;&#160;</a></span>Render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -481,7 +519,7 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0,
         <tr>
           <td class="memname">void VimEmulator::Render </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -503,7 +541,7 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0,
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classIRender.html">IRender</a>.</p>
+<p>Reimplemented from <a class="el" href="classTexturedRect2D.html#aa37daeff9f2db40e9effbb737349e99e">TexturedRect2D</a>.</p>
 
 </div>
 </div>
@@ -643,29 +681,6 @@ SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>m_rect</b> {0, 0,
 </table>
 </div><div class="memdoc">
 <p>XKeyboard </p>
-
-</div>
-</div>
-<a id="a0b56b642ac7e8b3912c3e70b848f23a9" name="a0b56b642ac7e8b3912c3e70b848f23a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b56b642ac7e8b3912c3e70b848f23a9">&#9670;&#160;</a></span>m_texture</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Texture* VimEmulator::m_texture</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Render Data </p>
 
 </div>
 </div>

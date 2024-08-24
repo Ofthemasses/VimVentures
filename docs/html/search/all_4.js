@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['installation_0',['Installation',['../md_README.html#autotoc_md3',1,'']]],
-  ['irender_1',['IRender',['../classIRender.html',1,'']]],
-  ['istate_2',['IState',['../classIState.html',1,'']]]
+  ['enabledebug_0',['enableDebug',['../classGraphicsController.html#aa867e13a657ae705ce0c43291df71e8b',1,'GraphicsController']]],
+  ['error_1',['Error',['../structError.html',1,'Error'],['../structError.html#a94fb52aea7e4c307c536978ffbc7f820',1,'Error::Error()']]]
 ];

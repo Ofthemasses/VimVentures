@@ -1,0 +1,317 @@
+\doxysection{khrplatform.\+h}
+\hypertarget{khrplatform_8h_source}{}\label{khrplatform_8h_source}\index{include/KHR/khrplatform.h@{include/KHR/khrplatform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_khrplatform\_h\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_khrplatform\_h\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Copyright\ (c)\ 2008-\/2018\ The\ Khronos\ Group\ Inc.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{**}}
+\DoxyCodeLine{00007\ \textcolor{comment}{**\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a}}
+\DoxyCodeLine{00008\ \textcolor{comment}{**\ copy\ of\ this\ software\ and/or\ associated\ documentation\ files\ (the}}
+\DoxyCodeLine{00009\ \textcolor{comment}{**\ "{}Materials"{}),\ to\ deal\ in\ the\ Materials\ without\ restriction,\ including}}
+\DoxyCodeLine{00010\ \textcolor{comment}{**\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{**\ distribute,\ sublicense,\ and/or\ sell\ copies\ of\ the\ Materials,\ and\ to}}
+\DoxyCodeLine{00012\ \textcolor{comment}{**\ permit\ persons\ to\ whom\ the\ Materials\ are\ furnished\ to\ do\ so,\ subject\ to}}
+\DoxyCodeLine{00013\ \textcolor{comment}{**\ the\ following\ conditions:}}
+\DoxyCodeLine{00014\ \textcolor{comment}{**}}
+\DoxyCodeLine{00015\ \textcolor{comment}{**\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included}}
+\DoxyCodeLine{00016\ \textcolor{comment}{**\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Materials.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{**}}
+\DoxyCodeLine{00018\ \textcolor{comment}{**\ THE\ MATERIALS\ ARE\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,}}
+\DoxyCodeLine{00019\ \textcolor{comment}{**\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF}}
+\DoxyCodeLine{00020\ \textcolor{comment}{**\ MERCHANTABILITY,\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{**\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY}}
+\DoxyCodeLine{00022\ \textcolor{comment}{**\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,}}
+\DoxyCodeLine{00023\ \textcolor{comment}{**\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE}}
+\DoxyCodeLine{00024\ \textcolor{comment}{**\ MATERIALS\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ MATERIALS.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{/*\ Khronos\ platform-\/specific\ types\ and\ definitions.}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ The\ master\ copy\ of\ khrplatform.h\ is\ maintained\ in\ the\ Khronos\ EGL}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ Registry\ repository\ at\ https://github.com/KhronosGroup/EGL-\/Registry}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ The\ last\ semantic\ modification\ to\ khrplatform.h\ was\ at\ commit\ ID:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ \ \ \ \ \ 67a3e0864c2d75ea5287b9f3d2eb74a745936692}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ Adopters\ may\ modify\ this\ file\ to\ suit\ their\ platform.\ Adopters\ are}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ encouraged\ to\ submit\ platform\ specific\ modifications\ to\ the\ Khronos}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ group\ so\ that\ they\ can\ be\ included\ in\ future\ versions\ of\ this\ file.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Please\ submit\ changes\ by\ filing\ pull\ requests\ or\ issues\ on}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ the\ EGL\ Registry\ repository\ linked\ above.}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ See\ the\ Implementer's\ Guidelines\ for\ information\ about\ where\ this\ file}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *\ should\ be\ located\ on\ your\ system\ and\ for\ more\ details\ of\ its\ use:}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *\ \ \ \ http://www.khronos.org/registry/implementers\_guide.pdf}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ *\ This\ file\ should\ be\ included\ as}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \#include\ <KHR/khrplatform.h>}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *\ by\ Khronos\ client\ API\ header\ files\ that\ use\ its\ types\ and\ defines.}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ The\ types\ in\ khrplatform.h\ should\ only\ be\ used\ to\ define\ API-\/specific\ types.}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ *\ Types\ defined\ in\ khrplatform.h:}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ *\ \ \ \ khronos\_int8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ 8\ \ bit}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ *\ \ \ \ khronos\_uint8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ unsigned\ 8\ \ bit}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ *\ \ \ \ khronos\_int16\_t\ \ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ 16\ bit}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ *\ \ \ \ khronos\_uint16\_t\ \ \ \ \ \ \ \ \ \ \ \ unsigned\ 16\ bit}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ *\ \ \ \ khronos\_int32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ 32\ bit}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ *\ \ \ \ khronos\_uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ unsigned\ 32\ bit}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ *\ \ \ \ khronos\_int64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ 64\ bit}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ *\ \ \ \ khronos\_uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ unsigned\ 64\ bit}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ *\ \ \ \ khronos\_intptr\_t\ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ same\ number\ of\ bits\ as\ a\ pointer}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ *\ \ \ \ khronos\_uintptr\_t\ \ \ \ \ \ \ \ \ \ \ unsigned\ same\ number\ of\ bits\ as\ a\ pointer}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ *\ \ \ \ khronos\_ssize\_t\ \ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ size}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ *\ \ \ \ khronos\_usize\_t\ \ \ \ \ \ \ \ \ \ \ \ \ unsigned\ size}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ *\ \ \ \ khronos\_float\_t\ \ \ \ \ \ \ \ \ \ \ \ \ signed\ \ \ 32\ bit\ floating\ point}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ *\ \ \ \ khronos\_time\_ns\_t\ \ \ \ \ \ \ \ \ \ \ unsigned\ 64\ bit\ time\ in\ nanoseconds}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ *\ \ \ \ khronos\_utime\_nanoseconds\_t\ unsigned\ time\ interval\ or\ absolute\ time\ in}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nanoseconds}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ *\ \ \ \ khronos\_stime\_nanoseconds\_t\ signed\ time\ interval\ in\ nanoseconds}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ *\ \ \ \ khronos\_boolean\_enum\_t\ \ \ \ \ \ enumerated\ boolean\ type.\ This\ should}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ *\ \ \ \ \ \ only\ be\ used\ as\ a\ base\ type\ when\ a\ client\ API's\ boolean\ type\ is}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ *\ \ \ \ \ \ an\ enum.\ Client\ APIs\ which\ use\ an\ integer\ or\ other\ type\ for}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ *\ \ \ \ \ \ booleans\ cannot\ use\ this\ as\ the\ base\ type\ for\ their\ boolean.}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ *\ Tokens\ defined\ in\ khrplatform.h:}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ *\ \ \ \ KHRONOS\_FALSE,\ KHRONOS\_TRUE\ Enumerated\ boolean\ false/true\ values.}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ *\ \ \ \ KHRONOS\_SUPPORT\_INT64\ is\ 1\ if\ 64\ bit\ integers\ are\ supported;\ otherwise\ 0.}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ *\ \ \ \ KHRONOS\_SUPPORT\_FLOAT\ is\ 1\ if\ floats\ are\ supported;\ otherwise\ 0.}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ *\ Calling\ convention\ macros\ defined\ in\ this\ file:}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ *\ \ \ \ KHRONOS\_APICALL}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ *\ \ \ \ KHRONOS\_APIENTRY}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ *\ \ \ \ KHRONOS\_APIATTRIBUTES}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ *\ These\ may\ be\ used\ in\ function\ prototypes\ as:}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ *\ \ \ \ \ \ KHRONOS\_APICALL\ void\ KHRONOS\_APIENTRY\ funcname(}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ arg1,}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ arg2)\ KHRONOS\_APIATTRIBUTES;}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#if\ defined(\_\_SCITECH\_SNAP\_\_)\ \&\&\ !defined(KHRONOS\_STATIC)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_STATIC\ 1}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ *\ Definition\ of\ KHRONOS\_APICALL}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ *\ This\ precedes\ the\ return\ type\ of\ the\ function\ in\ the\ function\ prototype.}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#if\ defined(KHRONOS\_STATIC)}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{/*\ If\ the\ preprocessor\ constant\ KHRONOS\_STATIC\ is\ defined,\ make\ the}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ \ *\ header\ compatible\ with\ static\ linking.\ */}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APICALL}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#elif\ defined(\_WIN32)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APICALL\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#elif\ defined\ (\_\_SYMBIAN32\_\_)}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APICALL\ IMPORT\_C}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#elif\ defined(\_\_ANDROID\_\_)}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APICALL\ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APICALL}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ *\ Definition\ of\ KHRONOS\_APIENTRY}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ *\ This\ follows\ the\ return\ type\ of\ the\ function\ \ and\ precedes\ the\ function}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ *\ name\ in\ the\ function\ prototype.}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)\ \&\&\ !defined(\_WIN32\_WCE)\ \&\&\ !defined(\_\_SCITECH\_SNAP\_\_)}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{/*\ Win32\ but\ not\ WinCE\ */}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APIENTRY\ \_\_stdcall}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#\ \ \ define\ KHRONOS\_APIENTRY}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ *\ Definition\ of\ KHRONOS\_APIATTRIBUTES}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ *\ This\ follows\ the\ closing\ parenthesis\ of\ the\ function\ prototype\ arguments.}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#if\ defined\ (\_\_ARMCC\_2\_\_)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ KHRONOS\_APIATTRIBUTES\ \_\_softfp}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ KHRONOS\_APIATTRIBUTES}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ *\ basic\ type\ definitions}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#if\ (defined(\_\_STDC\_VERSION\_\_)\ \&\&\ \_\_STDC\_VERSION\_\_\ >=\ 199901L)\ ||\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_SCO\_\_)\ ||\ defined(\_\_USLC\_\_)}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ *\ Using\ <stdint.h>}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00150\ \textcolor{keyword}{typedef}\ int32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int32\_t;}
+\DoxyCodeLine{00151\ \textcolor{keyword}{typedef}\ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint32\_t;}
+\DoxyCodeLine{00152\ \textcolor{keyword}{typedef}\ int64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int64\_t;}
+\DoxyCodeLine{00153\ \textcolor{keyword}{typedef}\ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint64\_t;}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_INT64\ \ \ 1}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_FLOAT\ \ \ 1}}
+\DoxyCodeLine{00156\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ *\ To\ support\ platform\ where\ unsigned\ long\ cannot\ be\ used\ interchangeably\ with}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ *\ inptr\_t\ (e.g.\ CHERI-\/extended\ ISAs),\ we\ can\ use\ the\ stdint.h\ intptr\_t.}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ *\ Ideally,\ we\ could\ just\ use\ (u)intptr\_t\ everywhere,\ but\ this\ could\ result\ in}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ *\ ABI\ breakage\ if\ khronos\_uintptr\_t\ is\ changed\ from\ unsigned\ long\ to}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\ *\ unsigned\ long\ long\ or\ similar\ (this\ results\ in\ different\ C++\ name\ mangling).}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ *\ To\ avoid\ changes\ for\ existing\ platforms,\ we\ restrict\ usage\ of\ intptr\_t\ to}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ *\ platforms\ where\ the\ size\ of\ a\ pointer\ is\ larger\ than\ the\ size\ of\ long.}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#if\ defined(\_\_SIZEOF\_LONG\_\_)\ \&\&\ defined(\_\_SIZEOF\_POINTER\_\_)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#if\ \_\_SIZEOF\_POINTER\_\_\ >\ \_\_SIZEOF\_LONG\_\_}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ KHRONOS\_USE\_INTPTR\_T}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#elif\ defined(\_\_VMS\ )\ ||\ defined(\_\_sgi)}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00174\ \textcolor{comment}{\ *\ Using\ <inttypes.h>}}
+\DoxyCodeLine{00175\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#include\ <inttypes.h>}}
+\DoxyCodeLine{00177\ \textcolor{keyword}{typedef}\ int32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int32\_t;}
+\DoxyCodeLine{00178\ \textcolor{keyword}{typedef}\ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint32\_t;}
+\DoxyCodeLine{00179\ \textcolor{keyword}{typedef}\ int64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int64\_t;}
+\DoxyCodeLine{00180\ \textcolor{keyword}{typedef}\ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint64\_t;}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_INT64\ \ \ 1}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_FLOAT\ \ \ 1}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#elif\ defined(\_WIN32)\ \&\&\ !defined(\_\_SCITECH\_SNAP\_\_)}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ *\ Win32}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00189\ \textcolor{keyword}{typedef}\ \_\_int32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int32\_t;}
+\DoxyCodeLine{00190\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int32\ \ \ \ \ \ \ \ khronos\_uint32\_t;}
+\DoxyCodeLine{00191\ \textcolor{keyword}{typedef}\ \_\_int64\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int64\_t;}
+\DoxyCodeLine{00192\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int64\ \ \ \ \ \ \ \ khronos\_uint64\_t;}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_INT64\ \ \ 1}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_FLOAT\ \ \ 1}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#elif\ defined(\_\_sun\_\_)\ ||\ defined(\_\_digital\_\_)}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ *\ Sun\ or\ Digital}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00201\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int32\_t;}
+\DoxyCodeLine{00202\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint32\_t;}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#if\ defined(\_\_arch64\_\_)\ ||\ defined(\_LP64)}}
+\DoxyCodeLine{00204\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int64\_t;}
+\DoxyCodeLine{00205\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ khronos\_uint64\_t;}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00207\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ khronos\_int64\_t;}
+\DoxyCodeLine{00208\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \ khronos\_uint64\_t;}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_arch64\_\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_INT64\ \ \ 1}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_FLOAT\ \ \ 1}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#elif\ 0}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ *\ Hypothetical\ platform\ with\ no\ float\ or\ int64\ support}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00218\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int32\_t;}
+\DoxyCodeLine{00219\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint32\_t;}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_INT64\ \ \ 0}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_FLOAT\ \ \ 0}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\ *\ Generic\ fallback}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00229\ \textcolor{keyword}{typedef}\ int32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int32\_t;}
+\DoxyCodeLine{00230\ \textcolor{keyword}{typedef}\ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint32\_t;}
+\DoxyCodeLine{00231\ \textcolor{keyword}{typedef}\ int64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_int64\_t;}
+\DoxyCodeLine{00232\ \textcolor{keyword}{typedef}\ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uint64\_t;}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_INT64\ \ \ 1}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ KHRONOS\_SUPPORT\_FLOAT\ \ \ 1}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00240\ \textcolor{comment}{\ *\ Types\ that\ are\ (so\ far)\ the\ same\ on\ all\ platforms}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00242\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ khronos\_int8\_t;}
+\DoxyCodeLine{00243\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ khronos\_uint8\_t;}
+\DoxyCodeLine{00244\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ \ \ \ \ khronos\_int16\_t;}
+\DoxyCodeLine{00245\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ \ \ \ \ khronos\_uint16\_t;}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00248\ \textcolor{comment}{\ *\ Types\ that\ differ\ between\ LLP64\ and\ LP64\ architectures\ -\/\ in\ LLP64,}}
+\DoxyCodeLine{00249\ \textcolor{comment}{\ *\ pointers\ are\ 64\ bits,\ but\ 'long'\ is\ still\ 32\ bits.\ Win64\ appears}}
+\DoxyCodeLine{00250\ \textcolor{comment}{\ *\ to\ be\ the\ only\ LLP64\ architecture\ in\ current\ use.}}
+\DoxyCodeLine{00251\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#ifdef\ KHRONOS\_USE\_INTPTR\_T}}
+\DoxyCodeLine{00253\ \textcolor{keyword}{typedef}\ intptr\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_intptr\_t;}
+\DoxyCodeLine{00254\ \textcolor{keyword}{typedef}\ uintptr\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ khronos\_uintptr\_t;}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\#elif\ defined(\_WIN64)}}
+\DoxyCodeLine{00256\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ khronos\_intptr\_t;}
+\DoxyCodeLine{00257\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ khronos\_uintptr\_t;}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00259\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{long}\ \ \textcolor{keywordtype}{int}\ \ \ \ \ khronos\_intptr\_t;}
+\DoxyCodeLine{00260\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \textcolor{keywordtype}{int}\ \ \ \ \ khronos\_uintptr\_t;}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#if\ defined(\_WIN64)}}
+\DoxyCodeLine{00264\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ khronos\_ssize\_t;}
+\DoxyCodeLine{00265\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ khronos\_usize\_t;}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00267\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \ \ \textcolor{keywordtype}{long}\ \ \textcolor{keywordtype}{int}\ \ \ \ \ khronos\_ssize\_t;}
+\DoxyCodeLine{00268\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \textcolor{keywordtype}{int}\ \ \ \ \ khronos\_usize\_t;}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#if\ KHRONOS\_SUPPORT\_FLOAT}}
+\DoxyCodeLine{00272\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ *\ Float\ type}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00275\ \textcolor{keyword}{typedef}\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ khronos\_float\_t;}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#if\ KHRONOS\_SUPPORT\_INT64}}
+\DoxyCodeLine{00279\ \textcolor{comment}{/*\ Time\ types}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ *\ These\ types\ can\ be\ used\ to\ represent\ a\ time\ interval\ in\ nanoseconds\ or}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ *\ an\ absolute\ Unadjusted\ System\ Time.\ \ Unadjusted\ System\ Time\ is\ the\ number}}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ *\ of\ nanoseconds\ since\ some\ arbitrary\ system\ event\ (e.g.\ since\ the\ last}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ *\ time\ the\ system\ booted).\ \ The\ Unadjusted\ System\ Time\ is\ an\ unsigned}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ *\ 64\ bit\ value\ that\ wraps\ back\ to\ 0\ every\ 584\ years.\ \ Time\ intervals}}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ *\ may\ be\ either\ signed\ or\ unsigned.}}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00288\ \textcolor{keyword}{typedef}\ khronos\_uint64\_t\ \ \ \ \ \ \ khronos\_utime\_nanoseconds\_t;}
+\DoxyCodeLine{00289\ \textcolor{keyword}{typedef}\ khronos\_int64\_t\ \ \ \ \ \ \ \ khronos\_stime\_nanoseconds\_t;}
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ *\ Dummy\ value\ used\ to\ pad\ enum\ types\ to\ 32\ bits.}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#ifndef\ KHRONOS\_MAX\_ENUM}}
+\DoxyCodeLine{00296\ \textcolor{preprocessor}{\#define\ KHRONOS\_MAX\_ENUM\ 0x7FFFFFFF}}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ *\ Enumerated\ boolean\ type}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ *\ Values\ other\ than\ zero\ should\ be\ considered\ to\ be\ true.\ \ Therefore}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ *\ comparisons\ should\ not\ be\ made\ against\ KHRONOS\_TRUE.}}
+\DoxyCodeLine{00304\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00305\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00306\ \ \ \ \ KHRONOS\_FALSE\ =\ 0,}
+\DoxyCodeLine{00307\ \ \ \ \ KHRONOS\_TRUE\ \ =\ 1,}
+\DoxyCodeLine{00308\ \ \ \ \ KHRONOS\_BOOLEAN\_ENUM\_FORCE\_SIZE\ =\ KHRONOS\_MAX\_ENUM}
+\DoxyCodeLine{00309\ \}\ khronos\_boolean\_enum\_t;}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_khrplatform\_h\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
