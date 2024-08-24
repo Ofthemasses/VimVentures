@@ -117,13 +117,15 @@ void VimEmulator::SetSDLMod(SDL_Keymod mod) { *m_modmask = mod; }
  *
  * @param renderer SDL_Renderer context
  */
-void VimEmulator::Render(GLuint renderer) {
+void VimEmulator::Render() {
     if (m_frameReady) {
         SDL_Surface *surface = this->GetFrameAsSurface();
         SetTexture(surface->pixels, surface->w, surface->h);
         this->QueueFrame();
     }
-    Draw(renderer);
+    if (glIsTexture(m_texture)){
+        TexturedRect2D::Render();
+    }
 };
 
 /** Private Methods **/

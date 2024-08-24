@@ -1,16 +1,15 @@
 #include <GraphicsController.hpp>
 #include <iostream>
 
-void GraphicsController::debugMessage(GLenum source, GLenum type,
-                                      GLuint debug_id, GLenum severity,
-                                      GLsizei length, const GLchar *message,
-                                      const void *userParam) {
+void GraphicsController::debugMessage(GLenum source, GLenum type, GLuint debug_id,
+                       GLenum severity, GLsizei length, const GLchar *message,
+                       const void *userParam) {
     std::cout << severity << std::endl;
     std::string message_str(message, length);
     std::cout << message_str << '\n';
 }
 
-void GraphicsController::enableDebug() {
+void GraphicsController::enableDebug(){
     glEnable(GL_DEBUG_OUTPUT);
     glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     glDebugMessageCallback(GraphicsController::debugMessage, nullptr);
@@ -19,11 +18,12 @@ void GraphicsController::enableDebug() {
                           GL_TRUE);
 }
 
-std::optional<Error> GraphicsController::initGL(SDL_Window *sdlWindow) {
+std::optional<Error> GraphicsController::initGL(SDL_Window* sdlWindow){
     SDL_GLContext s_glContext = SDL_GL_CreateContext(sdlWindow);
+    std::unordered_map<std::string, std::unique_ptr<ShaderProgram>> s_shaderPrograms;
 
     if (s_glContext == nullptr) {
-        std::string errorMsg{"OpenGL context not available: ", SDL_GetError()};
+        std::string errorMsg {"OpenGL context not available: ", SDL_GetError()};
         return Error(errorMsg.size(), errorMsg.c_str());
     }
 
@@ -61,3 +61,5 @@ std::optional<Error> GraphicsController::CheckGLObjectStatus(
 
     return Error(infoLen, infoLog);
 }
+
+std::unordered_map<std::string, std::unique_ptr<ShaderProgram>> GraphicsController::s_shaderPrograms;

@@ -37,7 +37,7 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, APP_GL_DEPTH_SIZE);
 
     m_window = SDL_CreateWindow(APP_TITLE, x, y, m_width, m_height,
-                                SDL_WINDOW_OPENGL); // TODO Look into Vulkan
+                               SDL_WINDOW_OPENGL); // TODO Look into Vulkan
 
     GraphicsController::initGL(m_window);
     GraphicsController::enableDebug();
@@ -59,8 +59,8 @@ void App::CreateGraphicsPipeline() {
         std::cout << std::get<Error>(shaderProgramResult).toString()
                   << std::endl;
     } else {
-        m_GraphicsPipelineShaderProgram = std::move(
-            std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult));
+        GraphicsController::s_shaderPrograms.try_emplace(std::string("sp_cathode"), std::move(
+            std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
     }
 }
 
@@ -123,8 +123,6 @@ void App::PreDraw() const {
     glViewport(0, 0, m_width, m_height);
     glClearColor(1.0F, 1.0F, 0.0F, 1.0F);
     glClear(GL_COLOR_BUFFER_BIT);
-
-    glUseProgram(m_GraphicsPipelineShaderProgram->GetProgramId());
 }
 /**
  * Render cycle, calls all renderables.
@@ -133,7 +131,7 @@ void App::Render() {
     PreDraw();
     // SDL_RenderClear(m_renderer);
     // TODO ?Doubly? Linked List of Renderables
-    m_renderable->Render(m_GraphicsPipelineShaderProgram->GetProgramId());
+    m_renderable->Render();
     glUseProgram(0);
     // SDL_RenderPresent(m_renderer);
     SDL_GL_SwapWindow(m_window);

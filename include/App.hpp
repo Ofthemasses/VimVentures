@@ -63,9 +63,6 @@ class App {
                              const GLchar *message, const void *userParam);
     void CreateGraphicsPipeline();
     void PreDraw() const;
-
-    // Program Object (for our shaders)
-    std::unique_ptr<ShaderProgram> m_GraphicsPipelineShaderProgram;
 };
 
 #endif

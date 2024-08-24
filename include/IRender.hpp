@@ -5,8 +5,14 @@
 #include <glad/glad.h>
 
 class IRender {
+  protected:
+    GLuint m_vertexArrayObject;
+    GLuint m_vertexBufferObject;
+    GLuint m_indexBufferObject;
+    virtual void GenBindBufferGL() = 0;
   public:
-    virtual void Render(GLuint renderer) = 0;
+    virtual void Render() = 0;
+    virtual void UpdateGL() = 0;
 };
 
 #endif
