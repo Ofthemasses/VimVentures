@@ -37,7 +37,7 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, APP_GL_DEPTH_SIZE);
 
     m_window = SDL_CreateWindow(APP_TITLE, x, y, m_width, m_height,
-                               SDL_WINDOW_OPENGL); // TODO Look into Vulkan
+                                SDL_WINDOW_OPENGL); // TODO Look into Vulkan
 
     GraphicsController::initGL(m_window);
     GraphicsController::enableDebug();
@@ -59,8 +59,10 @@ void App::CreateGraphicsPipeline() {
         std::cout << std::get<Error>(shaderProgramResult).toString()
                   << std::endl;
     } else {
-        GraphicsController::s_shaderPrograms.try_emplace(std::string("sp_cathode"), std::move(
-            std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
+        GraphicsController::s_shaderPrograms.try_emplace(
+            std::string("sp_cathode"),
+            std::move(
+                std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
     }
 }
 

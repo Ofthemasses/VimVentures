@@ -10,6 +10,7 @@ class IRender {
     GLuint m_vertexBufferObject;
     GLuint m_indexBufferObject;
     virtual void GenBindBufferGL() = 0;
+
   public:
     virtual void Render() = 0;
     virtual void UpdateGL() = 0;

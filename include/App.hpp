@@ -61,7 +61,7 @@ class App {
     static void debugMessage(GLenum source, GLenum type, GLuint debug_id,
                              GLenum severity, GLsizei length,
                              const GLchar *message, const void *userParam);
-    void CreateGraphicsPipeline();
+    static void CreateGraphicsPipeline();
     void PreDraw() const;
 };
 

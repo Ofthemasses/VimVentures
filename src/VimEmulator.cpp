@@ -123,7 +123,7 @@ void VimEmulator::Render() {
         SetTexture(surface->pixels, surface->w, surface->h);
         this->QueueFrame();
     }
-    if (glIsTexture(m_texture)){
+    if (glIsTexture(m_texture)) {
         TexturedRect2D::Render();
     }
 };
