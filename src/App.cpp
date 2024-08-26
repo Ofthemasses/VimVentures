@@ -138,7 +138,9 @@ void App::Render() {
     PreDraw();
     // SDL_RenderClear(m_renderer);
     // TODO ?Doubly? Linked List of Renderables
-    m_renderable->Render();
+    if (m_renderable != nullptr) {
+        m_renderable->Render();
+    }
     glUseProgram(0);
     // SDL_RenderPresent(m_renderer);
     SDL_GL_SwapWindow(m_window);
