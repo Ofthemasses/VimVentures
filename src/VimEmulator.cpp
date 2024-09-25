@@ -48,7 +48,19 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
  * Destroys the terminal and pointer vars.
  */
 VimEmulator::~VimEmulator() {
-    kill(m_pid, SIGTERM);
+    if (m_display != nullptr) {
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            if (m_window != nullptr) {
+                XDestroyWindow(m_display, *m_window);
+            }
+        }
+        XSync(m_display, False);
+        XCloseDisplay(m_display);
+    }
+    if (m_pid > 0) {
+        kill(m_pid, SIGTERM);
+    }
     delete (m_modmask);
 }
 

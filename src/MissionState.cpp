@@ -1,4 +1,5 @@
 #include "MissionState.hpp"
+#include "MenuState.hpp"
 
 /**
  * Mission Level State.
@@ -42,6 +43,11 @@ void MissionState::SendEvent(SDL_Event &event) {
         // warnings.
         app.Stop();
     } else if (event.type == SDL_KEYDOWN) {
+        if (event.key.keysym.sym == SDLK_F12) {
+            app.AddRenderable(nullptr);
+            app.SetState(new MenuState(app));
+            return;
+        }
         m_vimEmulator->SetSDLMod((SDL_Keymod)event.key.keysym.mod);
         m_vimEmulator->SendSDLKey(event.key.keysym.sym);
     }

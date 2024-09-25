@@ -90,7 +90,10 @@ SDL_Renderer *App::GetRenderer() { return m_renderer; }
  *
  * @param Game state
  */
-void App::SetState(IState *state) { m_state = state; }
+void App::SetState(IState *state) {
+    delete (m_state);
+    m_state = state;
+}
 
 /**
  * Begin game cycle.
