@@ -4,6 +4,7 @@
 #include "App.hpp"
 #include "IState.hpp"
 #include "TexturedRect2D.hpp"
+#include <memory>
 
 class MenuState : public IState {
     App &app;
@@ -15,7 +16,7 @@ class MenuState : public IState {
     void SendEvent(SDL_Event &event) override;
 
   private:
-    TexturedRect2D m_titleText;
+    std::shared_ptr<TexturedRect2D> m_titleText;
 
     // Title Variables
     static constexpr SDL_Color TITLE_COLOR = {255, 255, 255};

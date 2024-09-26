@@ -3,11 +3,14 @@
 #include "MissionState.hpp"
 #include <SDL2/SDL_ttf.h>
 #include <TexturedRect2D.hpp>
+#include <memory>
 
 /**
  * Mission Level State.
  */
 MenuState::MenuState(App &app) : app(app) {
+    // Clear Renderables
+    app.ClearRenderables();
 
     // Title
     SDL_Surface *titleText = TTF_RenderText_Blended(
@@ -17,12 +20,13 @@ MenuState::MenuState(App &app) : app(app) {
     float titleY = 0 - titleText->h * TITLE_H_SCALE / 2 + TITLE_Y_OFFSET;
     float titleWidth = titleText->w * TITLE_W_SCALE;
     float titleHeight = titleText->h * TITLE_H_SCALE;
-    m_titleText = TexturedRect2D(titleX, titleY, titleWidth, titleHeight);
-    m_titleText.UpdateVertexData();
-    m_titleText.EnableTextureBlend();
-    m_titleText.SetTextureFormat(GL_RGBA);
-    m_titleText.SetTexture(titleText->pixels, titleText->w, titleText->h);
-    app.AddRenderable(&m_titleText);
+    m_titleText = std::make_shared<TexturedRect2D>(titleX, titleY, titleWidth,
+                                                   titleHeight);
+    m_titleText->UpdateVertexData();
+    m_titleText->EnableTextureBlend();
+    m_titleText->SetTextureFormat(GL_RGBA);
+    m_titleText->SetTexture(titleText->pixels, titleText->w, titleText->h);
+    app.AddRenderable(m_titleText);
 }
 
 /**

@@ -159,11 +159,11 @@ void App::PreDraw() const {
  */
 void App::Render() {
     PreDraw();
-    // SDL_RenderClear(m_renderer);
-    // TODO ?Doubly? Linked List of Renderables
-    if (m_renderable != nullptr) {
-        m_renderable->Render();
+
+    for (std::shared_ptr<IRender> renderable : m_renderables) {
+        renderable->Render();
     }
+
     glUseProgram(0);
     // SDL_RenderPresent(m_renderer);
     SDL_GL_SwapWindow(m_window);
@@ -174,7 +174,11 @@ void App::Render() {
  *
  * @param Renderable
  */
-void App::AddRenderable(IRender *renderable) { m_renderable = renderable; }
+void App::AddRenderable(std::shared_ptr<IRender> const &renderable) {
+    m_renderables.emplace_back(renderable);
+}
+
+void App::ClearRenderables() { m_renderables.clear(); }
 
 /**
  * @return Game FPS

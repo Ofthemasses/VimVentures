@@ -5,7 +5,10 @@
  * Mission Level State.
  */
 MissionState::MissionState(App &app) : app(app) {
-    m_vimEmulator = new VimEmulator("alacritty", "--title");
+    // Clear Renderables
+    app.ClearRenderables();
+
+    m_vimEmulator = std::make_shared<VimEmulator>("alacritty", "--title");
 
     m_vimEmulator->RegisterWindow();
 
@@ -24,7 +27,7 @@ MissionState::MissionState(App &app) : app(app) {
 /**
  * Destroy the terminal emulator on deletion.
  */
-MissionState::~MissionState() { delete (m_vimEmulator); }
+MissionState::~MissionState() = default;
 
 /**
  * Runs the state loop.
