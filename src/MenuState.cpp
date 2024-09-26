@@ -12,10 +12,12 @@ MenuState::MenuState(App &app) : app(app) {
     // Clear Renderables
     app.ClearRenderables();
 
+    selector_pos = 0;
+
     // Title
     SDL_Surface *titleText = TTF_RenderText_Blended(
         GraphicsController::s_fonts.at("ttf_terminus").get(), "VimVentures",
-        TITLE_COLOR);
+        TEXT_COLOR);
     float titleX = 0 - titleText->w * TITLE_W_SCALE / 2 + TITLE_X_OFFSET;
     float titleY = 0 - titleText->h * TITLE_H_SCALE / 2 + TITLE_Y_OFFSET;
     float titleWidth = titleText->w * TITLE_W_SCALE;
@@ -27,6 +29,56 @@ MenuState::MenuState(App &app) : app(app) {
     m_titleText->SetTextureFormat(GL_RGBA);
     m_titleText->SetTexture(titleText->pixels, titleText->w, titleText->h);
     app.AddRenderable(m_titleText);
+
+    // Start
+    SDL_Surface *startText = TTF_RenderText_Blended(
+        GraphicsController::s_fonts.at("ttf_terminus").get(), "Start",
+        TEXT_COLOR);
+    float startX = 0 - startText->w * MENU_W_SCALE / 2 + START_X_OFFSET;
+    float startY = 0 - startText->h * MENU_H_SCALE / 2 + START_Y_OFFSET;
+    float startWidth = startText->w * MENU_W_SCALE;
+    float startHeight = startText->h * MENU_H_SCALE;
+    m_startText = std::make_shared<TexturedRect2D>(startX, startY, startWidth,
+                                                   startHeight);
+    m_startText->UpdateVertexData();
+    m_startText->EnableTextureBlend();
+    m_startText->SetTextureFormat(GL_RGBA);
+    m_startText->SetTexture(startText->pixels, startText->w, startText->h);
+    app.AddRenderable(m_startText);
+
+    // Quit
+    SDL_Surface *quitText = TTF_RenderText_Blended(
+        GraphicsController::s_fonts.at("ttf_terminus").get(), "Quit",
+        TEXT_COLOR);
+    float quitX = 0 - quitText->w * MENU_W_SCALE / 2 + QUIT_X_OFFSET;
+    float quitY = 0 - quitText->h * MENU_H_SCALE / 2 + QUIT_Y_OFFSET;
+    float quitWidth = quitText->w * MENU_W_SCALE;
+    float quitHeight = quitText->h * MENU_H_SCALE;
+    m_quitText =
+        std::make_shared<TexturedRect2D>(quitX, quitY, quitWidth, quitHeight);
+    m_quitText->UpdateVertexData();
+    m_quitText->EnableTextureBlend();
+    m_quitText->SetTextureFormat(GL_RGBA);
+    m_quitText->SetTexture(quitText->pixels, quitText->w, quitText->h);
+    app.AddRenderable(m_quitText);
+
+    // Selector
+    SDL_Surface *selectorText = TTF_RenderText_Blended(
+        GraphicsController::s_fonts.at("ttf_terminus").get(), ">", TEXT_COLOR);
+    // Start Selector on Start
+    float selectorX = 0 - selectorText->w * MENU_W_SCALE / 2 -
+                      startText->w * MENU_W_SCALE / 2 - SELECTOR_PADDING;
+    float selectorY = 0 - selectorText->h * MENU_H_SCALE / 2 + START_Y_OFFSET;
+    float selectorWidth = selectorText->w * MENU_W_SCALE;
+    float selectorHeight = selectorText->h * MENU_H_SCALE;
+    m_selector = std::make_shared<TexturedRect2D>(
+        selectorX, selectorY, selectorWidth, selectorHeight);
+    m_selector->UpdateVertexData();
+    m_selector->EnableTextureBlend();
+    m_selector->SetTextureFormat(GL_RGBA);
+    m_selector->SetTexture(selectorText->pixels, selectorText->w,
+                           selectorText->h);
+    app.AddRenderable(m_selector);
 }
 
 /**
@@ -54,10 +106,65 @@ void MenuState::SendEvent(SDL_Event &event) {
         // The selection key should be L. Similar to vim file manager.
         switch (event.key.keysym.sym) {
         case SDLK_l:
-            app.SetState(new MissionState(app));
+            Select();
+            break;
+        case SDLK_j:
+            SelectorNext();
+            break;
+        case SDLK_k:
+            SelectorPrev();
             break;
         default:
             break;
         }
+    }
+}
+
+void MenuState::SelectorNext() {
+    if (MENU_COUNT < selector_pos + 1) {
+        std::cout << "TEST" << std::endl;
+        return;
+    }
+    selector_pos++;
+
+    // Switch incase of more menu options
+    switch (selector_pos) {
+    case QUIT:
+        float selectorX = 0 - m_selector->GetWidth() / 2 -
+                          m_quitText->GetWidth() / 2 - SELECTOR_PADDING;
+        float selectorY = 0 - m_selector->GetHeight() / 2 + QUIT_Y_OFFSET;
+        std::cout << "QUIT" << std::endl;
+        m_selector->SetPosition(selectorX, selectorY);
+        m_selector->UpdateGL();
+        break;
+    }
+}
+
+void MenuState::SelectorPrev() {
+    if (selector_pos == 0) {
+        return;
+    }
+
+    selector_pos--;
+    switch (selector_pos) {
+    case START:
+        float selectorX = 0 - m_selector->GetWidth() / 2 -
+                          m_startText->GetWidth() / 2 - SELECTOR_PADDING;
+        float selectorY = 0 - m_selector->GetHeight() / 2 + START_Y_OFFSET;
+        std::cout << "START" << std::endl;
+        m_selector->SetPosition(selectorX, selectorY);
+        m_selector->UpdateGL();
+        break;
+    }
+}
+
+void MenuState::Select() {
+    switch (selector_pos) {
+    case START:
+        app.SetState(new MissionState(app));
+        break;
+    case QUIT:
+        app.Stop();
+        break;
     }
 }

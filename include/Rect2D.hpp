@@ -43,9 +43,9 @@ class Rect2D : public IRender {
 
     void Render() override;
 
-  private:
     void UpdateGL() override;
 
+  private:
     static constexpr int RECT_ELEMENTS = 6;
 };
 
