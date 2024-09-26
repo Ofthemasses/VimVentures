@@ -3,11 +3,9 @@
 
 #include "IRender.hpp"
 #include "IState.hpp"
-#include "ShaderProgram.hpp"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <glad/glad.h>
-#include <memory>
-#include <string>
 
 class App {
   public:
@@ -62,6 +60,12 @@ class App {
                              GLenum severity, GLsizei length,
                              const GLchar *message, const void *userParam);
     static void CreateGraphicsPipeline();
+
+    // Fonts
+    static constexpr int FONT_RENDER_SIZE = 128;
+    static void GenerateFonts();
+
+    // Draw
     void PreDraw() const;
 };
 

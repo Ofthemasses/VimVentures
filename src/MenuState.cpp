@@ -1,10 +1,29 @@
 #include "MenuState.hpp"
+#include "GraphicsController.hpp"
 #include "MissionState.hpp"
+#include <SDL2/SDL_ttf.h>
+#include <TexturedRect2D.hpp>
 
 /**
  * Mission Level State.
  */
-MenuState::MenuState(App &app) : app(app) {}
+MenuState::MenuState(App &app) : app(app) {
+
+    // Title
+    SDL_Surface *titleText = TTF_RenderText_Blended(
+        GraphicsController::s_fonts.at("ttf_terminus").get(), "VimVentures",
+        TITLE_COLOR);
+    float titleX = 0 - titleText->w * TITLE_W_SCALE / 2 + TITLE_X_OFFSET;
+    float titleY = 0 - titleText->h * TITLE_H_SCALE / 2 + TITLE_Y_OFFSET;
+    float titleWidth = titleText->w * TITLE_W_SCALE;
+    float titleHeight = titleText->h * TITLE_H_SCALE;
+    m_titleText = TexturedRect2D(titleX, titleY, titleWidth, titleHeight);
+    m_titleText.UpdateVertexData();
+    m_titleText.EnableTextureBlend();
+    m_titleText.SetTextureFormat(GL_RGBA);
+    m_titleText.SetTexture(titleText->pixels, titleText->w, titleText->h);
+    app.AddRenderable(&m_titleText);
+}
 
 /**
  * Destroy the terminal emulator on deletion.

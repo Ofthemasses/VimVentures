@@ -3,6 +3,7 @@
 
 #include "App.hpp"
 #include "IState.hpp"
+#include "TexturedRect2D.hpp"
 
 class MenuState : public IState {
     App &app;
@@ -14,6 +15,14 @@ class MenuState : public IState {
     void SendEvent(SDL_Event &event) override;
 
   private:
+    TexturedRect2D m_titleText;
+
+    // Title Variables
+    static constexpr SDL_Color TITLE_COLOR = {255, 255, 255};
+    static constexpr float TITLE_W_SCALE = 0.001;
+    static constexpr float TITLE_H_SCALE = 0.001;
+    static constexpr float TITLE_X_OFFSET = 0.0;
+    static constexpr float TITLE_Y_OFFSET = 1.0 / 4.0;
 };
 
 #endif

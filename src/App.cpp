@@ -27,6 +27,10 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     if (SDL_Init(ssFlags) < 0) {
         std::cerr << "SDL could not initalize: " << SDL_GetError();
     }
+    if (TTF_Init() == 1) {
+        std::cout << "Could not initialize SDL2 ttf, error: " << TTF_GetError()
+                  << std::endl;
+    }
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
@@ -43,6 +47,7 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     GraphicsController::enableDebug();
 
     CreateGraphicsPipeline();
+    GenerateFonts();
 }
 
 /**
@@ -69,6 +74,21 @@ void App::CreateGraphicsPipeline() {
             std::move(
                 std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
     }
+}
+
+/**
+ * Generate Fonts.
+ *
+ * @todo May be better to grab pre-serialised, though this matches with OpenGL
+ * philosophy.
+ */
+void App::GenerateFonts() {
+    TTF_Font *ttfTerminus =
+        TTF_OpenFont("./assets/fonts/TerminusTTF-4.46.0.ttf", FONT_RENDER_SIZE);
+    GraphicsController::s_fonts.try_emplace(
+        "ttf_terminus",
+        std::unique_ptr<TTF_Font, std::function<void(TTF_Font *)>>(
+            ttfTerminus, [](TTF_Font *font) { TTF_CloseFont(font); }));
 }
 
 /**
@@ -131,7 +151,7 @@ void App::PreDraw() const {
     glDisable(GL_CULL_FACE);
 
     glViewport(0, 0, m_width, m_height);
-    glClearColor(1.0F, 1.0F, 0.0F, 1.0F);
+    glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 /**

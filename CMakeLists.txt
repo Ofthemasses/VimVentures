@@ -8,6 +8,7 @@ target_include_directories(VimVentures PRIVATE include)
 
 find_package(SDL2 REQUIRED)
 target_link_libraries(VimVentures PRIVATE SDL2)
+target_link_libraries(VimVentures PRIVATE SDL2_ttf)
 target_link_libraries(VimVentures PRIVATE util X11 pthread dl)
 
 set_target_properties(VimVentures PROPERTIES
@@ -22,7 +23,7 @@ autoload.vim COPYONLY)
 
 add_custom_target(
 	tidy
-	COMMAND clang-tidy src/*.cpp -- -I/usr/include/SDL2 -Iinclude/ -std=c++17
+    COMMAND clang-tidy src/*.cpp -- -I/usr/include/SDL2 -I/user/include/SDL2_ttf -Iinclude/ -std=c++17
 )
 
 add_custom_target(

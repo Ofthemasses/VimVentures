@@ -23,12 +23,23 @@ class TexturedRect2D : public Rect2D {
     void SetTexture(void *data, GLuint width, GLuint height,
                     bool force = false);
 
+    void SetTextureFormat(GLenum format);
+
+    void SetInternalTextureFormat(GLenum format);
+
+    void EnableTextureBlend();
+
+    void DisableTextureBlend();
+
     ~TexturedRect2D();
 
     void Render() override;
 
   private:
     void UpdateGL() override;
+    GLenum m_textureFormat;
+    GLenum m_internalTextureFormat;
+    bool m_enableBlend;
 };
 
 #endif
