@@ -27,6 +27,10 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     if (SDL_Init(ssFlags) < 0) {
         std::cerr << "SDL could not initalize: " << SDL_GetError();
     }
+    if (TTF_Init() == 1) {
+        std::cout << "Could not initialize SDL2 ttf, error: " << TTF_GetError()
+                  << std::endl;
+    }
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
@@ -43,6 +47,7 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
     GraphicsController::enableDebug();
 
     CreateGraphicsPipeline();
+    GenerateFonts();
 }
 
 /**
@@ -54,21 +59,51 @@ void App::CreateGraphicsPipeline() {
 
     ShaderProgramBuilder shaderBuilder;
 
-    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
-        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/cathode.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/cathode.frag");
 
-    std::variant<Error, std::unique_ptr<ShaderProgram>> shaderProgramResult =
+    std::variant<Error, std::unique_ptr<ShaderProgram>> cathodeShaderResult =
         shaderBuilder.GenerateShaderProgram();
 
-    if (std::holds_alternative<Error>(shaderProgramResult)) {
-        std::cout << std::get<Error>(shaderProgramResult).toString()
+    if (std::holds_alternative<Error>(cathodeShaderResult)) {
+        std::cout << std::get<Error>(cathodeShaderResult).toString()
                   << std::endl;
     } else {
         GraphicsController::s_shaderPrograms.try_emplace(
             std::string("sp_cathode"),
             std::move(
-                std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
+                std::get<std::unique_ptr<ShaderProgram>>(cathodeShaderResult)));
     }
+
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
+
+    std::variant<Error, std::unique_ptr<ShaderProgram>> basicShaderResult =
+        shaderBuilder.GenerateShaderProgram();
+
+    if (std::holds_alternative<Error>(basicShaderResult)) {
+        std::cout << std::get<Error>(basicShaderResult).toString() << std::endl;
+    } else {
+        GraphicsController::s_shaderPrograms.try_emplace(
+            std::string("sp_basic"),
+            std::move(
+                std::get<std::unique_ptr<ShaderProgram>>(basicShaderResult)));
+    }
+}
+
+/**
+ * Generate Fonts.
+ *
+ * @todo May be better to grab pre-serialised, though this matches with OpenGL
+ * philosophy.
+ */
+void App::GenerateFonts() {
+    TTF_Font *ttfTerminus =
+        TTF_OpenFont("./assets/fonts/TerminusTTF-4.46.0.ttf", FONT_RENDER_SIZE);
+    GraphicsController::s_fonts.try_emplace(
+        "ttf_terminus",
+        std::unique_ptr<TTF_Font, std::function<void(TTF_Font *)>>(
+            ttfTerminus, [](TTF_Font *font) { TTF_CloseFont(font); }));
 }
 
 /**
@@ -90,7 +125,10 @@ SDL_Renderer *App::GetRenderer() { return m_renderer; }
  *
  * @param Game state
  */
-void App::SetState(IState *state) { m_state = state; }
+void App::SetState(IState *state) {
+    delete (m_state);
+    m_state = state;
+}
 
 /**
  * Begin game cycle.
@@ -128,28 +166,38 @@ void App::PreDraw() const {
     glDisable(GL_CULL_FACE);
 
     glViewport(0, 0, m_width, m_height);
-    glClearColor(1.0F, 1.0F, 0.0F, 1.0F);
+    glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     glClear(GL_COLOR_BUFFER_BIT);
 }
+
 /**
  * Render cycle, calls all renderables.
  */
 void App::Render() {
     PreDraw();
-    // SDL_RenderClear(m_renderer);
-    // TODO ?Doubly? Linked List of Renderables
-    m_renderable->Render();
+
+    for (std::shared_ptr<IRender> renderable : m_renderables) {
+        renderable->Render();
+    }
+
     glUseProgram(0);
     // SDL_RenderPresent(m_renderer);
     SDL_GL_SwapWindow(m_window);
 }
 
 /**
- * Add a new renderable.
+ * Add a new renderable to renderables.
  *
  * @param Renderable
  */
-void App::AddRenderable(IRender *renderable) { m_renderable = renderable; }
+void App::AddRenderable(std::shared_ptr<IRender> const &renderable) {
+    m_renderables.emplace_back(renderable);
+}
+
+/**
+ * Clears renderables.
+ */
+void App::ClearRenderables() { m_renderables.clear(); }
 
 /**
  * @return Game FPS

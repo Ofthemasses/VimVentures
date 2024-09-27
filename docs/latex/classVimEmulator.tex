@@ -11,7 +11,7 @@ Inheritance diagram for Vim\+Emulator\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classVimEmulator_af3e2121729f336725954a5bef11cb7a0}{Vim\+Emulator}} (std\+::string terminal, std\+::string n\+Arg)
 \item 
-\mbox{\hyperlink{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2}{\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator}} ()
+virtual \mbox{\hyperlink{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2}{\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator}} ()
 \item 
 void \mbox{\hyperlink{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d}{Register\+Window}} ()
 \item 
@@ -34,7 +34,17 @@ void \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{Upd
 \item 
 void \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{Set\+Texture}} (void \texorpdfstring{$\ast$}{*}data, GLuint width, GLuint height, bool force=false)
 \item 
+void \mbox{\hyperlink{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22}{Set\+Texture\+Format}} (GLenum format)
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b}{Set\+Internal\+Texture\+Format}} (GLenum format)
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32}{Enable\+Texture\+Blend}} ()
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}{Disable\+Texture\+Blend}} ()
+\item 
 \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\texorpdfstring{$\sim$}{\string~}\+Textured\+Rect2D}} ()
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{Update\+GL}} () override
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
 \begin{DoxyCompactItemize}
@@ -56,6 +66,8 @@ GLfloat \mbox{\hyperlink{classRect2D_a421133bd8822adc575ae4e3fd6be55d7}{Get\+Hei
 std\+::vector$<$ GLfloat $>$ \mbox{\hyperlink{classRect2D_a50be78f5d82d97a654bf05528899cdc3}{Get\+Vertex\+Data}} () const
 \item 
 \mbox{\hyperlink{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e}{\texorpdfstring{$\sim$}{\string~}\+Rect2D}} ()
+\item 
+void \mbox{\hyperlink{classRect2D_a0f8c8a6b75c3ff3c8faa6df9fb74f805}{Set\+Shader\+Program}} (std\+::string shader\+Program)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -172,6 +184,8 @@ GLuint {\bfseries m\+\_\+vertex\+Array\+Object}
 GLuint {\bfseries m\+\_\+vertex\+Buffer\+Object}
 \item 
 GLuint {\bfseries m\+\_\+index\+Buffer\+Object}
+\item 
+std\+::string {\bfseries m\+\_\+shader\+Program}
 \end{DoxyCompactItemize}
 
 
@@ -195,7 +209,7 @@ A Vim Terminal Instance.
 \index{VimEmulator@{VimEmulator}!````~VimEmulator@{\texorpdfstring{$\sim$}{\string~}VimEmulator}}
 \index{````~VimEmulator@{\texorpdfstring{$\sim$}{\string~}VimEmulator}!VimEmulator@{VimEmulator}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VimEmulator()}{\string~VimEmulator()}}
-{\footnotesize\ttfamily Vim\+Emulator\+::\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Vim\+Emulator\+::\texorpdfstring{$\sim$}{\string~}\+Vim\+Emulator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Destroys the terminal and pointer vars. 
 

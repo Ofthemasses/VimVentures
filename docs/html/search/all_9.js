@@ -4,5 +4,6 @@ var searchData=
   ['m_5fstate_1',['m_state',['../classApp.html#a5af78dfaa7737b0b517c80a066bfd67f',1,'App']]],
   ['m_5fwidth_2',['m_width',['../classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f',1,'App']]],
   ['matchresizeevent_3',['MatchResizeEvent',['../classVimEmulator.html#a30ade3d0a1052a8fd7712929db63d2a4',1,'VimEmulator']]],
-  ['missionstate_4',['MissionState',['../classMissionState.html',1,'MissionState'],['../classMissionState.html#aac7344320cd7eb188a2fce4acead50d5',1,'MissionState::MissionState()']]]
+  ['menustate_4',['MenuState',['../classMenuState.html',1,'MenuState'],['../classMenuState.html#a3812d3384e2df7c53e2c75da80bd918b',1,'MenuState::MenuState()']]],
+  ['missionstate_5',['MissionState',['../classMissionState.html',1,'MissionState'],['../classMissionState.html#aac7344320cd7eb188a2fce4acead50d5',1,'MissionState::MissionState()']]]
 ];

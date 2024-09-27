@@ -10,7 +10,11 @@
  */
 TexturedRect2D::TexturedRect2D(GLfloat xPos, GLfloat yPos, GLfloat width,
                                GLfloat height)
-    : Rect2D(xPos, yPos, width, height) {}
+    : Rect2D(xPos, yPos, width, height) {
+
+    m_textureFormat = GL_BGRA;
+    m_internalTextureFormat = GL_RGBA;
+}
 
 /**
  * Deletes the texture on destruction.
@@ -56,6 +60,12 @@ void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
 
     m_texture_width = width;
     m_texture_height = height;
+
+    if (m_enableBlend) {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    }
+
     glGenTextures(1, &m_texture);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
@@ -66,13 +76,37 @@ void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_BGRA,
-                 GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, m_internalTextureFormat, width, height, 0,
+                 m_textureFormat, GL_UNSIGNED_BYTE, data);
 
     glBindTexture(GL_TEXTURE_2D, m_texture);
 
     UpdateGL();
 }
+
+/**
+ * Sets the format for the pixel data given to SetTexture.
+ */
+void TexturedRect2D::SetTextureFormat(GLenum format) {
+    m_textureFormat = format;
+}
+
+/**
+ * Sets the internal texture format for the glTexImage.
+ */
+void TexturedRect2D::SetInternalTextureFormat(GLenum format) {
+    m_internalTextureFormat = format;
+}
+
+/**
+ * Enabled texture blending.
+ */
+void TexturedRect2D::EnableTextureBlend() { m_enableBlend = true; };
+
+/**
+ * Disables texture blending.
+ */
+void TexturedRect2D::DisableTextureBlend() { m_enableBlend = false; };
 
 /**
  * Renders the Textured Quad. Currently uses the sp_cathode shader.
@@ -81,12 +115,13 @@ void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
  * select others.
  */
 void TexturedRect2D::Render() {
-    glUseProgram(
-        GraphicsController::s_shaderPrograms.at("sp_cathode")->GetProgramId());
+    glUseProgram(GraphicsController::s_shaderPrograms.at(m_shaderProgram)
+                     ->GetProgramId());
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
     GLint textureLocation = glGetUniformLocation(
-        GraphicsController::s_shaderPrograms.at("sp_cathode")->GetProgramId(),
+        GraphicsController::s_shaderPrograms.at(m_shaderProgram)
+            ->GetProgramId(),
         "u_Texture");
     glUniform1i(textureLocation, 0);
 

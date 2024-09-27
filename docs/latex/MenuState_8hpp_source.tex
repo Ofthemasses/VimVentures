@@ -1,0 +1,66 @@
+\doxysection{Menu\+State.\+hpp}
+\hypertarget{MenuState_8hpp_source}{}\label{MenuState_8hpp_source}\index{include/MenuState.hpp@{include/MenuState.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENUSTATE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENUSTATE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}App.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}IState.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TexturedRect2D.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenuState}{MenuState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIState}{IState}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classMenuState_a3812d3384e2df7c53e2c75da80bd918b}{MenuState}}(\mbox{\hyperlink{classApp}{App}}\ \&app);}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classMenuState_accbc4443ce177b3a7fe7072d9bab1922}{\string~MenuState}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuState_a2701a3405e15bad04f35c59b82f0d639}{Run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuState_a0d80b2738f34200eaa32b6faa1ee7815}{SendEvent}}(SDL\_Event\ \&event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ SDL\_Color\ TEXT\_COLOR\ =\ \{255,\ 255,\ 255\};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Title\ Variables}}
+\DoxyCodeLine{00022\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_titleText;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ TITLE\_W\_SCALE\ =\ 0.001;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ TITLE\_H\_SCALE\ =\ 0.001;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ TITLE\_X\_OFFSET\ =\ 0.0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ TITLE\_Y\_OFFSET\ =\ 1.0\ /\ 4.0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Menu\ Variables}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MENU\_W\_SCALE\ =\ 0.0004;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MENU\_H\_SCALE\ =\ 0.0004;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_startText;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ START\_X\_OFFSET\ =\ 0.0;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ START\_Y\_OFFSET\ =\ 0.0;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_quitText;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ QUIT\_X\_OFFSET\ =\ 0.0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ QUIT\_Y\_OFFSET\ =\ -\/1.0\ /\ 8.0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MENU\_COUNT\ =\ 2;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Selector}}
+\DoxyCodeLine{00043\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_selector;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ selector\_pos;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SELECTOR\_PADDING\ =\ 1.0\ /\ 32.0;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuState_ad3932599c79e17b44c67ae3c79e107b8}{SelectorNext}}();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuState_af0343d45a17b756d72d555f5cfaa5602}{SelectorPrev}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuState_a8bf17b6892e4696c44d2458ee4ebe174}{Select}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{enum}\ MenuOption\ \{\ START\ =\ 0,\ QUIT\ =\ 1\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Instructions}}
+\DoxyCodeLine{00053\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_instructionText;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ INSTRUCTION\_W\_SCALE\ =\ 0.0002;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ INSTRUCTION\_H\_SCALE\ =\ 0.0002;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ INSTRUCTION\_X\_OFFSET\ =\ 0.3;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ INSTRUCTION\_Y\_OFFSET\ =\ -\/0.4;}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

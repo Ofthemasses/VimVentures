@@ -10,7 +10,7 @@
 class VimEmulator : public TexturedRect2D {
   public:
     VimEmulator(std::string terminal, std::string nArg);
-    ~VimEmulator();
+    virtual ~VimEmulator();
     void RegisterWindow();
     void ResizeWindow(int w, int h);
     void QueueFrame();

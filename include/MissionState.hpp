@@ -20,7 +20,7 @@ class MissionState : public IState {
     static constexpr int DRAW_G = 50;
     static constexpr int DRAW_B = 168;
 
-    VimEmulator *m_vimEmulator;
+    std::shared_ptr<VimEmulator> m_vimEmulator;
 };
 
 #endif

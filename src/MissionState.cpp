@@ -1,11 +1,16 @@
 #include "MissionState.hpp"
+#include "MenuState.hpp"
 
 /**
  * Mission Level State.
  */
 MissionState::MissionState(App &app) : app(app) {
-    m_vimEmulator = new VimEmulator("alacritty", "--title");
+    // Clear Renderables
+    app.ClearRenderables();
 
+    m_vimEmulator = std::make_shared<VimEmulator>("alacritty", "--title");
+
+    m_vimEmulator->SetShaderProgram("sp_cathode");
     m_vimEmulator->RegisterWindow();
 
     int terminalW = (int)(app.GetWidth() * WIDTH_RATIO);
@@ -23,7 +28,7 @@ MissionState::MissionState(App &app) : app(app) {
 /**
  * Destroy the terminal emulator on deletion.
  */
-MissionState::~MissionState() { delete (m_vimEmulator); }
+MissionState::~MissionState() = default;
 
 /**
  * Runs the state loop.
@@ -42,6 +47,11 @@ void MissionState::SendEvent(SDL_Event &event) {
         // warnings.
         app.Stop();
     } else if (event.type == SDL_KEYDOWN) {
+        if (event.key.keysym.sym == SDLK_F12) {
+            app.AddRenderable(nullptr);
+            app.SetState(new MenuState(app));
+            return;
+        }
         m_vimEmulator->SetSDLMod((SDL_Keymod)event.key.keysym.mod);
         m_vimEmulator->SendSDLKey(event.key.keysym.sym);
     }

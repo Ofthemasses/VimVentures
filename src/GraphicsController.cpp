@@ -99,3 +99,10 @@ std::optional<Error> GraphicsController::CheckGLObjectStatus(
  */
 std::unordered_map<std::string, std::unique_ptr<ShaderProgram>>
     GraphicsController::s_shaderPrograms;
+
+/**
+ * Static map storing TTF fonts, with strings as keys.
+ */
+std::unordered_map<std::string,
+                   std::unique_ptr<TTF_Font, std::function<void(TTF_Font *)>>>
+    GraphicsController::s_fonts;

@@ -3,6 +3,7 @@
 
 #include <Error.hpp>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <ShaderProgram.hpp>
 #include <functional>
 #include <glad/glad.h>
@@ -25,6 +26,9 @@ class GraphicsController {
             &getInfoLog);
     static std::unordered_map<std::string, std::unique_ptr<ShaderProgram>>
         s_shaderPrograms;
+    static std::unordered_map<
+        std::string, std::unique_ptr<TTF_Font, std::function<void(TTF_Font *)>>>
+        s_fonts;
 
   private:
     static SDL_GLContext s_glContext;

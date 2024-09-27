@@ -1,4 +1,5 @@
 #include "Rect2D.hpp"
+#include <GraphicsController.hpp>
 
 /**
  * Representation a 2D quad, an encapsulation of two GL Triangles.
@@ -16,6 +17,7 @@ Rect2D::Rect2D(GLfloat xPos, GLfloat yPos, GLfloat width, GLfloat height) {
     m_texture_width = 0;
     m_texture_height = 0;
     m_indexData = {2, 0, 1, 3, 2, 1};
+    m_shaderProgram = "sp_basic";
 }
 
 /**
@@ -154,4 +156,13 @@ void Rect2D::UpdateGL() {
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+}
+
+/**
+ * Set the shaderProgram to render this rectangle by name.
+ *
+ * @param shaderProgram ShaderProgram name
+ */
+void Rect2D::SetShaderProgram(std::string shaderProgramName) {
+    m_shaderProgram = shaderProgramName;
 }

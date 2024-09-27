@@ -30,6 +30,10 @@ std\+::vector$<$ GLfloat $>$ \mbox{\hyperlink{classRect2D_a50be78f5d82d97a654bf0
 \mbox{\hyperlink{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e}{\texorpdfstring{$\sim$}{\string~}\+Rect2D}} ()
 \item 
 void \mbox{\hyperlink{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5}{Render}} () override
+\item 
+void \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{Update\+GL}} () override
+\item 
+void \mbox{\hyperlink{classRect2D_a0f8c8a6b75c3ff3c8faa6df9fb74f805}{Set\+Shader\+Program}} (std\+::string shader\+Program)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -71,11 +75,8 @@ GLuint {\bfseries m\+\_\+vertex\+Array\+Object}
 GLuint {\bfseries m\+\_\+vertex\+Buffer\+Object}
 \item 
 GLuint {\bfseries m\+\_\+index\+Buffer\+Object}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{Update\+GL}} () override
+std\+::string {\bfseries m\+\_\+shader\+Program}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -208,6 +209,19 @@ Set the position and update the vertex data.
 {\em y\+Pos} & New y Position \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classRect2D_a0f8c8a6b75c3ff3c8faa6df9fb74f805}\label{classRect2D_a0f8c8a6b75c3ff3c8faa6df9fb74f805} 
+\index{Rect2D@{Rect2D}!SetShaderProgram@{SetShaderProgram}}
+\index{SetShaderProgram@{SetShaderProgram}!Rect2D@{Rect2D}}
+\doxysubsubsection{\texorpdfstring{SetShaderProgram()}{SetShaderProgram()}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Set\+Shader\+Program (\begin{DoxyParamCaption}\item[{std\+::string}]{shader\+Program\+Name }\end{DoxyParamCaption})}
+
+Set the shader\+Program to render this rectangle by name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader\+Program} & \doxylink{classShaderProgram}{Shader\+Program} name \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classRect2D_aace8b1695889cb276f35e7e059eb62da}\label{classRect2D_aace8b1695889cb276f35e7e059eb62da} 
 \index{Rect2D@{Rect2D}!SetSize@{SetSize}}
 \index{SetSize@{SetSize}!Rect2D@{Rect2D}}
@@ -227,7 +241,7 @@ Set the width and height of the quad and update the vertex data.
 \index{Rect2D@{Rect2D}!UpdateGL@{UpdateGL}}
 \index{UpdateGL@{UpdateGL}!Rect2D@{Rect2D}}
 \doxysubsubsection{\texorpdfstring{UpdateGL()}{UpdateGL()}}
-{\footnotesize\ttfamily void Rect2\+D\+::\+Update\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Rect2\+D\+::\+Update\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Updates the vertex arrays in the Open\+GL FSM. 
 
