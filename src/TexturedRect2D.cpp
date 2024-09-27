@@ -103,12 +103,13 @@ void TexturedRect2D::DisableTextureBlend() { m_enableBlend = false; };
  * select others.
  */
 void TexturedRect2D::Render() {
-    glUseProgram(
-        GraphicsController::s_shaderPrograms.at("sp_cathode")->GetProgramId());
+    glUseProgram(GraphicsController::s_shaderPrograms.at(m_shaderProgram)
+                     ->GetProgramId());
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
     GLint textureLocation = glGetUniformLocation(
-        GraphicsController::s_shaderPrograms.at("sp_cathode")->GetProgramId(),
+        GraphicsController::s_shaderPrograms.at(m_shaderProgram)
+            ->GetProgramId(),
         "u_Texture");
     glUniform1i(textureLocation, 0);
 

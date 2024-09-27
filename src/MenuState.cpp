@@ -79,6 +79,25 @@ MenuState::MenuState(App &app) : app(app) {
     m_selector->SetTexture(selectorText->pixels, selectorText->w,
                            selectorText->h);
     app.AddRenderable(m_selector);
+
+    // Instructions
+    SDL_Surface *instructionText = TTF_RenderText_Blended(
+        GraphicsController::s_fonts.at("ttf_terminus").get(),
+        "move: j/k select: l", TEXT_COLOR);
+    float instructionX =
+        0 - instructionText->w * INSTRUCTION_W_SCALE / 2 + INSTRUCTION_X_OFFSET;
+    float instructionY =
+        0 - instructionText->h * INSTRUCTION_H_SCALE / 2 + INSTRUCTION_Y_OFFSET;
+    float instructionWidth = instructionText->w * INSTRUCTION_W_SCALE;
+    float instructionHeight = instructionText->h * INSTRUCTION_H_SCALE;
+    m_instructionText = std::make_shared<TexturedRect2D>(
+        instructionX, instructionY, instructionWidth, instructionHeight);
+    m_instructionText->UpdateVertexData();
+    m_instructionText->EnableTextureBlend();
+    m_instructionText->SetTextureFormat(GL_RGBA);
+    m_instructionText->SetTexture(instructionText->pixels, instructionText->w,
+                                  instructionText->h);
+    app.AddRenderable(m_instructionText);
 }
 
 /**

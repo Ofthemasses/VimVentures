@@ -59,20 +59,35 @@ void App::CreateGraphicsPipeline() {
 
     ShaderProgramBuilder shaderBuilder;
 
-    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
-        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/cathode.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/cathode.frag");
 
-    std::variant<Error, std::unique_ptr<ShaderProgram>> shaderProgramResult =
+    std::variant<Error, std::unique_ptr<ShaderProgram>> cathodeShaderResult =
         shaderBuilder.GenerateShaderProgram();
 
-    if (std::holds_alternative<Error>(shaderProgramResult)) {
-        std::cout << std::get<Error>(shaderProgramResult).toString()
+    if (std::holds_alternative<Error>(cathodeShaderResult)) {
+        std::cout << std::get<Error>(cathodeShaderResult).toString()
                   << std::endl;
     } else {
         GraphicsController::s_shaderPrograms.try_emplace(
             std::string("sp_cathode"),
             std::move(
-                std::get<std::unique_ptr<ShaderProgram>>(shaderProgramResult)));
+                std::get<std::unique_ptr<ShaderProgram>>(cathodeShaderResult)));
+    }
+
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/basic.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/basic.frag");
+
+    std::variant<Error, std::unique_ptr<ShaderProgram>> basicShaderResult =
+        shaderBuilder.GenerateShaderProgram();
+
+    if (std::holds_alternative<Error>(basicShaderResult)) {
+        std::cout << std::get<Error>(basicShaderResult).toString() << std::endl;
+    } else {
+        GraphicsController::s_shaderPrograms.try_emplace(
+            std::string("sp_basic"),
+            std::move(
+                std::get<std::unique_ptr<ShaderProgram>>(basicShaderResult)));
     }
 }
 

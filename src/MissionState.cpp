@@ -10,6 +10,7 @@ MissionState::MissionState(App &app) : app(app) {
 
     m_vimEmulator = std::make_shared<VimEmulator>("alacritty", "--title");
 
+    m_vimEmulator->SetShaderProgram("sp_cathode");
     m_vimEmulator->RegisterWindow();
 
     int terminalW = (int)(app.GetWidth() * WIDTH_RATIO);

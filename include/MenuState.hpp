@@ -48,6 +48,13 @@ class MenuState : public IState {
     void Select();
 
     enum MenuOption { START = 0, QUIT = 1 };
+
+    // Instructions
+    std::shared_ptr<TexturedRect2D> m_instructionText;
+    static constexpr float INSTRUCTION_W_SCALE = 0.0002;
+    static constexpr float INSTRUCTION_H_SCALE = 0.0002;
+    static constexpr float INSTRUCTION_X_OFFSET = 0.3;
+    static constexpr float INSTRUCTION_Y_OFFSET = -0.4;
 };
 
 #endif

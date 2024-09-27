@@ -4,8 +4,8 @@
 #include <GraphicsController.hpp>
 #include <IRender.hpp>
 #include <SDL2/SDL.h>
+#include <ShaderProgram.hpp>
 #include <glad/glad.h>
-#include <iostream>
 #include <vector>
 
 class Rect2D : public IRender {
@@ -44,6 +44,8 @@ class Rect2D : public IRender {
     void Render() override;
 
     void UpdateGL() override;
+
+    void SetShaderProgram(std::string shaderProgram);
 
   private:
     static constexpr int RECT_ELEMENTS = 6;
