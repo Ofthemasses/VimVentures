@@ -15,9 +15,19 @@ void \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{Upd
 \item 
 void \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{Set\+Texture}} (void \texorpdfstring{$\ast$}{*}data, GLuint width, GLuint height, bool force=false)
 \item 
+void \mbox{\hyperlink{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22}{Set\+Texture\+Format}} (GLenum format)
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b}{Set\+Internal\+Texture\+Format}} (GLenum format)
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32}{Enable\+Texture\+Blend}} ()
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}{Disable\+Texture\+Blend}} ()
+\item 
 \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\texorpdfstring{$\sim$}{\string~}\+Textured\+Rect2D}} ()
 \item 
 void \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}} () override
+\item 
+void \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{Update\+GL}} () override
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
 \begin{DoxyCompactItemize}
@@ -39,6 +49,8 @@ GLfloat \mbox{\hyperlink{classRect2D_a421133bd8822adc575ae4e3fd6be55d7}{Get\+Hei
 std\+::vector$<$ GLfloat $>$ \mbox{\hyperlink{classRect2D_a50be78f5d82d97a654bf05528899cdc3}{Get\+Vertex\+Data}} () const
 \item 
 \mbox{\hyperlink{classRect2D_a7e48bcc4ca159e58b51e2b9b0453225e}{\texorpdfstring{$\sim$}{\string~}\+Rect2D}} ()
+\item 
+void \mbox{\hyperlink{classRect2D_a0f8c8a6b75c3ff3c8faa6df9fb74f805}{Set\+Shader\+Program}} (std\+::string shader\+Program)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -79,11 +91,20 @@ GLuint {\bfseries m\+\_\+vertex\+Array\+Object}
 GLuint {\bfseries m\+\_\+vertex\+Buffer\+Object}
 \item 
 GLuint {\bfseries m\+\_\+index\+Buffer\+Object}
+\item 
+std\+::string {\bfseries m\+\_\+shader\+Program}
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Private Member Functions}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{Update\+GL}} () override
+\Hypertarget{classTexturedRect2D_a96ce3986673d6c56a9d6e4af040af76b}\label{classTexturedRect2D_a96ce3986673d6c56a9d6e4af040af76b} 
+GLenum {\bfseries m\+\_\+texture\+Format}
+\item 
+\Hypertarget{classTexturedRect2D_ace9761830e3d0383db72517d653123df}\label{classTexturedRect2D_ace9761830e3d0383db72517d653123df} 
+GLenum {\bfseries m\+\_\+internal\+Texture\+Format}
+\item 
+\Hypertarget{classTexturedRect2D_ae0ffd8b4265fe00d0d73a2207f700357}\label{classTexturedRect2D_ae0ffd8b4265fe00d0d73a2207f700357} 
+bool {\bfseries m\+\_\+enable\+Blend}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
@@ -122,7 +143,19 @@ An extension of \doxylink{classRect2D}{Rect2D}, representing a 2D quad with a te
 Deletes the texture on destruction. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}\label{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e} 
+\Hypertarget{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}\label{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984} 
+\index{TexturedRect2D@{TexturedRect2D}!DisableTextureBlend@{DisableTextureBlend}}
+\index{DisableTextureBlend@{DisableTextureBlend}!TexturedRect2D@{TexturedRect2D}}
+\doxysubsubsection{\texorpdfstring{DisableTextureBlend()}{DisableTextureBlend()}}
+{\footnotesize\ttfamily void Textured\+Rect2\+D\+::\+Disable\+Texture\+Blend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disables texture blending. \Hypertarget{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32}\label{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32} 
+\index{TexturedRect2D@{TexturedRect2D}!EnableTextureBlend@{EnableTextureBlend}}
+\index{EnableTextureBlend@{EnableTextureBlend}!TexturedRect2D@{TexturedRect2D}}
+\doxysubsubsection{\texorpdfstring{EnableTextureBlend()}{EnableTextureBlend()}}
+{\footnotesize\ttfamily void Textured\+Rect2\+D\+::\+Enable\+Texture\+Blend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Enabled texture blending. \Hypertarget{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}\label{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e} 
 \index{TexturedRect2D@{TexturedRect2D}!Render@{Render}}
 \index{Render@{Render}!TexturedRect2D@{TexturedRect2D}}
 \doxysubsubsection{\texorpdfstring{Render()}{Render()}}
@@ -131,7 +164,7 @@ Deletes the texture on destruction.
 Renders the Textured Quad. Currently uses the sp\+\_\+cathode shader.
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Gives texture rects a default shader program and method to select others. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]Gives texture rects a default shader program and method to select others. \end{DoxyRefDesc}
 
 
 Reimplemented from \mbox{\hyperlink{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5}{Rect2D}}.
@@ -140,7 +173,13 @@ Reimplemented from \mbox{\hyperlink{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae
 
 Reimplemented in \mbox{\hyperlink{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}{Vim\+Emulator}}.
 
-\Hypertarget{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}\label{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d} 
+\Hypertarget{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b}\label{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b} 
+\index{TexturedRect2D@{TexturedRect2D}!SetInternalTextureFormat@{SetInternalTextureFormat}}
+\index{SetInternalTextureFormat@{SetInternalTextureFormat}!TexturedRect2D@{TexturedRect2D}}
+\doxysubsubsection{\texorpdfstring{SetInternalTextureFormat()}{SetInternalTextureFormat()}}
+{\footnotesize\ttfamily void Textured\+Rect2\+D\+::\+Set\+Internal\+Texture\+Format (\begin{DoxyParamCaption}\item[{GLenum}]{format }\end{DoxyParamCaption})}
+
+Sets the internal texture format for the gl\+Tex\+Image. \Hypertarget{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}\label{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d} 
 \index{TexturedRect2D@{TexturedRect2D}!SetTexture@{SetTexture}}
 \index{SetTexture@{SetTexture}!TexturedRect2D@{TexturedRect2D}}
 \doxysubsubsection{\texorpdfstring{SetTexture()}{SetTexture()}}
@@ -159,11 +198,17 @@ Sets the texture with raw pixel data. Unless forced or the new texture has a dif
 {\em force} & If set to true forces the texture to be re-\/generated \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}\label{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f} 
+\Hypertarget{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22}\label{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22} 
+\index{TexturedRect2D@{TexturedRect2D}!SetTextureFormat@{SetTextureFormat}}
+\index{SetTextureFormat@{SetTextureFormat}!TexturedRect2D@{TexturedRect2D}}
+\doxysubsubsection{\texorpdfstring{SetTextureFormat()}{SetTextureFormat()}}
+{\footnotesize\ttfamily void Textured\+Rect2\+D\+::\+Set\+Texture\+Format (\begin{DoxyParamCaption}\item[{GLenum}]{format }\end{DoxyParamCaption})}
+
+Sets the format for the pixel data given to Set\+Texture. \Hypertarget{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}\label{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f} 
 \index{TexturedRect2D@{TexturedRect2D}!UpdateGL@{UpdateGL}}
 \index{UpdateGL@{UpdateGL}!TexturedRect2D@{TexturedRect2D}}
 \doxysubsubsection{\texorpdfstring{UpdateGL()}{UpdateGL()}}
-{\footnotesize\ttfamily void Textured\+Rect2\+D\+::\+Update\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Textured\+Rect2\+D\+::\+Update\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Updates the vertex arrays in the Open\+GL FSM. Uses strides to get texture data as well as coordinate data. 
 

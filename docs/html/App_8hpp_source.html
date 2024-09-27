@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.1</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.2</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -89,11 +89,11 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;IRender.hpp&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;IState.hpp&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;ShaderProgram.hpp&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classApp.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="classApp.html">App</a> {</div>
@@ -112,60 +112,66 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a7f42e947a052412c193c689b7e7a73cc">Render</a>();</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// TODO Create ?Doubly? Linked List for rendering</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a63bc0551fe490635456ca60577304d90">AddRenderable</a>(<a class="code hl_class" href="classIRender.html">IRender</a> *renderable);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    [[nodiscard]] <span class="keywordtype">double</span> <a class="code hl_function" href="classApp.html#a9cb7d1fd0d93a6f74c3d432cc6bc9849">GetFPS</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classApp.html#af0576e3cf1540d9d28f47c40bc0bc02c">GetWidth</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classApp.html#a29bb358883b2ff18a216bbae5597ba0f">GetHeight</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    SDL_Window *m_window;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    SDL_Renderer *m_renderer;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// For now we only need one renderable, should be updated to a vector in</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// future</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="classIRender.html">IRender</a> *m_renderable;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f">   47</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f">m_width</a>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">int</span> m_height;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> m_running;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classApp.html#a5af78dfaa7737b0b517c80a066bfd67f">   52</a></span>    <a class="code hl_class" href="classIState.html">IState</a> *<a class="code hl_variable" href="classApp.html#a5af78dfaa7737b0b517c80a066bfd67f">m_state</a>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classApp.html#a1376e08040b81f065c5bfe5aaf427d22">   55</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">double</span> <a class="code hl_variable" href="classApp.html#a1376e08040b81f065c5bfe5aaf427d22">SECOND_MS</a> = 1000.0;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    Uint32 m_startTick;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    Uint32 m_endTick;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// Shaders</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> APP_GL_DEPTH_SIZE = 24;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> debugMessage(GLenum source, GLenum type, GLuint debug_id,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                             GLenum severity, GLsizei length,</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                             <span class="keyword">const</span> GLchar *message, <span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a26c8801e7a5375be8b96453ae0a7f451">CreateGraphicsPipeline</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> PreDraw() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a4bce1efdfbbb1f6d7b0c2a5fe2b14122">AddRenderable</a>(std::shared_ptr&lt;IRender&gt; <span class="keyword">const</span> &amp;renderable);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a36d9b9266b3cb0c1964badb36087de16">ClearRenderables</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    [[nodiscard]] <span class="keywordtype">double</span> <a class="code hl_function" href="classApp.html#a9cb7d1fd0d93a6f74c3d432cc6bc9849">GetFPS</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classApp.html#af0576e3cf1540d9d28f47c40bc0bc02c">GetWidth</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classApp.html#a29bb358883b2ff18a216bbae5597ba0f">GetHeight</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    SDL_Window *m_window;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    SDL_Renderer *m_renderer;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::vector&lt;std::shared_ptr&lt;IRender&gt;&gt; m_renderables;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f">   46</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f">m_width</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> m_height;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">bool</span> m_running;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classApp.html#a5af78dfaa7737b0b517c80a066bfd67f">   51</a></span>    <a class="code hl_class" href="classIState.html">IState</a> *<a class="code hl_variable" href="classApp.html#a5af78dfaa7737b0b517c80a066bfd67f">m_state</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classApp.html#a1376e08040b81f065c5bfe5aaf427d22">   54</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">double</span> <a class="code hl_variable" href="classApp.html#a1376e08040b81f065c5bfe5aaf427d22">SECOND_MS</a> = 1000.0;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    Uint32 m_startTick;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    Uint32 m_endTick;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Shaders</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> APP_GL_DEPTH_SIZE = 24;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> debugMessage(GLenum source, GLenum type, GLuint debug_id,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                             GLenum severity, GLsizei length,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                             <span class="keyword">const</span> GLchar *message, <span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a26c8801e7a5375be8b96453ae0a7f451">CreateGraphicsPipeline</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// Fonts</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> FONT_RENDER_SIZE = 128;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classApp.html#a02e8ddeeef85c9d26e412dde846dcaca">GenerateFonts</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Draw</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> PreDraw() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassApp_html"><div class="ttname"><a href="classApp.html">App</a></div><div class="ttdef"><b>Definition</b> App.hpp:12</div></div>
-<div class="ttc" id="aclassApp_html_a1376e08040b81f065c5bfe5aaf427d22"><div class="ttname"><a href="classApp.html#a1376e08040b81f065c5bfe5aaf427d22">App::SECOND_MS</a></div><div class="ttdeci">static constexpr double SECOND_MS</div><div class="ttdef"><b>Definition</b> App.hpp:55</div></div>
-<div class="ttc" id="aclassApp_html_a26c8801e7a5375be8b96453ae0a7f451"><div class="ttname"><a href="classApp.html#a26c8801e7a5375be8b96453ae0a7f451">App::CreateGraphicsPipeline</a></div><div class="ttdeci">static void CreateGraphicsPipeline()</div><div class="ttdef"><b>Definition</b> App.cpp:53</div></div>
-<div class="ttc" id="aclassApp_html_a29bb358883b2ff18a216bbae5597ba0f"><div class="ttname"><a href="classApp.html#a29bb358883b2ff18a216bbae5597ba0f">App::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdef"><b>Definition</b> App.cpp:167</div></div>
-<div class="ttc" id="aclassApp_html_a34f1f253b1cef5f4ecbac66eaf6964ec"><div class="ttname"><a href="classApp.html#a34f1f253b1cef5f4ecbac66eaf6964ec">App::~App</a></div><div class="ttdeci">~App()</div><div class="ttdef"><b>Definition</b> App.cpp:77</div></div>
+<div class="ttc" id="aclassApp_html_a02e8ddeeef85c9d26e412dde846dcaca"><div class="ttname"><a href="classApp.html#a02e8ddeeef85c9d26e412dde846dcaca">App::GenerateFonts</a></div><div class="ttdeci">static void GenerateFonts()</div><div class="ttdef"><b>Definition</b> App.cpp:100</div></div>
+<div class="ttc" id="aclassApp_html_a1376e08040b81f065c5bfe5aaf427d22"><div class="ttname"><a href="classApp.html#a1376e08040b81f065c5bfe5aaf427d22">App::SECOND_MS</a></div><div class="ttdeci">static constexpr double SECOND_MS</div><div class="ttdef"><b>Definition</b> App.hpp:54</div></div>
+<div class="ttc" id="aclassApp_html_a26c8801e7a5375be8b96453ae0a7f451"><div class="ttname"><a href="classApp.html#a26c8801e7a5375be8b96453ae0a7f451">App::CreateGraphicsPipeline</a></div><div class="ttdeci">static void CreateGraphicsPipeline()</div><div class="ttdef"><b>Definition</b> App.cpp:58</div></div>
+<div class="ttc" id="aclassApp_html_a29bb358883b2ff18a216bbae5597ba0f"><div class="ttname"><a href="classApp.html#a29bb358883b2ff18a216bbae5597ba0f">App::GetHeight</a></div><div class="ttdeci">int GetHeight() const</div><div class="ttdef"><b>Definition</b> App.cpp:215</div></div>
+<div class="ttc" id="aclassApp_html_a34f1f253b1cef5f4ecbac66eaf6964ec"><div class="ttname"><a href="classApp.html#a34f1f253b1cef5f4ecbac66eaf6964ec">App::~App</a></div><div class="ttdeci">~App()</div><div class="ttdef"><b>Definition</b> App.cpp:112</div></div>
+<div class="ttc" id="aclassApp_html_a36d9b9266b3cb0c1964badb36087de16"><div class="ttname"><a href="classApp.html#a36d9b9266b3cb0c1964badb36087de16">App::ClearRenderables</a></div><div class="ttdeci">void ClearRenderables()</div><div class="ttdef"><b>Definition</b> App.cpp:200</div></div>
 <div class="ttc" id="aclassApp_html_a4751adaf2f075f55bcdf3262c7765579"><div class="ttname"><a href="classApp.html#a4751adaf2f075f55bcdf3262c7765579">App::App</a></div><div class="ttdeci">App(Uint32 ssFlags, int x, int y, int w, int h)</div><div class="ttdef"><b>Definition</b> App.cpp:23</div></div>
-<div class="ttc" id="aclassApp_html_a5af78dfaa7737b0b517c80a066bfd67f"><div class="ttname"><a href="classApp.html#a5af78dfaa7737b0b517c80a066bfd67f">App::m_state</a></div><div class="ttdeci">IState * m_state</div><div class="ttdef"><b>Definition</b> App.hpp:52</div></div>
-<div class="ttc" id="aclassApp_html_a63bc0551fe490635456ca60577304d90"><div class="ttname"><a href="classApp.html#a63bc0551fe490635456ca60577304d90">App::AddRenderable</a></div><div class="ttdeci">void AddRenderable(IRender *renderable)</div><div class="ttdef"><b>Definition</b> App.cpp:152</div></div>
-<div class="ttc" id="aclassApp_html_a78d24016da98422fabb55b10dbfe3d72"><div class="ttname"><a href="classApp.html#a78d24016da98422fabb55b10dbfe3d72">App::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition</b> App.cpp:98</div></div>
-<div class="ttc" id="aclassApp_html_a7d2d7b5ff84473d6ca036bc03b442f3b"><div class="ttname"><a href="classApp.html#a7d2d7b5ff84473d6ca036bc03b442f3b">App::SetState</a></div><div class="ttdeci">void SetState(IState *state)</div><div class="ttdef"><b>Definition</b> App.cpp:93</div></div>
-<div class="ttc" id="aclassApp_html_a7d7f94e836c482bdb2a3b532ac84c02f"><div class="ttname"><a href="classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f">App::m_width</a></div><div class="ttdeci">int m_width</div><div class="ttdef"><b>Definition</b> App.hpp:47</div></div>
-<div class="ttc" id="aclassApp_html_a7f42e947a052412c193c689b7e7a73cc"><div class="ttname"><a href="classApp.html#a7f42e947a052412c193c689b7e7a73cc">App::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition</b> App.cpp:137</div></div>
-<div class="ttc" id="aclassApp_html_a9cb7d1fd0d93a6f74c3d432cc6bc9849"><div class="ttname"><a href="classApp.html#a9cb7d1fd0d93a6f74c3d432cc6bc9849">App::GetFPS</a></div><div class="ttdeci">double GetFPS() const</div><div class="ttdef"><b>Definition</b> App.cpp:157</div></div>
-<div class="ttc" id="aclassApp_html_ac597a252fb0272b781fb39cb546b8c10"><div class="ttname"><a href="classApp.html#ac597a252fb0272b781fb39cb546b8c10">App::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdef"><b>Definition</b> App.cpp:124</div></div>
-<div class="ttc" id="aclassApp_html_adaf84277805a5f300122fb22fd41d5f7"><div class="ttname"><a href="classApp.html#adaf84277805a5f300122fb22fd41d5f7">App::GetRenderer</a></div><div class="ttdeci">SDL_Renderer * GetRenderer()</div><div class="ttdef"><b>Definition</b> App.cpp:86</div></div>
-<div class="ttc" id="aclassApp_html_af0576e3cf1540d9d28f47c40bc0bc02c"><div class="ttname"><a href="classApp.html#af0576e3cf1540d9d28f47c40bc0bc02c">App::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdef"><b>Definition</b> App.cpp:162</div></div>
-<div class="ttc" id="aclassIRender_html"><div class="ttname"><a href="classIRender.html">IRender</a></div><div class="ttdef"><b>Definition</b> IRender.hpp:7</div></div>
+<div class="ttc" id="aclassApp_html_a4bce1efdfbbb1f6d7b0c2a5fe2b14122"><div class="ttname"><a href="classApp.html#a4bce1efdfbbb1f6d7b0c2a5fe2b14122">App::AddRenderable</a></div><div class="ttdeci">void AddRenderable(std::shared_ptr&lt; IRender &gt; const &amp;renderable)</div><div class="ttdef"><b>Definition</b> App.cpp:193</div></div>
+<div class="ttc" id="aclassApp_html_a5af78dfaa7737b0b517c80a066bfd67f"><div class="ttname"><a href="classApp.html#a5af78dfaa7737b0b517c80a066bfd67f">App::m_state</a></div><div class="ttdeci">IState * m_state</div><div class="ttdef"><b>Definition</b> App.hpp:51</div></div>
+<div class="ttc" id="aclassApp_html_a78d24016da98422fabb55b10dbfe3d72"><div class="ttname"><a href="classApp.html#a78d24016da98422fabb55b10dbfe3d72">App::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition</b> App.cpp:136</div></div>
+<div class="ttc" id="aclassApp_html_a7d2d7b5ff84473d6ca036bc03b442f3b"><div class="ttname"><a href="classApp.html#a7d2d7b5ff84473d6ca036bc03b442f3b">App::SetState</a></div><div class="ttdeci">void SetState(IState *state)</div><div class="ttdef"><b>Definition</b> App.cpp:128</div></div>
+<div class="ttc" id="aclassApp_html_a7d7f94e836c482bdb2a3b532ac84c02f"><div class="ttname"><a href="classApp.html#a7d7f94e836c482bdb2a3b532ac84c02f">App::m_width</a></div><div class="ttdeci">int m_width</div><div class="ttdef"><b>Definition</b> App.hpp:46</div></div>
+<div class="ttc" id="aclassApp_html_a7f42e947a052412c193c689b7e7a73cc"><div class="ttname"><a href="classApp.html#a7f42e947a052412c193c689b7e7a73cc">App::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition</b> App.cpp:176</div></div>
+<div class="ttc" id="aclassApp_html_a9cb7d1fd0d93a6f74c3d432cc6bc9849"><div class="ttname"><a href="classApp.html#a9cb7d1fd0d93a6f74c3d432cc6bc9849">App::GetFPS</a></div><div class="ttdeci">double GetFPS() const</div><div class="ttdef"><b>Definition</b> App.cpp:205</div></div>
+<div class="ttc" id="aclassApp_html_ac597a252fb0272b781fb39cb546b8c10"><div class="ttname"><a href="classApp.html#ac597a252fb0272b781fb39cb546b8c10">App::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdef"><b>Definition</b> App.cpp:162</div></div>
+<div class="ttc" id="aclassApp_html_adaf84277805a5f300122fb22fd41d5f7"><div class="ttname"><a href="classApp.html#adaf84277805a5f300122fb22fd41d5f7">App::GetRenderer</a></div><div class="ttdeci">SDL_Renderer * GetRenderer()</div><div class="ttdef"><b>Definition</b> App.cpp:121</div></div>
+<div class="ttc" id="aclassApp_html_af0576e3cf1540d9d28f47c40bc0bc02c"><div class="ttname"><a href="classApp.html#af0576e3cf1540d9d28f47c40bc0bc02c">App::GetWidth</a></div><div class="ttdeci">int GetWidth() const</div><div class="ttdef"><b>Definition</b> App.cpp:210</div></div>
 <div class="ttc" id="aclassIState_html"><div class="ttname"><a href="classIState.html">IState</a></div><div class="ttdef"><b>Definition</b> IState.hpp:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

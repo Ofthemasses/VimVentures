@@ -17,7 +17,9 @@ void \mbox{\hyperlink{classApp_ac597a252fb0272b781fb39cb546b8c10}{Stop}} ()
 \item 
 void \mbox{\hyperlink{classApp_a7f42e947a052412c193c689b7e7a73cc}{Render}} ()
 \item 
-void \mbox{\hyperlink{classApp_a63bc0551fe490635456ca60577304d90}{Add\+Renderable}} (\mbox{\hyperlink{classIRender}{IRender}} \texorpdfstring{$\ast$}{*}renderable)
+void \mbox{\hyperlink{classApp_a4bce1efdfbbb1f6d7b0c2a5fe2b14122}{Add\+Renderable}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRender}{IRender}} $>$ const \&renderable)
+\item 
+void \mbox{\hyperlink{classApp_a36d9b9266b3cb0c1964badb36087de16}{Clear\+Renderables}} ()
 \item 
 double \mbox{\hyperlink{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}{Get\+FPS}} () const
 \item 
@@ -38,6 +40,8 @@ void {\bfseries Pre\+Draw} () const
 static void {\bfseries debug\+Message} (GLenum source, GLenum type, GLuint debug\+\_\+id, GLenum severity, GLsizei length, const GLchar \texorpdfstring{$\ast$}{*}message, const void \texorpdfstring{$\ast$}{*}user\+Param)
 \item 
 static void \mbox{\hyperlink{classApp_a26c8801e7a5375be8b96453ae0a7f451}{Create\+Graphics\+Pipeline}} ()
+\item 
+static void \mbox{\hyperlink{classApp_a02e8ddeeef85c9d26e412dde846dcaca}{Generate\+Fonts}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -48,8 +52,8 @@ SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+window}
 \Hypertarget{classApp_a93a1f459e17941579960b1b78a73a9e3}\label{classApp_a93a1f459e17941579960b1b78a73a9e3} 
 SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+renderer}
 \item 
-\Hypertarget{classApp_a162254c727fc7010d227b99a1b5cd9b1}\label{classApp_a162254c727fc7010d227b99a1b5cd9b1} 
-\mbox{\hyperlink{classIRender}{IRender}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+renderable}
+\Hypertarget{classApp_a5283a93729a3eef0ed62ee8fe2d6184d}\label{classApp_a5283a93729a3eef0ed62ee8fe2d6184d} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRender}{IRender}} $>$ $>$ {\bfseries m\+\_\+renderables}
 \item 
 int \mbox{\hyperlink{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}{m\+\_\+width}}
 \item 
@@ -74,6 +78,9 @@ static constexpr double \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427
 \item 
 \Hypertarget{classApp_af79ea97ede88555d7cd475301e958cc8}\label{classApp_af79ea97ede88555d7cd475301e958cc8} 
 static constexpr int {\bfseries APP\+\_\+\+GL\+\_\+\+DEPTH\+\_\+\+SIZE} = 24
+\item 
+\Hypertarget{classApp_add431cf6fdd30ff036ae1da4b0b8ed9e}\label{classApp_add431cf6fdd30ff036ae1da4b0b8ed9e} 
+static constexpr int {\bfseries FONT\+\_\+\+RENDER\+\_\+\+SIZE} = 128
 \end{DoxyCompactItemize}
 
 
@@ -108,20 +115,26 @@ Vim\+Ventures Game.
 Destroy Game Window and Instance. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classApp_a63bc0551fe490635456ca60577304d90}\label{classApp_a63bc0551fe490635456ca60577304d90} 
+\Hypertarget{classApp_a4bce1efdfbbb1f6d7b0c2a5fe2b14122}\label{classApp_a4bce1efdfbbb1f6d7b0c2a5fe2b14122} 
 \index{App@{App}!AddRenderable@{AddRenderable}}
 \index{AddRenderable@{AddRenderable}!App@{App}}
 \doxysubsubsection{\texorpdfstring{AddRenderable()}{AddRenderable()}}
-{\footnotesize\ttfamily void App\+::\+Add\+Renderable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIRender}{IRender}} \texorpdfstring{$\ast$}{*}}]{renderable }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void App\+::\+Add\+Renderable (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRender}{IRender}} $>$ const \&}]{renderable }\end{DoxyParamCaption})}
 
-Add a new renderable.
+Add a new renderable to renderables.
 
 
 \begin{DoxyParams}{Parameters}
 {\em Renderable} & \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classApp_a26c8801e7a5375be8b96453ae0a7f451}\label{classApp_a26c8801e7a5375be8b96453ae0a7f451} 
+\Hypertarget{classApp_a36d9b9266b3cb0c1964badb36087de16}\label{classApp_a36d9b9266b3cb0c1964badb36087de16} 
+\index{App@{App}!ClearRenderables@{ClearRenderables}}
+\index{ClearRenderables@{ClearRenderables}!App@{App}}
+\doxysubsubsection{\texorpdfstring{ClearRenderables()}{ClearRenderables()}}
+{\footnotesize\ttfamily void App\+::\+Clear\+Renderables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears renderables. \Hypertarget{classApp_a26c8801e7a5375be8b96453ae0a7f451}\label{classApp_a26c8801e7a5375be8b96453ae0a7f451} 
 \index{App@{App}!CreateGraphicsPipeline@{CreateGraphicsPipeline}}
 \index{CreateGraphicsPipeline@{CreateGraphicsPipeline}!App@{App}}
 \doxysubsubsection{\texorpdfstring{CreateGraphicsPipeline()}{CreateGraphicsPipeline()}}
@@ -131,6 +144,16 @@ Builds and loads the canode shader into the shader map.
 
 \begin{DoxyRefDesc}{Todo}
 \item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Incorporate other shaders, perhaps a constexpr list \end{DoxyRefDesc}
+\Hypertarget{classApp_a02e8ddeeef85c9d26e412dde846dcaca}\label{classApp_a02e8ddeeef85c9d26e412dde846dcaca} 
+\index{App@{App}!GenerateFonts@{GenerateFonts}}
+\index{GenerateFonts@{GenerateFonts}!App@{App}}
+\doxysubsubsection{\texorpdfstring{GenerateFonts()}{GenerateFonts()}}
+{\footnotesize\ttfamily void App\+::\+Generate\+Fonts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Generate Fonts.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]May be better to grab pre-\/serialised, though this matches with Open\+GL philosophy. \end{DoxyRefDesc}
 \Hypertarget{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}\label{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849} 
 \index{App@{App}!GetFPS@{GetFPS}}
 \index{GetFPS@{GetFPS}!App@{App}}

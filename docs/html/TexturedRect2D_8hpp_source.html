@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.1</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.2</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -110,24 +110,40 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#a3125472341cd3feef5b88964ae65eb8d">SetTexture</a>(<span class="keywordtype">void</span> *data, GLuint width, GLuint height,</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                    <span class="keywordtype">bool</span> force = <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="classTexturedRect2D.html#a45538e526e981eddb69074e6a7d11808">~TexturedRect2D</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#a784e67ea9d92f2f59014b603187a0c22">SetTextureFormat</a>(GLenum format);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#aa37daeff9f2db40e9effbb737349e99e">Render</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#a3f6d15f561c126a0024ba40ea7600b8b">SetInternalTextureFormat</a>(GLenum format);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#aec53724ec19e14b728702fe9b6e09d4f">UpdateGL</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
-</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#a58d7f773fdeed453fe08243ee1d32a32">EnableTextureBlend</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#a04eed590c683b9df9a0e4e7f93f43984">DisableTextureBlend</a>();</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="classTexturedRect2D.html#a45538e526e981eddb69074e6a7d11808">~TexturedRect2D</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#aa37daeff9f2db40e9effbb737349e99e">Render</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTexturedRect2D.html#aec53724ec19e14b728702fe9b6e09d4f">UpdateGL</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    GLenum m_textureFormat;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    GLenum m_internalTextureFormat;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">bool</span> m_enableBlend;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassRect2D_html"><div class="ttname"><a href="classRect2D.html">Rect2D</a></div><div class="ttdef"><b>Definition</b> Rect2D.hpp:11</div></div>
 <div class="ttc" id="aclassTexturedRect2D_html"><div class="ttname"><a href="classTexturedRect2D.html">TexturedRect2D</a></div><div class="ttdef"><b>Definition</b> TexturedRect2D.hpp:11</div></div>
-<div class="ttc" id="aclassTexturedRect2D_html_a3125472341cd3feef5b88964ae65eb8d"><div class="ttname"><a href="classTexturedRect2D.html#a3125472341cd3feef5b88964ae65eb8d">TexturedRect2D::SetTexture</a></div><div class="ttdeci">void SetTexture(void *data, GLuint width, GLuint height, bool force=false)</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:45</div></div>
-<div class="ttc" id="aclassTexturedRect2D_html_a45538e526e981eddb69074e6a7d11808"><div class="ttname"><a href="classTexturedRect2D.html#a45538e526e981eddb69074e6a7d11808">TexturedRect2D::~TexturedRect2D</a></div><div class="ttdeci">~TexturedRect2D()</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:18</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a04eed590c683b9df9a0e4e7f93f43984"><div class="ttname"><a href="classTexturedRect2D.html#a04eed590c683b9df9a0e4e7f93f43984">TexturedRect2D::DisableTextureBlend</a></div><div class="ttdeci">void DisableTextureBlend()</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:109</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a3125472341cd3feef5b88964ae65eb8d"><div class="ttname"><a href="classTexturedRect2D.html#a3125472341cd3feef5b88964ae65eb8d">TexturedRect2D::SetTexture</a></div><div class="ttdeci">void SetTexture(void *data, GLuint width, GLuint height, bool force=false)</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:49</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a3f6d15f561c126a0024ba40ea7600b8b"><div class="ttname"><a href="classTexturedRect2D.html#a3f6d15f561c126a0024ba40ea7600b8b">TexturedRect2D::SetInternalTextureFormat</a></div><div class="ttdeci">void SetInternalTextureFormat(GLenum format)</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:97</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a45538e526e981eddb69074e6a7d11808"><div class="ttname"><a href="classTexturedRect2D.html#a45538e526e981eddb69074e6a7d11808">TexturedRect2D::~TexturedRect2D</a></div><div class="ttdeci">~TexturedRect2D()</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:22</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a58d7f773fdeed453fe08243ee1d32a32"><div class="ttname"><a href="classTexturedRect2D.html#a58d7f773fdeed453fe08243ee1d32a32">TexturedRect2D::EnableTextureBlend</a></div><div class="ttdeci">void EnableTextureBlend()</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:104</div></div>
 <div class="ttc" id="aclassTexturedRect2D_html_a615344905b23e8ad55beeec18854d784"><div class="ttname"><a href="classTexturedRect2D.html#a615344905b23e8ad55beeec18854d784">TexturedRect2D::TexturedRect2D</a></div><div class="ttdeci">TexturedRect2D(GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:11</div></div>
-<div class="ttc" id="aclassTexturedRect2D_html_a75d7e9d3f2a8f6c1772ba5e0a84cc27e"><div class="ttname"><a href="classTexturedRect2D.html#a75d7e9d3f2a8f6c1772ba5e0a84cc27e">TexturedRect2D::UpdateVertexData</a></div><div class="ttdeci">void UpdateVertexData() override</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:24</div></div>
-<div class="ttc" id="aclassTexturedRect2D_html_aa37daeff9f2db40e9effbb737349e99e"><div class="ttname"><a href="classTexturedRect2D.html#aa37daeff9f2db40e9effbb737349e99e">TexturedRect2D::Render</a></div><div class="ttdeci">void Render() override</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:83</div></div>
-<div class="ttc" id="aclassTexturedRect2D_html_aec53724ec19e14b728702fe9b6e09d4f"><div class="ttname"><a href="classTexturedRect2D.html#aec53724ec19e14b728702fe9b6e09d4f">TexturedRect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:100</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a75d7e9d3f2a8f6c1772ba5e0a84cc27e"><div class="ttname"><a href="classTexturedRect2D.html#a75d7e9d3f2a8f6c1772ba5e0a84cc27e">TexturedRect2D::UpdateVertexData</a></div><div class="ttdeci">void UpdateVertexData() override</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:28</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_a784e67ea9d92f2f59014b603187a0c22"><div class="ttname"><a href="classTexturedRect2D.html#a784e67ea9d92f2f59014b603187a0c22">TexturedRect2D::SetTextureFormat</a></div><div class="ttdeci">void SetTextureFormat(GLenum format)</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:90</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_aa37daeff9f2db40e9effbb737349e99e"><div class="ttname"><a href="classTexturedRect2D.html#aa37daeff9f2db40e9effbb737349e99e">TexturedRect2D::Render</a></div><div class="ttdeci">void Render() override</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:117</div></div>
+<div class="ttc" id="aclassTexturedRect2D_html_aec53724ec19e14b728702fe9b6e09d4f"><div class="ttname"><a href="classTexturedRect2D.html#aec53724ec19e14b728702fe9b6e09d4f">TexturedRect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> TexturedRect2D.cpp:135</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

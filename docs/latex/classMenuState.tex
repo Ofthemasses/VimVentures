@@ -1,0 +1,176 @@
+\doxysection{Menu\+State Class Reference}
+\hypertarget{classMenuState}{}\label{classMenuState}\index{MenuState@{MenuState}}
+Inheritance diagram for Menu\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMenuState}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMenuState_a3812d3384e2df7c53e2c75da80bd918b}{Menu\+State}} (\mbox{\hyperlink{classApp}{App}} \&app)
+\item 
+\mbox{\hyperlink{classMenuState_accbc4443ce177b3a7fe7072d9bab1922}{\texorpdfstring{$\sim$}{\string~}\+Menu\+State}} () override
+\item 
+void \mbox{\hyperlink{classMenuState_a2701a3405e15bad04f35c59b82f0d639}{Run}} () override
+\item 
+void \mbox{\hyperlink{classMenuState_a0d80b2738f34200eaa32b6faa1ee7815}{Send\+Event}} (SDL\+\_\+\+Event \&event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMenuState_a7594977283dd666037b71cdb28b4fda3}\label{classMenuState_a7594977283dd666037b71cdb28b4fda3} 
+enum {\bfseries Menu\+Option} \{ {\bfseries START} = 0
+, {\bfseries QUIT} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMenuState_ad3932599c79e17b44c67ae3c79e107b8}{Selector\+Next}} ()
+\item 
+void \mbox{\hyperlink{classMenuState_af0343d45a17b756d72d555f5cfaa5602}{Selector\+Prev}} ()
+\item 
+void \mbox{\hyperlink{classMenuState_a8bf17b6892e4696c44d2458ee4ebe174}{Select}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMenuState_a895c7fcdacac1b5d52f0e198379f233b}\label{classMenuState_a895c7fcdacac1b5d52f0e198379f233b} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classMenuState_a693fb8680b5ee6e0de9176635a9d19d4}\label{classMenuState_a693fb8680b5ee6e0de9176635a9d19d4} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+title\+Text}
+\item 
+\Hypertarget{classMenuState_a6ec8a33bdba2477f4739ef590b9fce95}\label{classMenuState_a6ec8a33bdba2477f4739ef590b9fce95} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+start\+Text}
+\item 
+\Hypertarget{classMenuState_ab372ed0d55f2f3c3e43f627863e6b10f}\label{classMenuState_ab372ed0d55f2f3c3e43f627863e6b10f} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+quit\+Text}
+\item 
+\Hypertarget{classMenuState_a6962f96a3d172610a07ff4dfdc823eed}\label{classMenuState_a6962f96a3d172610a07ff4dfdc823eed} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+selector}
+\item 
+\Hypertarget{classMenuState_ae5b57a6831e12ec54383383b536b6ba7}\label{classMenuState_ae5b57a6831e12ec54383383b536b6ba7} 
+int {\bfseries selector\+\_\+pos}
+\item 
+\Hypertarget{classMenuState_a8edf6d7d646306b7d226de0714d13027}\label{classMenuState_a8edf6d7d646306b7d226de0714d13027} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+instruction\+Text}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMenuState_a49162c8f16012b9b1ba2e537cbdc8a47}\label{classMenuState_a49162c8f16012b9b1ba2e537cbdc8a47} 
+static constexpr SDL\+\_\+\+Color {\bfseries TEXT\+\_\+\+COLOR} = \{255, 255, 255\}
+\item 
+\Hypertarget{classMenuState_ad3f00f860d7f61ba5eea09de46ebedda}\label{classMenuState_ad3f00f860d7f61ba5eea09de46ebedda} 
+static constexpr float {\bfseries TITLE\+\_\+\+W\+\_\+\+SCALE} = 0.\+001
+\item 
+\Hypertarget{classMenuState_ad4cda53b6354a7008fdf322740c55a17}\label{classMenuState_ad4cda53b6354a7008fdf322740c55a17} 
+static constexpr float {\bfseries TITLE\+\_\+\+H\+\_\+\+SCALE} = 0.\+001
+\item 
+\Hypertarget{classMenuState_a266e6f0ac5af0af7b6b7d63e084184f4}\label{classMenuState_a266e6f0ac5af0af7b6b7d63e084184f4} 
+static constexpr float {\bfseries TITLE\+\_\+\+X\+\_\+\+OFFSET} = 0.\+0
+\item 
+\Hypertarget{classMenuState_ac7c46b97d7a038ff8ab5739abf109b53}\label{classMenuState_ac7c46b97d7a038ff8ab5739abf109b53} 
+static constexpr float {\bfseries TITLE\+\_\+\+Y\+\_\+\+OFFSET} = 1.\+0 / 4.\+0
+\item 
+\Hypertarget{classMenuState_a45d8441838ce86051799a68a9ffe5640}\label{classMenuState_a45d8441838ce86051799a68a9ffe5640} 
+static constexpr float {\bfseries MENU\+\_\+\+W\+\_\+\+SCALE} = 0.\+0004
+\item 
+\Hypertarget{classMenuState_a334d3964d4576846556d5251608b7ff6}\label{classMenuState_a334d3964d4576846556d5251608b7ff6} 
+static constexpr float {\bfseries MENU\+\_\+\+H\+\_\+\+SCALE} = 0.\+0004
+\item 
+\Hypertarget{classMenuState_ac0dd04589478130a4f7d9aaf427a720a}\label{classMenuState_ac0dd04589478130a4f7d9aaf427a720a} 
+static constexpr float {\bfseries START\+\_\+\+X\+\_\+\+OFFSET} = 0.\+0
+\item 
+\Hypertarget{classMenuState_af76ef757254558998f43a9c1ec7b2987}\label{classMenuState_af76ef757254558998f43a9c1ec7b2987} 
+static constexpr float {\bfseries START\+\_\+\+Y\+\_\+\+OFFSET} = 0.\+0
+\item 
+\Hypertarget{classMenuState_a63c9ce0d6a75dd9f6b2ffb0c39ca8e78}\label{classMenuState_a63c9ce0d6a75dd9f6b2ffb0c39ca8e78} 
+static constexpr float {\bfseries QUIT\+\_\+\+X\+\_\+\+OFFSET} = 0.\+0
+\item 
+\Hypertarget{classMenuState_a27912528fb403b0b11725613f5fd3028}\label{classMenuState_a27912528fb403b0b11725613f5fd3028} 
+static constexpr float {\bfseries QUIT\+\_\+\+Y\+\_\+\+OFFSET} = -\/1.\+0 / 8.\+0
+\item 
+\Hypertarget{classMenuState_a878dd5d088238c4aa913e861caced726}\label{classMenuState_a878dd5d088238c4aa913e861caced726} 
+static constexpr int {\bfseries MENU\+\_\+\+COUNT} = 2
+\item 
+\Hypertarget{classMenuState_ab2418dc04ec9d1fea3b310b6dc5ecbc9}\label{classMenuState_ab2418dc04ec9d1fea3b310b6dc5ecbc9} 
+static constexpr float {\bfseries SELECTOR\+\_\+\+PADDING} = 1.\+0 / 32.\+0
+\item 
+\Hypertarget{classMenuState_aced1d19f59aa08c034e6c6dc5f9b5c61}\label{classMenuState_aced1d19f59aa08c034e6c6dc5f9b5c61} 
+static constexpr float {\bfseries INSTRUCTION\+\_\+\+W\+\_\+\+SCALE} = 0.\+0002
+\item 
+\Hypertarget{classMenuState_a9265df04e09f0d6dddeba2b378994843}\label{classMenuState_a9265df04e09f0d6dddeba2b378994843} 
+static constexpr float {\bfseries INSTRUCTION\+\_\+\+H\+\_\+\+SCALE} = 0.\+0002
+\item 
+\Hypertarget{classMenuState_a441e79c0d710d5601481ad62405489fb}\label{classMenuState_a441e79c0d710d5601481ad62405489fb} 
+static constexpr float {\bfseries INSTRUCTION\+\_\+\+X\+\_\+\+OFFSET} = 0.\+3
+\item 
+\Hypertarget{classMenuState_a9ac61d3ad6cba6084ae82994098182e5}\label{classMenuState_a9ac61d3ad6cba6084ae82994098182e5} 
+static constexpr float {\bfseries INSTRUCTION\+\_\+\+Y\+\_\+\+OFFSET} = -\/0.\+4
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMenuState_a3812d3384e2df7c53e2c75da80bd918b}\label{classMenuState_a3812d3384e2df7c53e2c75da80bd918b} 
+\index{MenuState@{MenuState}!MenuState@{MenuState}}
+\index{MenuState@{MenuState}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{MenuState()}{MenuState()}}
+{\footnotesize\ttfamily Menu\+State\+::\+Menu\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classApp}{App}} \&}]{app }\end{DoxyParamCaption})}
+
+Mission Level State. \Hypertarget{classMenuState_accbc4443ce177b3a7fe7072d9bab1922}\label{classMenuState_accbc4443ce177b3a7fe7072d9bab1922} 
+\index{MenuState@{MenuState}!````~MenuState@{\texorpdfstring{$\sim$}{\string~}MenuState}}
+\index{````~MenuState@{\texorpdfstring{$\sim$}{\string~}MenuState}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MenuState()}{\string~MenuState()}}
+{\footnotesize\ttfamily Menu\+State\+::\texorpdfstring{$\sim$}{\string~}\+Menu\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Destroy the terminal emulator on deletion. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMenuState_a2701a3405e15bad04f35c59b82f0d639}\label{classMenuState_a2701a3405e15bad04f35c59b82f0d639} 
+\index{MenuState@{MenuState}!Run@{Run}}
+\index{Run@{Run}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Menu\+State\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Runs the state loop. 
+
+Implements \mbox{\hyperlink{classIState}{IState}}.
+
+\Hypertarget{classMenuState_a8bf17b6892e4696c44d2458ee4ebe174}\label{classMenuState_a8bf17b6892e4696c44d2458ee4ebe174} 
+\index{MenuState@{MenuState}!Select@{Select}}
+\index{Select@{Select}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{Select()}{Select()}}
+{\footnotesize\ttfamily void Menu\+State\+::\+Select (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Executes menu item logic based on the currently selected item. \Hypertarget{classMenuState_ad3932599c79e17b44c67ae3c79e107b8}\label{classMenuState_ad3932599c79e17b44c67ae3c79e107b8} 
+\index{MenuState@{MenuState}!SelectorNext@{SelectorNext}}
+\index{SelectorNext@{SelectorNext}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{SelectorNext()}{SelectorNext()}}
+{\footnotesize\ttfamily void Menu\+State\+::\+Selector\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Moves the selector to the next menu item. \Hypertarget{classMenuState_af0343d45a17b756d72d555f5cfaa5602}\label{classMenuState_af0343d45a17b756d72d555f5cfaa5602} 
+\index{MenuState@{MenuState}!SelectorPrev@{SelectorPrev}}
+\index{SelectorPrev@{SelectorPrev}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{SelectorPrev()}{SelectorPrev()}}
+{\footnotesize\ttfamily void Menu\+State\+::\+Selector\+Prev (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Moves the selector to the previous menu item. \Hypertarget{classMenuState_a0d80b2738f34200eaa32b6faa1ee7815}\label{classMenuState_a0d80b2738f34200eaa32b6faa1ee7815} 
+\index{MenuState@{MenuState}!SendEvent@{SendEvent}}
+\index{SendEvent@{SendEvent}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{SendEvent()}{SendEvent()}}
+{\footnotesize\ttfamily void Menu\+State\+::\+Send\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles SDL Input. 
+
+Implements \mbox{\hyperlink{classIState}{IState}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Menu\+State.\+hpp\item 
+src/Menu\+State.\+cpp\end{DoxyCompactItemize}

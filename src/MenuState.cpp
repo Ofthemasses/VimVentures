@@ -139,6 +139,9 @@ void MenuState::SendEvent(SDL_Event &event) {
     }
 }
 
+/**
+ * Moves the selector to the next menu item.
+ */
 void MenuState::SelectorNext() {
     if (MENU_COUNT < selector_pos + 1) {
         std::cout << "TEST" << std::endl;
@@ -159,6 +162,9 @@ void MenuState::SelectorNext() {
     }
 }
 
+/**
+ * Moves the selector to the previous menu item.
+ */
 void MenuState::SelectorPrev() {
     if (selector_pos == 0) {
         return;
@@ -177,6 +183,9 @@ void MenuState::SelectorPrev() {
     }
 }
 
+/**
+ * Executes menu item logic based on the currently selected item.
+ */
 void MenuState::Select() {
     switch (selector_pos) {
     case START:

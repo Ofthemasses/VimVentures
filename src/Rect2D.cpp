@@ -158,6 +158,11 @@ void Rect2D::UpdateGL() {
     glDisableVertexAttribArray(1);
 }
 
+/**
+ * Set the shaderProgram to render this rectangle by name.
+ *
+ * @param shaderProgram ShaderProgram name
+ */
 void Rect2D::SetShaderProgram(std::string shaderProgramName) {
     m_shaderProgram = shaderProgramName;
 }

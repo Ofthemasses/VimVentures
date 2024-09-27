@@ -27,14 +27,26 @@
 \DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{SetTexture}}(\textcolor{keywordtype}{void}\ *data,\ GLuint\ width,\ GLuint\ height,}
 \DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ force\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\string~TexturedRect2D}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22}{SetTextureFormat}}(GLenum\ format);}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b}{SetInternalTextureFormat}}(GLenum\ format);}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{UpdateGL}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32}{EnableTextureBlend}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}{DisableTextureBlend}}();}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\string~TexturedRect2D}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{UpdateGL}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ GLenum\ m\_textureFormat;}
+\DoxyCodeLine{00042\ \ \ \ \ GLenum\ m\_internalTextureFormat;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_enableBlend;}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

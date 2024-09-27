@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.1</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.2</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -97,7 +97,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_function" href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState</a>(<a class="code hl_class" href="classApp.html">App</a> &amp;app);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_function" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">~MissionState</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">   13</a></span>    <a class="code hl_function" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">~MissionState</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">Run</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMissionState.html#aac05233c1924ac8c40c3277815716388">SendEvent</a>(SDL_Event &amp;event) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
@@ -107,7 +107,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_G = 50;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_B = 168;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_class" href="classVimEmulator.html">VimEmulator</a> *m_vimEmulator;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::shared_ptr&lt;VimEmulator&gt; m_vimEmulator;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
 </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
@@ -115,11 +115,10 @@ $(function() { codefold.init(0); });
 <div class="ttc" id="aclassApp_html"><div class="ttname"><a href="classApp.html">App</a></div><div class="ttdef"><b>Definition</b> App.hpp:12</div></div>
 <div class="ttc" id="aclassIState_html"><div class="ttname"><a href="classIState.html">IState</a></div><div class="ttdef"><b>Definition</b> IState.hpp:6</div></div>
 <div class="ttc" id="aclassMissionState_html"><div class="ttname"><a href="classMissionState.html">MissionState</a></div><div class="ttdef"><b>Definition</b> MissionState.hpp:8</div></div>
-<div class="ttc" id="aclassMissionState_html_a09bc7b5f761f4c1a9477e605b72ae5f7"><div class="ttname"><a href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">MissionState::~MissionState</a></div><div class="ttdeci">~MissionState() override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:26</div></div>
-<div class="ttc" id="aclassMissionState_html_aac05233c1924ac8c40c3277815716388"><div class="ttname"><a href="classMissionState.html#aac05233c1924ac8c40c3277815716388">MissionState::SendEvent</a></div><div class="ttdeci">void SendEvent(SDL_Event &amp;event) override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:39</div></div>
-<div class="ttc" id="aclassMissionState_html_aac7344320cd7eb188a2fce4acead50d5"><div class="ttname"><a href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState::MissionState</a></div><div class="ttdeci">MissionState(App &amp;app)</div><div class="ttdef"><b>Definition</b> MissionState.cpp:6</div></div>
-<div class="ttc" id="aclassMissionState_html_ac2775c5ad3a68d6a24324b862bbd18ee"><div class="ttname"><a href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">MissionState::Run</a></div><div class="ttdeci">void Run() override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:31</div></div>
-<div class="ttc" id="aclassVimEmulator_html"><div class="ttname"><a href="classVimEmulator.html">VimEmulator</a></div><div class="ttdef"><b>Definition</b> VimEmulator.hpp:10</div></div>
+<div class="ttc" id="aclassMissionState_html_a09bc7b5f761f4c1a9477e605b72ae5f7"><div class="ttname"><a href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">MissionState::~MissionState</a></div><div class="ttdeci">~MissionState() override</div></div>
+<div class="ttc" id="aclassMissionState_html_aac05233c1924ac8c40c3277815716388"><div class="ttname"><a href="classMissionState.html#aac05233c1924ac8c40c3277815716388">MissionState::SendEvent</a></div><div class="ttdeci">void SendEvent(SDL_Event &amp;event) override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:44</div></div>
+<div class="ttc" id="aclassMissionState_html_aac7344320cd7eb188a2fce4acead50d5"><div class="ttname"><a href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState::MissionState</a></div><div class="ttdeci">MissionState(App &amp;app)</div><div class="ttdef"><b>Definition</b> MissionState.cpp:7</div></div>
+<div class="ttc" id="aclassMissionState_html_ac2775c5ad3a68d6a24324b862bbd18ee"><div class="ttname"><a href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">MissionState::Run</a></div><div class="ttdeci">void Run() override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

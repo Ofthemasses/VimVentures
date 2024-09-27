@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.1</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.2</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -76,7 +76,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classRect2D-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Rect2D Class Reference</div></div>
@@ -118,6 +117,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7e48bcc4ca159e58b51e2b9b0453225e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a14b1e63c6cf187aa00ebf20044ae5" id="r_a54a14b1e63c6cf187aa00ebf20044ae5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54a14b1e63c6cf187aa00ebf20044ae5">Render</a> () override</td></tr>
 <tr class="separator:a54a14b1e63c6cf187aa00ebf20044ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7004e540e40fe825be028efaf7a270f6" id="r_a7004e540e40fe825be028efaf7a270f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a> () override</td></tr>
+<tr class="separator:a7004e540e40fe825be028efaf7a270f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f8c8a6b75c3ff3c8faa6df9fb74f805" id="r_a0f8c8a6b75c3ff3c8faa6df9fb74f805"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f8c8a6b75c3ff3c8faa6df9fb74f805">SetShaderProgram</a> (std::string shaderProgram)</td></tr>
+<tr class="separator:a0f8c8a6b75c3ff3c8faa6df9fb74f805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -160,11 +163,9 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_vertexBufferObjec
 <tr class="memitem:ab28fa2d3ba973a626a53d88b58814d91 inherit pro_attribs_classIRender" id="r_ab28fa2d3ba973a626a53d88b58814d91"><td class="memItemLeft" align="right" valign="top">
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>m_indexBufferObject</b></td></tr>
 <tr class="separator:ab28fa2d3ba973a626a53d88b58814d91 inherit pro_attribs_classIRender"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a7004e540e40fe825be028efaf7a270f6" id="r_a7004e540e40fe825be028efaf7a270f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a> () override</td></tr>
-<tr class="separator:a7004e540e40fe825be028efaf7a270f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b80f8ec69668d00e3e09f82652d3f0 inherit pro_attribs_classIRender" id="r_aa9b80f8ec69668d00e3e09f82652d3f0"><td class="memItemLeft" align="right" valign="top">
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgram</b></td></tr>
+<tr class="separator:aa9b80f8ec69668d00e3e09f82652d3f0 inherit pro_attribs_classIRender"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -415,6 +416,30 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>RECT_
 
 </div>
 </div>
+<a id="a0f8c8a6b75c3ff3c8faa6df9fb74f805" name="a0f8c8a6b75c3ff3c8faa6df9fb74f805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f8c8a6b75c3ff3c8faa6df9fb74f805">&#9670;&#160;</a></span>SetShaderProgram()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Rect2D::SetShaderProgram </td>
+          <td>(</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>shaderProgramName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the shaderProgram to render this rectangle by name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shaderProgram</td><td><a class="el" href="classShaderProgram.html">ShaderProgram</a> name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aace8b1695889cb276f35e7e059eb62da" name="aace8b1695889cb276f35e7e059eb62da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aace8b1695889cb276f35e7e059eb62da">&#9670;&#160;</a></span>SetSize()</h2>
 
@@ -462,7 +487,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>RECT_
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -503,8 +528,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>RECT_
 <div class="line">   \/\/ Always <a class="code hl_function" href="#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a> after changing vertex data.</div>
 <div class="line">   <a class="code hl_function" href="#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a>();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassRect2D_html_a7004e540e40fe825be028efaf7a270f6"><div class="ttname"><a href="#a7004e540e40fe825be028efaf7a270f6">Rect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:147</div></div>
-<div class="ttc" id="aclassRect2D_html_a8754759bde669f7bfc6ebe148fa7f062"><div class="ttname"><a href="#a8754759bde669f7bfc6ebe148fa7f062">Rect2D::UpdateVertexData</a></div><div class="ttdeci">virtual void UpdateVertexData()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:65</div></div>
+<div class="ttc" id="aclassRect2D_html_a7004e540e40fe825be028efaf7a270f6"><div class="ttname"><a href="#a7004e540e40fe825be028efaf7a270f6">Rect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:149</div></div>
+<div class="ttc" id="aclassRect2D_html_a8754759bde669f7bfc6ebe148fa7f062"><div class="ttname"><a href="#a8754759bde669f7bfc6ebe148fa7f062">Rect2D::UpdateVertexData</a></div><div class="ttdeci">virtual void UpdateVertexData()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:67</div></div>
 </div><!-- fragment --> 
 <p>Reimplemented in <a class="el" href="classTexturedRect2D.html#a75d7e9d3f2a8f6c1772ba5e0a84cc27e">TexturedRect2D</a>.</p>
 

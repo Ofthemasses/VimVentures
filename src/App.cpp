@@ -169,6 +169,7 @@ void App::PreDraw() const {
     glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     glClear(GL_COLOR_BUFFER_BIT);
 }
+
 /**
  * Render cycle, calls all renderables.
  */
@@ -185,7 +186,7 @@ void App::Render() {
 }
 
 /**
- * Add a new renderable.
+ * Add a new renderable to renderables.
  *
  * @param Renderable
  */
@@ -193,6 +194,9 @@ void App::AddRenderable(std::shared_ptr<IRender> const &renderable) {
     m_renderables.emplace_back(renderable);
 }
 
+/**
+ * Clears renderables.
+ */
 void App::ClearRenderables() { m_renderables.clear(); }
 
 /**

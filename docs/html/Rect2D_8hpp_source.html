@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.1</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.2</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -90,8 +90,8 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;GraphicsController.hpp&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;IRender.hpp&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;ShaderProgram.hpp&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
@@ -130,29 +130,32 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a54a14b1e63c6cf187aa00ebf20044ae5">Render</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> RECT_ELEMENTS = 6;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">UpdateGL</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classRect2D.html#a0f8c8a6b75c3ff3c8faa6df9fb74f805">SetShaderProgram</a>(std::string shaderProgram);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> RECT_ELEMENTS = 6;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassIRender_html"><div class="ttname"><a href="classIRender.html">IRender</a></div><div class="ttdef"><b>Definition</b> IRender.hpp:7</div></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassIRender_html"><div class="ttname"><a href="classIRender.html">IRender</a></div><div class="ttdef"><b>Definition</b> IRender.hpp:8</div></div>
 <div class="ttc" id="aclassRect2D_html"><div class="ttname"><a href="classRect2D.html">Rect2D</a></div><div class="ttdef"><b>Definition</b> Rect2D.hpp:11</div></div>
-<div class="ttc" id="aclassRect2D_html_a0d4d3d2a5dc76eb349190bb685cd94d4"><div class="ttname"><a href="classRect2D.html#a0d4d3d2a5dc76eb349190bb685cd94d4">Rect2D::GenBindBufferGL</a></div><div class="ttdeci">void GenBindBufferGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:36</div></div>
-<div class="ttc" id="aclassRect2D_html_a354f1a1801cd499e2fb840a884c8114e"><div class="ttname"><a href="classRect2D.html#a354f1a1801cd499e2fb840a884c8114e">Rect2D::Rect2D</a></div><div class="ttdeci">Rect2D(GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:11</div></div>
-<div class="ttc" id="aclassRect2D_html_a421133bd8822adc575ae4e3fd6be55d7"><div class="ttname"><a href="classRect2D.html#a421133bd8822adc575ae4e3fd6be55d7">Rect2D::GetHeight</a></div><div class="ttdeci">GLfloat GetHeight() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:125</div></div>
-<div class="ttc" id="aclassRect2D_html_a50be78f5d82d97a654bf05528899cdc3"><div class="ttname"><a href="classRect2D.html#a50be78f5d82d97a654bf05528899cdc3">Rect2D::GetVertexData</a></div><div class="ttdeci">std::vector&lt; GLfloat &gt; GetVertexData() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:132</div></div>
-<div class="ttc" id="aclassRect2D_html_a54a14b1e63c6cf187aa00ebf20044ae5"><div class="ttname"><a href="classRect2D.html#a54a14b1e63c6cf187aa00ebf20044ae5">Rect2D::Render</a></div><div class="ttdeci">void Render() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:137</div></div>
-<div class="ttc" id="aclassRect2D_html_a666f3d46180fa5a78588f1ca1f2e62c4"><div class="ttname"><a href="classRect2D.html#a666f3d46180fa5a78588f1ca1f2e62c4">Rect2D::GetX</a></div><div class="ttdeci">GLfloat GetX() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:104</div></div>
-<div class="ttc" id="aclassRect2D_html_a7004e540e40fe825be028efaf7a270f6"><div class="ttname"><a href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">Rect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:147</div></div>
-<div class="ttc" id="aclassRect2D_html_a7e48bcc4ca159e58b51e2b9b0453225e"><div class="ttname"><a href="classRect2D.html#a7e48bcc4ca159e58b51e2b9b0453225e">Rect2D::~Rect2D</a></div><div class="ttdeci">~Rect2D()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:25</div></div>
-<div class="ttc" id="aclassRect2D_html_a7e981c0da83e69419a870e01c9931038"><div class="ttname"><a href="classRect2D.html#a7e981c0da83e69419a870e01c9931038">Rect2D::GetY</a></div><div class="ttdeci">GLfloat GetY() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:111</div></div>
-<div class="ttc" id="aclassRect2D_html_a8754759bde669f7bfc6ebe148fa7f062"><div class="ttname"><a href="classRect2D.html#a8754759bde669f7bfc6ebe148fa7f062">Rect2D::UpdateVertexData</a></div><div class="ttdeci">virtual void UpdateVertexData()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:65</div></div>
-<div class="ttc" id="aclassRect2D_html_aace8b1695889cb276f35e7e059eb62da"><div class="ttname"><a href="classRect2D.html#aace8b1695889cb276f35e7e059eb62da">Rect2D::SetSize</a></div><div class="ttdeci">void SetSize(GLfloat width, GLfloat height)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:92</div></div>
-<div class="ttc" id="aclassRect2D_html_ab0f4e1cab776a0eabd9230515b6f2464"><div class="ttname"><a href="classRect2D.html#ab0f4e1cab776a0eabd9230515b6f2464">Rect2D::GetWidth</a></div><div class="ttdeci">GLfloat GetWidth() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:118</div></div>
-<div class="ttc" id="aclassRect2D_html_abf79cbb573a5962ad558453037bb8dc2"><div class="ttname"><a href="classRect2D.html#abf79cbb573a5962ad558453037bb8dc2">Rect2D::SetPosition</a></div><div class="ttdeci">void SetPosition(GLfloat xPos, GLfloat yPos)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:79</div></div>
+<div class="ttc" id="aclassRect2D_html_a0d4d3d2a5dc76eb349190bb685cd94d4"><div class="ttname"><a href="classRect2D.html#a0d4d3d2a5dc76eb349190bb685cd94d4">Rect2D::GenBindBufferGL</a></div><div class="ttdeci">void GenBindBufferGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:38</div></div>
+<div class="ttc" id="aclassRect2D_html_a0f8c8a6b75c3ff3c8faa6df9fb74f805"><div class="ttname"><a href="classRect2D.html#a0f8c8a6b75c3ff3c8faa6df9fb74f805">Rect2D::SetShaderProgram</a></div><div class="ttdeci">void SetShaderProgram(std::string shaderProgram)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:166</div></div>
+<div class="ttc" id="aclassRect2D_html_a354f1a1801cd499e2fb840a884c8114e"><div class="ttname"><a href="classRect2D.html#a354f1a1801cd499e2fb840a884c8114e">Rect2D::Rect2D</a></div><div class="ttdeci">Rect2D(GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:12</div></div>
+<div class="ttc" id="aclassRect2D_html_a421133bd8822adc575ae4e3fd6be55d7"><div class="ttname"><a href="classRect2D.html#a421133bd8822adc575ae4e3fd6be55d7">Rect2D::GetHeight</a></div><div class="ttdeci">GLfloat GetHeight() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:127</div></div>
+<div class="ttc" id="aclassRect2D_html_a50be78f5d82d97a654bf05528899cdc3"><div class="ttname"><a href="classRect2D.html#a50be78f5d82d97a654bf05528899cdc3">Rect2D::GetVertexData</a></div><div class="ttdeci">std::vector&lt; GLfloat &gt; GetVertexData() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:134</div></div>
+<div class="ttc" id="aclassRect2D_html_a54a14b1e63c6cf187aa00ebf20044ae5"><div class="ttname"><a href="classRect2D.html#a54a14b1e63c6cf187aa00ebf20044ae5">Rect2D::Render</a></div><div class="ttdeci">void Render() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:139</div></div>
+<div class="ttc" id="aclassRect2D_html_a666f3d46180fa5a78588f1ca1f2e62c4"><div class="ttname"><a href="classRect2D.html#a666f3d46180fa5a78588f1ca1f2e62c4">Rect2D::GetX</a></div><div class="ttdeci">GLfloat GetX() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:106</div></div>
+<div class="ttc" id="aclassRect2D_html_a7004e540e40fe825be028efaf7a270f6"><div class="ttname"><a href="classRect2D.html#a7004e540e40fe825be028efaf7a270f6">Rect2D::UpdateGL</a></div><div class="ttdeci">void UpdateGL() override</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:149</div></div>
+<div class="ttc" id="aclassRect2D_html_a7e48bcc4ca159e58b51e2b9b0453225e"><div class="ttname"><a href="classRect2D.html#a7e48bcc4ca159e58b51e2b9b0453225e">Rect2D::~Rect2D</a></div><div class="ttdeci">~Rect2D()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:27</div></div>
+<div class="ttc" id="aclassRect2D_html_a7e981c0da83e69419a870e01c9931038"><div class="ttname"><a href="classRect2D.html#a7e981c0da83e69419a870e01c9931038">Rect2D::GetY</a></div><div class="ttdeci">GLfloat GetY() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:113</div></div>
+<div class="ttc" id="aclassRect2D_html_a8754759bde669f7bfc6ebe148fa7f062"><div class="ttname"><a href="classRect2D.html#a8754759bde669f7bfc6ebe148fa7f062">Rect2D::UpdateVertexData</a></div><div class="ttdeci">virtual void UpdateVertexData()</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:67</div></div>
+<div class="ttc" id="aclassRect2D_html_aace8b1695889cb276f35e7e059eb62da"><div class="ttname"><a href="classRect2D.html#aace8b1695889cb276f35e7e059eb62da">Rect2D::SetSize</a></div><div class="ttdeci">void SetSize(GLfloat width, GLfloat height)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:94</div></div>
+<div class="ttc" id="aclassRect2D_html_ab0f4e1cab776a0eabd9230515b6f2464"><div class="ttname"><a href="classRect2D.html#ab0f4e1cab776a0eabd9230515b6f2464">Rect2D::GetWidth</a></div><div class="ttdeci">GLfloat GetWidth() const</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:120</div></div>
+<div class="ttc" id="aclassRect2D_html_abf79cbb573a5962ad558453037bb8dc2"><div class="ttname"><a href="classRect2D.html#abf79cbb573a5962ad558453037bb8dc2">Rect2D::SetPosition</a></div><div class="ttdeci">void SetPosition(GLfloat xPos, GLfloat yPos)</div><div class="ttdef"><b>Definition</b> Rect2D.cpp:81</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

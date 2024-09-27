@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.1</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.2</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -99,8 +99,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac597a252fb0272b781fb39cb546b8c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f42e947a052412c193c689b7e7a73cc" id="r_a7f42e947a052412c193c689b7e7a73cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f42e947a052412c193c689b7e7a73cc">Render</a> ()</td></tr>
 <tr class="separator:a7f42e947a052412c193c689b7e7a73cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63bc0551fe490635456ca60577304d90" id="r_a63bc0551fe490635456ca60577304d90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63bc0551fe490635456ca60577304d90">AddRenderable</a> (<a class="el" href="classIRender.html">IRender</a> *renderable)</td></tr>
-<tr class="separator:a63bc0551fe490635456ca60577304d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bce1efdfbbb1f6d7b0c2a5fe2b14122" id="r_a4bce1efdfbbb1f6d7b0c2a5fe2b14122"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bce1efdfbbb1f6d7b0c2a5fe2b14122">AddRenderable</a> (std::shared_ptr&lt; <a class="el" href="classIRender.html">IRender</a> &gt; const &amp;renderable)</td></tr>
+<tr class="separator:a4bce1efdfbbb1f6d7b0c2a5fe2b14122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d9b9266b3cb0c1964badb36087de16" id="r_a36d9b9266b3cb0c1964badb36087de16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36d9b9266b3cb0c1964badb36087de16">ClearRenderables</a> ()</td></tr>
+<tr class="separator:a36d9b9266b3cb0c1964badb36087de16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cb7d1fd0d93a6f74c3d432cc6bc9849" id="r_a9cb7d1fd0d93a6f74c3d432cc6bc9849"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cb7d1fd0d93a6f74c3d432cc6bc9849">GetFPS</a> () const</td></tr>
 <tr class="separator:a9cb7d1fd0d93a6f74c3d432cc6bc9849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0576e3cf1540d9d28f47c40bc0bc02c" id="r_af0576e3cf1540d9d28f47c40bc0bc02c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0576e3cf1540d9d28f47c40bc0bc02c">GetWidth</a> () const</td></tr>
@@ -121,6 +123,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>debugMessage</
 <tr class="separator:ac0e8498205bf068952f386f64c99d43a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26c8801e7a5375be8b96453ae0a7f451" id="r_a26c8801e7a5375be8b96453ae0a7f451"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26c8801e7a5375be8b96453ae0a7f451">CreateGraphicsPipeline</a> ()</td></tr>
 <tr class="separator:a26c8801e7a5375be8b96453ae0a7f451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e8ddeeef85c9d26e412dde846dcaca" id="r_a02e8ddeeef85c9d26e412dde846dcaca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02e8ddeeef85c9d26e412dde846dcaca">GenerateFonts</a> ()</td></tr>
+<tr class="separator:a02e8ddeeef85c9d26e412dde846dcaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -130,9 +134,9 @@ SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>m_window</b><
 <tr class="memitem:a93a1f459e17941579960b1b78a73a9e3" id="r_a93a1f459e17941579960b1b78a73a9e3"><td class="memItemLeft" align="right" valign="top"><a id="a93a1f459e17941579960b1b78a73a9e3" name="a93a1f459e17941579960b1b78a73a9e3"></a>
 SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><b>m_renderer</b></td></tr>
 <tr class="separator:a93a1f459e17941579960b1b78a73a9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a162254c727fc7010d227b99a1b5cd9b1" id="r_a162254c727fc7010d227b99a1b5cd9b1"><td class="memItemLeft" align="right" valign="top"><a id="a162254c727fc7010d227b99a1b5cd9b1" name="a162254c727fc7010d227b99a1b5cd9b1"></a>
-<a class="el" href="classIRender.html">IRender</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_renderable</b></td></tr>
-<tr class="separator:a162254c727fc7010d227b99a1b5cd9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5283a93729a3eef0ed62ee8fe2d6184d" id="r_a5283a93729a3eef0ed62ee8fe2d6184d"><td class="memItemLeft" align="right" valign="top"><a id="a5283a93729a3eef0ed62ee8fe2d6184d" name="a5283a93729a3eef0ed62ee8fe2d6184d"></a>
+std::vector&lt; std::shared_ptr&lt; <a class="el" href="classIRender.html">IRender</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_renderables</b></td></tr>
+<tr class="separator:a5283a93729a3eef0ed62ee8fe2d6184d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d7f94e836c482bdb2a3b532ac84c02f" id="r_a7d7f94e836c482bdb2a3b532ac84c02f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d7f94e836c482bdb2a3b532ac84c02f">m_width</a></td></tr>
 <tr class="separator:a7d7f94e836c482bdb2a3b532ac84c02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7ea7834e5418e3f0a6ff6cef5c21f37" id="r_af7ea7834e5418e3f0a6ff6cef5c21f37"><td class="memItemLeft" align="right" valign="top"><a id="af7ea7834e5418e3f0a6ff6cef5c21f37" name="af7ea7834e5418e3f0a6ff6cef5c21f37"></a>
@@ -157,6 +161,9 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:af79ea97ede88555d7cd475301e958cc8" id="r_af79ea97ede88555d7cd475301e958cc8"><td class="memItemLeft" align="right" valign="top"><a id="af79ea97ede88555d7cd475301e958cc8" name="af79ea97ede88555d7cd475301e958cc8"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>APP_GL_DEPTH_SIZE</b> = 24</td></tr>
 <tr class="separator:af79ea97ede88555d7cd475301e958cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add431cf6fdd30ff036ae1da4b0b8ed9e" id="r_add431cf6fdd30ff036ae1da4b0b8ed9e"><td class="memItemLeft" align="right" valign="top"><a id="add431cf6fdd30ff036ae1da4b0b8ed9e" name="add431cf6fdd30ff036ae1da4b0b8ed9e"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>FONT_RENDER_SIZE</b> = 128</td></tr>
+<tr class="separator:add431cf6fdd30ff036ae1da4b0b8ed9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4751adaf2f075f55bcdf3262c7765579" name="a4751adaf2f075f55bcdf3262c7765579"></a>
@@ -225,8 +232,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>APP_G
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a63bc0551fe490635456ca60577304d90" name="a63bc0551fe490635456ca60577304d90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63bc0551fe490635456ca60577304d90">&#9670;&#160;</a></span>AddRenderable()</h2>
+<a id="a4bce1efdfbbb1f6d7b0c2a5fe2b14122" name="a4bce1efdfbbb1f6d7b0c2a5fe2b14122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bce1efdfbbb1f6d7b0c2a5fe2b14122">&#9670;&#160;</a></span>AddRenderable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,18 +241,36 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>APP_G
         <tr>
           <td class="memname">void App::AddRenderable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classIRender.html">IRender</a> *</td>          <td class="paramname"><span class="paramname"><em>renderable</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classIRender.html">IRender</a> &gt; const &amp;</td>          <td class="paramname"><span class="paramname"><em>renderable</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Add a new renderable.</p>
+<p>Add a new renderable to renderables.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Renderable</td><td></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a36d9b9266b3cb0c1964badb36087de16" name="a36d9b9266b3cb0c1964badb36087de16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36d9b9266b3cb0c1964badb36087de16">&#9670;&#160;</a></span>ClearRenderables()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void App::ClearRenderables </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Clears renderables. </p>
 
 </div>
 </div>
@@ -273,6 +298,33 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>APP_G
 </div><div class="memdoc">
 <p>Builds and loads the canode shader into the shader map.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo</a></b></dt><dd>Incorporate other shaders, perhaps a constexpr list </dd></dl>
+
+</div>
+</div>
+<a id="a02e8ddeeef85c9d26e412dde846dcaca" name="a02e8ddeeef85c9d26e412dde846dcaca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e8ddeeef85c9d26e412dde846dcaca">&#9670;&#160;</a></span>GenerateFonts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void App::GenerateFonts </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Generate Fonts.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo</a></b></dt><dd>May be better to grab pre-serialised, though this matches with OpenGL philosophy. </dd></dl>
 
 </div>
 </div>

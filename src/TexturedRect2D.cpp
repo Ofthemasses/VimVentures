@@ -84,16 +84,28 @@ void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
     UpdateGL();
 }
 
+/**
+ * Sets the format for the pixel data given to SetTexture.
+ */
 void TexturedRect2D::SetTextureFormat(GLenum format) {
     m_textureFormat = format;
 }
 
+/**
+ * Sets the internal texture format for the glTexImage.
+ */
 void TexturedRect2D::SetInternalTextureFormat(GLenum format) {
     m_internalTextureFormat = format;
 }
 
+/**
+ * Enabled texture blending.
+ */
 void TexturedRect2D::EnableTextureBlend() { m_enableBlend = true; };
 
+/**
+ * Disables texture blending.
+ */
 void TexturedRect2D::DisableTextureBlend() { m_enableBlend = false; };
 
 /**

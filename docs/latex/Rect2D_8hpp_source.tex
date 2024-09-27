@@ -8,8 +8,8 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <GraphicsController.hpp>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <IRender.hpp>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <ShaderProgram.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRect2D}{Rect2D}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIRender}{IRender}}\ \{}
@@ -47,12 +47,14 @@
 \DoxyCodeLine{00043\ }
 \DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRect2D_a54a14b1e63c6cf187aa00ebf20044ae5}{Render}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{UpdateGL}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ RECT\_ELEMENTS\ =\ 6;}
-\DoxyCodeLine{00050\ \};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRect2D_a7004e540e40fe825be028efaf7a270f6}{UpdateGL}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRect2D_a0f8c8a6b75c3ff3c8faa6df9fb74f805}{SetShaderProgram}}(std::string\ shaderProgram);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ RECT\_ELEMENTS\ =\ 6;}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
