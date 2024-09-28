@@ -18,6 +18,8 @@ class IntroState : public IState {
   private:
     SDL_Surface* m_slides[1];
     std::shared_ptr<TexturedRect2D> m_slideshow;
+
+    static constexpr float STOP = -0.4;
 };
 
 #endif

@@ -11,7 +11,7 @@ IntroState::IntroState(App &app) : app(app) {
 
     SDL_Surface* slides = IMG_Load("./assets/images/CutScene1.png");
 
-    m_slideshow = std::make_shared<TexturedRect2D>(-0.5, -0.5, 1.0, 1.0);
+    m_slideshow = std::make_shared<TexturedRect2D>(-1.0/2, -1.0/2, 1.0, 1.0);
     m_slideshow->UpdateVertexData();
     m_slideshow->SetTextureFormat(GL_RGB);
     m_slideshow->SetTexture(slides->pixels, slides->w, slides->h);
@@ -30,6 +30,12 @@ IntroState::~IntroState() = default;
 void IntroState::Run() {
     // Render Sequence
     app.Render();
+
+    float currX = m_slideshow->GetX();
+    if (currX <= STOP) {
+        m_slideshow->SetPosition(currX + app.DeltaTime() / 1000.0, m_slideshow->GetY());
+        m_slideshow->UpdateGL();
+    }
 }
 
 /**
