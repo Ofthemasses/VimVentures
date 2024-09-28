@@ -14,19 +14,28 @@ IntroState::IntroState(App &app) : app(app) {
 
     SDL_Surface* slideImage0 = IMG_Load("./assets/images/CutScene1.png");
 
-
-    m_slideshow = std::make_shared<TexturedRect2D>(-1.0/2, -1.0/2, 1.0, 1.0);
+    m_slideshow = std::make_shared<TexturedRect2D>(-1.4/2, -1.2/2, 1.2, 1.2);
     m_slideshow->UpdateVertexData();
     m_slideshow->SetTextureFormat(GL_RGB);
     m_slideshow->SetTexture(slideImage0->pixels, slideImage0->w, slideImage0->h);
-    m_slides[0].slideSurface= slideImage0;
-    m_slides[0].startX = -0.5;
-    m_slides[0].stopX = -0.4;
-    m_slides[0].startY = -0.5;
-    m_slides[0].stopY = -0.5;
-    m_slides[0].panSpeedMS = 1000.0;
+    m_slides[0].slideSurface = slideImage0;
+    m_slides[0].startX = -1.4/2;
+    m_slides[0].stopX = -0.5;
+    m_slides[0].startY = -1.2/2;
+    m_slides[0].stopY = -1.2/2;
+    m_slides[0].panSpeedMS = 5000.0;
 
     app.AddRenderable(m_slideshow);
+
+    SDL_Surface* slideImage1 = IMG_Load("./assets/images/CutScene2.png");
+
+    m_slides[1].slideSurface = slideImage1;
+    m_slides[1].startX = -0.5;
+    m_slides[1].stopX = -0.5;
+    m_slides[1].startY = -1.4/2;
+    m_slides[1].stopY = -0.5;
+    m_slides[1].panSpeedMS = 5000.0;
+
 }
 
 /**
@@ -53,11 +62,10 @@ void IntroState::Run() {
         return;
     }
 
-    std::cout << slide.stopX << std::endl;
     float panXLength = slide.stopX - slide.startX;
     float panYLength = slide.stopY - slide.startY;
-    float nextX = std::min((float) (currX + app.DeltaTime() / slide.panSpeedMS / panXLength), slide.stopX);
-    float nextY = panYLength == 0 ? slide.stopY : std::min((float) (currY + app.DeltaTime() / slide.panSpeedMS / panYLength), slide.stopY);
+    float nextX = panXLength == 0 ? slide.stopY : std::min((float) (currX + (panXLength / slide.panSpeedMS / app.DeltaTime())), slide.stopX);
+    float nextY = panYLength == 0 ? slide.stopY : std::min((float) (currY + (panYLength / slide.panSpeedMS / app.DeltaTime())), slide.stopY);
     m_slideshow->SetPosition(
             nextX,
             nextY);

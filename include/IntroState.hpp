@@ -27,12 +27,12 @@ class IntroState : public IState {
     };
 
     std::shared_ptr<TexturedRect2D> m_slideshow;
-    Slide m_slides[1];
+    Slide m_slides[2];
     int m_currSlide;
 
     void NextSlide();
 
-    static constexpr int SLIDE_COUNT = 1; 
+    static constexpr int SLIDE_COUNT = 2; 
 };
 
 #endif
