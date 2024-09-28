@@ -15,11 +15,24 @@ class IntroState : public IState {
     void Run() override;
     void SendEvent(SDL_Event &event) override;
 
-  private:
-    SDL_Surface* m_slides[1];
-    std::shared_ptr<TexturedRect2D> m_slideshow;
 
-    static constexpr float STOP = -0.4;
+  private:
+    struct Slide {
+        SDL_Surface* slideSurface;
+        float startX;
+        float stopX;
+        float startY;
+        float stopY;
+        float panSpeedMS;
+    };
+
+    std::shared_ptr<TexturedRect2D> m_slideshow;
+    Slide m_slides[1];
+    int m_currSlide;
+
+    void NextSlide();
+
+    static constexpr int SLIDE_COUNT = 1; 
 };
 
 #endif
