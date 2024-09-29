@@ -1,6 +1,7 @@
 #include "MenuState.hpp"
 #include "GraphicsController.hpp"
 #include "MissionState.hpp"
+#include <IntroState.hpp>
 #include <SDL2/SDL_ttf.h>
 #include <TexturedRect2D.hpp>
 #include <memory>
@@ -189,7 +190,7 @@ void MenuState::SelectorPrev() {
 void MenuState::Select() {
     switch (selector_pos) {
     case START:
-        app.SetState(new MissionState(app));
+        app.SetState(new IntroState(app));
         break;
     case QUIT:
         app.Stop();
