@@ -1,0 +1,50 @@
+\doxysection{Intro\+State.\+hpp}
+\hypertarget{IntroState_8hpp_source}{}\label{IntroState_8hpp_source}\index{include/IntroState.hpp@{include/IntroState.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INTROSTATE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INTROSTATE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}App.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}IState.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <TexturedRect2D.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIntroState}{IntroState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIState}{IState}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classIntroState_a3971f1572328d3bc66b7b767a9c983c2}{IntroState}}(\mbox{\hyperlink{classApp}{App}}\ \&app);}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classIntroState_a518fc8f857e659f084e5e6b242662750}{\string~IntroState}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIntroState_af22b9a28abf523203304c6e8dbe0e13c}{Run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIntroState_a60f316a417a1427eecc112879a635433}{SendEvent}}(SDL\_Event\ \&event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structIntroState_1_1Slide}{Slide}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ SDL\_Surface\ *slideSurface;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startX;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ stopX;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startY;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ stopY;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ panSpeedMS;}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_slideshow;}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{structIntroState_1_1Slide}{Slide}}\ m\_slides[3];}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currSlide;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIntroState_a7bb126318632c076fcc95b389a70f2c5}{NextSlide}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SLIDE\_COUNT\ =\ 3;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SLIDE\_RIGHT\ =\ -\/1.4\ /\ 2;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SLIDE\_LEFT\ =\ -\/1.0\ /\ 2;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SLIDE\_TOP\ =\ -\/1.4\ /\ 2;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SLIDE\_BOTTOM\ =\ -\/1.0\ /\ 2;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SLIDE\_MIDDLE\ =\ -\/1.2\ /\ 2;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SLIDE\_ZOOM\ =\ 1.2;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SECOND\_MS\ =\ 1000.0;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -102,7 +102,7 @@ MenuState::MenuState(App &app) : app(app) {
 }
 
 /**
- * Destroy the terminal emulator on deletion.
+ * Default desctructor.
  */
 MenuState::~MenuState() = default;
 

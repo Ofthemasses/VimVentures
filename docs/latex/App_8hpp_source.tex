@@ -35,40 +35,43 @@
 \DoxyCodeLine{00032\ }
 \DoxyCodeLine{00034\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}{GetFPS}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{GetWidth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a737f06021610b56b13dd0cd8e50259ba}{DeltaTime}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{GetHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{GetWidth}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00041\ \ \ \ \ SDL\_Window\ *m\_window;}
-\DoxyCodeLine{00042\ \ \ \ \ SDL\_Renderer\ *m\_renderer;}
-\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::shared\_ptr<IRender>>\ m\_renderables;}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}{m\_width}};}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_height;}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_running;}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classIState}{IState}}\ *\mbox{\hyperlink{classApp_a5af78dfaa7737b0b517c80a066bfd67f}{m\_state}};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427d22}{SECOND\_MS}}\ =\ 1000.0;}
-\DoxyCodeLine{00055\ \ \ \ \ Uint32\ m\_startTick;}
-\DoxyCodeLine{00056\ \ \ \ \ Uint32\ m\_endTick;}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Shaders}}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ APP\_GL\_DEPTH\_SIZE\ =\ 24;}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ debugMessage(GLenum\ source,\ GLenum\ type,\ GLuint\ debug\_id,}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLenum\ severity,\ GLsizei\ length,}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ GLchar\ *message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *userParam);}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a26c8801e7a5375be8b96453ae0a7f451}{CreateGraphicsPipeline}}();}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Fonts}}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ FONT\_RENDER\_SIZE\ =\ 128;}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a02e8ddeeef85c9d26e412dde846dcaca}{GenerateFonts}}();}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Draw}}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ PreDraw()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00071\ \};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00040\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{GetHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ SDL\_Window\ *m\_window;}
+\DoxyCodeLine{00044\ \ \ \ \ SDL\_Renderer\ *m\_renderer;}
+\DoxyCodeLine{00045\ \ \ \ \ std::vector<std::shared\_ptr<IRender>>\ m\_renderables;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a7d7f94e836c482bdb2a3b532ac84c02f}{m\_width}};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_height;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_running;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classIState}{IState}}\ *\mbox{\hyperlink{classApp_a5af78dfaa7737b0b517c80a066bfd67f}{m\_state}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classApp_a1376e08040b81f065c5bfe5aaf427d22}{SECOND\_MS}}\ =\ 1000.0;}
+\DoxyCodeLine{00057\ \ \ \ \ Uint32\ m\_startTick;}
+\DoxyCodeLine{00058\ \ \ \ \ Uint32\ m\_endTick;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_deltaTime;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Shaders}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ APP\_GL\_DEPTH\_SIZE\ =\ 24;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ debugMessage(GLenum\ source,\ GLenum\ type,\ GLuint\ debug\_id,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLenum\ severity,\ GLsizei\ length,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ GLchar\ *message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *userParam);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a26c8801e7a5375be8b96453ae0a7f451}{CreateGraphicsPipeline}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ Fonts}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ FONT\_RENDER\_SIZE\ =\ 128;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a02e8ddeeef85c9d26e412dde846dcaca}{GenerateFonts}}();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ Draw}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ PreDraw()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
