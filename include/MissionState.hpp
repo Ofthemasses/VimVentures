@@ -4,6 +4,7 @@
 #include "App.hpp"
 #include "IState.hpp"
 #include "VimEmulator.hpp"
+#include <IMission.hpp>
 
 class MissionState : public IState {
     App &app;
@@ -21,6 +22,8 @@ class MissionState : public IState {
     static constexpr int DRAW_B = 168;
 
     std::shared_ptr<VimEmulator> m_vimEmulator;
+    
+    std::unique_ptr<IMission> m_currentMission;
 };
 
 #endif

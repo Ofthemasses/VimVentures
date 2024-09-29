@@ -1,5 +1,7 @@
 #include "MissionState.hpp"
 #include "MenuState.hpp"
+#include <TutorialMission.hpp>
+#include <memory>
 
 /**
  * Mission Level State.
@@ -23,6 +25,10 @@ MissionState::MissionState(App &app) : app(app) {
     m_vimEmulator->QueueFrame();
 
     app.AddRenderable(m_vimEmulator);
+
+
+    // Start Tutorial
+    m_currentMission = std::make_unique<TutorialMission>();
 }
 
 /**
@@ -36,6 +42,7 @@ MissionState::~MissionState() = default;
 void MissionState::Run() {
     // Render Sequence
     app.Render();
+    m_currentMission->Run();
 }
 
 /**
