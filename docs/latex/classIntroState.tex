@@ -1,0 +1,123 @@
+\doxysection{Intro\+State Class Reference}
+\hypertarget{classIntroState}{}\label{classIntroState}\index{IntroState@{IntroState}}
+Inheritance diagram for Intro\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIntroState}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structIntroState_1_1Slide}{Slide}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIntroState_a3971f1572328d3bc66b7b767a9c983c2}{Intro\+State}} (\mbox{\hyperlink{classApp}{App}} \&app)
+\item 
+\mbox{\hyperlink{classIntroState_a518fc8f857e659f084e5e6b242662750}{\texorpdfstring{$\sim$}{\string~}\+Intro\+State}} () override
+\item 
+void \mbox{\hyperlink{classIntroState_af22b9a28abf523203304c6e8dbe0e13c}{Run}} () override
+\item 
+void \mbox{\hyperlink{classIntroState_a60f316a417a1427eecc112879a635433}{Send\+Event}} (SDL\+\_\+\+Event \&event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIntroState_a7bb126318632c076fcc95b389a70f2c5}{Next\+Slide}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classIntroState_a0aceebbd8cd3864c14e13f7aedbac2cb}\label{classIntroState_a0aceebbd8cd3864c14e13f7aedbac2cb} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classIntroState_a9190c4b05f085d07dca11c94720eb769}\label{classIntroState_a9190c4b05f085d07dca11c94720eb769} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+slideshow}
+\item 
+\Hypertarget{classIntroState_a7c054ff8788b20e23bfac70d945b16d0}\label{classIntroState_a7c054ff8788b20e23bfac70d945b16d0} 
+\mbox{\hyperlink{structIntroState_1_1Slide}{Slide}} {\bfseries m\+\_\+slides} \mbox{[}3\mbox{]}
+\item 
+\Hypertarget{classIntroState_a327659f240cb94f2a7fdd16532e8006c}\label{classIntroState_a327659f240cb94f2a7fdd16532e8006c} 
+int {\bfseries m\+\_\+curr\+Slide}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classIntroState_a0764eae2e99a5006f6f2545b3dfcfaa8}\label{classIntroState_a0764eae2e99a5006f6f2545b3dfcfaa8} 
+static constexpr int {\bfseries SLIDE\+\_\+\+COUNT} = 3
+\item 
+\Hypertarget{classIntroState_a082aff8b7285c67045ecf5b4e57f8392}\label{classIntroState_a082aff8b7285c67045ecf5b4e57f8392} 
+static constexpr float {\bfseries SLIDE\+\_\+\+RIGHT} = -\/1.\+4 / 2
+\item 
+\Hypertarget{classIntroState_a54fd8dd93ac479cdac90f71a75fe220f}\label{classIntroState_a54fd8dd93ac479cdac90f71a75fe220f} 
+static constexpr float {\bfseries SLIDE\+\_\+\+LEFT} = -\/1.\+0 / 2
+\item 
+\Hypertarget{classIntroState_aa307f930158cd19811a5bf6a6ac14014}\label{classIntroState_aa307f930158cd19811a5bf6a6ac14014} 
+static constexpr float {\bfseries SLIDE\+\_\+\+TOP} = -\/1.\+4 / 2
+\item 
+\Hypertarget{classIntroState_aaa03d1661f37706fcd3b93542a849a05}\label{classIntroState_aaa03d1661f37706fcd3b93542a849a05} 
+static constexpr float {\bfseries SLIDE\+\_\+\+BOTTOM} = -\/1.\+0 / 2
+\item 
+\Hypertarget{classIntroState_a062a406bcdd3a5c0a458155c2f7d9345}\label{classIntroState_a062a406bcdd3a5c0a458155c2f7d9345} 
+static constexpr float {\bfseries SLIDE\+\_\+\+MIDDLE} = -\/1.\+2 / 2
+\item 
+\Hypertarget{classIntroState_a005e82d4cbf4267e9fb8611c51cfda2b}\label{classIntroState_a005e82d4cbf4267e9fb8611c51cfda2b} 
+static constexpr float {\bfseries SLIDE\+\_\+\+ZOOM} = 1.\+2
+\item 
+\Hypertarget{classIntroState_a895434aace7db0c6bbe3955682248152}\label{classIntroState_a895434aace7db0c6bbe3955682248152} 
+static constexpr float {\bfseries SECOND\+\_\+\+MS} = 1000.\+0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIntroState_a3971f1572328d3bc66b7b767a9c983c2}\label{classIntroState_a3971f1572328d3bc66b7b767a9c983c2} 
+\index{IntroState@{IntroState}!IntroState@{IntroState}}
+\index{IntroState@{IntroState}!IntroState@{IntroState}}
+\doxysubsubsection{\texorpdfstring{IntroState()}{IntroState()}}
+{\footnotesize\ttfamily Intro\+State\+::\+Intro\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classApp}{App}} \&}]{app }\end{DoxyParamCaption})}
+
+Mission Level State. \Hypertarget{classIntroState_a518fc8f857e659f084e5e6b242662750}\label{classIntroState_a518fc8f857e659f084e5e6b242662750} 
+\index{IntroState@{IntroState}!````~IntroState@{\texorpdfstring{$\sim$}{\string~}IntroState}}
+\index{````~IntroState@{\texorpdfstring{$\sim$}{\string~}IntroState}!IntroState@{IntroState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IntroState()}{\string~IntroState()}}
+{\footnotesize\ttfamily Intro\+State\+::\texorpdfstring{$\sim$}{\string~}\+Intro\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Default desctructor. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIntroState_a7bb126318632c076fcc95b389a70f2c5}\label{classIntroState_a7bb126318632c076fcc95b389a70f2c5} 
+\index{IntroState@{IntroState}!NextSlide@{NextSlide}}
+\index{NextSlide@{NextSlide}!IntroState@{IntroState}}
+\doxysubsubsection{\texorpdfstring{NextSlide()}{NextSlide()}}
+{\footnotesize\ttfamily void Intro\+State\+::\+Next\+Slide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Switches to the next slide if one is available.
+
+Updates the \doxylink{classTexturedRect2D}{Textured\+Rect2D} slideshow. \Hypertarget{classIntroState_af22b9a28abf523203304c6e8dbe0e13c}\label{classIntroState_af22b9a28abf523203304c6e8dbe0e13c} 
+\index{IntroState@{IntroState}!Run@{Run}}
+\index{Run@{Run}!IntroState@{IntroState}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Intro\+State\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Runs the state loop. 
+
+Implements \mbox{\hyperlink{classIState}{IState}}.
+
+\Hypertarget{classIntroState_a60f316a417a1427eecc112879a635433}\label{classIntroState_a60f316a417a1427eecc112879a635433} 
+\index{IntroState@{IntroState}!SendEvent@{SendEvent}}
+\index{SendEvent@{SendEvent}!IntroState@{IntroState}}
+\doxysubsubsection{\texorpdfstring{SendEvent()}{SendEvent()}}
+{\footnotesize\ttfamily void Intro\+State\+::\+Send\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles SDL Input. 
+
+Implements \mbox{\hyperlink{classIState}{IState}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Intro\+State.\+hpp\item 
+src/Intro\+State.\+cpp\end{DoxyCompactItemize}

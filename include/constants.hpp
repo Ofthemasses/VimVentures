@@ -4,7 +4,7 @@
 #include "SDLToX11Keymap.hpp"
 
 constexpr char APP_TITLE[] = "VimVentures";
-constexpr char APP_VERSION[] = "MEDIEVAL 0.0.2";
+constexpr char APP_VERSION[] = "MEDIEVAL 0.0.3";
 
 extern const SDLToX11Keymap &SDLX11KeymapRef;
 

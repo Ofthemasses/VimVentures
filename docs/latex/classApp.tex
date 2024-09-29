@@ -23,6 +23,8 @@ void \mbox{\hyperlink{classApp_a36d9b9266b3cb0c1964badb36087de16}{Clear\+Rendera
 \item 
 double \mbox{\hyperlink{classApp_a9cb7d1fd0d93a6f74c3d432cc6bc9849}{Get\+FPS}} () const
 \item 
+double \mbox{\hyperlink{classApp_a737f06021610b56b13dd0cd8e50259ba}{Delta\+Time}} () const
+\item 
 int \mbox{\hyperlink{classApp_af0576e3cf1540d9d28f47c40bc0bc02c}{Get\+Width}} () const
 \item 
 int \mbox{\hyperlink{classApp_a29bb358883b2ff18a216bbae5597ba0f}{Get\+Height}} () const
@@ -70,6 +72,9 @@ Uint32 {\bfseries m\+\_\+start\+Tick}
 \item 
 \Hypertarget{classApp_ad68886e9fb7efdcef1b27924243f78c4}\label{classApp_ad68886e9fb7efdcef1b27924243f78c4} 
 Uint32 {\bfseries m\+\_\+end\+Tick}
+\item 
+\Hypertarget{classApp_acad467aaedf4a2cd39ac9a4adac76de3}\label{classApp_acad467aaedf4a2cd39ac9a4adac76de3} 
+double {\bfseries m\+\_\+delta\+Time}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -144,6 +149,15 @@ Builds and loads the canode shader into the shader map.
 
 \begin{DoxyRefDesc}{Todo}
 \item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Incorporate other shaders, perhaps a constexpr list \end{DoxyRefDesc}
+\Hypertarget{classApp_a737f06021610b56b13dd0cd8e50259ba}\label{classApp_a737f06021610b56b13dd0cd8e50259ba} 
+\index{App@{App}!DeltaTime@{DeltaTime}}
+\index{DeltaTime@{DeltaTime}!App@{App}}
+\doxysubsubsection{\texorpdfstring{DeltaTime()}{DeltaTime()}}
+{\footnotesize\ttfamily double App\+::\+Delta\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Delta Time 
+\end{DoxyReturn}
 \Hypertarget{classApp_a02e8ddeeef85c9d26e412dde846dcaca}\label{classApp_a02e8ddeeef85c9d26e412dde846dcaca} 
 \index{App@{App}!GenerateFonts@{GenerateFonts}}
 \index{GenerateFonts@{GenerateFonts}!App@{App}}

@@ -49,7 +49,7 @@ IntroState::IntroState(App &app) : app(app) {
 }
 
 /**
- * Destroy the terminal emulator on deletion.
+ * Default desctructor.
  */
 IntroState::~IntroState() = default;
 
@@ -86,6 +86,11 @@ void IntroState::Run() {
     m_slideshow->UpdateGL();
 }
 
+/**
+ * Switches to the next slide if one is available.
+ *
+ * Updates the TexturedRect2D slideshow.
+ */
 void IntroState::NextSlide() {
     m_currSlide++;
 
