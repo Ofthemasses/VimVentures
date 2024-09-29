@@ -33,8 +33,6 @@ class App {
     /** Getters **/
     [[nodiscard]] double GetFPS() const;
 
-    [[nodiscard]] double DeltaTime() const;
-
     [[nodiscard]] int GetWidth() const;
 
     [[nodiscard]] int GetHeight() const;
@@ -56,7 +54,6 @@ class App {
     static constexpr double SECOND_MS = 1000.0;
     Uint32 m_startTick;
     Uint32 m_endTick;
-    double m_deltaTime;
 
     // Shaders
     static constexpr int APP_GL_DEPTH_SIZE = 24;

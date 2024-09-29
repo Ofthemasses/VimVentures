@@ -134,7 +134,6 @@ void App::SetState(IState *state) {
  * Begin game cycle.
  */
 void App::Run() {
-    m_deltaTime = (SDL_GetTicks() - m_startTick) / SECOND_MS;
     if (m_running) {
         std::cerr << "App is already running" << std::endl;
     }
@@ -204,11 +203,6 @@ void App::ClearRenderables() { m_renderables.clear(); }
  * @return Game FPS
  */
 double App::GetFPS() const { return SECOND_MS / (m_endTick - m_startTick); }
-
-/**
- * @return Delta Time
- */
-double App::DeltaTime() const { return m_deltaTime; }
 
 /**
  * @return Window Width
