@@ -10,6 +10,7 @@
 #include <iostream>
 #include <thread>
 #include <unistd.h>
+#include <sys/socket.h>
 
 /**
  * A Vim Terminal Instance.
@@ -25,6 +26,9 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_windowName = std::string(APP_TITLE) + "Emulator";
     m_modmask = new unsigned int;
     m_frameReady = false;
+
+    m_latestsocket = -1;
+    InitializeTCPLayer();
 
     // Run the terminal instance
     m_pid = fork();
@@ -61,6 +65,8 @@ VimEmulator::~VimEmulator() {
     if (m_pid > 0) {
         kill(m_pid, SIGTERM);
     }
+    close(m_serverfd);
+    close(m_latestsocket);
     delete (m_modmask);
 }
 
@@ -301,5 +307,74 @@ void VimEmulator::QueueFrameThread() {
             exit(EXIT_FAILURE);
         }
         m_frameReady = true;
+    }
+}
+
+void VimEmulator::InitializeTCPLayer() {
+    int opt = 1;
+
+    if ((m_serverfd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        perror("socket creation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    if (setsockopt(m_serverfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,
+                &opt, sizeof(opt)) != 0) {
+        perror("setsockopt");
+        exit(EXIT_FAILURE);
+    }
+
+    m_address.sin_family = AF_INET;
+    m_address.sin_addr.s_addr = INADDR_ANY;
+    m_address.sin_port = htons(TCP_PORT);
+
+    if (bind(m_serverfd, (struct sockaddr *)&m_address, sizeof(m_address)) < 0)
+    {
+        perror("bind failed");
+        exit(EXIT_FAILURE);
+    }
+
+    if (listen(m_serverfd, 3) < 0) {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
+
+    std::cout << "Server listening on port " << TCP_PORT << std::endl;
+    std::thread(&VimEmulator::InitializeTCPLayerThread, this).detach();
+}
+
+void VimEmulator::InitializeTCPLayerThread() {
+    {
+        std::lock_guard<std::mutex> lock(m_tcpMutex);
+        int addrlen = sizeof(m_address);
+        while (m_latestsocket == -1) {
+            if ((m_latestsocket = accept(m_serverfd, (struct sockaddr *)&m_address, (socklen_t*)&addrlen)) < 0) {
+                perror("accept");
+                break;
+            }
+
+            std::cout << "Connection accepted" << std::endl;
+        }
+    }
+}
+
+void VimEmulator::SendToBuffer(std::string message) {
+    std::thread(&VimEmulator::SendToBufferThread, this, message).detach();
+}
+
+void VimEmulator::SendToBufferThread(std::string message){
+    {
+        std::lock_guard<std::mutex> lock(m_tcpMutex);
+        bool callback = false;
+        char recvBuffer[256];
+        while (!callback){
+            send(m_latestsocket, message.c_str(), message.length(), 0);
+            recv(m_latestsocket, &recvBuffer, 256 , 0);
+            if (strcmp(recvBuffer, "RECV") != 0){
+                std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+            } else {
+                callback = true;
+            }
+        }
     }
 }

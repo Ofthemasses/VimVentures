@@ -4,6 +4,7 @@
 #include <X11/Xlib.h>
 #include <mutex>
 #include <string>
+#include <netinet/in.h>
 
 #include "TexturedRect2D.hpp"
 
@@ -14,6 +15,10 @@ class VimEmulator : public TexturedRect2D {
     void RegisterWindow();
     void ResizeWindow(int w, int h);
     void QueueFrame();
+
+    /** TCP **/
+    void InitializeTCPLayer();
+    void SendToBuffer();
 
     /** X11 Keyboard **/
     void SendSDLKey(SDL_Keycode key);
@@ -54,6 +59,14 @@ class VimEmulator : public TexturedRect2D {
     // Replace this with a generic event handler if needed
     bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
+
+    /** TCP **/
+    static constexpr int TCP_PORT = 8080;
+    int m_serverfd, m_latestsocket;
+    struct sockaddr_in m_address;
+    void InitializeTCPLayerThread();
+    void SendToBufferThread();
+    std::mutex m_tcpMutex;
 };
 
 #endif
