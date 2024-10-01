@@ -28,7 +28,7 @@ MissionState::MissionState(App &app) : app(app) {
 
 
     // Start Tutorial
-    m_currentMission = std::make_unique<TutorialMission>();
+    m_currentMission = std::make_unique<TutorialMission>(m_vimEmulator);
 }
 
 /**

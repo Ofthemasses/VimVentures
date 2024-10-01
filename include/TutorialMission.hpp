@@ -2,11 +2,13 @@
 #define TUTORIALMISSION_HPP
 
 #include <IMission.hpp>
+#include <VimEmulator.hpp>
 #include <queue>
+#include <memory>
 
 class TutorialMission : public IMission {
     public:
-        TutorialMission();
+        TutorialMission(std::shared_ptr<VimEmulator> vimEmulator);
         void Run() override;
 
     private:
@@ -15,6 +17,7 @@ class TutorialMission : public IMission {
         // exactly the same as a IMission. Maybe IMission
         // should be renamed down the line.
         std::queue<IMission> m_miniGames;
+        std::unique_ptr<IMission> m_currentMiniGame;
 };
 
 #endif

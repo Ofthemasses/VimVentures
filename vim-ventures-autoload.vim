@@ -25,6 +25,8 @@ def StartInteractiveMode()
 enddef
 
 def OnData(channel: channel, msg: string): void
+    deletebufline("INTERACTIVE", 1, line('$'))
+
     var split_msg = split(msg, "\n")
     var count = 0
     for i in split_msg
