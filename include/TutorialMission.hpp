@@ -3,12 +3,14 @@
 
 #include <IMission.hpp>
 #include <VimEmulator.hpp>
+#include <App.hpp>
 #include <queue>
 #include <memory>
 
 class TutorialMission : public IMission {
+    App &app;
     public:
-        TutorialMission(std::shared_ptr<VimEmulator> vimEmulator);
+        TutorialMission(App &app, std::shared_ptr<VimEmulator> vimEmulator);
         void Run() override;
 
     private:

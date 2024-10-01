@@ -1,8 +1,8 @@
 #include <TutorialMission.hpp>
 #include <AsteroidMiniGame.hpp>
 
-TutorialMission::TutorialMission(std::shared_ptr<VimEmulator> vimEmulator){
-    m_currentMiniGame = std::make_unique<AsteroidMiniGame>(vimEmulator);
+TutorialMission::TutorialMission(App &app, std::shared_ptr<VimEmulator> vimEmulator) : app(app){
+    m_currentMiniGame = std::make_unique<AsteroidMiniGame>(app, vimEmulator);
 }
 
 void TutorialMission::Run(){

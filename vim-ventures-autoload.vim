@@ -25,7 +25,7 @@ def StartInteractiveMode()
 enddef
 
 def OnData(channel: channel, msg: string): void
-    deletebufline("INTERACTIVE", 1, line('$'))
+    #deletebufline("INTERACTIVE", 1, line('$'))
 
     var split_msg = split(msg, "\n")
     var count = 0
@@ -33,7 +33,7 @@ def OnData(channel: channel, msg: string): void
         count += 1
         setbufline("INTERACTIVE", count, i)
     endfor
-    ch_sendraw(channel, "RECV\0")
+    ch_sendraw(channel, "RECV")
 enddef
 
 def OnClose(channel: channel): void

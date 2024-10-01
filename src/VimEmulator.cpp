@@ -363,18 +363,25 @@ void VimEmulator::SendToBuffer(std::string message) {
 }
 
 void VimEmulator::SendToBufferThread(std::string message){
+    if (message.length() < 1) {
+        return;
+    }
     {
         std::lock_guard<std::mutex> lock(m_tcpMutex);
+        std::cout << "Buffer Send" << std::endl;
         bool callback = false;
-        char recvBuffer[256];
+        char recvBuffer[256] = {0};
+        send(m_latestsocket, message.c_str(), message.length(), 0);
         while (!callback){
-            send(m_latestsocket, message.c_str(), message.length(), 0);
-            recv(m_latestsocket, &recvBuffer, 256 , 0);
-            if (strcmp(recvBuffer, "RECV") != 0){
+            if (recv(m_latestsocket, &recvBuffer, 256 , 0) == -1){
                 std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
-            } else {
-                callback = true;
+                std::cout << "WAITING" << std::endl;
+            } 
+            else {
+                callback = strcmp(recvBuffer, "RECV\0") == 0;
+                std::cout << recvBuffer << std::endl;
             }
         }
+        std::cout << "Buffer Updated" << std::endl;
     }
 }
