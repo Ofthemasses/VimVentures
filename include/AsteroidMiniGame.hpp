@@ -10,6 +10,7 @@ class AsteroidMiniGame : public IMission {
 
   public:
     AsteroidMiniGame(App &app, std::shared_ptr<VimEmulator> vimEmulator);
+    ~AsteroidMiniGame() override;
     void Run() override;
 
   private:
@@ -21,6 +22,7 @@ class AsteroidMiniGame : public IMission {
 
     std::string RenderGameState();
     void UpdateAsteroids();
+    void ParseRequest(std::string request);
 };
 
 #endif

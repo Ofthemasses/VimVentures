@@ -1,6 +1,7 @@
 #include <AsteroidMiniGame.hpp>
 #include <iostream>
 #include <random>
+#include <sstream>
 
 AsteroidMiniGame::AsteroidMiniGame(App &app,
                                    std::shared_ptr<VimEmulator> vimEmulator)
@@ -13,20 +14,22 @@ AsteroidMiniGame::AsteroidMiniGame(App &app,
     m_asteroids.emplace_back(0);
     m_asteroids.emplace_back(0);
     m_asteroids.emplace_back(0);
+    m_vimEmulator->StartBufferReciever();
 }
+
+AsteroidMiniGame::~AsteroidMiniGame() { m_vimEmulator->StopBufferReciever(); }
 
 void AsteroidMiniGame::Run() {
     m_elapsed += app.DeltaTime();
 
     if (m_vimEmulator->IsRequestReady()) {
-        std::cout << m_vimEmulator->GetRequest() << std::endl;
+        ParseRequest(m_vimEmulator->GetRequest());
     }
 
     if (m_elapsed > TICK_DELAY_MS) {
         UpdateAsteroids();
         m_elapsed = std::fmod(m_elapsed, TICK_DELAY_MS);
         m_vimEmulator->SendToBuffer(RenderGameState());
-        m_vimEmulator->RequestBuffer();
     }
 }
 
@@ -54,5 +57,27 @@ void AsteroidMiniGame::UpdateAsteroids() {
                 asteroid = 8;
             }
         }
+    }
+}
+
+void AsteroidMiniGame::ParseRequest(std::string request) {
+    if (request.length() < 1) {
+        return;
+    }
+
+    request.pop_back();
+    std::vector<std::string> lines;
+    std::string temp;
+    std::istringstream stream(request);
+    int asteroid = 0;
+
+    while (std::getline(stream, temp, '\n')) {
+        bool allSpaces =
+            std::all_of(temp.begin(), temp.end(),
+                        [](char character) { return character == ' '; });
+        if (allSpaces) {
+            m_asteroids[asteroid] = -1;
+        }
+        asteroid++;
     }
 }

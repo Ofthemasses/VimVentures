@@ -26,20 +26,16 @@ enddef
 
 def OnData(channel: channel, msg: string): void
     #deletebufline("INTERACTIVE", 1, line('$'))
-    if msg == "REQUESTBUFFER"
-        call RequestBuffer(channel)
-    else
-        var split_msg = split(msg, "\n")
-        var count = 0
-        for i in split_msg
-            count += 1
-            setbufline("INTERACTIVE", count, i)
-        endfor
-        ch_sendraw(channel, "RECV")
-    endif
+    var split_msg = split(msg, "\n")
+    var count = 0
+    for i in split_msg
+        count += 1
+        setbufline("INTERACTIVE", count, i)
+    endfor
+    ch_sendraw(channel, "RECV")
 enddef
 
-def RequestBuffer(channel: channel): void
+def SendBuffer(channel: channel): void
     var result = ""
     var bufferN = getbufline('INTERACTIVE', 1, line('$'))
     for i in bufferN
@@ -51,19 +47,22 @@ enddef
 def OnClose(channel: channel): void
 enddef
 
+var Vchannel: channel
+
 def StartTCPClient(): void
 	var server = '127.0.0.1:8080'
-	var channel = ch_open(server, {
+	Vchannel = ch_open(server, {
 				\ 'mode': 'raw',
 				\ 'callback': function('OnData'),
 				\ 'close_cb': function('OnClose'),
                 \ 'timeout': 50
 				\ })
-	if ch_status(channel) == 'open'
+	if ch_status(Vchannel) == 'open'
 		echo 'Connected to the server at ' .. server
 	else
 		echo 'Failed to connect to server'
 	endif
+    au TextChanged * call SendBuffer(Vchannel)
 enddef
 
 au BufRead,BufNewFile * call RestrictParentDir()

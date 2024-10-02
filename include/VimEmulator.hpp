@@ -21,9 +21,10 @@ class VimEmulator : public TexturedRect2D {
     /** TCP **/
     void InitializeTCPLayer();
     void SendToBuffer(std::string message);
-    void RequestBuffer();
+    void StartBufferReciever();
     bool IsRequestReady();
     [[nodiscard]] std::string GetRequest();
+    void StopBufferReciever();
 
     /** X11 Keyboard **/
     void SendSDLKey(SDL_Keycode key);
@@ -71,9 +72,10 @@ class VimEmulator : public TexturedRect2D {
     struct sockaddr_in m_address;
     void InitializeTCPLayerThread();
     void SendToBufferThread(std::string message);
-    void RequestBufferThread();
+    void BufferRecieverThread();
     std::mutex m_tcpMutex;
     bool m_requestReady;
+    bool m_recievingBuffer;
     std::string m_requestResult;
 };
 
