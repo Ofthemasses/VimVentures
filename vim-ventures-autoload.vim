@@ -26,18 +26,29 @@ enddef
 
 def OnData(channel: channel, msg: string): void
     #deletebufline("INTERACTIVE", 1, line('$'))
+    if msg == "REQUESTBUFFER"
+        call RequestBuffer(channel)
+    else
+        var split_msg = split(msg, "\n")
+        var count = 0
+        for i in split_msg
+            count += 1
+            setbufline("INTERACTIVE", count, i)
+        endfor
+        ch_sendraw(channel, "RECV")
+    endif
+enddef
 
-    var split_msg = split(msg, "\n")
-    var count = 0
-    for i in split_msg
-        count += 1
-        setbufline("INTERACTIVE", count, i)
+def RequestBuffer(channel: channel): void
+    var result = ""
+    var bufferN = getbufline('INTERACTIVE', 1, line('$'))
+    for i in bufferN
+        result = result .. i .. "\n"
     endfor
-    ch_sendraw(channel, "RECV")
+    ch_sendraw(channel, result)
 enddef
 
 def OnClose(channel: channel): void
-	echo 'Channel closed'
 enddef
 
 def StartTCPClient(): void

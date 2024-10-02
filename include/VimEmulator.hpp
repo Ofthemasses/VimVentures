@@ -2,9 +2,11 @@
 #define VIMEMULATOR_HPP
 #include <SDL2/SDL.h>
 #include <X11/Xlib.h>
+#include <IMission.hpp>
 #include <mutex>
 #include <string>
 #include <netinet/in.h>
+#include <functional>
 
 #include "TexturedRect2D.hpp"
 
@@ -19,6 +21,9 @@ class VimEmulator : public TexturedRect2D {
     /** TCP **/
     void InitializeTCPLayer();
     void SendToBuffer(std::string message);
+    void RequestBuffer();
+    bool IsRequestReady();
+    [[nodiscard]] std::string GetRequest();
 
     /** X11 Keyboard **/
     void SendSDLKey(SDL_Keycode key);
@@ -66,7 +71,10 @@ class VimEmulator : public TexturedRect2D {
     struct sockaddr_in m_address;
     void InitializeTCPLayerThread();
     void SendToBufferThread(std::string message);
+    void RequestBufferThread();
     std::mutex m_tcpMutex;
+    bool m_requestReady;
+    std::string m_requestResult;
 };
 
 #endif

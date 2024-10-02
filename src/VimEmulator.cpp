@@ -28,6 +28,7 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_frameReady = false;
 
     m_latestsocket = -1;
+    m_requestReady = false;
     InitializeTCPLayer();
 
     // Run the terminal instance
@@ -378,10 +379,50 @@ void VimEmulator::SendToBufferThread(std::string message){
                 std::cout << "WAITING" << std::endl;
             } 
             else {
-                callback = strcmp(recvBuffer, "RECV\0") == 0;
+                callback = strcmp(recvBuffer, "RECV") == 0;
                 std::cout << recvBuffer << std::endl;
             }
         }
         std::cout << "Buffer Updated" << std::endl;
     }
+}
+
+void VimEmulator::RequestBuffer() {
+    std::thread(&VimEmulator::RequestBufferThread, this).detach();
+}
+
+void VimEmulator::RequestBufferThread() {
+    {
+        std::lock_guard<std::mutex> lock(m_tcpMutex);
+        m_requestReady = false;
+        std::cout << "RequestBuffer" << std::endl;
+        bool recieved = false;
+        char recvBuffer[256] = {0};
+        std::string requestSignal = "REQUESTBUFFER";
+        send(m_latestsocket, requestSignal.c_str(), requestSignal.length(), 0);
+        while (!recieved){
+            if (recv(m_latestsocket, &recvBuffer, 256, 0) == -1){
+                std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+                std::cout << "WAITING" << std::endl;
+            }
+            else {
+                recieved = true;
+                if (strcmp(recvBuffer, "RECV") == 0){
+                    std::cerr << "Recieve callback transmitted, sync has failed" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                m_requestResult = std::string(recvBuffer, 256);
+                m_requestReady = true;
+            }
+        }
+    }
+}
+
+bool VimEmulator::IsRequestReady() {
+    return m_requestReady;
+}
+
+std::string VimEmulator::GetRequest() {
+    m_requestReady = false;
+    return m_requestResult;
 }

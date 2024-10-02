@@ -16,10 +16,15 @@ AsteroidMiniGame::AsteroidMiniGame(App& app, std::shared_ptr<VimEmulator> vimEmu
 void AsteroidMiniGame::Run() {
     m_elapsed += app.DeltaTime();
 
+    if (m_vimEmulator->IsRequestReady()){
+        std::cout << m_vimEmulator->GetRequest() << std::endl;
+    }
+
     if (m_elapsed > TICK_DELAY_MS){
         UpdateAsteroids();
         m_elapsed = std::fmod(m_elapsed, TICK_DELAY_MS);
         m_vimEmulator->SendToBuffer(RenderGameState());
+        m_vimEmulator->RequestBuffer();
     }
 }
 
