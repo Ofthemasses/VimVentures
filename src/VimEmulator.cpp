@@ -8,9 +8,9 @@
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
+#include <sys/socket.h>
 #include <thread>
 #include <unistd.h>
-#include <sys/socket.h>
 
 /**
  * A Vim Terminal Instance.
@@ -319,8 +319,8 @@ void VimEmulator::InitializeTCPLayer() {
         exit(EXIT_FAILURE);
     }
 
-    if (setsockopt(m_serverfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,
-                &opt, sizeof(opt)) != 0) {
+    if (setsockopt(m_serverfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt,
+                   sizeof(opt)) != 0) {
         perror("setsockopt");
         exit(EXIT_FAILURE);
     }
@@ -329,8 +329,8 @@ void VimEmulator::InitializeTCPLayer() {
     m_address.sin_addr.s_addr = INADDR_ANY;
     m_address.sin_port = htons(TCP_PORT);
 
-    if (bind(m_serverfd, (struct sockaddr *)&m_address, sizeof(m_address)) < 0)
-    {
+    if (bind(m_serverfd, (struct sockaddr *)&m_address, sizeof(m_address)) <
+        0) {
         perror("bind failed");
         exit(EXIT_FAILURE);
     }
@@ -349,7 +349,9 @@ void VimEmulator::InitializeTCPLayerThread() {
         std::lock_guard<std::mutex> lock(m_tcpMutex);
         int addrlen = sizeof(m_address);
         while (m_latestsocket == -1) {
-            if ((m_latestsocket = accept(m_serverfd, (struct sockaddr *)&m_address, (socklen_t*)&addrlen)) < 0) {
+            if ((m_latestsocket =
+                     accept(m_serverfd, (struct sockaddr *)&m_address,
+                            (socklen_t *)&addrlen)) < 0) {
                 perror("accept");
                 break;
             }
@@ -363,7 +365,7 @@ void VimEmulator::SendToBuffer(std::string message) {
     std::thread(&VimEmulator::SendToBufferThread, this, message).detach();
 }
 
-void VimEmulator::SendToBufferThread(std::string message){
+void VimEmulator::SendToBufferThread(std::string message) {
     if (message.length() < 1) {
         return;
     }
@@ -373,12 +375,12 @@ void VimEmulator::SendToBufferThread(std::string message){
         bool callback = false;
         char recvBuffer[256] = {0};
         send(m_latestsocket, message.c_str(), message.length(), 0);
-        while (!callback){
-            if (recv(m_latestsocket, &recvBuffer, 256 , 0) == -1){
-                std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+        while (!callback) {
+            if (recv(m_latestsocket, &recvBuffer, 256, 0) == -1) {
+                std::this_thread::sleep_for(
+                    std::chrono::milliseconds(REFRESH_MS));
                 std::cout << "WAITING" << std::endl;
-            } 
-            else {
+            } else {
                 callback = strcmp(recvBuffer, "RECV") == 0;
                 std::cout << recvBuffer << std::endl;
             }
@@ -400,15 +402,16 @@ void VimEmulator::RequestBufferThread() {
         char recvBuffer[256] = {0};
         std::string requestSignal = "REQUESTBUFFER";
         send(m_latestsocket, requestSignal.c_str(), requestSignal.length(), 0);
-        while (!recieved){
-            if (recv(m_latestsocket, &recvBuffer, 256, 0) == -1){
-                std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
+        while (!recieved) {
+            if (recv(m_latestsocket, &recvBuffer, 256, 0) == -1) {
+                std::this_thread::sleep_for(
+                    std::chrono::milliseconds(REFRESH_MS));
                 std::cout << "WAITING" << std::endl;
-            }
-            else {
+            } else {
                 recieved = true;
-                if (strcmp(recvBuffer, "RECV") == 0){
-                    std::cerr << "Recieve callback transmitted, sync has failed" << std::endl;
+                if (strcmp(recvBuffer, "RECV") == 0) {
+                    std::cerr << "Recieve callback transmitted, sync has failed"
+                              << std::endl;
                     exit(EXIT_FAILURE);
                 }
                 m_requestResult = std::string(recvBuffer, 256);
@@ -418,9 +421,7 @@ void VimEmulator::RequestBufferThread() {
     }
 }
 
-bool VimEmulator::IsRequestReady() {
-    return m_requestReady;
-}
+bool VimEmulator::IsRequestReady() { return m_requestReady; }
 
 std::string VimEmulator::GetRequest() {
     m_requestReady = false;

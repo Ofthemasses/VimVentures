@@ -1,12 +1,12 @@
 #ifndef VIMEMULATOR_HPP
 #define VIMEMULATOR_HPP
+#include <IMission.hpp>
 #include <SDL2/SDL.h>
 #include <X11/Xlib.h>
-#include <IMission.hpp>
-#include <mutex>
-#include <string>
-#include <netinet/in.h>
 #include <functional>
+#include <mutex>
+#include <netinet/in.h>
+#include <string>
 
 #include "TexturedRect2D.hpp"
 

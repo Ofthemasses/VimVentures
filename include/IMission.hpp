@@ -1,4 +1,4 @@
-#ifndef IMISSION_HPP 
+#ifndef IMISSION_HPP
 #define IMISSION_HPP
 
 #include <SDL2/SDL.h>

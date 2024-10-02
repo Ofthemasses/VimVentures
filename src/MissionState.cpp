@@ -26,7 +26,6 @@ MissionState::MissionState(App &app) : app(app) {
 
     app.AddRenderable(m_vimEmulator);
 
-
     // Start Tutorial
     m_currentMission = std::make_unique<TutorialMission>(app, m_vimEmulator);
 }

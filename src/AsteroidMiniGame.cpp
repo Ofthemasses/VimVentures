@@ -1,8 +1,10 @@
 #include <AsteroidMiniGame.hpp>
-#include <random>
 #include <iostream>
+#include <random>
 
-AsteroidMiniGame::AsteroidMiniGame(App& app, std::shared_ptr<VimEmulator> vimEmulator) : app(app){
+AsteroidMiniGame::AsteroidMiniGame(App &app,
+                                   std::shared_ptr<VimEmulator> vimEmulator)
+    : app(app) {
     m_elapsed = 0.0;
     m_vimEmulator = vimEmulator;
     m_asteroids.emplace_back(0);
@@ -16,11 +18,11 @@ AsteroidMiniGame::AsteroidMiniGame(App& app, std::shared_ptr<VimEmulator> vimEmu
 void AsteroidMiniGame::Run() {
     m_elapsed += app.DeltaTime();
 
-    if (m_vimEmulator->IsRequestReady()){
+    if (m_vimEmulator->IsRequestReady()) {
         std::cout << m_vimEmulator->GetRequest() << std::endl;
     }
 
-    if (m_elapsed > TICK_DELAY_MS){
+    if (m_elapsed > TICK_DELAY_MS) {
         UpdateAsteroids();
         m_elapsed = std::fmod(m_elapsed, TICK_DELAY_MS);
         m_vimEmulator->SendToBuffer(RenderGameState());
@@ -30,11 +32,11 @@ void AsteroidMiniGame::Run() {
 
 std::string AsteroidMiniGame::RenderGameState() {
     std::string result = "";
-    for (int asteroid : m_asteroids){
-        if (asteroid > 0){
-            result.append(asteroid, ' ');     
+    for (int asteroid : m_asteroids) {
+        if (asteroid > 0) {
+            result.append(asteroid, ' ');
             result.append("*");
-            result.append(ROW_WIDTH - asteroid, ' ');     
+            result.append(ROW_WIDTH - asteroid, ' ');
         } else {
             result.append(ROW_WIDTH, ' ');
         }
@@ -44,11 +46,11 @@ std::string AsteroidMiniGame::RenderGameState() {
 }
 
 void AsteroidMiniGame::UpdateAsteroids() {
-    for (int &asteroid : m_asteroids){
-        if (asteroid > 0){
+    for (int &asteroid : m_asteroids) {
+        if (asteroid > 0) {
             asteroid--;
         } else {
-            if (rand() % 100 < 30){
+            if (rand() % 100 < 30) {
                 asteroid = 8;
             }
         }
