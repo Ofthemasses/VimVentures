@@ -49,6 +49,7 @@ void TexturedRect2D::UpdateVertexData() {
 void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
                                 bool force) {
     if (width == m_texture_width && height == m_texture_height && !force) {
+        glBindTexture(GL_TEXTURE_2D, m_texture);
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA,
                         GL_UNSIGNED_BYTE, data);
         return;
