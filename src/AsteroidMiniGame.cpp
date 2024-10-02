@@ -8,12 +8,12 @@ AsteroidMiniGame::AsteroidMiniGame(App &app,
     : app(app) {
     m_elapsed = 0.0;
     m_vimEmulator = vimEmulator;
-    m_asteroids.emplace_back(0);
-    m_asteroids.emplace_back(0);
-    m_asteroids.emplace_back(0);
-    m_asteroids.emplace_back(0);
-    m_asteroids.emplace_back(0);
-    m_asteroids.emplace_back(0);
+    m_asteroids.emplace_back(-1);
+    m_asteroids.emplace_back(-1);
+    m_asteroids.emplace_back(-1);
+    m_asteroids.emplace_back(-1);
+    m_asteroids.emplace_back(-1);
+    m_asteroids.emplace_back(-1);
     m_vimEmulator->StartBufferReciever();
 }
 
@@ -36,12 +36,19 @@ void AsteroidMiniGame::Run() {
 std::string AsteroidMiniGame::RenderGameState() {
     std::string result = "";
     for (int asteroid : m_asteroids) {
-        if (asteroid > 0) {
+        switch (asteroid) {
+        case 0:
+            result.append("X");
+            result.append(ROW_WIDTH - 1, ' ');
+            break;
+        case -1:
+            result.append(ROW_WIDTH, ' ');
+            break;
+        default:
             result.append(asteroid, ' ');
             result.append("*");
             result.append(ROW_WIDTH - asteroid, ' ');
-        } else {
-            result.append(ROW_WIDTH, ' ');
+            break;
         }
         result.append("\n");
     }
