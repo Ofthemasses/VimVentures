@@ -22,6 +22,7 @@ class TutorialMission : public IMission {
     /** MiniGame Handling **/
     void UptickBar(float amount);
     void DowntickBar(float amount);
+    void SetBar(float amount);
 
     /** Help Terminal **/
     void SetRestrictionText(std::string restrictions);
@@ -31,17 +32,20 @@ class TutorialMission : public IMission {
     // But honestly a seperate MiniGame class will be
     // exactly the same as a IMission. Maybe IMission
     // should be renamed down the line.
+    std::shared_ptr<VimEmulator> m_vimEmulator;
     std::queue<IMission> m_miniGames;
     std::unique_ptr<IMission> m_currentMiniGame;
 
     std::shared_ptr<TexturedRect2D> m_barRect;
     SDL_Surface *m_barGraphic;
     float m_bar;
+    int m_gameId;
 
     static constexpr float BAR_HEIGHT = 0.2;
     static constexpr float BAR_WIDTH = 100.0 / 800.0 * 0.2;
 
 #define RESTRICT_HEADER "AVAILABLE INPUTS:\n"
+#define DEMO_MESSAGE "\t\tTHANK YOU FOR PLAYING VIMVENTURES\n\t\tYOU HAVE COMPLETED ALL PUZZLES IN THE CURENT PRE-ALPHA VERSION\n\n\n\t\tCREDITS: OFTHEMASSES (FINLAY METCALFE) GAME DESIGN, GAME ENGINE, ASSETS"
 };
 
 #endif

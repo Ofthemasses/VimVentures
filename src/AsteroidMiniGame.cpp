@@ -14,7 +14,6 @@ AsteroidMiniGame::AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
     m_asteroids.emplace_back(-1);
     m_asteroids.emplace_back(-1);
     m_asteroids.emplace_back(-1);
-    m_vimEmulator->StartBufferReciever();
     m_vimEmulator->ClearKeyWhiteList();
 
     // Restrictions for mini-game
@@ -29,7 +28,7 @@ AsteroidMiniGame::AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
     tutorialMission.SetRestrictionText("j k d 0 $ (duplicate-ops)");
 }
 
-AsteroidMiniGame::~AsteroidMiniGame() { m_vimEmulator->StopBufferReciever(); }
+AsteroidMiniGame::~AsteroidMiniGame() = default;
 
 void AsteroidMiniGame::Run() {
     m_elapsed += app.DeltaTime();
