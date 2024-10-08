@@ -97,12 +97,13 @@ void App::CreateGraphicsPipeline() {
         shaderBuilder.GenerateShaderProgram();
 
     if (std::holds_alternative<Error>(gradientShaderResult)) {
-        std::cout << std::get<Error>(gradientShaderResult).toString() << std::endl;
+        std::cout << std::get<Error>(gradientShaderResult).toString()
+                  << std::endl;
     } else {
         GraphicsController::s_shaderPrograms.try_emplace(
             std::string("sp_gradient"),
-            std::move(
-                std::get<std::unique_ptr<ShaderProgram>>(gradientShaderResult)));
+            std::move(std::get<std::unique_ptr<ShaderProgram>>(
+                gradientShaderResult)));
     }
 }
 

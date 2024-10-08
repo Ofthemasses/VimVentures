@@ -3,15 +3,16 @@
 
 #include <App.hpp>
 #include <IMission.hpp>
-#include <VimEmulator.hpp>
 #include <TutorialMission.hpp>
+#include <VimEmulator.hpp>
 
 class AsteroidMiniGame : public IMission {
     App &app;
     TutorialMission &tutorialMission;
 
   public:
-    AsteroidMiniGame(App &app, TutorialMission &tutorialMission, std::shared_ptr<VimEmulator> vimEmulator);
+    AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
+                     std::shared_ptr<VimEmulator> vimEmulator);
     ~AsteroidMiniGame() override;
     void Run() override;
 

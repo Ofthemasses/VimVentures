@@ -31,7 +31,7 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_requestReady = false;
     m_recievingBuffer = false;
     InitializeTCPLayer();
-    
+
     m_restrictDuplicateOps = false;
 
     // Run the terminal instance
@@ -109,20 +109,20 @@ void VimEmulator::QueueFrame() {
  */
 void VimEmulator::SendSDLKey(SDL_Keycode key) {
     // If there is a whitelist only allow white listed keys
-    if (!m_whiteList.empty()){
+    if (!m_whiteList.empty()) {
         bool contains = false;
-        for (std::pair<SDL_Keycode, SDL_Keymod> &keyPair : m_whiteList){
-            if (keyPair.first == key && keyPair.second == *m_modmask){
+        for (std::pair<SDL_Keycode, SDL_Keymod> &keyPair : m_whiteList) {
+            if (keyPair.first == key && keyPair.second == *m_modmask) {
                 contains = true;
             }
         }
-        if (!contains){
+        if (!contains) {
             return;
         }
     }
-    
-    if (m_restrictDuplicateOps && isDuplicateOp(key)){ 
-        return; 
+
+    if (m_restrictDuplicateOps && isDuplicateOp(key)) {
+        return;
     }
 
     KeySym xkey = SDLX11KeymapRef.convert(key);
@@ -139,7 +139,7 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
     XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent *)&event);
 
     m_prevKey.first = key;
-    m_prevKey.second = (SDL_Keymod) *m_modmask; 
+    m_prevKey.second = (SDL_Keymod)*m_modmask;
 }
 
 /**
@@ -400,7 +400,7 @@ void VimEmulator::SendToBufferThread(std::string message) {
         char recvBuffer[256] = {0};
         send(m_latestsocket, message.c_str(), message.length(), 0);
         while (!callback) {
-            if (recv(m_latestsocket, &recvBuffer, 4, 0) == 4){
+            if (recv(m_latestsocket, &recvBuffer, 4, 0) == 4) {
                 callback = strcmp(recvBuffer, "RECV") == 0;
             } else {
                 memset(recvBuffer, 0, strlen(recvBuffer));
@@ -447,41 +447,37 @@ std::string VimEmulator::GetRequest() {
 
 void VimEmulator::StopBufferReciever() { m_recievingBuffer = false; }
 
-void VimEmulator::SetThreadPriority(std::thread& thread, int priority) {
-	sched_param sch_params;
-	sch_params.sched_priority = priority;
-	pthread_setschedparam(thread.native_handle(), SCHED_FIFO, &sch_params);
+void VimEmulator::SetThreadPriority(std::thread &thread, int priority) {
+    sched_param sch_params;
+    sch_params.sched_priority = priority;
+    pthread_setschedparam(thread.native_handle(), SCHED_FIFO, &sch_params);
 }
 
 void VimEmulator::ClearKeyWhiteList() { m_whiteList.clear(); }
 
-void VimEmulator::AddKeyWhiteList(SDL_Keycode keyCode, SDL_Keymod keyMod) { 
+void VimEmulator::AddKeyWhiteList(SDL_Keycode keyCode, SDL_Keymod keyMod) {
     auto restriction = std::pair<SDL_Keycode, SDL_Keymod>(keyCode, keyMod);
     m_whiteList.emplace_back(restriction);
 }
 
-void VimEmulator::RestrictDuplicateOps(){
-    m_restrictDuplicateOps = true;
-}
+void VimEmulator::RestrictDuplicateOps() { m_restrictDuplicateOps = true; }
 
-void VimEmulator::AllowDuplicateOps(){
-    m_restrictDuplicateOps = false;
-}
+void VimEmulator::AllowDuplicateOps() { m_restrictDuplicateOps = false; }
 
-bool VimEmulator::isDuplicateOp(SDL_Keycode keyCode){
-    switch (keyCode){
-        case SDLK_d:
-            return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
-                m_prevKey.first == SDLK_d;
-            break;
-        case SDLK_y:
-            return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
-                m_prevKey.first == SDLK_y;
-            break;
-        case SDLK_c:
-            return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
-                m_prevKey.first == SDLK_c;
-            break;
+bool VimEmulator::isDuplicateOp(SDL_Keycode keyCode) {
+    switch (keyCode) {
+    case SDLK_d:
+        return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
+               m_prevKey.first == SDLK_d;
+        break;
+    case SDLK_y:
+        return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
+               m_prevKey.first == SDLK_y;
+        break;
+    case SDLK_c:
+        return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
+               m_prevKey.first == SDLK_c;
+        break;
     }
     return false;
 }

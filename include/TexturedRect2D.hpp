@@ -4,11 +4,11 @@
 #include <GraphicsController.hpp>
 #include <Rect2D.hpp>
 #include <SDL2/SDL.h>
-#include <glad/glad.h>
 #include <functional>
+#include <glad/glad.h>
 #include <iostream>
-#include <vector>
 #include <utility>
+#include <vector>
 
 class TexturedRect2D : public Rect2D {
   protected:
@@ -49,9 +49,12 @@ class TexturedRect2D : public Rect2D {
         std::string uniformFunc;
     };
 
-    void AddUniformVariable(std::string variableName, UniformVariableValue initialValue, std::string uniformFunction);
+    void AddUniformVariable(std::string variableName,
+                            UniformVariableValue initialValue,
+                            std::string uniformFunction);
 
-    void SetUniformVariable(std::string variableName, UniformVariableValue variable);
+    void SetUniformVariable(std::string variableName,
+                            UniformVariableValue variable);
 
   private:
     GLenum m_textureFormat;

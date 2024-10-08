@@ -49,20 +49,20 @@ void AsteroidMiniGame::Run() {
 std::string AsteroidMiniGame::RenderGameState() {
     std::string result = "";
     for (int asteroid : m_asteroids) {
-        switch(asteroid) {
-            case 0:
-                result.append("X");
-                result.append(ROW_WIDTH - 1, ' ');
-                tutorialMission.DowntickBar(10);
-                break;
-            case -1:
-                result.append(ROW_WIDTH, ' ');
-                break;
-            default:
-                result.append(asteroid, ' ');
-                result.append("*");
-                result.append(ROW_WIDTH - asteroid, ' ');
-                break;
+        switch (asteroid) {
+        case 0:
+            result.append("X");
+            result.append(ROW_WIDTH - 1, ' ');
+            tutorialMission.DowntickBar(10);
+            break;
+        case -1:
+            result.append(ROW_WIDTH, ' ');
+            break;
+        default:
+            result.append(asteroid, ' ');
+            result.append("*");
+            result.append(ROW_WIDTH - asteroid, ' ');
+            break;
         }
         result.append("\n");
     }

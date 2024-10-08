@@ -39,6 +39,7 @@ class VimEmulator : public TexturedRect2D {
 
     /** IRender **/
     void Render() override;
+
   private:
     static constexpr int REFRESH_MS = 100;
     Display *m_display;
@@ -76,7 +77,7 @@ class VimEmulator : public TexturedRect2D {
     // Replace this with a generic event handler if needed
     bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
-    void SetThreadPriority(std::thread& thread, int priority);
+    void SetThreadPriority(std::thread &thread, int priority);
 
     /** TCP **/
     static constexpr int TCP_PORT = 8080;
@@ -89,6 +90,5 @@ class VimEmulator : public TexturedRect2D {
     bool m_requestReady;
     bool m_recievingBuffer;
     std::string m_requestResult;
-
 };
 #endif

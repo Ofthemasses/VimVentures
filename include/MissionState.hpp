@@ -29,8 +29,8 @@ class MissionState : public IState {
     std::shared_ptr<VimEmulator> m_vimEmulator;
 
     std::unique_ptr<IMission> m_currentMission;
-    SDL_Surface* m_helpMonitorImage;
-    SDL_Surface* m_helpMonitorSurface;
+    SDL_Surface *m_helpMonitorImage;
+    SDL_Surface *m_helpMonitorSurface;
 
     std::shared_ptr<TexturedRect2D> m_helpMonitor;
 };

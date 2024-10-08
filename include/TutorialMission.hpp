@@ -3,9 +3,9 @@
 
 #include <App.hpp>
 #include <IMission.hpp>
-#include <VimEmulator.hpp>
-#include <TexturedRect2D.hpp>
 #include <MissionState.hpp>
+#include <TexturedRect2D.hpp>
+#include <VimEmulator.hpp>
 #include <memory>
 #include <queue>
 
@@ -14,7 +14,8 @@ class TutorialMission : public IMission {
     MissionState &missionState;
 
   public:
-    TutorialMission(App &app, MissionState &missionState, std::shared_ptr<VimEmulator> vimEmulator);
+    TutorialMission(App &app, MissionState &missionState,
+                    std::shared_ptr<VimEmulator> vimEmulator);
     ~TutorialMission();
     void Run() override;
 
@@ -38,9 +39,9 @@ class TutorialMission : public IMission {
     float m_bar;
 
     static constexpr float BAR_HEIGHT = 0.2;
-    static constexpr float BAR_WIDTH = 100.0/800.0 * 0.2;
+    static constexpr float BAR_WIDTH = 100.0 / 800.0 * 0.2;
 
-    #define RESTRICT_HEADER "AVAILABLE INPUTS:\n"
+#define RESTRICT_HEADER "AVAILABLE INPUTS:\n"
 };
 
 #endif
