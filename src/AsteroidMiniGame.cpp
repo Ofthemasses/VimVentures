@@ -15,6 +15,16 @@ AsteroidMiniGame::AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
     m_asteroids.emplace_back(-1);
     m_asteroids.emplace_back(-1);
     m_vimEmulator->StartBufferReciever();
+    m_vimEmulator->ClearKeyWhiteList();
+
+    // Restrictions for mini-game
+    m_vimEmulator->RestrictDuplicateOps();
+    m_vimEmulator->AddKeyWhiteList('j', KMOD_NONE);
+    m_vimEmulator->AddKeyWhiteList('k', KMOD_NONE);
+    m_vimEmulator->AddKeyWhiteList('d', KMOD_NONE);
+    m_vimEmulator->AddKeyWhiteList('0', KMOD_NONE);
+    m_vimEmulator->AddKeyWhiteList('4', KMOD_LSHIFT);
+    m_vimEmulator->AddKeyWhiteList('4', KMOD_RSHIFT);
 }
 
 AsteroidMiniGame::~AsteroidMiniGame() { m_vimEmulator->StopBufferReciever(); }

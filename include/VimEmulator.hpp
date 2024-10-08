@@ -31,9 +31,14 @@ class VimEmulator : public TexturedRect2D {
     void SendSDLKey(SDL_Keycode key);
     void SetSDLMod(SDL_Keymod mod);
 
+    /** Key Restrictions **/
+    void ClearKeyWhiteList();
+    void AddKeyWhiteList(SDL_Keycode, SDL_Keymod);
+    void RestrictDuplicateOps();
+    void AllowDuplicateOps();
+
     /** IRender **/
     void Render() override;
-
   private:
     static constexpr int REFRESH_MS = 100;
     Display *m_display;
@@ -58,7 +63,12 @@ class VimEmulator : public TexturedRect2D {
     /** XKeyboard **/
     unsigned int *m_modmask;
 
-    /** Private Methods **/
+    /** Key Restrictions **/
+    std::vector<std::pair<SDL_Keycode, SDL_Keymod>> m_whiteList;
+    std::pair<SDL_Keycode, SDL_Keymod> m_prevKey;
+    bool m_restrictDuplicateOps;
+    bool isDuplicateOp(SDL_Keycode keyCode);
+
     SDL_Surface *GetFrameAsSurface();
     Window *findWindowByName(Window window);
     void RegisterWindowThread();
@@ -79,6 +89,6 @@ class VimEmulator : public TexturedRect2D {
     bool m_requestReady;
     bool m_recievingBuffer;
     std::string m_requestResult;
-};
 
+};
 #endif
