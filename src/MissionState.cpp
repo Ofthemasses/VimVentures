@@ -2,6 +2,7 @@
 #include "MenuState.hpp"
 #include <TutorialMission.hpp>
 #include <memory>
+#include <SDL2/SDL_image.h>
 
 /**
  * Mission Level State.
@@ -25,6 +26,13 @@ MissionState::MissionState(App &app) : app(app) {
     m_vimEmulator->QueueFrame();
 
 
+    SDL_Surface* frameImage = IMG_Load("./assets/images/Terminal.png");
+    auto frame = std::make_shared<TexturedRect2D>(-0.5, -0.5, 1.0, 1.0);
+    frame->SetTextureFormat(GL_RGBA);
+    frame->UpdateVertexData();
+    frame->SetTexture(frameImage->pixels, frameImage->w,
+                            frameImage->h);
+    app.AddRenderable(frame);
     // Start Tutorial
     m_currentMission = std::make_unique<TutorialMission>(app, m_vimEmulator);
     app.AddRenderable(m_vimEmulator);
