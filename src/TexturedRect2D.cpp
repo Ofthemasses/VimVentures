@@ -131,7 +131,6 @@ void TexturedRect2D::Render() {
         GLint location = glGetUniformLocation(programID, uniformVariable.second.name.c_str());
         // This is very hardcoded TODO allow for automatic union determination
         if (uniformVariable.second.uniformFunc == "glUniform1f"){
-            std::cout << uniformVariable.second.value.uniform1f << std::endl;
             glUniform1f(location, uniformVariable.second.value.uniform1f);
         }
     }

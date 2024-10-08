@@ -30,9 +30,6 @@ TutorialMission::~TutorialMission(){
 
 void TutorialMission::Run() { 
     m_currentMiniGame->Run(); 
-    if (m_bar > 99){
-        std::cout << "TEST" << std::endl;
-    }
 }
 
 void TutorialMission::UptickBar(float amount){
