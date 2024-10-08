@@ -5,8 +5,10 @@
 #include <Rect2D.hpp>
 #include <SDL2/SDL.h>
 #include <glad/glad.h>
+#include <functional>
 #include <iostream>
 #include <vector>
+#include <utility>
 
 class TexturedRect2D : public Rect2D {
   protected:
@@ -37,10 +39,26 @@ class TexturedRect2D : public Rect2D {
 
     void UpdateGL() override;
 
+    union UniformVariableValue {
+        GLfloat uniform1f;
+    };
+    // Currently only supports 1 value uniforms
+    struct UniformVariable {
+        std::string name;
+        UniformVariableValue value;
+        std::string uniformFunc;
+    };
+
+    void AddUniformVariable(std::string variableName, UniformVariableValue initialValue, std::string uniformFunction);
+
+    void SetUniformVariable(std::string variableName, UniformVariableValue variable);
+
   private:
     GLenum m_textureFormat;
     GLenum m_internalTextureFormat;
     bool m_enableBlend;
+
+    std::unordered_map<std::string, UniformVariable> m_uniformVariables;
 };
 
 #endif

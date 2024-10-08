@@ -24,10 +24,10 @@ MissionState::MissionState(App &app) : app(app) {
 
     m_vimEmulator->QueueFrame();
 
-    app.AddRenderable(m_vimEmulator);
 
     // Start Tutorial
     m_currentMission = std::make_unique<TutorialMission>(app, m_vimEmulator);
+    app.AddRenderable(m_vimEmulator);
 }
 
 /**
