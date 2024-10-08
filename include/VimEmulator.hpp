@@ -1,9 +1,13 @@
 #ifndef VIMEMULATOR_HPP
 #define VIMEMULATOR_HPP
+#include <IMission.hpp>
 #include <SDL2/SDL.h>
 #include <X11/Xlib.h>
+#include <functional>
 #include <mutex>
+#include <netinet/in.h>
 #include <string>
+#include <thread>
 
 #include "TexturedRect2D.hpp"
 
@@ -15,9 +19,23 @@ class VimEmulator : public TexturedRect2D {
     void ResizeWindow(int w, int h);
     void QueueFrame();
 
+    /** TCP **/
+    void InitializeTCPLayer();
+    void SendToBuffer(std::string message);
+    void StartBufferReciever();
+    bool IsRequestReady();
+    [[nodiscard]] std::string GetRequest();
+    void StopBufferReciever();
+
     /** X11 Keyboard **/
     void SendSDLKey(SDL_Keycode key);
     void SetSDLMod(SDL_Keymod mod);
+
+    /** Key Restrictions **/
+    void ClearKeyWhiteList();
+    void AddKeyWhiteList(SDL_Keycode, SDL_Keymod);
+    void RestrictDuplicateOps();
+    void AllowDuplicateOps();
 
     /** IRender **/
     void Render() override;
@@ -46,7 +64,12 @@ class VimEmulator : public TexturedRect2D {
     /** XKeyboard **/
     unsigned int *m_modmask;
 
-    /** Private Methods **/
+    /** Key Restrictions **/
+    std::vector<std::pair<SDL_Keycode, SDL_Keymod>> m_whiteList;
+    std::pair<SDL_Keycode, SDL_Keymod> m_prevKey;
+    bool m_restrictDuplicateOps;
+    bool isDuplicateOp(SDL_Keycode keyCode);
+
     SDL_Surface *GetFrameAsSurface();
     Window *findWindowByName(Window window);
     void RegisterWindowThread();
@@ -54,6 +77,18 @@ class VimEmulator : public TexturedRect2D {
     // Replace this with a generic event handler if needed
     bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
-};
+    void SetThreadPriority(std::thread &thread, int priority);
 
+    /** TCP **/
+    static constexpr int TCP_PORT = 8080;
+    int m_serverfd, m_latestsocket;
+    struct sockaddr_in m_address;
+    void InitializeTCPLayerThread();
+    void SendToBufferThread(std::string message);
+    void BufferRecieverThread();
+    std::mutex m_tcpMutex;
+    bool m_requestReady;
+    bool m_recievingBuffer;
+    std::string m_requestResult;
+};
 #endif

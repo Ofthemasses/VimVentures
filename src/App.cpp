@@ -89,6 +89,22 @@ void App::CreateGraphicsPipeline() {
             std::move(
                 std::get<std::unique_ptr<ShaderProgram>>(basicShaderResult)));
     }
+
+    shaderBuilder.LoadShaderFile(GL_VERTEX_SHADER, "./shaders/gradient.vert")
+        .LoadShaderFile(GL_FRAGMENT_SHADER, "./shaders/gradient.frag");
+
+    std::variant<Error, std::unique_ptr<ShaderProgram>> gradientShaderResult =
+        shaderBuilder.GenerateShaderProgram();
+
+    if (std::holds_alternative<Error>(gradientShaderResult)) {
+        std::cout << std::get<Error>(gradientShaderResult).toString()
+                  << std::endl;
+    } else {
+        GraphicsController::s_shaderPrograms.try_emplace(
+            std::string("sp_gradient"),
+            std::move(std::get<std::unique_ptr<ShaderProgram>>(
+                gradientShaderResult)));
+    }
 }
 
 /**
