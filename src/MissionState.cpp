@@ -36,6 +36,15 @@ MissionState::MissionState(App &app) : app(app) {
     // Start Tutorial
     m_currentMission = std::make_unique<TutorialMission>(app, m_vimEmulator);
     app.AddRenderable(m_vimEmulator);
+
+    // TODO Change this to an actual texture
+    SDL_Surface* helpMonitorImage = IMG_Load("./assets/images/Black.png");
+    auto helpMonitor = std::make_shared<TexturedRect2D>(HELPER_X_POSITION, -WIDTH_RATIO / 2, HELPER_WIDTH, WIDTH_RATIO);
+    helpMonitor->SetTextureFormat(GL_RGB);
+    helpMonitor->UpdateVertexData();
+    helpMonitor->SetTexture(helpMonitorImage->pixels, helpMonitorImage->w, helpMonitorImage->h);
+    helpMonitor->SetShaderProgram("sp_cathode");
+    app.AddRenderable(helpMonitor);
 }
 
 /**

@@ -21,6 +21,9 @@ class MissionState : public IState {
     static constexpr int DRAW_G = 50;
     static constexpr int DRAW_B = 168;
 
+    static constexpr float HELPER_WIDTH = 1.0 / 8.0;
+    static constexpr float HELPER_X_POSITION = -24.0 / 50.0;
+
     std::shared_ptr<VimEmulator> m_vimEmulator;
 
     std::unique_ptr<IMission> m_currentMission;
