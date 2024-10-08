@@ -25,6 +25,8 @@ AsteroidMiniGame::AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
     m_vimEmulator->AddKeyWhiteList('0', KMOD_NONE);
     m_vimEmulator->AddKeyWhiteList('4', KMOD_LSHIFT);
     m_vimEmulator->AddKeyWhiteList('4', KMOD_RSHIFT);
+
+    tutorialMission.SetRestrictionText("j k d 0 $ (duplicate-ops)");
 }
 
 AsteroidMiniGame::~AsteroidMiniGame() { m_vimEmulator->StopBufferReciever(); }

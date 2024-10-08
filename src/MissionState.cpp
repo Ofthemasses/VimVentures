@@ -34,8 +34,6 @@ MissionState::MissionState(App &app) : app(app) {
                             frameImage->h);
     app.AddRenderable(frame);
     // Start Tutorial
-    m_currentMission = std::make_unique<TutorialMission>(app, m_vimEmulator);
-    app.AddRenderable(m_vimEmulator);
 
     m_helpMonitorImage = IMG_Load("./assets/images/HelperTerminal.png");
     
@@ -56,6 +54,9 @@ MissionState::MissionState(App &app) : app(app) {
     m_helpMonitor->SetTexture(m_helpMonitorSurface->pixels, m_helpMonitorSurface->w, m_helpMonitorSurface->h);
     m_helpMonitor->SetShaderProgram("sp_cathode");
     app.AddRenderable(m_helpMonitor);
+
+    m_currentMission = std::make_unique<TutorialMission>(app, *this, m_vimEmulator);
+    app.AddRenderable(m_vimEmulator);
 }
 
 /**
@@ -96,14 +97,13 @@ void MissionState::UpdateHelperMonitor(std::string text){
     // Clear text
     SDL_BlitSurface(m_helpMonitorImage, nullptr, m_helpMonitorSurface, nullptr);
 
-    const int SIZE = 128;
-    const int WRAP = SIZE*5;
+    const int WRAP = 128*8;
     SDL_Surface *helpText = TTF_RenderText_Blended_Wrapped(
         GraphicsController::s_fonts.at("ttf_terminus").get(), text.c_str(), 
         {255, 255, 255}, WRAP);
 
     const float WIDTH = ((float) m_helpMonitorImage->w - HELPER_TEXT_PADDING*2.0) * (float) helpText->w / WRAP;
-    const float HEIGHT = WIDTH / ((float) helpText->w / SIZE);
+    const float HEIGHT = (WIDTH * helpText->h) / ((float) helpText->w);
     auto *helpTextRect = new SDL_Rect{HELPER_TEXT_PADDING, HELPER_TEXT_PADDING, (int) WIDTH, (int) HEIGHT};
 
     SDL_BlitScaled(helpText, nullptr, m_helpMonitorSurface, helpTextRect);

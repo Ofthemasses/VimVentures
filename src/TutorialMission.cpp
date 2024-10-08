@@ -2,9 +2,9 @@
 #include <TutorialMission.hpp>
 #include <SDL2/SDL_image.h>
 
-TutorialMission::TutorialMission(App &app,
+TutorialMission::TutorialMission(App &app, MissionState &missionState,
                                  std::shared_ptr<VimEmulator> vimEmulator)
-    : app(app) {
+    : app(app), missionState(missionState) {
     m_bar = 0.0;
     m_currentMiniGame = std::make_unique<AsteroidMiniGame>(app, *this, vimEmulator);
 
@@ -22,6 +22,10 @@ TutorialMission::TutorialMission(App &app,
     
     m_barRect->AddUniformVariable("u_Fill", value, "glUniform1f");
     app.AddRenderable(m_barRect);
+
+    //SDL_Surface *titleText = TTF_RenderText_Blended(
+    //    GraphicsController::s_fonts.at("ttf_terminus").get(), "Restricted Text",
+    //    {255, 255, 255});
 }
 
 TutorialMission::~TutorialMission(){
@@ -48,4 +52,8 @@ void TutorialMission::DowntickBar(float amount){
     }
     m_barRect->UpdateVertexData();
     m_barRect->UpdateGL();
+}
+
+void TutorialMission::SetRestrictionText(std::string restrictions){
+    missionState.UpdateHelperMonitor(RESTRICT_HEADER + restrictions);
 }
