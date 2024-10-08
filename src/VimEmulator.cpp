@@ -363,11 +363,8 @@ void VimEmulator::InitializeTCPLayerThread() {
 }
 
 void VimEmulator::SendToBuffer(std::string message) {
-    if (!m_recievingBuffer){
-        return;
-    }
     std::thread thread(&VimEmulator::SendToBufferThread, this, message);
-    SetThreadPriority(thread, 5);
+    SetThreadPriority(thread, 10);
     thread.detach();
 }
 
@@ -381,12 +378,11 @@ void VimEmulator::SendToBufferThread(std::string message) {
         char recvBuffer[256] = {0};
         send(m_latestsocket, message.c_str(), message.length(), 0);
         while (!callback) {
-            if (recv(m_latestsocket, &recvBuffer, 256, 0) == -1) {
-                std::this_thread::sleep_for(
-                    std::chrono::milliseconds(REFRESH_MS));
-                std::cout << "WAITING" << std::endl;
-            } else {
+            if (recv(m_latestsocket, &recvBuffer, 4, 0) == 4){
                 callback = strcmp(recvBuffer, "RECV") == 0;
+            } else {
+                std::cout << "TEST" << std::endl;
+                memset(recvBuffer, 0, strlen(recvBuffer));
             }
         }
     }
@@ -395,7 +391,7 @@ void VimEmulator::SendToBufferThread(std::string message) {
 void VimEmulator::StartBufferReciever() {
     m_recievingBuffer = true;
     std::thread thread(&VimEmulator::BufferRecieverThread, this);
-    SetThreadPriority(thread, 10);
+    SetThreadPriority(thread, 5);
     thread.detach();
 }
 
@@ -418,7 +414,6 @@ void VimEmulator::BufferRecieverThread() {
                 m_requestReady = true;
             }
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(REFRESH_MS));
     }
 }
 
