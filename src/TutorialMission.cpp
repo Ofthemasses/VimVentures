@@ -22,10 +22,6 @@ TutorialMission::TutorialMission(App &app, MissionState &missionState,
     
     m_barRect->AddUniformVariable("u_Fill", value, "glUniform1f");
     app.AddRenderable(m_barRect);
-
-    //SDL_Surface *titleText = TTF_RenderText_Blended(
-    //    GraphicsController::s_fonts.at("ttf_terminus").get(), "Restricted Text",
-    //    {255, 255, 255});
 }
 
 TutorialMission::~TutorialMission(){
@@ -49,6 +45,7 @@ void TutorialMission::DowntickBar(float amount){
         m_bar = 0;
     } else {
         m_bar -= amount;
+        m_bar = m_bar < 0 ? 0 : m_bar;
     }
     m_barRect->UpdateVertexData();
     m_barRect->UpdateGL();
