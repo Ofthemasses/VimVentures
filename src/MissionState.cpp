@@ -38,7 +38,7 @@ MissionState::MissionState(App &app) : app(app) {
     app.AddRenderable(m_vimEmulator);
 
     // TODO Change this to an actual texture
-    SDL_Surface* helpMonitorImage = IMG_Load("./assets/images/Black.png");
+    SDL_Surface* helpMonitorImage = IMG_Load("./assets/images/HelperTerminal.png");
     auto helpMonitor = std::make_shared<TexturedRect2D>(HELPER_X_POSITION, -WIDTH_RATIO / 2, HELPER_WIDTH, WIDTH_RATIO);
     helpMonitor->SetTextureFormat(GL_RGB);
     helpMonitor->UpdateVertexData();
