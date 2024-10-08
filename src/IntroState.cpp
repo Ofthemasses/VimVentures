@@ -94,6 +94,8 @@ void IntroState::Run() {
 void IntroState::NextSlide() {
     m_currSlide++;
 
+    // TODO This is a temp fix for intro slides 2-3
+    m_slideshow->SetTextureFormat(GL_RGBA);
     if (m_currSlide >= SLIDE_COUNT) {
         return;
     }
