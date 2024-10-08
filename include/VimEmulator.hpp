@@ -7,6 +7,7 @@
 #include <mutex>
 #include <netinet/in.h>
 #include <string>
+#include <thread>
 
 #include "TexturedRect2D.hpp"
 
@@ -65,6 +66,7 @@ class VimEmulator : public TexturedRect2D {
     // Replace this with a generic event handler if needed
     bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
+    void SetThreadPriority(std::thread& thread, int priority);
 
     /** TCP **/
     static constexpr int TCP_PORT = 8080;

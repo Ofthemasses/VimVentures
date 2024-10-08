@@ -363,7 +363,12 @@ void VimEmulator::InitializeTCPLayerThread() {
 }
 
 void VimEmulator::SendToBuffer(std::string message) {
-    std::thread(&VimEmulator::SendToBufferThread, this, message).detach();
+    if (!m_recievingBuffer){
+        return;
+    }
+    std::thread thread(&VimEmulator::SendToBufferThread, this, message);
+    SetThreadPriority(thread, 5);
+    thread.detach();
 }
 
 void VimEmulator::SendToBufferThread(std::string message) {
@@ -389,7 +394,9 @@ void VimEmulator::SendToBufferThread(std::string message) {
 
 void VimEmulator::StartBufferReciever() {
     m_recievingBuffer = true;
-    std::thread(&VimEmulator::BufferRecieverThread, this).detach();
+    std::thread thread(&VimEmulator::BufferRecieverThread, this);
+    SetThreadPriority(thread, 10);
+    thread.detach();
 }
 
 void VimEmulator::BufferRecieverThread() {
@@ -423,3 +430,10 @@ std::string VimEmulator::GetRequest() {
 }
 
 void VimEmulator::StopBufferReciever() { m_recievingBuffer = false; }
+
+void VimEmulator::SetThreadPriority(std::thread& thread, int priority) {
+	sched_param sch_params;
+	sch_params.sched_priority = priority;
+	pthread_setschedparam(thread.native_handle(), SCHED_FIFO, &sch_params);
+}
+
