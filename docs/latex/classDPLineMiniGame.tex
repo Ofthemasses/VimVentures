@@ -1,0 +1,114 @@
+\doxysection{DPLine\+Mini\+Game Class Reference}
+\hypertarget{classDPLineMiniGame}{}\label{classDPLineMiniGame}\index{DPLineMiniGame@{DPLineMiniGame}}
+Inheritance diagram for DPLine\+Mini\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDPLineMiniGame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDPLineMiniGame_a195e6e1d29d55ef74ab8d5c48de242c0}\label{classDPLineMiniGame_a195e6e1d29d55ef74ab8d5c48de242c0} 
+{\bfseries DPLine\+Mini\+Game} (\mbox{\hyperlink{classApp}{App}} \&app, \mbox{\hyperlink{classTutorialMission}{Tutorial\+Mission}} \&tutorial\+Mission, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ vim\+Emulator)
+\item 
+void \mbox{\hyperlink{classDPLineMiniGame_aa7a42bbd2b1f113530d32a4a8384a337}{Run}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDPLineMiniGame_a043bcb0c909538460c6a2dc74526a3c4}\label{classDPLineMiniGame_a043bcb0c909538460c6a2dc74526a3c4} 
+void {\bfseries Parse\+Request} (std\+::string request)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDPLineMiniGame_ad4aaef4dd585dedeea628247d6d5e868}\label{classDPLineMiniGame_ad4aaef4dd585dedeea628247d6d5e868} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classDPLineMiniGame_a015b5fa6b41953d55bd9e99f3e0319a0}\label{classDPLineMiniGame_a015b5fa6b41953d55bd9e99f3e0319a0} 
+\mbox{\hyperlink{classTutorialMission}{Tutorial\+Mission}} \& {\bfseries tutorial\+Mission}
+\item 
+\Hypertarget{classDPLineMiniGame_aa248cc7002b032e3f81dec869d29bc03}\label{classDPLineMiniGame_aa248cc7002b032e3f81dec869d29bc03} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ {\bfseries m\+\_\+vim\+Emulator}
+\item 
+const std\+::vector$<$ std\+::string\+\_\+view $>$ \mbox{\hyperlink{classDPLineMiniGame_a56a2ab4687f5294aedfe38c02fea14cb}{m\+\_\+target\+State}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDPLineMiniGame_adc0d467a4b77c273f829e5b9c7f200ae}\label{classDPLineMiniGame_adc0d467a4b77c273f829e5b9c7f200ae} 
+static constexpr double {\bfseries TICK\+\_\+\+DELAY\+\_\+\+MS} = 10.\+0
+\item 
+static constexpr std\+::string\+\_\+view \mbox{\hyperlink{classDPLineMiniGame_a7225d86fc92fdd2a12747a246e9575fb}{INITIAL\+\_\+\+GAME\+\_\+\+STATE}}
+\item 
+\Hypertarget{classDPLineMiniGame_a6bbf7fc5515e4c4cb7b6821bb83f1303}\label{classDPLineMiniGame_a6bbf7fc5515e4c4cb7b6821bb83f1303} 
+static constexpr size\+\_\+t {\bfseries LINES} = 8
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDPLineMiniGame_aa7a42bbd2b1f113530d32a4a8384a337}\label{classDPLineMiniGame_aa7a42bbd2b1f113530d32a4a8384a337} 
+\index{DPLineMiniGame@{DPLineMiniGame}!Run@{Run}}
+\index{Run@{Run}!DPLineMiniGame@{DPLineMiniGame}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void DPLine\+Mini\+Game\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIMission}{IMission}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classDPLineMiniGame_a7225d86fc92fdd2a12747a246e9575fb}\label{classDPLineMiniGame_a7225d86fc92fdd2a12747a246e9575fb} 
+\index{DPLineMiniGame@{DPLineMiniGame}!INITIAL\_GAME\_STATE@{INITIAL\_GAME\_STATE}}
+\index{INITIAL\_GAME\_STATE@{INITIAL\_GAME\_STATE}!DPLineMiniGame@{DPLineMiniGame}}
+\doxysubsubsection{\texorpdfstring{INITIAL\_GAME\_STATE}{INITIAL\_GAME\_STATE}}
+{\footnotesize\ttfamily constexpr std\+::string\+\_\+view DPLine\+Mini\+Game\+::\+INITIAL\+\_\+\+GAME\+\_\+\+STATE\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\ \ \ \ \(\backslash\)\_/\ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|\ \ \(\backslash\)\_\_|\ \ \(\backslash\)\_\_\_\_/\ \ \(\backslash\)\_\_\_\_\_\_/\ \(\backslash\)\_\_|\ \ \ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \(\backslash\)\$\ \ /\ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\ \(\backslash\)\$\$\$\$\ \ |\(\backslash\)\$\$\$\$\$\$\ \ |\$\$\ |\ \ \ \ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\(\backslash\)\$\$\(\backslash\)\ \ \$\$\ \ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\(\backslash\)\_\$\$\ \ \_|\ \ \$\$\ |\ \ \$\$\ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\ \(\backslash\)\_\_|)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\$\$\(\backslash\)\ \ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\$\$\$\$\$\(\backslash\)\ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\ |)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \(\backslash\)\$\$\(\backslash\)\$\$\ \ /\ \$\$\$\$\$\$\$\$\ |\$\$\ |\ \ \$\$\ |\ \$\$\ |\ \ \ \ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \(\backslash\)\_\_|\$\$\$\$\$\$\$\$\ |\$\$\(\backslash\)\ )"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\ \ \(\backslash\)\$\$\$\ \ /\ \ \$\$\ \ \ \_\_\_\_|\$\$\ |\ \ \$\$\ |\ \$\$\ |\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \ \ \ \ \$\$\ \ \ \_\_\_\_|\$\$\ |)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ )"{}}}
+
+\end{DoxyCode}
+\Hypertarget{classDPLineMiniGame_a56a2ab4687f5294aedfe38c02fea14cb}\label{classDPLineMiniGame_a56a2ab4687f5294aedfe38c02fea14cb} 
+\index{DPLineMiniGame@{DPLineMiniGame}!m\_targetState@{m\_targetState}}
+\index{m\_targetState@{m\_targetState}!DPLineMiniGame@{DPLineMiniGame}}
+\doxysubsubsection{\texorpdfstring{m\_targetState}{m\_targetState}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::string\+\_\+view$>$ DPLine\+Mini\+Game\+::m\+\_\+target\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ )"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |)"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\$\$\(\backslash\)\ \ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\$\$\$\$\$\(\backslash\)\ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\ |)"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\(\backslash\)\$\$\(\backslash\)\ \ \$\$\ \ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\(\backslash\)\_\$\$\ \ \_|\ \ \$\$\ |\ \ \$\$\ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\ \(\backslash\)\_\_|)"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \(\backslash\)\$\$\(\backslash\)\$\$\ \ /\ \$\$\$\$\$\$\$\$\ |\$\$\ |\ \ \$\$\ |\ \$\$\ |\ \ \ \ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \(\backslash\)\_\_|\$\$\$\$\$\$\$\$\ |\$\$\(\backslash\)\ )"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\ \ \(\backslash\)\$\$\$\ \ /\ \ \$\$\ \ \ \_\_\_\_|\$\$\ |\ \ \$\$\ |\ \$\$\ |\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \ \ \ \ \$\$\ \ \ \_\_\_\_|\$\$\ |)"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \(\backslash\)\$\ \ /\ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\ \(\backslash\)\$\$\$\$\ \ |\(\backslash\)\$\$\$\$\$\$\ \ |\$\$\ |\ \ \ \ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |)"{},}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\ \ \ \ \(\backslash\)\_/\ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|\ \ \(\backslash\)\_\_|\ \ \(\backslash\)\_\_\_\_/\ \ \(\backslash\)\_\_\_\_\_\_/\ \(\backslash\)\_\_|\ \ \ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|)"{}\}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/DPLine\+Mini\+Game.\+hpp\item 
+src/DPLine\+Mini\+Game.\+cpp\end{DoxyCompactItemize}

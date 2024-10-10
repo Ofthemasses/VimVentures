@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_0',['Error',['../structError.html',1,'']]]
+  ['basicminigame_0',['BasicMiniGame',['../classBasicMiniGame.html',1,'']]]
 ];

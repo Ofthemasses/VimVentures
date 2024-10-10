@@ -6,6 +6,13 @@ Inheritance diagram for Textured\+Rect2D\+:\begin{figure}[H]
 \includegraphics[height=4.000000cm]{classTexturedRect2D}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTexturedRect2D_1_1UniformVariable}{Uniform\+Variable}}
+\item 
+union \mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{Uniform\+Variable\+Value}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,6 +35,12 @@ void \mbox{\hyperlink{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}{Dis
 void \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}} () override
 \item 
 void \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{Update\+GL}} () override
+\item 
+\Hypertarget{classTexturedRect2D_a91805bb8bedf5148dc64d8e07aae20c8}\label{classTexturedRect2D_a91805bb8bedf5148dc64d8e07aae20c8} 
+void {\bfseries Add\+Uniform\+Variable} (std\+::string variable\+Name, \mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{Uniform\+Variable\+Value}} initial\+Value, std\+::string uniform\+Function)
+\item 
+\Hypertarget{classTexturedRect2D_ab37b1ff8d6fef6dd3366f8aeae050e53}\label{classTexturedRect2D_ab37b1ff8d6fef6dd3366f8aeae050e53} 
+void {\bfseries Set\+Uniform\+Variable} (std\+::string variable\+Name, \mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{Uniform\+Variable\+Value}} value)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}
 \begin{DoxyCompactItemize}
@@ -105,6 +118,9 @@ GLenum {\bfseries m\+\_\+internal\+Texture\+Format}
 \item 
 \Hypertarget{classTexturedRect2D_ae0ffd8b4265fe00d0d73a2207f700357}\label{classTexturedRect2D_ae0ffd8b4265fe00d0d73a2207f700357} 
 bool {\bfseries m\+\_\+enable\+Blend}
+\item 
+\Hypertarget{classTexturedRect2D_af233700f0242785d86fab15efd81adae}\label{classTexturedRect2D_af233700f0242785d86fab15efd81adae} 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structTexturedRect2D_1_1UniformVariable}{Uniform\+Variable}} $>$ {\bfseries m\+\_\+uniform\+Variables}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classRect2D}{Rect2D}}}

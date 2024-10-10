@@ -1,0 +1,42 @@
+\doxysection{Asteroid\+Mini\+Game.\+hpp}
+\hypertarget{AsteroidMiniGame_8hpp_source}{}\label{AsteroidMiniGame_8hpp_source}\index{include/AsteroidMiniGame.hpp@{include/AsteroidMiniGame.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ASTEROIDMINIGAME\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ASTEROIDMINIGAME\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <App.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <IMission.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <TutorialMission.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <VimEmulator.hpp>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAsteroidMiniGame}{AsteroidMiniGame}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIMission}{IMission}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classTutorialMission}{TutorialMission}}\ \&tutorialMission;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classAsteroidMiniGame}{AsteroidMiniGame}}(\mbox{\hyperlink{classApp}{App}}\ \&app,\ \mbox{\hyperlink{classTutorialMission}{TutorialMission}}\ \&tutorialMission,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VimEmulator>\ vimEmulator);}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classAsteroidMiniGame}{\string~AsteroidMiniGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ Run()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ std::shared\_ptr<VimEmulator>\ m\_vimEmulator;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ TICK\_DELAY\_MS\ =\ 10.0;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ ROW\_WIDTH\ =\ 12;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ UP\_TICK\ =\ 5;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DOWN\_TICK\ =\ 10;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ ASTEROID\_START\ =\ 8;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ RAND\_RANGE\ =\ 100;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ RAND\_CHANCE\ =\ 30;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_elapsed;}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<int>\ m\_asteroids;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ RenderGameState();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateAsteroids();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ ParseRequest(std::string\ request);}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

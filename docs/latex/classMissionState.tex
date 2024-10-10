@@ -16,6 +16,9 @@ Inheritance diagram for Mission\+State\+:\begin{figure}[H]
 void \mbox{\hyperlink{classMissionState_ac2775c5ad3a68d6a24324b862bbd18ee}{Run}} () override
 \item 
 void \mbox{\hyperlink{classMissionState_aac05233c1924ac8c40c3277815716388}{Send\+Event}} (SDL\+\_\+\+Event \&event) override
+\item 
+\Hypertarget{classMissionState_a5e610192b3fbfa5db00310d6d485ce9a}\label{classMissionState_a5e610192b3fbfa5db00310d6d485ce9a} 
+void {\bfseries Update\+Helper\+Monitor} (std\+::string text)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -25,6 +28,18 @@ void \mbox{\hyperlink{classMissionState_aac05233c1924ac8c40c3277815716388}{Send\
 \item 
 \Hypertarget{classMissionState_ab7f89691b8b0800359a5bff366fba493}\label{classMissionState_ab7f89691b8b0800359a5bff366fba493} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ {\bfseries m\+\_\+vim\+Emulator}
+\item 
+\Hypertarget{classMissionState_a4afcd78f4f438ed19e08af2d00dc01a0}\label{classMissionState_a4afcd78f4f438ed19e08af2d00dc01a0} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIMission}{IMission}} $>$ {\bfseries m\+\_\+current\+Mission}
+\item 
+\Hypertarget{classMissionState_a29c3aaad5fc0c4e7258e8530d11213cd}\label{classMissionState_a29c3aaad5fc0c4e7258e8530d11213cd} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+help\+Monitor\+Image}
+\item 
+\Hypertarget{classMissionState_a8b8c0506ef0dceca80165f9617779937}\label{classMissionState_a8b8c0506ef0dceca80165f9617779937} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+help\+Monitor\+Surface}
+\item 
+\Hypertarget{classMissionState_a6b26c1b79baf5cc161177e13aa75aae0}\label{classMissionState_a6b26c1b79baf5cc161177e13aa75aae0} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+help\+Monitor}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -40,6 +55,24 @@ static constexpr int {\bfseries DRAW\+\_\+G} = 50
 \item 
 \Hypertarget{classMissionState_a8d3485e73df960fd20e5f2b16e8deca0}\label{classMissionState_a8d3485e73df960fd20e5f2b16e8deca0} 
 static constexpr int {\bfseries DRAW\+\_\+B} = 168
+\item 
+\Hypertarget{classMissionState_a429fec97da1691e25b360fca3a13efd7}\label{classMissionState_a429fec97da1691e25b360fca3a13efd7} 
+static constexpr float {\bfseries HELPER\+\_\+\+WIDTH} = 1.\+0 / 8.\+0
+\item 
+\Hypertarget{classMissionState_a0816e985a28deba2c89ff6dcdb53b528}\label{classMissionState_a0816e985a28deba2c89ff6dcdb53b528} 
+static constexpr float {\bfseries HELPER\+\_\+\+X\+\_\+\+POSITION} = -\/24.\+0 / 50.\+0
+\item 
+\Hypertarget{classMissionState_a995eaf881342b825885e2e71877fe750}\label{classMissionState_a995eaf881342b825885e2e71877fe750} 
+static constexpr int {\bfseries HELPER\+\_\+\+TEXT\+\_\+\+PADDING} = 25
+\item 
+\Hypertarget{classMissionState_ab85217144a5676e03972a941a7337e54}\label{classMissionState_ab85217144a5676e03972a941a7337e54} 
+static constexpr float {\bfseries LEFT} = -\/0.\+5
+\item 
+\Hypertarget{classMissionState_a5fdcf6e33260eeff8bb57e78973c30d9}\label{classMissionState_a5fdcf6e33260eeff8bb57e78973c30d9} 
+static constexpr float {\bfseries TOP} = -\/0.\+5
+\item 
+\Hypertarget{classMissionState_ae672feb5cd3e2c52770c67855dac7610}\label{classMissionState_ae672feb5cd3e2c52770c67855dac7610} 
+static constexpr SDL\+\_\+\+Color {\bfseries TEXT\+\_\+\+WHITE} = \{255, 255, 255\}
 \end{DoxyCompactItemize}
 
 

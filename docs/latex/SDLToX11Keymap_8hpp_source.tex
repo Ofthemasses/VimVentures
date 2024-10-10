@@ -13,11 +13,12 @@
 \DoxyCodeLine{00009\ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classSDLToX11Keymap_af235bab78df439696c163ba5ffdcb63a}{SDLToX11Keymap}}();}
 \DoxyCodeLine{00011\ \ \ \ \ KeySym\ \mbox{\hyperlink{classSDLToX11Keymap_ab34246c557e9be74299416bc24d11fcc}{convert}}(SDL\_Keycode\ sdlKey)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00014\ \ \ \ \ std::unordered\_map<SDL\_Keycode,\ KeySym>\ m\_keyMap;}
-\DoxyCodeLine{00015\ \};}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ convertMask(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sdlMod);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::unordered\_map<SDL\_Keycode,\ KeySym>\ m\_keyMap;}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

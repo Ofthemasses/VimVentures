@@ -1,0 +1,89 @@
+\doxysection{Asteroid\+Mini\+Game Class Reference}
+\hypertarget{classAsteroidMiniGame}{}\label{classAsteroidMiniGame}\index{AsteroidMiniGame@{AsteroidMiniGame}}
+Inheritance diagram for Asteroid\+Mini\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAsteroidMiniGame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classAsteroidMiniGame_ac3b7ac5825498744150e544f9808ba4f}\label{classAsteroidMiniGame_ac3b7ac5825498744150e544f9808ba4f} 
+{\bfseries Asteroid\+Mini\+Game} (\mbox{\hyperlink{classApp}{App}} \&app, \mbox{\hyperlink{classTutorialMission}{Tutorial\+Mission}} \&tutorial\+Mission, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ vim\+Emulator)
+\item 
+void \mbox{\hyperlink{classAsteroidMiniGame_ae2c5d042113e3deed87e75b5077ee3b9}{Run}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classAsteroidMiniGame_a7ad096536b7bd982b5fcd439c8e492fb}\label{classAsteroidMiniGame_a7ad096536b7bd982b5fcd439c8e492fb} 
+std\+::string {\bfseries Render\+Game\+State} ()
+\item 
+\Hypertarget{classAsteroidMiniGame_a1a24fb12a742681998e25813d3a74140}\label{classAsteroidMiniGame_a1a24fb12a742681998e25813d3a74140} 
+void {\bfseries Update\+Asteroids} ()
+\item 
+\Hypertarget{classAsteroidMiniGame_a068513c3264ec284c71b7574cac4b93a}\label{classAsteroidMiniGame_a068513c3264ec284c71b7574cac4b93a} 
+void {\bfseries Parse\+Request} (std\+::string request)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classAsteroidMiniGame_a08f89c254a5f633170ac5fdf4d19428c}\label{classAsteroidMiniGame_a08f89c254a5f633170ac5fdf4d19428c} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classAsteroidMiniGame_ad24ae48d09a5f7fcac755ad08553b672}\label{classAsteroidMiniGame_ad24ae48d09a5f7fcac755ad08553b672} 
+\mbox{\hyperlink{classTutorialMission}{Tutorial\+Mission}} \& {\bfseries tutorial\+Mission}
+\item 
+\Hypertarget{classAsteroidMiniGame_a9ba4f2a2286bd1ac983e90d4aa3b5d69}\label{classAsteroidMiniGame_a9ba4f2a2286bd1ac983e90d4aa3b5d69} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ {\bfseries m\+\_\+vim\+Emulator}
+\item 
+\Hypertarget{classAsteroidMiniGame_a4b9b846e48d260c3c938d4cad6d1e64e}\label{classAsteroidMiniGame_a4b9b846e48d260c3c938d4cad6d1e64e} 
+double {\bfseries m\+\_\+elapsed}
+\item 
+\Hypertarget{classAsteroidMiniGame_ab52328f05a28a3b0a1d9d6abc617cab8}\label{classAsteroidMiniGame_ab52328f05a28a3b0a1d9d6abc617cab8} 
+std\+::vector$<$ int $>$ {\bfseries m\+\_\+asteroids}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classAsteroidMiniGame_aad75286d38433459ea321a03dd8a2734}\label{classAsteroidMiniGame_aad75286d38433459ea321a03dd8a2734} 
+static constexpr double {\bfseries TICK\+\_\+\+DELAY\+\_\+\+MS} = 10.\+0
+\item 
+\Hypertarget{classAsteroidMiniGame_a1f06c5c36c35846a74d174dabf8eae13}\label{classAsteroidMiniGame_a1f06c5c36c35846a74d174dabf8eae13} 
+static constexpr int {\bfseries ROW\+\_\+\+WIDTH} = 12
+\item 
+\Hypertarget{classAsteroidMiniGame_a5fe7f83ccb2bd517fb1ed3e6b1d0ae48}\label{classAsteroidMiniGame_a5fe7f83ccb2bd517fb1ed3e6b1d0ae48} 
+static constexpr int {\bfseries UP\+\_\+\+TICK} = 5
+\item 
+\Hypertarget{classAsteroidMiniGame_a643960147ffaae334c16a317fc8d5dc3}\label{classAsteroidMiniGame_a643960147ffaae334c16a317fc8d5dc3} 
+static constexpr int {\bfseries DOWN\+\_\+\+TICK} = 10
+\item 
+\Hypertarget{classAsteroidMiniGame_a4aae4dc6aebe826080ed43e554b5c65b}\label{classAsteroidMiniGame_a4aae4dc6aebe826080ed43e554b5c65b} 
+static constexpr int {\bfseries ASTEROID\+\_\+\+START} = 8
+\item 
+\Hypertarget{classAsteroidMiniGame_a879f7eb3b7fccf2974725cc8e6974f95}\label{classAsteroidMiniGame_a879f7eb3b7fccf2974725cc8e6974f95} 
+static constexpr size\+\_\+t {\bfseries RAND\+\_\+\+RANGE} = 100
+\item 
+\Hypertarget{classAsteroidMiniGame_a6b12b7f27ed76654d91741ededd85a39}\label{classAsteroidMiniGame_a6b12b7f27ed76654d91741ededd85a39} 
+static constexpr size\+\_\+t {\bfseries RAND\+\_\+\+CHANCE} = 30
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAsteroidMiniGame_ae2c5d042113e3deed87e75b5077ee3b9}\label{classAsteroidMiniGame_ae2c5d042113e3deed87e75b5077ee3b9} 
+\index{AsteroidMiniGame@{AsteroidMiniGame}!Run@{Run}}
+\index{Run@{Run}!AsteroidMiniGame@{AsteroidMiniGame}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Asteroid\+Mini\+Game\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIMission}{IMission}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Asteroid\+Mini\+Game.\+hpp\item 
+src/Asteroid\+Mini\+Game.\+cpp\end{DoxyCompactItemize}

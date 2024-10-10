@@ -1,0 +1,62 @@
+\doxysection{Tutorial\+Mission.\+hpp}
+\hypertarget{TutorialMission_8hpp_source}{}\label{TutorialMission_8hpp_source}\index{include/TutorialMission.hpp@{include/TutorialMission.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TUTORIALMISSION\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TUTORIALMISSION\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <App.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <IMission.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <MissionState.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <TexturedRect2D.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <VimEmulator.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTutorialMission}{TutorialMission}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIMission}{IMission}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classMissionState}{MissionState}}\ \&missionState;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classTutorialMission}{TutorialMission}}(\mbox{\hyperlink{classApp}{App}}\ \&app,\ \mbox{\hyperlink{classMissionState}{MissionState}}\ \&missionState,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VimEmulator>\ vimEmulator);}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classTutorialMission}{\string~TutorialMission}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ Run()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTutorialMission_abac2b13d779a446607e531fb1c22c096}{UptickBar}}(\textcolor{keywordtype}{float}\ amount);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ DowntickBar(\textcolor{keywordtype}{float}\ amount);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ SetBar(\textcolor{keywordtype}{float}\ amount);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTutorialMission_aec5991e05392798041dfe340bda6be3c}{SetRestrictionText}}(std::string\ restrictions);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Yes\ re\ using\ IMission\ here\ is\ a\ little\ strange.}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ But\ honestly\ a\ seperate\ MiniGame\ class\ will\ be}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ exactly\ the\ same\ as\ a\ IMission.\ Maybe\ IMission}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ should\ be\ renamed\ down\ the\ line.}}
+\DoxyCodeLine{00035\ \ \ \ \ std::shared\_ptr<VimEmulator>\ m\_vimEmulator;}
+\DoxyCodeLine{00036\ \ \ \ \ std::queue<IMission>\ m\_miniGames;}
+\DoxyCodeLine{00037\ \ \ \ \ std::unique\_ptr<IMission>\ m\_currentMiniGame;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_barRect;}
+\DoxyCodeLine{00040\ \ \ \ \ SDL\_Surface\ *m\_barGraphic;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_bar;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_gameId;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BAR\_HEIGHT\ =\ 0.2;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BAR\_WIDTH\ =\ 100.0\ /\ 800.0\ *\ 0.2;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BAR\_X\ =\ 0.4;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BAR\_Y\ =\ -\/0.4;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BAR\_MAX\ =\ 99.0;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ GAME\_COUNT\ =\ 3;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ RESTRICT\_HEADER\ "{}AVAILABLE\ INPUTS:\(\backslash\)n"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ DEMO\_MESSAGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ "{}\(\backslash\)t\(\backslash\)tTHANK\ YOU\ FOR\ PLAYING\ VIMVENTURES\(\backslash\)n\(\backslash\)t\(\backslash\)tYOU\ HAVE\ COMPLETED\ ALL\ "{}\ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ "{}PUZZLES\ IN\ THE\ CURENT\ PRE-\/ALPHA\ VERSION\(\backslash\)n\(\backslash\)n\(\backslash\)n\(\backslash\)t\(\backslash\)tCREDITS:\ OFTHEMASSES\ "{}\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ "{}(FINLAY\ METCALFE)\ GAME\ DESIGN,\ GAME\ ENGINE,\ ASSETS"{}}}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

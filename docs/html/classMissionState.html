@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.3</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.4</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -100,6 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac2775c5ad3a68d6a24324b862bbd18ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac05233c1924ac8c40c3277815716388" id="r_aac05233c1924ac8c40c3277815716388"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac05233c1924ac8c40c3277815716388">SendEvent</a> (SDL_Event &amp;event) override</td></tr>
 <tr class="separator:aac05233c1924ac8c40c3277815716388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e610192b3fbfa5db00310d6d485ce9a" id="r_a5e610192b3fbfa5db00310d6d485ce9a"><td class="memItemLeft" align="right" valign="top"><a id="a5e610192b3fbfa5db00310d6d485ce9a" name="a5e610192b3fbfa5db00310d6d485ce9a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateHelperMonitor</b> (std::string text)</td></tr>
+<tr class="separator:a5e610192b3fbfa5db00310d6d485ce9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -109,6 +112,18 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab7f89691b8b0800359a5bff366fba493" id="r_ab7f89691b8b0800359a5bff366fba493"><td class="memItemLeft" align="right" valign="top"><a id="ab7f89691b8b0800359a5bff366fba493" name="ab7f89691b8b0800359a5bff366fba493"></a>
 std::shared_ptr&lt; <a class="el" href="classVimEmulator.html">VimEmulator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_vimEmulator</b></td></tr>
 <tr class="separator:ab7f89691b8b0800359a5bff366fba493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4afcd78f4f438ed19e08af2d00dc01a0" id="r_a4afcd78f4f438ed19e08af2d00dc01a0"><td class="memItemLeft" align="right" valign="top"><a id="a4afcd78f4f438ed19e08af2d00dc01a0" name="a4afcd78f4f438ed19e08af2d00dc01a0"></a>
+std::unique_ptr&lt; <a class="el" href="classIMission.html">IMission</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_currentMission</b></td></tr>
+<tr class="separator:a4afcd78f4f438ed19e08af2d00dc01a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29c3aaad5fc0c4e7258e8530d11213cd" id="r_a29c3aaad5fc0c4e7258e8530d11213cd"><td class="memItemLeft" align="right" valign="top"><a id="a29c3aaad5fc0c4e7258e8530d11213cd" name="a29c3aaad5fc0c4e7258e8530d11213cd"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>m_helpMonitorImage</b></td></tr>
+<tr class="separator:a29c3aaad5fc0c4e7258e8530d11213cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8c0506ef0dceca80165f9617779937" id="r_a8b8c0506ef0dceca80165f9617779937"><td class="memItemLeft" align="right" valign="top"><a id="a8b8c0506ef0dceca80165f9617779937" name="a8b8c0506ef0dceca80165f9617779937"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>m_helpMonitorSurface</b></td></tr>
+<tr class="separator:a8b8c0506ef0dceca80165f9617779937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b26c1b79baf5cc161177e13aa75aae0" id="r_a6b26c1b79baf5cc161177e13aa75aae0"><td class="memItemLeft" align="right" valign="top"><a id="a6b26c1b79baf5cc161177e13aa75aae0" name="a6b26c1b79baf5cc161177e13aa75aae0"></a>
+std::shared_ptr&lt; <a class="el" href="classTexturedRect2D.html">TexturedRect2D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_helpMonitor</b></td></tr>
+<tr class="separator:a6b26c1b79baf5cc161177e13aa75aae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -124,6 +139,24 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>DRAW_
 <tr class="memitem:a8d3485e73df960fd20e5f2b16e8deca0" id="r_a8d3485e73df960fd20e5f2b16e8deca0"><td class="memItemLeft" align="right" valign="top"><a id="a8d3485e73df960fd20e5f2b16e8deca0" name="a8d3485e73df960fd20e5f2b16e8deca0"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>DRAW_B</b> = 168</td></tr>
 <tr class="separator:a8d3485e73df960fd20e5f2b16e8deca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429fec97da1691e25b360fca3a13efd7" id="r_a429fec97da1691e25b360fca3a13efd7"><td class="memItemLeft" align="right" valign="top"><a id="a429fec97da1691e25b360fca3a13efd7" name="a429fec97da1691e25b360fca3a13efd7"></a>
+static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>HELPER_WIDTH</b> = 1.0 / 8.0</td></tr>
+<tr class="separator:a429fec97da1691e25b360fca3a13efd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0816e985a28deba2c89ff6dcdb53b528" id="r_a0816e985a28deba2c89ff6dcdb53b528"><td class="memItemLeft" align="right" valign="top"><a id="a0816e985a28deba2c89ff6dcdb53b528" name="a0816e985a28deba2c89ff6dcdb53b528"></a>
+static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>HELPER_X_POSITION</b> = -24.0 / 50.0</td></tr>
+<tr class="separator:a0816e985a28deba2c89ff6dcdb53b528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995eaf881342b825885e2e71877fe750" id="r_a995eaf881342b825885e2e71877fe750"><td class="memItemLeft" align="right" valign="top"><a id="a995eaf881342b825885e2e71877fe750" name="a995eaf881342b825885e2e71877fe750"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>HELPER_TEXT_PADDING</b> = 25</td></tr>
+<tr class="separator:a995eaf881342b825885e2e71877fe750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab85217144a5676e03972a941a7337e54" id="r_ab85217144a5676e03972a941a7337e54"><td class="memItemLeft" align="right" valign="top"><a id="ab85217144a5676e03972a941a7337e54" name="ab85217144a5676e03972a941a7337e54"></a>
+static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>LEFT</b> = -0.5</td></tr>
+<tr class="separator:ab85217144a5676e03972a941a7337e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fdcf6e33260eeff8bb57e78973c30d9" id="r_a5fdcf6e33260eeff8bb57e78973c30d9"><td class="memItemLeft" align="right" valign="top"><a id="a5fdcf6e33260eeff8bb57e78973c30d9" name="a5fdcf6e33260eeff8bb57e78973c30d9"></a>
+static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>TOP</b> = -0.5</td></tr>
+<tr class="separator:a5fdcf6e33260eeff8bb57e78973c30d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae672feb5cd3e2c52770c67855dac7610" id="r_ae672feb5cd3e2c52770c67855dac7610"><td class="memItemLeft" align="right" valign="top"><a id="ae672feb5cd3e2c52770c67855dac7610" name="ae672feb5cd3e2c52770c67855dac7610"></a>
+static constexpr SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><b>TEXT_WHITE</b> = {255, 255, 255}</td></tr>
+<tr class="separator:ae672feb5cd3e2c52770c67855dac7610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aac7344320cd7eb188a2fce4acead50d5" name="aac7344320cd7eb188a2fce4acead50d5"></a>

@@ -8,45 +8,66 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <GraphicsController.hpp>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Rect2D.hpp>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTexturedRect2D}{TexturedRect2D}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRect2D}{Rect2D}}\ \{}
-\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00013\ \ \ \ \ GLuint\ m\_texture;}
-\DoxyCodeLine{00014\ \ \ \ \ GLuint\ m\_texture\_width;}
-\DoxyCodeLine{00015\ \ \ \ \ GLuint\ m\_texture\_height;}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a615344905b23e8ad55beeec18854d784}{TexturedRect2D}}(GLfloat\ xPos\ =\ 0,\ GLfloat\ yPos\ =\ 0,\ GLfloat\ width\ =\ 0,}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ height\ =\ 0);}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{UpdateVertexData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTexturedRect2D}{TexturedRect2D}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRect2D}{Rect2D}}\ \{}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00015\ \ \ \ \ GLuint\ m\_texture;}
+\DoxyCodeLine{00016\ \ \ \ \ GLuint\ m\_texture\_width;}
+\DoxyCodeLine{00017\ \ \ \ \ GLuint\ m\_texture\_height;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a615344905b23e8ad55beeec18854d784}{TexturedRect2D}}(GLfloat\ xPos\ =\ 0,\ GLfloat\ yPos\ =\ 0,\ GLfloat\ width\ =\ 0,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GLfloat\ height\ =\ 0);}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{SetTexture}}(\textcolor{keywordtype}{void}\ *data,\ GLuint\ width,\ GLuint\ height,}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ force\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22}{SetTextureFormat}}(GLenum\ format);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a75d7e9d3f2a8f6c1772ba5e0a84cc27e}{UpdateVertexData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3125472341cd3feef5b88964ae65eb8d}{SetTexture}}(\textcolor{keywordtype}{void}\ *data,\ GLuint\ width,\ GLuint\ height,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ force\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b}{SetInternalTextureFormat}}(GLenum\ format);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a784e67ea9d92f2f59014b603187a0c22}{SetTextureFormat}}(GLenum\ format);}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32}{EnableTextureBlend}}();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a3f6d15f561c126a0024ba40ea7600b8b}{SetInternalTextureFormat}}(GLenum\ format);}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}{DisableTextureBlend}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a58d7f773fdeed453fe08243ee1d32a32}{EnableTextureBlend}}();}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\string~TexturedRect2D}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_a04eed590c683b9df9a0e4e7f93f43984}{DisableTextureBlend}}();}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classTexturedRect2D_a45538e526e981eddb69074e6a7d11808}{\string~TexturedRect2D}}();}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{UpdateGL}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aa37daeff9f2db40e9effbb737349e99e}{Render}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00041\ \ \ \ \ GLenum\ m\_textureFormat;}
-\DoxyCodeLine{00042\ \ \ \ \ GLenum\ m\_internalTextureFormat;}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_enableBlend;}
-\DoxyCodeLine{00044\ \};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTexturedRect2D_aec53724ec19e14b728702fe9b6e09d4f}{UpdateGL}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{UniformVariableValue}}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ GLfloat\ uniform1f;}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Currently\ only\ supports\ 1\ value\ uniforms}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTexturedRect2D_1_1UniformVariable}{UniformVariable}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{UniformVariableValue}}\ value;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::string\ uniformFunc;}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ AddUniformVariable(std::string\ variableName,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{UniformVariableValue}}\ initialValue,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ uniformFunction);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ SetUniformVariable(std::string\ variableName,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{unionTexturedRect2D_1_1UniformVariableValue}{UniformVariableValue}}\ value);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ GLenum\ m\_textureFormat;}
+\DoxyCodeLine{00061\ \ \ \ \ GLenum\ m\_internalTextureFormat;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_enableBlend;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ std::unordered\_map<std::string,\ UniformVariable>\ m\_uniformVariables;}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

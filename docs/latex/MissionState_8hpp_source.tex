@@ -8,25 +8,42 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}App.hpp"{}}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}IState.hpp"{}}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}VimEmulator.hpp"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMissionState}{MissionState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIState}{IState}}\ \{}
-\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classMissionState_aac7344320cd7eb188a2fce4acead50d5}{MissionState}}(\mbox{\hyperlink{classApp}{App}}\ \&app);}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classMissionState_a09bc7b5f761f4c1a9477e605b72ae5f7}{\string~MissionState}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMissionState_ac2775c5ad3a68d6a24324b862bbd18ee}{Run}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMissionState_aac05233c1924ac8c40c3277815716388}{SendEvent}}(SDL\_Event\ \&event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ WIDTH\_RATIO\ =\ 2\ /\ 3.0;}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DRAW\_R\ =\ 131;}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DRAW\_G\ =\ 50;}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DRAW\_B\ =\ 168;}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ std::shared\_ptr<VimEmulator>\ m\_vimEmulator;}
-\DoxyCodeLine{00024\ \};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <IMission.hpp>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMissionState}{MissionState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIState}{IState}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classMissionState_aac7344320cd7eb188a2fce4acead50d5}{MissionState}}(\mbox{\hyperlink{classApp}{App}}\ \&app);}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classMissionState_a09bc7b5f761f4c1a9477e605b72ae5f7}{\string~MissionState}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMissionState_ac2775c5ad3a68d6a24324b862bbd18ee}{Run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMissionState_aac05233c1924ac8c40c3277815716388}{SendEvent}}(SDL\_Event\ \&event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateHelperMonitor(std::string\ text);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ WIDTH\_RATIO\ =\ 2\ /\ 3.0;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DRAW\_R\ =\ 131;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DRAW\_G\ =\ 50;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DRAW\_B\ =\ 168;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HELPER\_WIDTH\ =\ 1.0\ /\ 8.0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HELPER\_X\_POSITION\ =\ -\/24.0\ /\ 50.0;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ HELPER\_TEXT\_PADDING\ =\ 25;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ LEFT\ =\ -\/0.5;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ TOP\ =\ -\/0.5;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ SDL\_Color\ TEXT\_WHITE\ =\ \{255,\ 255,\ 255\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::shared\_ptr<VimEmulator>\ m\_vimEmulator;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::unique\_ptr<IMission>\ m\_currentMission;}
+\DoxyCodeLine{00037\ \ \ \ \ SDL\_Surface\ *m\_helpMonitorImage;}
+\DoxyCodeLine{00038\ \ \ \ \ SDL\_Surface\ *m\_helpMonitorSurface;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ std::shared\_ptr<TexturedRect2D>\ m\_helpMonitor;}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

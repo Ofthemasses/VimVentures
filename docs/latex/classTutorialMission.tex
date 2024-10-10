@@ -1,0 +1,108 @@
+\doxysection{Tutorial\+Mission Class Reference}
+\hypertarget{classTutorialMission}{}\label{classTutorialMission}\index{TutorialMission@{TutorialMission}}
+Inheritance diagram for Tutorial\+Mission\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTutorialMission}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTutorialMission_a62d03c630f22e727e5f1f03a51092ba7}\label{classTutorialMission_a62d03c630f22e727e5f1f03a51092ba7} 
+{\bfseries Tutorial\+Mission} (\mbox{\hyperlink{classApp}{App}} \&app, \mbox{\hyperlink{classMissionState}{Mission\+State}} \&mission\+State, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ vim\+Emulator)
+\item 
+void \mbox{\hyperlink{classTutorialMission_a0b52d19fa6a3ea65b8794d461fbc49e4}{Run}} () override
+\item 
+void \mbox{\hyperlink{classTutorialMission_abac2b13d779a446607e531fb1c22c096}{Uptick\+Bar}} (float amount)
+\item 
+\Hypertarget{classTutorialMission_a5d0aba1e867a7f6df3b5150a6bac6c4c}\label{classTutorialMission_a5d0aba1e867a7f6df3b5150a6bac6c4c} 
+void {\bfseries Downtick\+Bar} (float amount)
+\item 
+\Hypertarget{classTutorialMission_ad0c4e7d135b7f9669523f097035d6d6c}\label{classTutorialMission_ad0c4e7d135b7f9669523f097035d6d6c} 
+void {\bfseries Set\+Bar} (float amount)
+\item 
+void \mbox{\hyperlink{classTutorialMission_aec5991e05392798041dfe340bda6be3c}{Set\+Restriction\+Text}} (std\+::string restrictions)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTutorialMission_a5b6a979f0032895bc9a424b5f39b4368}\label{classTutorialMission_a5b6a979f0032895bc9a424b5f39b4368} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classTutorialMission_a14c1acbacaf32e8073d5e5ebaf97aeb1}\label{classTutorialMission_a14c1acbacaf32e8073d5e5ebaf97aeb1} 
+\mbox{\hyperlink{classMissionState}{Mission\+State}} \& {\bfseries mission\+State}
+\item 
+\Hypertarget{classTutorialMission_a1659ef3f6250d04081ca816f380347ef}\label{classTutorialMission_a1659ef3f6250d04081ca816f380347ef} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ {\bfseries m\+\_\+vim\+Emulator}
+\item 
+\Hypertarget{classTutorialMission_a5a1ab4028e729a52c9b3da0c6d3c0971}\label{classTutorialMission_a5a1ab4028e729a52c9b3da0c6d3c0971} 
+std\+::queue$<$ \mbox{\hyperlink{classIMission}{IMission}} $>$ {\bfseries m\+\_\+mini\+Games}
+\item 
+\Hypertarget{classTutorialMission_aeb55c404eb5689c0ba05c624b9e5a945}\label{classTutorialMission_aeb55c404eb5689c0ba05c624b9e5a945} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIMission}{IMission}} $>$ {\bfseries m\+\_\+current\+Mini\+Game}
+\item 
+\Hypertarget{classTutorialMission_ac70ec36f5b679b0f02cd8a227c16e194}\label{classTutorialMission_ac70ec36f5b679b0f02cd8a227c16e194} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTexturedRect2D}{Textured\+Rect2D}} $>$ {\bfseries m\+\_\+bar\+Rect}
+\item 
+\Hypertarget{classTutorialMission_ac35922a56c01329e88b57d4cbff7c480}\label{classTutorialMission_ac35922a56c01329e88b57d4cbff7c480} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+bar\+Graphic}
+\item 
+\Hypertarget{classTutorialMission_a8454ae8377a4a7a9b4580b11fb83117c}\label{classTutorialMission_a8454ae8377a4a7a9b4580b11fb83117c} 
+float {\bfseries m\+\_\+bar}
+\item 
+\Hypertarget{classTutorialMission_a42494075d89597d96389b1437af787ae}\label{classTutorialMission_a42494075d89597d96389b1437af787ae} 
+int {\bfseries m\+\_\+game\+Id}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTutorialMission_a0c4377233120a931ea893936501793c8}\label{classTutorialMission_a0c4377233120a931ea893936501793c8} 
+static constexpr float {\bfseries BAR\+\_\+\+HEIGHT} = 0.\+2
+\item 
+\Hypertarget{classTutorialMission_a816b46a884f0ca434ee4e5d6fc6670dc}\label{classTutorialMission_a816b46a884f0ca434ee4e5d6fc6670dc} 
+static constexpr float {\bfseries BAR\+\_\+\+WIDTH} = 100.\+0 / 800.\+0 \texorpdfstring{$\ast$}{*} 0.\+2
+\item 
+\Hypertarget{classTutorialMission_af60b1475da4e3d76e419d10dc0c077d0}\label{classTutorialMission_af60b1475da4e3d76e419d10dc0c077d0} 
+static constexpr float {\bfseries BAR\+\_\+X} = 0.\+4
+\item 
+\Hypertarget{classTutorialMission_afb00326c66c0f805d7e1aec2429de44e}\label{classTutorialMission_afb00326c66c0f805d7e1aec2429de44e} 
+static constexpr float {\bfseries BAR\+\_\+Y} = -\/0.\+4
+\item 
+\Hypertarget{classTutorialMission_ac185c3665ff4460ae1f86e3a459d729d}\label{classTutorialMission_ac185c3665ff4460ae1f86e3a459d729d} 
+static constexpr float {\bfseries BAR\+\_\+\+MAX} = 99.\+0
+\item 
+\Hypertarget{classTutorialMission_abfc6d2e13f60292465059a56d6db49fc}\label{classTutorialMission_abfc6d2e13f60292465059a56d6db49fc} 
+static constexpr size\+\_\+t {\bfseries GAME\+\_\+\+COUNT} = 3
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTutorialMission_a0b52d19fa6a3ea65b8794d461fbc49e4}\label{classTutorialMission_a0b52d19fa6a3ea65b8794d461fbc49e4} 
+\index{TutorialMission@{TutorialMission}!Run@{Run}}
+\index{Run@{Run}!TutorialMission@{TutorialMission}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Tutorial\+Mission\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIMission}{IMission}}.
+
+\Hypertarget{classTutorialMission_aec5991e05392798041dfe340bda6be3c}\label{classTutorialMission_aec5991e05392798041dfe340bda6be3c} 
+\index{TutorialMission@{TutorialMission}!SetRestrictionText@{SetRestrictionText}}
+\index{SetRestrictionText@{SetRestrictionText}!TutorialMission@{TutorialMission}}
+\doxysubsubsection{\texorpdfstring{SetRestrictionText()}{SetRestrictionText()}}
+{\footnotesize\ttfamily void Tutorial\+Mission\+::\+Set\+Restriction\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{restrictions }\end{DoxyParamCaption})}
+
+Help Terminal \Hypertarget{classTutorialMission_abac2b13d779a446607e531fb1c22c096}\label{classTutorialMission_abac2b13d779a446607e531fb1c22c096} 
+\index{TutorialMission@{TutorialMission}!UptickBar@{UptickBar}}
+\index{UptickBar@{UptickBar}!TutorialMission@{TutorialMission}}
+\doxysubsubsection{\texorpdfstring{UptickBar()}{UptickBar()}}
+{\footnotesize\ttfamily void Tutorial\+Mission\+::\+Uptick\+Bar (\begin{DoxyParamCaption}\item[{float}]{amount }\end{DoxyParamCaption})}
+
+Mini\+Game Handling 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Tutorial\+Mission.\+hpp\item 
+src/Tutorial\+Mission.\+cpp\end{DoxyCompactItemize}

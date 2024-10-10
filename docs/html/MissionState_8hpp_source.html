@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.3</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.4</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -90,35 +90,52 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;App.hpp&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;IState.hpp&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;VimEmulator.hpp&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classMissionState.html">    8</a></span><span class="keyword">class </span><a class="code hl_class" href="classMissionState.html">MissionState</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIState.html">IState</a> {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_class" href="classApp.html">App</a> &amp;app;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_function" href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState</a>(<a class="code hl_class" href="classApp.html">App</a> &amp;app);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">   13</a></span>    <a class="code hl_function" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">~MissionState</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">Run</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMissionState.html#aac05233c1924ac8c40c3277815716388">SendEvent</a>(SDL_Event &amp;event) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> WIDTH_RATIO = 2 / 3.0;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_R = 131;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_G = 50;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_B = 168;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::shared_ptr&lt;VimEmulator&gt; m_vimEmulator;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;IMission.hpp&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classMissionState.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classMissionState.html">MissionState</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIState.html">IState</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_class" href="classApp.html">App</a> &amp;app;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_function" href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState</a>(<a class="code hl_class" href="classApp.html">App</a> &amp;app);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">   14</a></span>    <a class="code hl_function" href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">~MissionState</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">Run</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMissionState.html#aac05233c1924ac8c40c3277815716388">SendEvent</a>(SDL_Event &amp;event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> UpdateHelperMonitor(std::string text);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> WIDTH_RATIO = 2 / 3.0;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_R = 131;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_G = 50;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> DRAW_B = 168;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> HELPER_WIDTH = 1.0 / 8.0;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> HELPER_X_POSITION = -24.0 / 50.0;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> HELPER_TEXT_PADDING = 25;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> LEFT = -0.5;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">float</span> TOP = -0.5;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> SDL_Color TEXT_WHITE = {255, 255, 255};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::shared_ptr&lt;VimEmulator&gt; m_vimEmulator;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::unique_ptr&lt;IMission&gt; m_currentMission;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    SDL_Surface *m_helpMonitorImage;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    SDL_Surface *m_helpMonitorSurface;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::shared_ptr&lt;TexturedRect2D&gt; m_helpMonitor;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassApp_html"><div class="ttname"><a href="classApp.html">App</a></div><div class="ttdef"><b>Definition</b> App.hpp:12</div></div>
 <div class="ttc" id="aclassIState_html"><div class="ttname"><a href="classIState.html">IState</a></div><div class="ttdef"><b>Definition</b> IState.hpp:6</div></div>
-<div class="ttc" id="aclassMissionState_html"><div class="ttname"><a href="classMissionState.html">MissionState</a></div><div class="ttdef"><b>Definition</b> MissionState.hpp:8</div></div>
+<div class="ttc" id="aclassMissionState_html"><div class="ttname"><a href="classMissionState.html">MissionState</a></div><div class="ttdef"><b>Definition</b> MissionState.hpp:9</div></div>
 <div class="ttc" id="aclassMissionState_html_a09bc7b5f761f4c1a9477e605b72ae5f7"><div class="ttname"><a href="classMissionState.html#a09bc7b5f761f4c1a9477e605b72ae5f7">MissionState::~MissionState</a></div><div class="ttdeci">~MissionState() override</div></div>
-<div class="ttc" id="aclassMissionState_html_aac05233c1924ac8c40c3277815716388"><div class="ttname"><a href="classMissionState.html#aac05233c1924ac8c40c3277815716388">MissionState::SendEvent</a></div><div class="ttdeci">void SendEvent(SDL_Event &amp;event) override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:44</div></div>
-<div class="ttc" id="aclassMissionState_html_aac7344320cd7eb188a2fce4acead50d5"><div class="ttname"><a href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState::MissionState</a></div><div class="ttdeci">MissionState(App &amp;app)</div><div class="ttdef"><b>Definition</b> MissionState.cpp:7</div></div>
-<div class="ttc" id="aclassMissionState_html_ac2775c5ad3a68d6a24324b862bbd18ee"><div class="ttname"><a href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">MissionState::Run</a></div><div class="ttdeci">void Run() override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:36</div></div>
+<div class="ttc" id="aclassMissionState_html_aac05233c1924ac8c40c3277815716388"><div class="ttname"><a href="classMissionState.html#aac05233c1924ac8c40c3277815716388">MissionState::SendEvent</a></div><div class="ttdeci">void SendEvent(SDL_Event &amp;event) override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:78</div></div>
+<div class="ttc" id="aclassMissionState_html_aac7344320cd7eb188a2fce4acead50d5"><div class="ttname"><a href="classMissionState.html#aac7344320cd7eb188a2fce4acead50d5">MissionState::MissionState</a></div><div class="ttdeci">MissionState(App &amp;app)</div><div class="ttdef"><b>Definition</b> MissionState.cpp:10</div></div>
+<div class="ttc" id="aclassMissionState_html_ac2775c5ad3a68d6a24324b862bbd18ee"><div class="ttname"><a href="classMissionState.html#ac2775c5ad3a68d6a24324b862bbd18ee">MissionState::Run</a></div><div class="ttdeci">void Run() override</div><div class="ttdef"><b>Definition</b> MissionState.cpp:69</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
