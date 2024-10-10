@@ -4,8 +4,10 @@
 #include <GraphicsController.hpp>
 #include <Rect2D.hpp>
 #include <SDL2/SDL.h>
+#include <functional>
 #include <glad/glad.h>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 class TexturedRect2D : public Rect2D {
@@ -37,10 +39,29 @@ class TexturedRect2D : public Rect2D {
 
     void UpdateGL() override;
 
+    union UniformVariableValue {
+        GLfloat uniform1f;
+    };
+    // Currently only supports 1 value uniforms
+    struct UniformVariable {
+        std::string name;
+        UniformVariableValue value;
+        std::string uniformFunc;
+    };
+
+    void AddUniformVariable(std::string variableName,
+                            UniformVariableValue initialValue,
+                            std::string uniformFunction);
+
+    void SetUniformVariable(std::string variableName,
+                            UniformVariableValue value);
+
   private:
     GLenum m_textureFormat;
     GLenum m_internalTextureFormat;
     bool m_enableBlend;
+
+    std::unordered_map<std::string, UniformVariable> m_uniformVariables;
 };
 
 #endif

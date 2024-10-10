@@ -8,6 +8,7 @@
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
+#include <sys/socket.h>
 #include <thread>
 #include <unistd.h>
 
@@ -25,6 +26,13 @@ VimEmulator::VimEmulator(std::string terminal, std::string nArg) {
     m_windowName = std::string(APP_TITLE) + "Emulator";
     m_modmask = new unsigned int;
     m_frameReady = false;
+
+    m_latestsocket = -1;
+    m_requestReady = false;
+    m_recievingBuffer = false;
+    InitializeTCPLayer();
+
+    m_restrictDuplicateOps = false;
 
     // Run the terminal instance
     m_pid = fork();
@@ -61,6 +69,8 @@ VimEmulator::~VimEmulator() {
     if (m_pid > 0) {
         kill(m_pid, SIGTERM);
     }
+    close(m_serverfd);
+    close(m_latestsocket);
     delete (m_modmask);
 }
 
@@ -98,6 +108,24 @@ void VimEmulator::QueueFrame() {
  * @param key An SDL_Keycode
  */
 void VimEmulator::SendSDLKey(SDL_Keycode key) {
+    // If there is a whitelist only allow white listed keys
+    if (!m_whiteList.empty()) {
+        bool contains = false;
+        for (std::pair<SDL_Keycode, Uint16> &keyPair : m_whiteList) {
+            if (keyPair.first == key &&
+                ((keyPair.second & *m_modmask) == *m_modmask)) {
+                contains = true;
+            }
+        }
+        if (!contains) {
+            return;
+        }
+    }
+
+    if (m_restrictDuplicateOps && isDuplicateOp(key)) {
+        return;
+    }
+
     KeySym xkey = SDLX11KeymapRef.convert(key);
 
     XKeyPressedEvent event = {0};
@@ -107,9 +135,12 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
     event.root = m_rootWindow;
     event.keycode = XKeysymToKeycode(m_display, xkey);
     event.state = 0;
-    event.state = *m_modmask;
+    event.state = SDLToX11Keymap::convertMask(*m_modmask);
 
     XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent *)&event);
+
+    m_prevKey.first = key;
+    m_prevKey.second = *m_modmask;
 }
 
 /**
@@ -117,7 +148,7 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
  *
  * @param mod An SDL_Keymod
  */
-void VimEmulator::SetSDLMod(SDL_Keymod mod) { *m_modmask = mod; }
+void VimEmulator::SetSDLMod(Uint16 mod) { *m_modmask = mod; }
 
 /** IRender **/
 
@@ -302,4 +333,154 @@ void VimEmulator::QueueFrameThread() {
         }
         m_frameReady = true;
     }
+}
+
+void VimEmulator::InitializeTCPLayer() {
+    int opt = 1;
+
+    if ((m_serverfd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        perror("socket creation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    if (setsockopt(m_serverfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt,
+                   sizeof(opt)) != 0) {
+        perror("setsockopt");
+        exit(EXIT_FAILURE);
+    }
+
+    m_address.sin_family = AF_INET;
+    m_address.sin_addr.s_addr = INADDR_ANY;
+    m_address.sin_port = htons(TCP_PORT);
+
+    if (bind(m_serverfd, (struct sockaddr *)&m_address, sizeof(m_address)) <
+        0) {
+        perror("bind failed");
+        exit(EXIT_FAILURE);
+    }
+
+    if (listen(m_serverfd, 3) < 0) {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
+
+    std::cout << "Server listening on port " << TCP_PORT << std::endl;
+    std::thread(&VimEmulator::InitializeTCPLayerThread, this).detach();
+}
+
+void VimEmulator::InitializeTCPLayerThread() {
+    {
+        std::lock_guard<std::mutex> lock(m_tcpMutex);
+        int addrlen = sizeof(m_address);
+        while (m_latestsocket == -1) {
+            if ((m_latestsocket =
+                     accept(m_serverfd, (struct sockaddr *)&m_address,
+                            (socklen_t *)&addrlen)) < 0) {
+                perror("accept");
+                break;
+            }
+
+            std::cout << "Connection accepted" << std::endl;
+        }
+    }
+}
+
+void VimEmulator::SendToBuffer(std::string_view message) {
+    std::thread thread(&VimEmulator::SendToBufferThread, this,
+                       std::string{message});
+    SetThreadPriority(thread, THREAD_H_PRIORITY);
+    thread.detach();
+}
+
+void VimEmulator::SendToBufferThread(std::string message) {
+    if (message.length() < 1) {
+        return;
+    }
+    {
+        std::lock_guard<std::mutex> lock(m_tcpMutex);
+        bool callback = false;
+        char recvBuffer[SEND_SIG_BUFFER_SIZE] = {0};
+        send(m_latestsocket, message.data(), message.length(), 0);
+        while (!callback) {
+            if (recv(m_latestsocket, &recvBuffer, 4, 0) == 4) {
+                callback = strcmp(recvBuffer, "RECV") == 0;
+            } else {
+                memset(recvBuffer, 0, SEND_SIG_BUFFER_SIZE);
+            }
+        }
+    }
+}
+
+void VimEmulator::StartBufferReciever() {
+    m_recievingBuffer = true;
+    std::thread thread(&VimEmulator::BufferRecieverThread, this);
+    SetThreadPriority(thread, THREAD_M_PRIORITY);
+    thread.detach();
+}
+
+void VimEmulator::BufferRecieverThread() {
+    while (m_recievingBuffer) {
+        if (m_requestReady) {
+            continue;
+        }
+        {
+            std::lock_guard<std::mutex> lock(m_tcpMutex);
+            m_requestReady = false;
+            char recvBuffer[RECIEVE_BUFFER_SIZE] = {0};
+            if (recv(m_latestsocket, &recvBuffer, RECIEVE_BUFFER_SIZE,
+                     MSG_DONTWAIT) != -1) {
+                if (strcmp(recvBuffer, "RECV") == 0) {
+                    std::cerr << "Recieve callback transmitted, sync has failed"
+                              << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                m_requestResult = std::string(recvBuffer);
+                m_requestReady = true;
+            }
+        }
+    }
+}
+
+bool VimEmulator::IsRequestReady() const { return m_requestReady; }
+
+std::string VimEmulator::GetRequest() {
+    m_requestReady = false;
+    return m_requestResult;
+}
+
+void VimEmulator::StopBufferReciever() { m_recievingBuffer = false; }
+
+void VimEmulator::SetThreadPriority(std::thread &thread, int priority) {
+    sched_param sch_params;
+    sch_params.sched_priority = priority;
+    pthread_setschedparam(thread.native_handle(), SCHED_FIFO, &sch_params);
+}
+
+void VimEmulator::ClearKeyWhiteList() { m_whiteList.clear(); }
+
+void VimEmulator::AddKeyWhiteList(SDL_Keycode keyCode, Uint16 keyMod) {
+    auto restriction = std::pair<SDL_Keycode, Uint16>(keyCode, keyMod);
+    m_whiteList.emplace_back(restriction);
+}
+
+void VimEmulator::RestrictDuplicateOps() { m_restrictDuplicateOps = true; }
+
+void VimEmulator::AllowDuplicateOps() { m_restrictDuplicateOps = false; }
+
+bool VimEmulator::isDuplicateOp(SDL_Keycode keyCode) {
+    switch (keyCode) {
+    case SDLK_d:
+        return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
+               m_prevKey.first == SDLK_d;
+        break;
+    case SDLK_y:
+        return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
+               m_prevKey.first == SDLK_y;
+        break;
+    case SDLK_c:
+        return *m_modmask == KMOD_NONE && m_prevKey.second == KMOD_NONE &&
+               m_prevKey.first == SDLK_c;
+        break;
+    }
+    return false;
 }

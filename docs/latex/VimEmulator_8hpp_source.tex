@@ -4,57 +4,94 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VIMEMULATOR\_HPP}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VIMEMULATOR\_HPP}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <X11/Xlib.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <mutex>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TexturedRect2D.hpp"{}}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVimEmulator}{VimEmulator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTexturedRect2D}{TexturedRect2D}}\ \{}
-\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classVimEmulator_af3e2121729f336725954a5bef11cb7a0}{VimEmulator}}(std::string\ terminal,\ std::string\ nArg);}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2}{\string~VimEmulator}}();}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d}{RegisterWindow}}();}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_af5987f17f3d47c66562a327d0b65c706}{ResizeWindow}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a7fec5a7cb831697dabe2738cbedaa813}{QueueFrame}}();}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_af1ba75fdcd9ff4daabaef5c41e29fef8}{SendSDLKey}}(SDL\_Keycode\ key);}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a948246f2c41a62b5eb3d5764b113cd14}{SetSDLMod}}(SDL\_Keymod\ mod);}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}{Render}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ REFRESH\_MS\ =\ 100;}
-\DoxyCodeLine{00027\ \ \ \ \ Display\ *m\_display;}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_screen;}
-\DoxyCodeLine{00029\ \ \ \ \ Window\ m\_rootWindow;}
-\DoxyCodeLine{00030\ \ \ \ \ Window\ *m\_window;}
-\DoxyCodeLine{00031\ \ \ \ \ std::string\ m\_windowName;}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_width;}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_height;}
-\DoxyCodeLine{00034\ \ \ \ \ std::mutex\ m\_mutex;}
-\DoxyCodeLine{00035\ \ \ \ \ pid\_t\ m\_pid;}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ \mbox{\hyperlink{classVimEmulator_a77428bd08f69860b090e434d1d5c6553}{R\_MASK}}\ =\ 0XFF0000;}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ G\_MASK\ =\ 0X00FF00;}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ B\_MASK\ =\ 0X0000FF;}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ A\_MASK\ =\ 0;}
-\DoxyCodeLine{00042\ \ \ \ \ XImage\ *m\_xImage;}
-\DoxyCodeLine{00043\ \ \ \ \ SDL\_Surface\ *m\_surface;}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_frameReady;}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{classVimEmulator_aa1edd3ceb9dcf27d0bead6d31ca319d7}{m\_modmask}};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00050\ \ \ \ \ SDL\_Surface\ *\mbox{\hyperlink{classVimEmulator_a0eee5cfa4e989ed3f1edcba51e37b90b}{GetFrameAsSurface}}();}
-\DoxyCodeLine{00051\ \ \ \ \ Window\ *\mbox{\hyperlink{classVimEmulator_a3937f77dd5ef8b8d33185f17e9d62198}{findWindowByName}}(Window\ window);}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a7c8166d73089c6d5da78042ef88e2bef}{RegisterWindowThread}}();}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_aa1d6788ba48dae81938d387a6d21894e}{ResizeWindowThread}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Replace\ this\ with\ a\ generic\ event\ handler\ if\ needed}}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVimEmulator_a30ade3d0a1052a8fd7712929db63d2a4}{MatchResizeEvent}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ XEvent\ *event);}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a7a40651ebf64b18180678145733be785}{QueueFrameThread}}();}
-\DoxyCodeLine{00057\ \};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <IMission.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <X11/Xlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TexturedRect2D.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVimEmulator}{VimEmulator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTexturedRect2D}{TexturedRect2D}}\ \{}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classVimEmulator_af3e2121729f336725954a5bef11cb7a0}{VimEmulator}}(std::string\ terminal,\ std::string\ nArg);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVimEmulator_a296f8d4387a19973a60e5a8f8cb77bf2}{\string~VimEmulator}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a3213cb5fd67ef8511d40e2bb8304e97d}{RegisterWindow}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_af5987f17f3d47c66562a327d0b65c706}{ResizeWindow}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a7fec5a7cb831697dabe2738cbedaa813}{QueueFrame}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a10d780296efe6c4f6e66e3f62bc92acb}{InitializeTCPLayer}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ SendToBuffer(std::string\_view\ message);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ StartBufferReciever();}
+\DoxyCodeLine{00027\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ IsRequestReady()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ [[nodiscard]]\ std::string\ GetRequest();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ StopBufferReciever();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_af1ba75fdcd9ff4daabaef5c41e29fef8}{SendSDLKey}}(SDL\_Keycode\ key);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_ada1840c471575bc5fd7b5a35bba6ddd5}{SetSDLMod}}(Uint16\ mod);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a43d29fc5c0b9edf7875b17824e32832d}{ClearKeyWhiteList}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ AddKeyWhiteList(SDL\_Keycode,\ Uint16);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ RestrictDuplicateOps();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ AllowDuplicateOps();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_acbea0a2d9f159a125cfad14e4a57266a}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ REFRESH\_MS\ =\ 100;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ THREAD\_H\_PRIORITY\ =\ 10;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ THREAD\_M\_PRIORITY\ =\ 5;}
+\DoxyCodeLine{00048\ \ \ \ \ Display\ *m\_display;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_screen;}
+\DoxyCodeLine{00050\ \ \ \ \ Window\ m\_rootWindow;}
+\DoxyCodeLine{00051\ \ \ \ \ Window\ *m\_window;}
+\DoxyCodeLine{00052\ \ \ \ \ std::string\ m\_windowName;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_width;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_height;}
+\DoxyCodeLine{00055\ \ \ \ \ std::mutex\ m\_mutex;}
+\DoxyCodeLine{00056\ \ \ \ \ pid\_t\ m\_pid;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ \mbox{\hyperlink{classVimEmulator_a77428bd08f69860b090e434d1d5c6553}{R\_MASK}}\ =\ 0XFF0000;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ G\_MASK\ =\ 0X00FF00;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ B\_MASK\ =\ 0X0000FF;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Uint32\ A\_MASK\ =\ 0;}
+\DoxyCodeLine{00063\ \ \ \ \ XImage\ *m\_xImage;}
+\DoxyCodeLine{00064\ \ \ \ \ SDL\_Surface\ *m\_surface;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_frameReady;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{classVimEmulator_aa1edd3ceb9dcf27d0bead6d31ca319d7}{m\_modmask}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ std::vector<std::pair<SDL\_Keycode,\ Uint16>>\ \mbox{\hyperlink{classVimEmulator_ab2918b12ea81a23f8e1171af742efacd}{m\_whiteList}};}
+\DoxyCodeLine{00072\ \ \ \ \ std::pair<SDL\_Keycode,\ Uint16>\ m\_prevKey;}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_restrictDuplicateOps;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ isDuplicateOp(SDL\_Keycode\ keyCode);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ SDL\_Surface\ *\mbox{\hyperlink{classVimEmulator_a0eee5cfa4e989ed3f1edcba51e37b90b}{GetFrameAsSurface}}();}
+\DoxyCodeLine{00077\ \ \ \ \ Window\ *\mbox{\hyperlink{classVimEmulator_a3937f77dd5ef8b8d33185f17e9d62198}{findWindowByName}}(Window\ window);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a7c8166d73089c6d5da78042ef88e2bef}{RegisterWindowThread}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_aa1d6788ba48dae81938d387a6d21894e}{ResizeWindowThread}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Replace\ this\ with\ a\ generic\ event\ handler\ if\ needed}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVimEmulator_a30ade3d0a1052a8fd7712929db63d2a4}{MatchResizeEvent}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ XEvent\ *event);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVimEmulator_a7a40651ebf64b18180678145733be785}{QueueFrameThread}}();}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetThreadPriority(std::thread\ \&thread,\ \textcolor{keywordtype}{int}\ priority);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVimEmulator_a2956f3b721f79d1a9dec9f4eb17c321e}{TCP\_PORT}}\ =\ 8080;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SEND\_SIG\_BUFFER\_SIZE\ =\ 256;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ RECIEVE\_BUFFER\_SIZE\ =\ 2048;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_serverfd,\ m\_latestsocket;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{struct\ }sockaddr\_in\ m\_address;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ InitializeTCPLayerThread();}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ SendToBufferThread(std::string\ message);}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ BufferRecieverThread();}
+\DoxyCodeLine{00094\ \ \ \ \ std::mutex\ m\_tcpMutex;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_requestReady;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_recievingBuffer;}
+\DoxyCodeLine{00097\ \ \ \ \ std::string\ m\_requestResult;}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

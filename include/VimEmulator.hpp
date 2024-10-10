@@ -1,9 +1,14 @@
 #ifndef VIMEMULATOR_HPP
 #define VIMEMULATOR_HPP
+#include <IMission.hpp>
 #include <SDL2/SDL.h>
 #include <X11/Xlib.h>
+#include <functional>
 #include <mutex>
+#include <netinet/in.h>
 #include <string>
+#include <string_view>
+#include <thread>
 
 #include "TexturedRect2D.hpp"
 
@@ -15,15 +20,31 @@ class VimEmulator : public TexturedRect2D {
     void ResizeWindow(int w, int h);
     void QueueFrame();
 
+    /** TCP **/
+    void InitializeTCPLayer();
+    void SendToBuffer(std::string_view message);
+    void StartBufferReciever();
+    [[nodiscard]] bool IsRequestReady() const;
+    [[nodiscard]] std::string GetRequest();
+    void StopBufferReciever();
+
     /** X11 Keyboard **/
     void SendSDLKey(SDL_Keycode key);
-    void SetSDLMod(SDL_Keymod mod);
+    void SetSDLMod(Uint16 mod);
+
+    /** Key Restrictions **/
+    void ClearKeyWhiteList();
+    void AddKeyWhiteList(SDL_Keycode, Uint16);
+    void RestrictDuplicateOps();
+    void AllowDuplicateOps();
 
     /** IRender **/
     void Render() override;
 
   private:
     static constexpr int REFRESH_MS = 100;
+    static constexpr size_t THREAD_H_PRIORITY = 10;
+    static constexpr size_t THREAD_M_PRIORITY = 5;
     Display *m_display;
     int m_screen;
     Window m_rootWindow;
@@ -46,7 +67,12 @@ class VimEmulator : public TexturedRect2D {
     /** XKeyboard **/
     unsigned int *m_modmask;
 
-    /** Private Methods **/
+    /** Key Restrictions **/
+    std::vector<std::pair<SDL_Keycode, Uint16>> m_whiteList;
+    std::pair<SDL_Keycode, Uint16> m_prevKey;
+    bool m_restrictDuplicateOps;
+    bool isDuplicateOp(SDL_Keycode keyCode);
+
     SDL_Surface *GetFrameAsSurface();
     Window *findWindowByName(Window window);
     void RegisterWindowThread();
@@ -54,6 +80,20 @@ class VimEmulator : public TexturedRect2D {
     // Replace this with a generic event handler if needed
     bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
-};
+    static void SetThreadPriority(std::thread &thread, int priority);
 
+    /** TCP **/
+    static constexpr int TCP_PORT = 8080;
+    static constexpr size_t SEND_SIG_BUFFER_SIZE = 256;
+    static constexpr size_t RECIEVE_BUFFER_SIZE = 2048;
+    int m_serverfd, m_latestsocket;
+    struct sockaddr_in m_address;
+    void InitializeTCPLayerThread();
+    void SendToBufferThread(std::string message);
+    void BufferRecieverThread();
+    std::mutex m_tcpMutex;
+    bool m_requestReady;
+    bool m_recievingBuffer;
+    std::string m_requestResult;
+};
 #endif

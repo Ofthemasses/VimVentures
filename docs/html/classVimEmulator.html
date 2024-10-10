@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.3</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.4</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -75,6 +75,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classVimEmulator-members.html">List of all members</a>  </div>
@@ -105,10 +106,38 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af5987f17f3d47c66562a327d0b65c706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fec5a7cb831697dabe2738cbedaa813" id="r_a7fec5a7cb831697dabe2738cbedaa813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fec5a7cb831697dabe2738cbedaa813">QueueFrame</a> ()</td></tr>
 <tr class="separator:a7fec5a7cb831697dabe2738cbedaa813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10d780296efe6c4f6e66e3f62bc92acb" id="r_a10d780296efe6c4f6e66e3f62bc92acb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10d780296efe6c4f6e66e3f62bc92acb">InitializeTCPLayer</a> ()</td></tr>
+<tr class="separator:a10d780296efe6c4f6e66e3f62bc92acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2444bf11ba6b27d2e8fd338495f1262" id="r_ab2444bf11ba6b27d2e8fd338495f1262"><td class="memItemLeft" align="right" valign="top"><a id="ab2444bf11ba6b27d2e8fd338495f1262" name="ab2444bf11ba6b27d2e8fd338495f1262"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SendToBuffer</b> (std::string_view message)</td></tr>
+<tr class="separator:ab2444bf11ba6b27d2e8fd338495f1262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da3e5775b1da5628ecf7fa7a9e4ef27" id="r_a4da3e5775b1da5628ecf7fa7a9e4ef27"><td class="memItemLeft" align="right" valign="top"><a id="a4da3e5775b1da5628ecf7fa7a9e4ef27" name="a4da3e5775b1da5628ecf7fa7a9e4ef27"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>StartBufferReciever</b> ()</td></tr>
+<tr class="separator:a4da3e5775b1da5628ecf7fa7a9e4ef27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb844ba87073fe0c8f34ea78bcd2628a" id="r_aeb844ba87073fe0c8f34ea78bcd2628a"><td class="memItemLeft" align="right" valign="top"><a id="aeb844ba87073fe0c8f34ea78bcd2628a" name="aeb844ba87073fe0c8f34ea78bcd2628a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRequestReady</b> () const</td></tr>
+<tr class="separator:aeb844ba87073fe0c8f34ea78bcd2628a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93acad26f9112d74bfd349181263003a" id="r_a93acad26f9112d74bfd349181263003a"><td class="memItemLeft" align="right" valign="top"><a id="a93acad26f9112d74bfd349181263003a" name="a93acad26f9112d74bfd349181263003a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetRequest</b> ()</td></tr>
+<tr class="separator:a93acad26f9112d74bfd349181263003a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3f35019d971efd422fe2e2236a99955" id="r_aa3f35019d971efd422fe2e2236a99955"><td class="memItemLeft" align="right" valign="top"><a id="aa3f35019d971efd422fe2e2236a99955" name="aa3f35019d971efd422fe2e2236a99955"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>StopBufferReciever</b> ()</td></tr>
+<tr class="separator:aa3f35019d971efd422fe2e2236a99955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1ba75fdcd9ff4daabaef5c41e29fef8" id="r_af1ba75fdcd9ff4daabaef5c41e29fef8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1ba75fdcd9ff4daabaef5c41e29fef8">SendSDLKey</a> (SDL_Keycode key)</td></tr>
 <tr class="separator:af1ba75fdcd9ff4daabaef5c41e29fef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a948246f2c41a62b5eb3d5764b113cd14" id="r_a948246f2c41a62b5eb3d5764b113cd14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a948246f2c41a62b5eb3d5764b113cd14">SetSDLMod</a> (SDL_Keymod mod)</td></tr>
-<tr class="separator:a948246f2c41a62b5eb3d5764b113cd14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada1840c471575bc5fd7b5a35bba6ddd5" id="r_ada1840c471575bc5fd7b5a35bba6ddd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada1840c471575bc5fd7b5a35bba6ddd5">SetSDLMod</a> (Uint16 mod)</td></tr>
+<tr class="separator:ada1840c471575bc5fd7b5a35bba6ddd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d29fc5c0b9edf7875b17824e32832d" id="r_a43d29fc5c0b9edf7875b17824e32832d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43d29fc5c0b9edf7875b17824e32832d">ClearKeyWhiteList</a> ()</td></tr>
+<tr class="separator:a43d29fc5c0b9edf7875b17824e32832d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe747b3219e90c1a947d0e84f52a935c" id="r_afe747b3219e90c1a947d0e84f52a935c"><td class="memItemLeft" align="right" valign="top"><a id="afe747b3219e90c1a947d0e84f52a935c" name="afe747b3219e90c1a947d0e84f52a935c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddKeyWhiteList</b> (SDL_Keycode, Uint16)</td></tr>
+<tr class="separator:afe747b3219e90c1a947d0e84f52a935c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f117a2f45b14b1aeafe9f18a4c822c2" id="r_a8f117a2f45b14b1aeafe9f18a4c822c2"><td class="memItemLeft" align="right" valign="top"><a id="a8f117a2f45b14b1aeafe9f18a4c822c2" name="a8f117a2f45b14b1aeafe9f18a4c822c2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RestrictDuplicateOps</b> ()</td></tr>
+<tr class="separator:a8f117a2f45b14b1aeafe9f18a4c822c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad19e9f0c80ee6486732b2803f8bb2166" id="r_ad19e9f0c80ee6486732b2803f8bb2166"><td class="memItemLeft" align="right" valign="top"><a id="ad19e9f0c80ee6486732b2803f8bb2166" name="ad19e9f0c80ee6486732b2803f8bb2166"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AllowDuplicateOps</b> ()</td></tr>
+<tr class="separator:ad19e9f0c80ee6486732b2803f8bb2166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbea0a2d9f159a125cfad14e4a57266a" id="r_acbea0a2d9f159a125cfad14e4a57266a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbea0a2d9f159a125cfad14e4a57266a">Render</a> () override</td></tr>
 <tr class="memdesc:acbea0a2d9f159a125cfad14e4a57266a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render cycle for a new frame.  <br /></td></tr>
 <tr class="separator:acbea0a2d9f159a125cfad14e4a57266a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +160,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a45538e526e981eddb69074e6a7d11808 inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec53724ec19e14b728702fe9b6e09d4f inherit pub_methods_classTexturedRect2D" id="r_aec53724ec19e14b728702fe9b6e09d4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexturedRect2D.html#aec53724ec19e14b728702fe9b6e09d4f">UpdateGL</a> () override</td></tr>
 <tr class="separator:aec53724ec19e14b728702fe9b6e09d4f inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91805bb8bedf5148dc64d8e07aae20c8 inherit pub_methods_classTexturedRect2D" id="r_a91805bb8bedf5148dc64d8e07aae20c8"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddUniformVariable</b> (std::string variableName, <a class="el" href="unionTexturedRect2D_1_1UniformVariableValue.html">UniformVariableValue</a> initialValue, std::string uniformFunction)</td></tr>
+<tr class="separator:a91805bb8bedf5148dc64d8e07aae20c8 inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37b1ff8d6fef6dd3366f8aeae050e53 inherit pub_methods_classTexturedRect2D" id="r_ab37b1ff8d6fef6dd3366f8aeae050e53"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUniformVariable</b> (std::string variableName, <a class="el" href="unionTexturedRect2D_1_1UniformVariableValue.html">UniformVariableValue</a> value)</td></tr>
+<tr class="separator:ab37b1ff8d6fef6dd3366f8aeae050e53 inherit pub_methods_classTexturedRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classRect2D"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classRect2D')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classRect2D.html">Rect2D</a></td></tr>
 <tr class="memitem:a354f1a1801cd499e2fb840a884c8114e inherit pub_methods_classRect2D" id="r_a354f1a1801cd499e2fb840a884c8114e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRect2D.html#a354f1a1801cd499e2fb840a884c8114e">Rect2D</a> (GLfloat xPos=0, GLfloat yPos=0, GLfloat width=0, GLfloat height=0)</td></tr>
 <tr class="separator:a354f1a1801cd499e2fb840a884c8114e inherit pub_methods_classRect2D"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,6 +190,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a00e05e72e825a8ebef84ec2728b29a80" id="r_a00e05e72e825a8ebef84ec2728b29a80"><td class="memItemLeft" align="right" valign="top"><a id="a00e05e72e825a8ebef84ec2728b29a80" name="a00e05e72e825a8ebef84ec2728b29a80"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDuplicateOp</b> (SDL_Keycode keyCode)</td></tr>
+<tr class="separator:a00e05e72e825a8ebef84ec2728b29a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eee5cfa4e989ed3f1edcba51e37b90b" id="r_a0eee5cfa4e989ed3f1edcba51e37b90b"><td class="memItemLeft" align="right" valign="top">SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eee5cfa4e989ed3f1edcba51e37b90b">GetFrameAsSurface</a> ()</td></tr>
 <tr class="separator:a0eee5cfa4e989ed3f1edcba51e37b90b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3937f77dd5ef8b8d33185f17e9d62198" id="r_a3937f77dd5ef8b8d33185f17e9d62198"><td class="memItemLeft" align="right" valign="top">Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3937f77dd5ef8b8d33185f17e9d62198">findWindowByName</a> (Window window)</td></tr>
@@ -167,6 +205,21 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a30ade3d0a1052a8fd7712929db63d2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a40651ebf64b18180678145733be785" id="r_a7a40651ebf64b18180678145733be785"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a40651ebf64b18180678145733be785">QueueFrameThread</a> ()</td></tr>
 <tr class="separator:a7a40651ebf64b18180678145733be785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e3989339d6a853eab7f975c9eb66f21" id="r_a8e3989339d6a853eab7f975c9eb66f21"><td class="memItemLeft" align="right" valign="top"><a id="a8e3989339d6a853eab7f975c9eb66f21" name="a8e3989339d6a853eab7f975c9eb66f21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InitializeTCPLayerThread</b> ()</td></tr>
+<tr class="separator:a8e3989339d6a853eab7f975c9eb66f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7208b75510f9eb6b56cf3a9c5d6689b2" id="r_a7208b75510f9eb6b56cf3a9c5d6689b2"><td class="memItemLeft" align="right" valign="top"><a id="a7208b75510f9eb6b56cf3a9c5d6689b2" name="a7208b75510f9eb6b56cf3a9c5d6689b2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SendToBufferThread</b> (std::string message)</td></tr>
+<tr class="separator:a7208b75510f9eb6b56cf3a9c5d6689b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb769af5291aa594b96df00de3bb8e9" id="r_a6eb769af5291aa594b96df00de3bb8e9"><td class="memItemLeft" align="right" valign="top"><a id="a6eb769af5291aa594b96df00de3bb8e9" name="a6eb769af5291aa594b96df00de3bb8e9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BufferRecieverThread</b> ()</td></tr>
+<tr class="separator:a6eb769af5291aa594b96df00de3bb8e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a8a1755e536abac292307a139b46e0bb3" id="r_a8a1755e536abac292307a139b46e0bb3"><td class="memItemLeft" align="right" valign="top"><a id="a8a1755e536abac292307a139b46e0bb3" name="a8a1755e536abac292307a139b46e0bb3"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetThreadPriority</b> (std::thread &amp;thread, int priority)</td></tr>
+<tr class="separator:a8a1755e536abac292307a139b46e0bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -208,12 +261,47 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_frameReady</b></td>
 <tr class="separator:af996bae7fba24577771fd11f92459db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1edd3ceb9dcf27d0bead6d31ca319d7" id="r_aa1edd3ceb9dcf27d0bead6d31ca319d7"><td class="memItemLeft" align="right" valign="top">unsigned int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1edd3ceb9dcf27d0bead6d31ca319d7">m_modmask</a></td></tr>
 <tr class="separator:aa1edd3ceb9dcf27d0bead6d31ca319d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2918b12ea81a23f8e1171af742efacd" id="r_ab2918b12ea81a23f8e1171af742efacd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; SDL_Keycode, Uint16 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2918b12ea81a23f8e1171af742efacd">m_whiteList</a></td></tr>
+<tr class="separator:ab2918b12ea81a23f8e1171af742efacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e19c72d18ff9720fa4e13130a389ec" id="r_aa0e19c72d18ff9720fa4e13130a389ec"><td class="memItemLeft" align="right" valign="top"><a id="aa0e19c72d18ff9720fa4e13130a389ec" name="aa0e19c72d18ff9720fa4e13130a389ec"></a>
+std::pair&lt; SDL_Keycode, Uint16 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_prevKey</b></td></tr>
+<tr class="separator:aa0e19c72d18ff9720fa4e13130a389ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92516470cf6081cfb0d9bf930fdd712" id="r_af92516470cf6081cfb0d9bf930fdd712"><td class="memItemLeft" align="right" valign="top"><a id="af92516470cf6081cfb0d9bf930fdd712" name="af92516470cf6081cfb0d9bf930fdd712"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_restrictDuplicateOps</b></td></tr>
+<tr class="separator:af92516470cf6081cfb0d9bf930fdd712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37872127fd12e1d79a081d836ac5ed87" id="r_a37872127fd12e1d79a081d836ac5ed87"><td class="memItemLeft" align="right" valign="top"><a id="a37872127fd12e1d79a081d836ac5ed87" name="a37872127fd12e1d79a081d836ac5ed87"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_serverfd</b></td></tr>
+<tr class="separator:a37872127fd12e1d79a081d836ac5ed87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71c8a84e5292c7ba89b2f0a105836119" id="r_a71c8a84e5292c7ba89b2f0a105836119"><td class="memItemLeft" align="right" valign="top"><a id="a71c8a84e5292c7ba89b2f0a105836119" name="a71c8a84e5292c7ba89b2f0a105836119"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_latestsocket</b></td></tr>
+<tr class="separator:a71c8a84e5292c7ba89b2f0a105836119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c01991afb0a7760b2cbe93a5139e40" id="r_ad4c01991afb0a7760b2cbe93a5139e40"><td class="memItemLeft" align="right" valign="top"><a id="ad4c01991afb0a7760b2cbe93a5139e40" name="ad4c01991afb0a7760b2cbe93a5139e40"></a>
+struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><b>m_address</b></td></tr>
+<tr class="separator:ad4c01991afb0a7760b2cbe93a5139e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae1d2b817365e70e7a93223cb551817e" id="r_aae1d2b817365e70e7a93223cb551817e"><td class="memItemLeft" align="right" valign="top"><a id="aae1d2b817365e70e7a93223cb551817e" name="aae1d2b817365e70e7a93223cb551817e"></a>
+std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>m_tcpMutex</b></td></tr>
+<tr class="separator:aae1d2b817365e70e7a93223cb551817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ffafeffd0ffda909143bfa67906ace" id="r_a42ffafeffd0ffda909143bfa67906ace"><td class="memItemLeft" align="right" valign="top"><a id="a42ffafeffd0ffda909143bfa67906ace" name="a42ffafeffd0ffda909143bfa67906ace"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_requestReady</b></td></tr>
+<tr class="separator:a42ffafeffd0ffda909143bfa67906ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878cc38d0242b4a3cdfd501bef3622da" id="r_a878cc38d0242b4a3cdfd501bef3622da"><td class="memItemLeft" align="right" valign="top"><a id="a878cc38d0242b4a3cdfd501bef3622da" name="a878cc38d0242b4a3cdfd501bef3622da"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_recievingBuffer</b></td></tr>
+<tr class="separator:a878cc38d0242b4a3cdfd501bef3622da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff064b9b5e975a83e8d23d5ebe4034e4" id="r_aff064b9b5e975a83e8d23d5ebe4034e4"><td class="memItemLeft" align="right" valign="top"><a id="aff064b9b5e975a83e8d23d5ebe4034e4" name="aff064b9b5e975a83e8d23d5ebe4034e4"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_requestResult</b></td></tr>
+<tr class="separator:aff064b9b5e975a83e8d23d5ebe4034e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a065f5cac3f08d0a1687eeec40338100f" id="r_a065f5cac3f08d0a1687eeec40338100f"><td class="memItemLeft" align="right" valign="top"><a id="a065f5cac3f08d0a1687eeec40338100f" name="a065f5cac3f08d0a1687eeec40338100f"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>REFRESH_MS</b> = 100</td></tr>
 <tr class="separator:a065f5cac3f08d0a1687eeec40338100f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88adc272011a40e105b9b89e6f62a664" id="r_a88adc272011a40e105b9b89e6f62a664"><td class="memItemLeft" align="right" valign="top"><a id="a88adc272011a40e105b9b89e6f62a664" name="a88adc272011a40e105b9b89e6f62a664"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>THREAD_H_PRIORITY</b> = 10</td></tr>
+<tr class="separator:a88adc272011a40e105b9b89e6f62a664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4354c6ad12645b4c581af9199f3a210" id="r_aa4354c6ad12645b4c581af9199f3a210"><td class="memItemLeft" align="right" valign="top"><a id="aa4354c6ad12645b4c581af9199f3a210" name="aa4354c6ad12645b4c581af9199f3a210"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>THREAD_M_PRIORITY</b> = 5</td></tr>
+<tr class="separator:aa4354c6ad12645b4c581af9199f3a210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77428bd08f69860b090e434d1d5c6553" id="r_a77428bd08f69860b090e434d1d5c6553"><td class="memItemLeft" align="right" valign="top">static constexpr Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77428bd08f69860b090e434d1d5c6553">R_MASK</a> = 0XFF0000</td></tr>
 <tr class="separator:a77428bd08f69860b090e434d1d5c6553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d55c00fcf565f1dcd3e6f8f91e2d90" id="r_ad9d55c00fcf565f1dcd3e6f8f91e2d90"><td class="memItemLeft" align="right" valign="top"><a id="ad9d55c00fcf565f1dcd3e6f8f91e2d90" name="ad9d55c00fcf565f1dcd3e6f8f91e2d90"></a>
@@ -225,6 +313,14 @@ static constexpr Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>B_
 <tr class="memitem:a4d20e88827cae65d118d2db7b214948e" id="r_a4d20e88827cae65d118d2db7b214948e"><td class="memItemLeft" align="right" valign="top"><a id="a4d20e88827cae65d118d2db7b214948e" name="a4d20e88827cae65d118d2db7b214948e"></a>
 static constexpr Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>A_MASK</b> = 0</td></tr>
 <tr class="separator:a4d20e88827cae65d118d2db7b214948e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2956f3b721f79d1a9dec9f4eb17c321e" id="r_a2956f3b721f79d1a9dec9f4eb17c321e"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2956f3b721f79d1a9dec9f4eb17c321e">TCP_PORT</a> = 8080</td></tr>
+<tr class="separator:a2956f3b721f79d1a9dec9f4eb17c321e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7385e5052d04b433b9c58992f4c6fffe" id="r_a7385e5052d04b433b9c58992f4c6fffe"><td class="memItemLeft" align="right" valign="top"><a id="a7385e5052d04b433b9c58992f4c6fffe" name="a7385e5052d04b433b9c58992f4c6fffe"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>SEND_SIG_BUFFER_SIZE</b> = 256</td></tr>
+<tr class="separator:a7385e5052d04b433b9c58992f4c6fffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57bc2ff96d392707c7590ec22850a6a" id="r_aa57bc2ff96d392707c7590ec22850a6a"><td class="memItemLeft" align="right" valign="top"><a id="aa57bc2ff96d392707c7590ec22850a6a" name="aa57bc2ff96d392707c7590ec22850a6a"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>RECIEVE_BUFFER_SIZE</b> = 2048</td></tr>
+<tr class="separator:aa57bc2ff96d392707c7590ec22850a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -337,6 +433,24 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgra
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a43d29fc5c0b9edf7875b17824e32832d" name="a43d29fc5c0b9edf7875b17824e32832d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d29fc5c0b9edf7875b17824e32832d">&#9670;&#160;</a></span>ClearKeyWhiteList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VimEmulator::ClearKeyWhiteList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Key Restrictions </p>
+
+</div>
+</div>
 <a id="a3937f77dd5ef8b8d33185f17e9d62198" name="a3937f77dd5ef8b8d33185f17e9d62198"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3937f77dd5ef8b8d33185f17e9d62198">&#9670;&#160;</a></span>findWindowByName()</h2>
 
@@ -392,9 +506,26 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgra
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Private Methods</p>
 <p>Private Methods Returns the current surface and marks the current frame as not ready.</p>
 <dl class="section return"><dt>Returns</dt><dd>SDL_Surface </dd></dl>
+
+</div>
+</div>
+<a id="a10d780296efe6c4f6e66e3f62bc92acb" name="a10d780296efe6c4f6e66e3f62bc92acb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d780296efe6c4f6e66e3f62bc92acb">&#9670;&#160;</a></span>InitializeTCPLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VimEmulator::InitializeTCPLayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TCP </p>
 
 </div>
 </div>
@@ -659,8 +790,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgra
 
 </div>
 </div>
-<a id="a948246f2c41a62b5eb3d5764b113cd14" name="a948246f2c41a62b5eb3d5764b113cd14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a948246f2c41a62b5eb3d5764b113cd14">&#9670;&#160;</a></span>SetSDLMod()</h2>
+<a id="ada1840c471575bc5fd7b5a35bba6ddd5" name="ada1840c471575bc5fd7b5a35bba6ddd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1840c471575bc5fd7b5a35bba6ddd5">&#9670;&#160;</a></span>SetSDLMod()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -668,7 +799,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgra
         <tr>
           <td class="memname">void VimEmulator::SetSDLMod </td>
           <td>(</td>
-          <td class="paramtype">SDL_Keymod</td>          <td class="paramname"><span class="paramname"><em>mod</em></span></td><td>)</td>
+          <td class="paramtype">Uint16</td>          <td class="paramname"><span class="paramname"><em>mod</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -707,6 +838,29 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgra
 
 </div>
 </div>
+<a id="ab2918b12ea81a23f8e1171af742efacd" name="ab2918b12ea81a23f8e1171af742efacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2918b12ea81a23f8e1171af742efacd">&#9670;&#160;</a></span>m_whiteList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;SDL_Keycode, Uint16&gt; &gt; VimEmulator::m_whiteList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Key Restrictions </p>
+
+</div>
+</div>
 <a id="a77428bd08f69860b090e434d1d5c6553" name="a77428bd08f69860b090e434d1d5c6553"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a77428bd08f69860b090e434d1d5c6553">&#9670;&#160;</a></span>R_MASK</h2>
 
@@ -727,6 +881,29 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaderProgra
 </table>
 </div><div class="memdoc">
 <p>Frames </p>
+
+</div>
+</div>
+<a id="a2956f3b721f79d1a9dec9f4eb17c321e" name="a2956f3b721f79d1a9dec9f4eb17c321e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2956f3b721f79d1a9dec9f4eb17c321e">&#9670;&#160;</a></span>TCP_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int VimEmulator::TCP_PORT = 8080</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>TCP </p>
 
 </div>
 </div>

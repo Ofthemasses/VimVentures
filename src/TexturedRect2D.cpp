@@ -49,7 +49,8 @@ void TexturedRect2D::UpdateVertexData() {
 void TexturedRect2D::SetTexture(void *data, GLuint width, GLuint height,
                                 bool force) {
     if (width == m_texture_width && height == m_texture_height && !force) {
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA,
+        glBindTexture(GL_TEXTURE_2D, m_texture);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, m_textureFormat,
                         GL_UNSIGNED_BYTE, data);
         return;
     }
@@ -119,11 +120,21 @@ void TexturedRect2D::Render() {
                      ->GetProgramId());
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
-    GLint textureLocation = glGetUniformLocation(
-        GraphicsController::s_shaderPrograms.at(m_shaderProgram)
-            ->GetProgramId(),
-        "u_Texture");
+    GLint programID = GraphicsController::s_shaderPrograms.at(m_shaderProgram)
+                          ->GetProgramId();
+    GLint textureLocation = glGetUniformLocation(programID, "u_Texture");
     glUniform1i(textureLocation, 0);
+    if (!m_uniformVariables.empty()) {
+        for (auto &uniformVariable : m_uniformVariables) {
+            GLint location = glGetUniformLocation(
+                programID, uniformVariable.second.name.c_str());
+            // This is very hardcoded TODO allow for automatic union
+            // determination
+            if (uniformVariable.second.uniformFunc == "glUniform1f") {
+                glUniform1f(location, uniformVariable.second.value.uniform1f);
+            }
+        }
+    }
 
     Rect2D::Render();
 }
@@ -144,4 +155,17 @@ void TexturedRect2D::UpdateGL() {
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+}
+
+void TexturedRect2D::AddUniformVariable(std::string variableName,
+                                        UniformVariableValue initialValue,
+                                        std::string uniformFunction) {
+    UniformVariable uniformVariable = {variableName, initialValue,
+                                       uniformFunction};
+    m_uniformVariables.emplace(variableName, uniformVariable);
+}
+
+void TexturedRect2D::SetUniformVariable(std::string variableName,
+                                        UniformVariableValue value) {
+    m_uniformVariables.at(variableName).value = value;
 }

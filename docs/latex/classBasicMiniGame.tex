@@ -1,0 +1,71 @@
+\doxysection{Basic\+Mini\+Game Class Reference}
+\hypertarget{classBasicMiniGame}{}\label{classBasicMiniGame}\index{BasicMiniGame@{BasicMiniGame}}
+Inheritance diagram for Basic\+Mini\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBasicMiniGame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBasicMiniGame_aae526fed0b0b7d7f9dbe4a35d74b3f9c}\label{classBasicMiniGame_aae526fed0b0b7d7f9dbe4a35d74b3f9c} 
+{\bfseries Basic\+Mini\+Game} (\mbox{\hyperlink{classApp}{App}} \&app, \mbox{\hyperlink{classTutorialMission}{Tutorial\+Mission}} \&tutorial\+Mission, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ vim\+Emulator)
+\item 
+void \mbox{\hyperlink{classBasicMiniGame_a83b056b8662273f13ff1dd0f4dee0cd0}{Run}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBasicMiniGame_a63d0b7ed0015c3d7a0db7d4930201563}\label{classBasicMiniGame_a63d0b7ed0015c3d7a0db7d4930201563} 
+std\+::string {\bfseries Render\+Game\+State} ()
+\item 
+\Hypertarget{classBasicMiniGame_a5f41b1e50294f566b8fc56e7bd5c30a5}\label{classBasicMiniGame_a5f41b1e50294f566b8fc56e7bd5c30a5} 
+void {\bfseries Parse\+Request} (std\+::string request)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBasicMiniGame_ac73533e1615dd77cd5ce12be501600c2}\label{classBasicMiniGame_ac73533e1615dd77cd5ce12be501600c2} 
+\mbox{\hyperlink{classApp}{App}} \& {\bfseries app}
+\item 
+\Hypertarget{classBasicMiniGame_a4d8837729865f9108d255f8c3f34d709}\label{classBasicMiniGame_a4d8837729865f9108d255f8c3f34d709} 
+\mbox{\hyperlink{classTutorialMission}{Tutorial\+Mission}} \& {\bfseries tutorial\+Mission}
+\item 
+\Hypertarget{classBasicMiniGame_a972c0ad27303715ae7edd399024f0d23}\label{classBasicMiniGame_a972c0ad27303715ae7edd399024f0d23} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVimEmulator}{Vim\+Emulator}} $>$ {\bfseries m\+\_\+vim\+Emulator}
+\item 
+\Hypertarget{classBasicMiniGame_a47f9965c0f1d95c687449d5f9e5ccdb2}\label{classBasicMiniGame_a47f9965c0f1d95c687449d5f9e5ccdb2} 
+double {\bfseries m\+\_\+elapsed}
+\item 
+\Hypertarget{classBasicMiniGame_a32c430325ce6e6181949df6eb1ddb2ca}\label{classBasicMiniGame_a32c430325ce6e6181949df6eb1ddb2ca} 
+std\+::string {\bfseries m\+\_\+game\+State}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBasicMiniGame_a6bac42179a28f27474b875fc8c355a10}\label{classBasicMiniGame_a6bac42179a28f27474b875fc8c355a10} 
+static constexpr double {\bfseries TICK\+\_\+\+DELAY\+\_\+\+MS} = 10.\+0
+\item 
+\Hypertarget{classBasicMiniGame_a88303f6db702789204d816b8db2363b7}\label{classBasicMiniGame_a88303f6db702789204d816b8db2363b7} 
+static constexpr float {\bfseries INITIAL\+\_\+\+PLUSES} = 8.\+0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBasicMiniGame_a83b056b8662273f13ff1dd0f4dee0cd0}\label{classBasicMiniGame_a83b056b8662273f13ff1dd0f4dee0cd0} 
+\index{BasicMiniGame@{BasicMiniGame}!Run@{Run}}
+\index{Run@{Run}!BasicMiniGame@{BasicMiniGame}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Basic\+Mini\+Game\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIMission}{IMission}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Basic\+Mini\+Game.\+hpp\item 
+src/Basic\+Mini\+Game.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,59 @@
+\doxysection{DPLine\+Mini\+Game.\+hpp}
+\hypertarget{DPLineMiniGame_8hpp_source}{}\label{DPLineMiniGame_8hpp_source}\index{include/DPLineMiniGame.hpp@{include/DPLineMiniGame.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DPLINEMINIGAME\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DPLINEMINIGAME\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <App.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <IMission.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <TutorialMission.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <VimEmulator.hpp>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDPLineMiniGame}{DPLineMiniGame}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIMission}{IMission}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classApp}{App}}\ \&app;}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classTutorialMission}{TutorialMission}}\ \&tutorialMission;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classDPLineMiniGame}{DPLineMiniGame}}(\mbox{\hyperlink{classApp}{App}}\ \&app,\ \mbox{\hyperlink{classTutorialMission}{TutorialMission}}\ \&tutorialMission,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VimEmulator>\ vimEmulator);}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classDPLineMiniGame}{\string~DPLineMiniGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ Run()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ std::shared\_ptr<VimEmulator>\ m\_vimEmulator;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ TICK\_DELAY\_MS\ =\ 10.0;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ https://andrecox.github.io/ASCII-\/Text-\/Generator/}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string\_view>\ m\_targetState\ =\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ )"{},}}
+\DoxyCodeLine{00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |)"{},}}
+\DoxyCodeLine{00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\$\$\(\backslash\)\ \ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\$\$\$\$\$\(\backslash\)\ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\ |)"{},}}
+\DoxyCodeLine{00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\(\backslash\)\$\$\(\backslash\)\ \ \$\$\ \ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\(\backslash\)\_\$\$\ \ \_|\ \ \$\$\ |\ \ \$\$\ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\ \(\backslash\)\_\_|)"{},}}
+\DoxyCodeLine{00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \(\backslash\)\$\$\(\backslash\)\$\$\ \ /\ \$\$\$\$\$\$\$\$\ |\$\$\ |\ \ \$\$\ |\ \$\$\ |\ \ \ \ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \(\backslash\)\_\_|\$\$\$\$\$\$\$\$\ |\$\$\(\backslash\)\ )"{},}}
+\DoxyCodeLine{00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\ \ \(\backslash\)\$\$\$\ \ /\ \ \$\$\ \ \ \_\_\_\_|\$\$\ |\ \ \$\$\ |\ \$\$\ |\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \ \ \ \ \$\$\ \ \ \_\_\_\_|\$\$\ |)"{},}}
+\DoxyCodeLine{00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \(\backslash\)\$\ \ /\ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\ \(\backslash\)\$\$\$\$\ \ |\(\backslash\)\$\$\$\$\$\$\ \ |\$\$\ |\ \ \ \ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |)"{},}}
+\DoxyCodeLine{00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ R}\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\ \ \ \ \(\backslash\)\_/\ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|\ \ \(\backslash\)\_\_|\ \ \(\backslash\)\_\_\_\_/\ \ \(\backslash\)\_\_\_\_\_\_/\ \(\backslash\)\_\_|\ \ \ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|)"{}\};}}
+\DoxyCodeLine{00032\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ INITIAL\_GAME\_STATE\ =}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\ \ \ \ \(\backslash\)\_/\ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|\ \ \(\backslash\)\_\_|\ \ \(\backslash\)\_\_\_\_/\ \ \(\backslash\)\_\_\_\_\_\_/\ \(\backslash\)\_\_|\ \ \ \ \ \ \ \(\backslash\)\_\_\_\_\_\_\_|\(\backslash\)\_\_|)"{}}}
+\DoxyCodeLine{00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \(\backslash\)\$\ \ /\ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\ \(\backslash\)\$\$\$\$\ \ |\(\backslash\)\$\$\$\$\$\$\ \ |\$\$\ |\ \ \ \ \ \ \(\backslash\)\$\$\$\$\$\$\$\(\backslash\)\ \$\$\ |)"{}}}
+\DoxyCodeLine{00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\(\backslash\)\_\_|\(\backslash\)\$\$\(\backslash\)\ \ \$\$\ \ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\(\backslash\)\_\$\$\ \ \_|\ \ \$\$\ |\ \ \$\$\ |\$\$\ \ \_\_\$\$\(\backslash\)\ \$\$\ \ \_\_\$\$\(\backslash\)\ \(\backslash\)\_\_|)"{}}}
+\DoxyCodeLine{00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\$\$\(\backslash\)\ \ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\$\$\$\$\$\(\backslash\)\ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \ \$\$\(\backslash\)\ \ \$\$\$\$\$\$\(\backslash\)\ \ \ \$\$\$\$\$\$\(\backslash\)\ \ \$\$\ |)"{}}}
+\DoxyCodeLine{00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \(\backslash\)\$\$\(\backslash\)\$\$\ \ /\ \$\$\$\$\$\$\$\$\ |\$\$\ |\ \ \$\$\ |\ \$\$\ |\ \ \ \ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \(\backslash\)\_\_|\$\$\$\$\$\$\$\$\ |\$\$\(\backslash\)\ )"{}}}
+\DoxyCodeLine{00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\ |)"{}}}
+\DoxyCodeLine{00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\ |\ \ \(\backslash\)\$\$\$\ \ /\ \ \$\$\ \ \ \_\_\_\_|\$\$\ |\ \ \$\$\ |\ \$\$\ |\$\$\(\backslash\)\ \$\$\ |\ \ \$\$\ |\$\$\ |\ \ \ \ \ \ \$\$\ \ \ \_\_\_\_|\$\$\ |)"{}}}
+\DoxyCodeLine{00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\$\(\backslash\)\ )"{};}}
+\DoxyCodeLine{00048\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ LINES\ =\ 8;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ ParseRequest(std::string\ request);}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

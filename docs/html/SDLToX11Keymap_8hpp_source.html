@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.3</span>
+   <div id="projectname">VimVentures<span id="projectnumber">&#160;MEDIEVAL 0.0.4</span>
    </div>
    <div id="projectbrief">Space Themed Vim Tutor Game</div>
   </td>
@@ -96,13 +96,14 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="classSDLToX11Keymap.html#af235bab78df439696c163ba5ffdcb63a">SDLToX11Keymap</a>();</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    KeySym <a class="code hl_function" href="classSDLToX11Keymap.html#ab34246c557e9be74299416bc24d11fcc">convert</a>(SDL_Keycode sdlKey) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    std::unordered_map&lt;SDL_Keycode, KeySym&gt; m_keyMap;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> convertMask(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sdlMod);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::unordered_map&lt;SDL_Keycode, KeySym&gt; m_keyMap;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassSDLToX11Keymap_html"><div class="ttname"><a href="classSDLToX11Keymap.html">SDLToX11Keymap</a></div><div class="ttdef"><b>Definition</b> SDLToX11Keymap.hpp:8</div></div>
 <div class="ttc" id="aclassSDLToX11Keymap_html_ab34246c557e9be74299416bc24d11fcc"><div class="ttname"><a href="classSDLToX11Keymap.html#ab34246c557e9be74299416bc24d11fcc">SDLToX11Keymap::convert</a></div><div class="ttdeci">KeySym convert(SDL_Keycode sdlKey) const</div><div class="ttdef"><b>Definition</b> SDLToX11Keymap.cpp:144</div></div>
 <div class="ttc" id="aclassSDLToX11Keymap_html_af235bab78df439696c163ba5ffdcb63a"><div class="ttname"><a href="classSDLToX11Keymap.html#af235bab78df439696c163ba5ffdcb63a">SDLToX11Keymap::SDLToX11Keymap</a></div><div class="ttdeci">SDLToX11Keymap()</div><div class="ttdef"><b>Definition</b> SDLToX11Keymap.cpp:7</div></div>

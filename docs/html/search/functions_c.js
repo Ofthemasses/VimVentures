@@ -8,12 +8,13 @@ var searchData=
   ['sendsdlkey_5',['SendSDLKey',['../classVimEmulator.html#af1ba75fdcd9ff4daabaef5c41e29fef8',1,'VimEmulator']]],
   ['setinternaltextureformat_6',['SetInternalTextureFormat',['../classTexturedRect2D.html#a3f6d15f561c126a0024ba40ea7600b8b',1,'TexturedRect2D']]],
   ['setposition_7',['SetPosition',['../classRect2D.html#abf79cbb573a5962ad558453037bb8dc2',1,'Rect2D']]],
-  ['setsdlmod_8',['SetSDLMod',['../classVimEmulator.html#a948246f2c41a62b5eb3d5764b113cd14',1,'VimEmulator']]],
-  ['setshaderprogram_9',['SetShaderProgram',['../classRect2D.html#a0f8c8a6b75c3ff3c8faa6df9fb74f805',1,'Rect2D']]],
-  ['setsize_10',['SetSize',['../classRect2D.html#aace8b1695889cb276f35e7e059eb62da',1,'Rect2D']]],
-  ['setstate_11',['SetState',['../classApp.html#a7d2d7b5ff84473d6ca036bc03b442f3b',1,'App']]],
-  ['settexture_12',['SetTexture',['../classTexturedRect2D.html#a3125472341cd3feef5b88964ae65eb8d',1,'TexturedRect2D']]],
-  ['settextureformat_13',['SetTextureFormat',['../classTexturedRect2D.html#a784e67ea9d92f2f59014b603187a0c22',1,'TexturedRect2D']]],
-  ['shaderprogram_14',['ShaderProgram',['../classShaderProgram.html#a34c19143036eb0ebdbedc8d5275edda8',1,'ShaderProgram']]],
-  ['stop_15',['Stop',['../classApp.html#ac597a252fb0272b781fb39cb546b8c10',1,'App']]]
+  ['setrestrictiontext_8',['SetRestrictionText',['../classTutorialMission.html#aec5991e05392798041dfe340bda6be3c',1,'TutorialMission']]],
+  ['setsdlmod_9',['SetSDLMod',['../classVimEmulator.html#ada1840c471575bc5fd7b5a35bba6ddd5',1,'VimEmulator']]],
+  ['setshaderprogram_10',['SetShaderProgram',['../classRect2D.html#a0f8c8a6b75c3ff3c8faa6df9fb74f805',1,'Rect2D']]],
+  ['setsize_11',['SetSize',['../classRect2D.html#aace8b1695889cb276f35e7e059eb62da',1,'Rect2D']]],
+  ['setstate_12',['SetState',['../classApp.html#a7d2d7b5ff84473d6ca036bc03b442f3b',1,'App']]],
+  ['settexture_13',['SetTexture',['../classTexturedRect2D.html#a3125472341cd3feef5b88964ae65eb8d',1,'TexturedRect2D']]],
+  ['settextureformat_14',['SetTextureFormat',['../classTexturedRect2D.html#a784e67ea9d92f2f59014b603187a0c22',1,'TexturedRect2D']]],
+  ['shaderprogram_15',['ShaderProgram',['../classShaderProgram.html#a34c19143036eb0ebdbedc8d5275edda8',1,'ShaderProgram']]],
+  ['stop_16',['Stop',['../classApp.html#ac597a252fb0272b781fb39cb546b8c10',1,'App']]]
 ];
