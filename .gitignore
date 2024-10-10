@@ -14,10 +14,7 @@ include/glad
 include/KHR
 
 # Vim swp files
-*.swp
-*.swm
-*.swn
-*.swo
+*.sw*
 
 # Prerequisites
 *.d
