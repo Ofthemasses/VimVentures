@@ -26,7 +26,7 @@ MissionState::MissionState(App &app) : app(app) {
     m_vimEmulator->QueueFrame();
 
     SDL_Surface *frameImage = IMG_Load("./assets/images/Terminal.png");
-    auto frame = std::make_shared<TexturedRect2D>(-0.5, -0.5, 1.0, 1.0);
+    auto frame = std::make_shared<TexturedRect2D>(LEFT, TOP, 1.0, 1.0);
     frame->SetTextureFormat(GL_RGBA);
     frame->UpdateVertexData();
     frame->SetTexture(frameImage->pixels, frameImage->w, frameImage->h);
@@ -99,16 +99,16 @@ void MissionState::UpdateHelperMonitor(std::string text) {
     const int WRAP = 128 * 8;
     SDL_Surface *helpText = TTF_RenderText_Blended_Wrapped(
         GraphicsController::s_fonts.at("ttf_terminus").get(), text.c_str(),
-        {255, 255, 255}, WRAP);
+        TEXT_WHITE, WRAP);
 
     const float WIDTH =
         ((float)m_helpMonitorImage->w - HELPER_TEXT_PADDING * 2.0) *
         (float)helpText->w / WRAP;
     const float HEIGHT = (WIDTH * helpText->h) / ((float)helpText->w);
-    auto *helpTextRect = new SDL_Rect{HELPER_TEXT_PADDING, HELPER_TEXT_PADDING,
-                                      (int)WIDTH, (int)HEIGHT};
+    SDL_Rect helpTextRect{HELPER_TEXT_PADDING, HELPER_TEXT_PADDING, (int)WIDTH,
+                          (int)HEIGHT};
 
-    SDL_BlitScaled(helpText, nullptr, m_helpMonitorSurface, helpTextRect);
+    SDL_BlitScaled(helpText, nullptr, m_helpMonitorSurface, &helpTextRect);
     m_helpMonitor->SetTexture(m_helpMonitorSurface->pixels,
                               m_helpMonitorSurface->w, m_helpMonitorSurface->h);
     m_helpMonitor->UpdateGL();

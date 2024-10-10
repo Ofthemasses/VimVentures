@@ -20,6 +20,11 @@ class AsteroidMiniGame : public IMission {
     std::shared_ptr<VimEmulator> m_vimEmulator;
     static constexpr double TICK_DELAY_MS = 10.0;
     static constexpr int ROW_WIDTH = 12;
+    static constexpr int UP_TICK = 5;
+    static constexpr int DOWN_TICK = 10;
+    static constexpr int ASTEROID_START = 8;
+    static constexpr size_t RAND_RANGE = 100;
+    static constexpr size_t RAND_CHANCE = 30;
     double m_elapsed;
     std::vector<int> m_asteroids;
 

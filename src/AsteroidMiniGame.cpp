@@ -24,7 +24,8 @@ AsteroidMiniGame::AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
     m_vimEmulator->AddKeyWhiteList('0', KMOD_NONE);
     m_vimEmulator->AddKeyWhiteList('4', KMOD_SHIFT);
 
-    tutorialMission.SetRestrictionText("j k d 0 $ \n RESTRICTED: duplicate- operators");
+    tutorialMission.SetRestrictionText(
+        "j k d 0 $ \n RESTRICTED: duplicate- operators");
 }
 
 AsteroidMiniGame::~AsteroidMiniGame() = default;
@@ -37,7 +38,7 @@ void AsteroidMiniGame::Run() {
     }
 
     if (m_elapsed > TICK_DELAY_MS) {
-        tutorialMission.UptickBar(5);
+        tutorialMission.UptickBar(UP_TICK);
         UpdateAsteroids();
         m_elapsed = std::fmod(m_elapsed, TICK_DELAY_MS);
         m_vimEmulator->SendToBuffer(RenderGameState());
@@ -45,13 +46,13 @@ void AsteroidMiniGame::Run() {
 }
 
 std::string AsteroidMiniGame::RenderGameState() {
-    std::string result = "";
+    std::string result;
     for (int asteroid : m_asteroids) {
         switch (asteroid) {
         case 0:
             result.append("X");
             result.append(ROW_WIDTH - 1, ' ');
-            tutorialMission.DowntickBar(10);
+            tutorialMission.DowntickBar(DOWN_TICK);
             break;
         case -1:
             result.append(ROW_WIDTH, ' ');
@@ -72,8 +73,8 @@ void AsteroidMiniGame::UpdateAsteroids() {
         if (asteroid > 0) {
             asteroid--;
         } else {
-            if (rand() % 100 < 30) {
-                asteroid = 8;
+            if (rand() % RAND_RANGE < RAND_CHANCE) {
+                asteroid = ASTEROID_START;
             }
         }
     }

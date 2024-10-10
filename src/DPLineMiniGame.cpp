@@ -4,7 +4,7 @@
 #include <sstream>
 
 DPLineMiniGame::DPLineMiniGame(App &app, TutorialMission &tutorialMission,
-                                   std::shared_ptr<VimEmulator> vimEmulator)
+                               std::shared_ptr<VimEmulator> vimEmulator)
     : app(app), tutorialMission(tutorialMission) {
     m_vimEmulator = vimEmulator;
 
@@ -37,22 +37,22 @@ void DPLineMiniGame::ParseRequest(std::string request) {
     }
 
     request.pop_back();
-    
+
     std::stringstream gameStringStream(request);
     std::string gameLine;
     size_t count = 0;
     size_t matches = 0;
     size_t extras = 0;
-    while (std::getline(gameStringStream, gameLine, '\n')){
-        if (count >= LINES){
+    while (std::getline(gameStringStream, gameLine, '\n')) {
+        if (count >= LINES) {
             extras++;
             continue;
         }
-        if (gameLine == m_targetState[count]){
+        if (gameLine == m_targetState[count]) {
             matches++;
         }
         count++;
     }
 
-    tutorialMission.SetBar(100.0 * (float) matches / (LINES + extras));
+    tutorialMission.SetBar(100.0 * (float)matches / (LINES + extras));
 }

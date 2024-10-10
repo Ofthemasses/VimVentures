@@ -112,7 +112,8 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
     if (!m_whiteList.empty()) {
         bool contains = false;
         for (std::pair<SDL_Keycode, Uint16> &keyPair : m_whiteList) {
-            if (keyPair.first == key && ((keyPair.second & *m_modmask) == *m_modmask)) {
+            if (keyPair.first == key &&
+                ((keyPair.second & *m_modmask) == *m_modmask)) {
                 contains = true;
             }
         }
@@ -384,9 +385,10 @@ void VimEmulator::InitializeTCPLayerThread() {
     }
 }
 
-void VimEmulator::SendToBuffer(std::string_view message){
-    std::thread thread(&VimEmulator::SendToBufferThread, this, std::string{message});
-    SetThreadPriority(thread, 10);
+void VimEmulator::SendToBuffer(std::string_view message) {
+    std::thread thread(&VimEmulator::SendToBufferThread, this,
+                       std::string{message});
+    SetThreadPriority(thread, THREAD_H_PRIORITY);
     thread.detach();
 }
 
@@ -397,13 +399,13 @@ void VimEmulator::SendToBufferThread(std::string message) {
     {
         std::lock_guard<std::mutex> lock(m_tcpMutex);
         bool callback = false;
-        char recvBuffer[256] = {0};
+        char recvBuffer[SEND_SIG_BUFFER_SIZE] = {0};
         send(m_latestsocket, message.data(), message.length(), 0);
         while (!callback) {
             if (recv(m_latestsocket, &recvBuffer, 4, 0) == 4) {
                 callback = strcmp(recvBuffer, "RECV") == 0;
             } else {
-                memset(recvBuffer, 0, 256);
+                memset(recvBuffer, 0, SEND_SIG_BUFFER_SIZE);
             }
         }
     }
@@ -412,7 +414,7 @@ void VimEmulator::SendToBufferThread(std::string message) {
 void VimEmulator::StartBufferReciever() {
     m_recievingBuffer = true;
     std::thread thread(&VimEmulator::BufferRecieverThread, this);
-    SetThreadPriority(thread, 5);
+    SetThreadPriority(thread, THREAD_M_PRIORITY);
     thread.detach();
 }
 
@@ -424,8 +426,9 @@ void VimEmulator::BufferRecieverThread() {
         {
             std::lock_guard<std::mutex> lock(m_tcpMutex);
             m_requestReady = false;
-            char recvBuffer[2048] = {0};
-            if (recv(m_latestsocket, &recvBuffer, 2048, MSG_DONTWAIT) != -1) {
+            char recvBuffer[RECIEVE_BUFFER_SIZE] = {0};
+            if (recv(m_latestsocket, &recvBuffer, RECIEVE_BUFFER_SIZE,
+                     MSG_DONTWAIT) != -1) {
                 if (strcmp(recvBuffer, "RECV") == 0) {
                     std::cerr << "Recieve callback transmitted, sync has failed"
                               << std::endl;
@@ -438,7 +441,7 @@ void VimEmulator::BufferRecieverThread() {
     }
 }
 
-bool VimEmulator::IsRequestReady() { return m_requestReady; }
+bool VimEmulator::IsRequestReady() const { return m_requestReady; }
 
 std::string VimEmulator::GetRequest() {
     m_requestReady = false;

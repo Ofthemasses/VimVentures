@@ -12,7 +12,7 @@ class BasicMiniGame : public IMission {
 
   public:
     BasicMiniGame(App &app, TutorialMission &tutorialMission,
-                     std::shared_ptr<VimEmulator> vimEmulator);
+                  std::shared_ptr<VimEmulator> vimEmulator);
     ~BasicMiniGame() override;
     void Run() override;
 

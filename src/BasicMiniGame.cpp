@@ -4,7 +4,7 @@
 #include <sstream>
 
 BasicMiniGame::BasicMiniGame(App &app, TutorialMission &tutorialMission,
-                                   std::shared_ptr<VimEmulator> vimEmulator)
+                             std::shared_ptr<VimEmulator> vimEmulator)
     : app(app), tutorialMission(tutorialMission) {
     m_elapsed = 0.0;
     m_vimEmulator = vimEmulator;
@@ -42,9 +42,7 @@ void BasicMiniGame::Run() {
     }
 }
 
-std::string BasicMiniGame::RenderGameState() {
-    return m_gameState;
-}
+std::string BasicMiniGame::RenderGameState() { return m_gameState; }
 
 void BasicMiniGame::ParseRequest(std::string request) {
     if (request.length() < 1) {
@@ -52,10 +50,10 @@ void BasicMiniGame::ParseRequest(std::string request) {
     }
     m_gameState = request;
     int count = 0;
-    for(char& c : request) {
-        if (c == '+'){
+    for (char &c : request) {
+        if (c == '+') {
             count++;
         }
     }
-    tutorialMission.SetBar((1.0 - count/INITIAL_PLUSES) * 100.0);
+    tutorialMission.SetBar((1.0 - count / INITIAL_PLUSES) * 100.0);
 }

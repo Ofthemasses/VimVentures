@@ -156,10 +156,10 @@ KeySym SDLToX11Keymap::convert(SDL_Keycode sdlKey) const {
 
 int SDLToX11Keymap::convertMask(unsigned int sdlMod) {
     int finalMask = 0;
-    if ((sdlMod & KMOD_SHIFT) != 0){
+    if ((sdlMod & KMOD_SHIFT) != 0) {
         finalMask |= ShiftMask;
     }
-    if ((sdlMod & KMOD_CTRL) != 0){
+    if ((sdlMod & KMOD_CTRL) != 0) {
         finalMask |= ControlMask;
     }
     return finalMask;

@@ -26,6 +26,11 @@ class MissionState : public IState {
     static constexpr float HELPER_X_POSITION = -24.0 / 50.0;
     static constexpr int HELPER_TEXT_PADDING = 25;
 
+    static constexpr float LEFT = -0.5;
+    static constexpr float TOP = -0.5;
+
+    static constexpr SDL_Color TEXT_WHITE = {255, 255, 255};
+
     std::shared_ptr<VimEmulator> m_vimEmulator;
 
     std::unique_ptr<IMission> m_currentMission;

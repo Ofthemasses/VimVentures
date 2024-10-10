@@ -7,8 +7,8 @@
 #include <mutex>
 #include <netinet/in.h>
 #include <string>
-#include <thread>
 #include <string_view>
+#include <thread>
 
 #include "TexturedRect2D.hpp"
 
@@ -24,7 +24,7 @@ class VimEmulator : public TexturedRect2D {
     void InitializeTCPLayer();
     void SendToBuffer(std::string_view message);
     void StartBufferReciever();
-    bool IsRequestReady();
+    [[nodiscard]] bool IsRequestReady() const;
     [[nodiscard]] std::string GetRequest();
     void StopBufferReciever();
 
@@ -43,6 +43,8 @@ class VimEmulator : public TexturedRect2D {
 
   private:
     static constexpr int REFRESH_MS = 100;
+    static constexpr size_t THREAD_H_PRIORITY = 10;
+    static constexpr size_t THREAD_M_PRIORITY = 5;
     Display *m_display;
     int m_screen;
     Window m_rootWindow;
@@ -78,10 +80,12 @@ class VimEmulator : public TexturedRect2D {
     // Replace this with a generic event handler if needed
     bool MatchResizeEvent(int w, int h, XEvent *event);
     void QueueFrameThread();
-    void SetThreadPriority(std::thread &thread, int priority);
+    static void SetThreadPriority(std::thread &thread, int priority);
 
     /** TCP **/
     static constexpr int TCP_PORT = 8080;
+    static constexpr size_t SEND_SIG_BUFFER_SIZE = 256;
+    static constexpr size_t RECIEVE_BUFFER_SIZE = 2048;
     int m_serverfd, m_latestsocket;
     struct sockaddr_in m_address;
     void InitializeTCPLayerThread();

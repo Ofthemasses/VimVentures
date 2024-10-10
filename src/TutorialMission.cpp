@@ -17,7 +17,7 @@ TutorialMission::TutorialMission(App &app, MissionState &missionState,
     m_barGraphic = IMG_Load("./assets/images/TutorialBar.png");
 
     m_barRect =
-        std::make_shared<TexturedRect2D>(0.4, -0.4, BAR_WIDTH, BAR_HEIGHT);
+        std::make_shared<TexturedRect2D>(BAR_X, BAR_Y, BAR_WIDTH, BAR_HEIGHT);
     m_barRect->UpdateVertexData();
     m_barRect->SetTextureFormat(GL_RGB);
     m_barRect->SetTexture(m_barGraphic->pixels, m_barGraphic->w,
@@ -31,27 +31,31 @@ TutorialMission::TutorialMission(App &app, MissionState &missionState,
     m_vimEmulator->StartBufferReciever();
 }
 
-TutorialMission::~TutorialMission() { SDL_FreeSurface(m_barGraphic); 
-m_vimEmulator->StopBufferReciever();}
+TutorialMission::~TutorialMission() {
+    SDL_FreeSurface(m_barGraphic);
+    m_vimEmulator->StopBufferReciever();
+}
 
-void TutorialMission::Run() { 
-    if (m_bar > 99.0){
+void TutorialMission::Run() {
+    if (m_bar > BAR_MAX) {
         m_gameId++;
         m_bar = 0.0;
-        switch(m_gameId){
-            case 1:
-                m_currentMiniGame = std::make_unique<DPLineMiniGame>(app, *this, m_vimEmulator);
-                break;
-            case 2:
-                m_currentMiniGame = std::make_unique<AsteroidMiniGame>(app, *this, m_vimEmulator);
-                break;
-            case 3:
-                m_vimEmulator->SendToBuffer(DEMO_MESSAGE);
-                break;
+        switch (m_gameId) {
+        case 1:
+            m_currentMiniGame =
+                std::make_unique<DPLineMiniGame>(app, *this, m_vimEmulator);
+            break;
+        case 2:
+            m_currentMiniGame =
+                std::make_unique<AsteroidMiniGame>(app, *this, m_vimEmulator);
+            break;
+        case 3:
+            m_vimEmulator->SendToBuffer(DEMO_MESSAGE);
+            break;
         }
     }
     if (m_gameId < GAME_COUNT) {
-        m_currentMiniGame->Run(); 
+        m_currentMiniGame->Run();
     }
 }
 
@@ -77,7 +81,7 @@ void TutorialMission::DowntickBar(float amount) {
 }
 
 void TutorialMission::SetBar(float amount) {
-    if (amount < 0.0){
+    if (amount < 0.0) {
         return;
     }
     m_bar = amount;

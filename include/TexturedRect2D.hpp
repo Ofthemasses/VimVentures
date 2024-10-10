@@ -54,7 +54,7 @@ class TexturedRect2D : public Rect2D {
                             std::string uniformFunction);
 
     void SetUniformVariable(std::string variableName,
-                            UniformVariableValue variable);
+                            UniformVariableValue value);
 
   private:
     GLenum m_textureFormat;
