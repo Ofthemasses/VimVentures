@@ -43,6 +43,7 @@ class TutorialMission : public IMission {
 
     static constexpr float BAR_HEIGHT = 0.2;
     static constexpr float BAR_WIDTH = 100.0 / 800.0 * 0.2;
+    static constexpr size_t GAME_COUNT = 3;
 
 #define RESTRICT_HEADER "AVAILABLE INPUTS:\n"
 #define DEMO_MESSAGE "\t\tTHANK YOU FOR PLAYING VIMVENTURES\n\t\tYOU HAVE COMPLETED ALL PUZZLES IN THE CURENT PRE-ALPHA VERSION\n\n\n\t\tCREDITS: OFTHEMASSES (FINLAY METCALFE) GAME DESIGN, GAME ENGINE, ASSETS"

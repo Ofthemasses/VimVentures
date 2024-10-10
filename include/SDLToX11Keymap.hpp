@@ -9,6 +9,7 @@ class SDLToX11Keymap {
   public:
     SDLToX11Keymap();
     KeySym convert(SDL_Keycode sdlKey) const;
+    static int convertMask(unsigned int sdlMod);
 
   private:
     std::unordered_map<SDL_Keycode, KeySym> m_keyMap;

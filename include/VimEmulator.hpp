@@ -8,6 +8,7 @@
 #include <netinet/in.h>
 #include <string>
 #include <thread>
+#include <string_view>
 
 #include "TexturedRect2D.hpp"
 
@@ -21,7 +22,7 @@ class VimEmulator : public TexturedRect2D {
 
     /** TCP **/
     void InitializeTCPLayer();
-    void SendToBuffer(std::string message);
+    void SendToBuffer(std::string_view message);
     void StartBufferReciever();
     bool IsRequestReady();
     [[nodiscard]] std::string GetRequest();
@@ -29,11 +30,11 @@ class VimEmulator : public TexturedRect2D {
 
     /** X11 Keyboard **/
     void SendSDLKey(SDL_Keycode key);
-    void SetSDLMod(SDL_Keymod mod);
+    void SetSDLMod(Uint16 mod);
 
     /** Key Restrictions **/
     void ClearKeyWhiteList();
-    void AddKeyWhiteList(SDL_Keycode, SDL_Keymod);
+    void AddKeyWhiteList(SDL_Keycode, Uint16);
     void RestrictDuplicateOps();
     void AllowDuplicateOps();
 
@@ -65,8 +66,8 @@ class VimEmulator : public TexturedRect2D {
     unsigned int *m_modmask;
 
     /** Key Restrictions **/
-    std::vector<std::pair<SDL_Keycode, SDL_Keymod>> m_whiteList;
-    std::pair<SDL_Keycode, SDL_Keymod> m_prevKey;
+    std::vector<std::pair<SDL_Keycode, Uint16>> m_whiteList;
+    std::pair<SDL_Keycode, Uint16> m_prevKey;
     bool m_restrictDuplicateOps;
     bool isDuplicateOp(SDL_Keycode keyCode);
 

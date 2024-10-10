@@ -22,10 +22,9 @@ AsteroidMiniGame::AsteroidMiniGame(App &app, TutorialMission &tutorialMission,
     m_vimEmulator->AddKeyWhiteList('k', KMOD_NONE);
     m_vimEmulator->AddKeyWhiteList('d', KMOD_NONE);
     m_vimEmulator->AddKeyWhiteList('0', KMOD_NONE);
-    m_vimEmulator->AddKeyWhiteList('4', KMOD_LSHIFT);
-    m_vimEmulator->AddKeyWhiteList('4', KMOD_RSHIFT);
+    m_vimEmulator->AddKeyWhiteList('4', KMOD_SHIFT);
 
-    tutorialMission.SetRestrictionText("j k d 0 $ (duplicate-ops)");
+    tutorialMission.SetRestrictionText("j k d 0 $ \n RESTRICTED: duplicate- operators");
 }
 
 AsteroidMiniGame::~AsteroidMiniGame() = default;
@@ -85,7 +84,6 @@ void AsteroidMiniGame::ParseRequest(std::string request) {
         return;
     }
 
-    request.pop_back();
     std::vector<std::string> lines;
     std::string temp;
     std::istringstream stream(request);
