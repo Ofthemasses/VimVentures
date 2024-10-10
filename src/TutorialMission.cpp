@@ -1,5 +1,6 @@
 #include <AsteroidMiniGame.hpp>
 #include <BasicMiniGame.hpp>
+#include <DPLineMiniGame.hpp>
 #include <SDL2/SDL_image.h>
 #include <TutorialMission.hpp>
 
@@ -39,14 +40,17 @@ void TutorialMission::Run() {
         m_bar = 0.0;
         switch(m_gameId){
             case 1:
-                m_currentMiniGame = std::make_unique<AsteroidMiniGame>(app, *this, m_vimEmulator);
+                m_currentMiniGame = std::make_unique<DPLineMiniGame>(app, *this, m_vimEmulator);
                 break;
             case 2:
+                m_currentMiniGame = std::make_unique<AsteroidMiniGame>(app, *this, m_vimEmulator);
+                break;
+            case 3:
                 m_vimEmulator->SendToBuffer(DEMO_MESSAGE);
                 break;
         }
     }
-    if (m_gameId < 2) {
+    if (m_gameId < GAME_COUNT) {
         m_currentMiniGame->Run(); 
     }
 }
