@@ -111,8 +111,8 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
     // If there is a whitelist only allow white listed keys
     if (!m_whiteList.empty()) {
         bool contains = false;
-        for (std::pair<SDL_Keycode, SDL_Keymod> &keyPair : m_whiteList) {
-            if (keyPair.first == key && keyPair.second == *m_modmask) {
+        for (std::pair<SDL_Keycode, Uint16> &keyPair : m_whiteList) {
+            if (keyPair.first == key && ((keyPair.second & *m_modmask) == *m_modmask)) {
                 contains = true;
             }
         }
@@ -134,12 +134,12 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
     event.root = m_rootWindow;
     event.keycode = XKeysymToKeycode(m_display, xkey);
     event.state = 0;
-    event.state = *m_modmask;
+    event.state = SDLToX11Keymap::convertMask(*m_modmask);
 
     XSendEvent(m_display, *m_window, True, KeyPressMask, (XEvent *)&event);
 
     m_prevKey.first = key;
-    m_prevKey.second = (SDL_Keymod)*m_modmask;
+    m_prevKey.second = *m_modmask;
 }
 
 /**
@@ -147,7 +147,7 @@ void VimEmulator::SendSDLKey(SDL_Keycode key) {
  *
  * @param mod An SDL_Keymod
  */
-void VimEmulator::SetSDLMod(SDL_Keymod mod) { *m_modmask = mod; }
+void VimEmulator::SetSDLMod(Uint16 mod) { *m_modmask = mod; }
 
 /** IRender **/
 
@@ -384,8 +384,8 @@ void VimEmulator::InitializeTCPLayerThread() {
     }
 }
 
-void VimEmulator::SendToBuffer(std::string message) {
-    std::thread thread(&VimEmulator::SendToBufferThread, this, message);
+void VimEmulator::SendToBuffer(std::string_view message){
+    std::thread thread(&VimEmulator::SendToBufferThread, this, std::string{message});
     SetThreadPriority(thread, 10);
     thread.detach();
 }
@@ -398,12 +398,12 @@ void VimEmulator::SendToBufferThread(std::string message) {
         std::lock_guard<std::mutex> lock(m_tcpMutex);
         bool callback = false;
         char recvBuffer[256] = {0};
-        send(m_latestsocket, message.c_str(), message.length(), 0);
+        send(m_latestsocket, message.data(), message.length(), 0);
         while (!callback) {
             if (recv(m_latestsocket, &recvBuffer, 4, 0) == 4) {
                 callback = strcmp(recvBuffer, "RECV") == 0;
             } else {
-                memset(recvBuffer, 0, strlen(recvBuffer));
+                memset(recvBuffer, 0, 256);
             }
         }
     }
@@ -424,14 +424,14 @@ void VimEmulator::BufferRecieverThread() {
         {
             std::lock_guard<std::mutex> lock(m_tcpMutex);
             m_requestReady = false;
-            char recvBuffer[256] = {0};
-            if (recv(m_latestsocket, &recvBuffer, 256, MSG_DONTWAIT) != -1) {
+            char recvBuffer[2048] = {0};
+            if (recv(m_latestsocket, &recvBuffer, 2048, MSG_DONTWAIT) != -1) {
                 if (strcmp(recvBuffer, "RECV") == 0) {
                     std::cerr << "Recieve callback transmitted, sync has failed"
                               << std::endl;
                     exit(EXIT_FAILURE);
                 }
-                m_requestResult = std::string(recvBuffer, 256);
+                m_requestResult = std::string(recvBuffer);
                 m_requestReady = true;
             }
         }
@@ -455,8 +455,8 @@ void VimEmulator::SetThreadPriority(std::thread &thread, int priority) {
 
 void VimEmulator::ClearKeyWhiteList() { m_whiteList.clear(); }
 
-void VimEmulator::AddKeyWhiteList(SDL_Keycode keyCode, SDL_Keymod keyMod) {
-    auto restriction = std::pair<SDL_Keycode, SDL_Keymod>(keyCode, keyMod);
+void VimEmulator::AddKeyWhiteList(SDL_Keycode keyCode, Uint16 keyMod) {
+    auto restriction = std::pair<SDL_Keycode, Uint16>(keyCode, keyMod);
     m_whiteList.emplace_back(restriction);
 }
 

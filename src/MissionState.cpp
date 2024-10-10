@@ -86,7 +86,7 @@ void MissionState::SendEvent(SDL_Event &event) {
             app.SetState(new MenuState(app));
             return;
         }
-        m_vimEmulator->SetSDLMod((SDL_Keymod)event.key.keysym.mod);
+        m_vimEmulator->SetSDLMod(event.key.keysym.mod);
         m_vimEmulator->SendSDLKey(event.key.keysym.sym);
     }
 }

@@ -32,6 +32,9 @@ def OnData(channel: channel, msg: string): void
         count += 1
         setbufline("INTERACTIVE", count, i)
     endfor
+    while count < line('$')
+        deletebufline("INTERACTIVE", count + 1)
+    endwhile
     ch_sendraw(channel, "RECV")
 enddef
 
