@@ -42,7 +42,6 @@ App::App(Uint32 ssFlags, int x, int y, int w, int h) {
 
     m_window = SDL_CreateWindow(APP_TITLE, x, y, m_width, m_height,
                                 SDL_WINDOW_OPENGL); // TODO Look into Vulkan
-
     GraphicsController::initGL(m_window);
     GraphicsController::enableDebug();
 
@@ -150,13 +149,15 @@ void App::SetState(IState *state) {
  * Begin game cycle.
  */
 void App::Run() {
-    m_deltaTime = (SDL_GetTicks() - m_startTick) / SECOND_MS;
     if (m_running) {
         std::cerr << "App is already running" << std::endl;
     }
     m_running = true;
 
+    SDL_GL_SetSwapInterval(0);
     while (m_running) {
+        m_endTick = SDL_GetTicks();
+        m_deltaTime = (double) (m_endTick - m_startTick) / SECOND_MS;
         // TODO move this
         SDL_Event event;
         while (SDL_PollEvent(&event) != 0) {
@@ -169,7 +170,6 @@ void App::Run() {
         }
         m_startTick = SDL_GetTicks();
         m_state->Run();
-        m_endTick = SDL_GetTicks();
     }
 }
 
@@ -196,10 +196,8 @@ void App::Render() {
     for (std::shared_ptr<IRender> renderable : m_renderables) {
         renderable->Render();
     }
-
-    glUseProgram(0);
-    // SDL_RenderPresent(m_renderer);
     SDL_GL_SwapWindow(m_window);
+    // SDL_RenderPresent(m_renderer);
 }
 
 /**
@@ -219,7 +217,7 @@ void App::ClearRenderables() { m_renderables.clear(); }
 /**
  * @return Game FPS
  */
-double App::GetFPS() const { return SECOND_MS / (m_endTick - m_startTick); }
+double App::GetFPS() const { return (double) SECOND_MS / (double)(m_endTick - m_startTick); }
 
 /**
  * @return Delta Time

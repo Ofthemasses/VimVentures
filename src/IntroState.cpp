@@ -74,12 +74,12 @@ void IntroState::Run() {
     }
 
     float panXLength = slide.stopX - slide.startX;
-    float nextXStep = currX + (panXLength / slide.panSpeedMS / app.DeltaTime());
+    float nextXStep = currX + (panXLength * (app.DeltaTime() * SECOND_MS / slide.panSpeedMS));
     float nextX = slide.stopX > slide.startX ? std::min(nextXStep, slide.stopX)
                                              : std::max(nextXStep, slide.stopX);
 
     float panYLength = slide.stopY - slide.startY;
-    float nextYStep = currY + (panYLength / slide.panSpeedMS / app.DeltaTime());
+    float nextYStep = currY + (panYLength * (app.DeltaTime() * SECOND_MS / slide.panSpeedMS));
     float nextY = slide.stopY > slide.startY ? std::min(nextYStep, slide.stopY)
                                              : std::max(nextYStep, slide.stopY);
     m_slideshow->SetPosition(nextX, nextY);

@@ -18,7 +18,7 @@ class AsteroidMiniGame : public IMission {
 
   private:
     std::shared_ptr<VimEmulator> m_vimEmulator;
-    static constexpr double TICK_DELAY_MS = 10.0;
+    static constexpr double TICK_DELAY_MS = 0.8;
     static constexpr int ROW_WIDTH = 12;
     static constexpr int UP_TICK = 5;
     static constexpr int DOWN_TICK = 10;
